@@ -12,7 +12,7 @@ if ! command -v brew >/dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-fancy_echo "Updating Homebrew formulae..."
+fancy_echo "Installing programs..."
 brew update
 brew bundle --file brew/Brewfile
 brew cleanup
@@ -41,11 +41,10 @@ asdf install
 npm install --global yarn
 npm install -g eslint_d
 
-# if ! command -v fish >/dev/null; then
 if ! [[ $SHELL =~ "fish" ]]; then
   fancy_echo "Configuring shell..."
-  echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
-  chsh -s /opt/homebrew/bin/fish
+  echo "$(which fish)" | sudo tee -a /etc/shells
+  chsh -s $(which fish)
   fancy_echo "Installing oh-my-fish..."
   curl -L https://get.oh-my.fish > install-omf
   fish install-omf --noninteractive
