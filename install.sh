@@ -15,7 +15,7 @@ fi
 
 fancy_echo "Updating Homebrew formulae..."
 brew update
-brew bundle
+brew bundle --file brew/Brewfile
 brew cleanup
 
 fancy_echo "Linking dotfiles..."

@@ -1,3 +1,4 @@
+set -gx PATH "/opt/homebrew/bin:$PATH"
 set -gx VISUAL nvim
 set -gx EDITOR nvim
 set -gx GIT_EDITOR nvim
