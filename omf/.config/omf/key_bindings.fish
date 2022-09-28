@@ -40,4 +40,4 @@ abbr -a hb "gh browse"
 abbr -a hc "gh repo clone"
 
 # Tools
-alias tat "~/.bin/tat"
+alias tat "~/bin/tat"

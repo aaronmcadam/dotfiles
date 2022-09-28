@@ -14,9 +14,9 @@ if ! command -v brew >/dev/null; then
 fi
 
 fancy_echo "Updating Homebrew formulae..."
-brew update
-brew bundle --file brew/Brewfile
-brew cleanup
+# brew update
+# brew bundle --file brew/Brewfile
+# brew cleanup
 
 fancy_echo "Linking dotfiles..."
 stow */
@@ -33,22 +33,22 @@ add_or_update_asdf_plugin() {
   fi
 }
 
-add_or_update_asdf_plugin "nodejs"
+# add_or_update_asdf_plugin "nodejs"
 # For AWS CLI
-add_or_update_asdf_plugin "python"
+# add_or_update_asdf_plugin "python"
 
 # This will install languages based on .tool-versions
-asdf install
+# asdf install
 
 # Install Yarn with NPM
-npm install --global yarn
-npm install -g eslint_d
+# npm install --global yarn
+# npm install -g eslint_d
 
 # TODO: We need to change the shell to fish to access the omf command.
-# fish_add_path /opt/homebrew/bin
 # echo "/opt/homebrew/bin/fish" | sudo tee -a /etc/shells
 # chsh -s /opt/homebrew/bin/fish
-# We might want to run this after the initial install
+# fish_add_path /opt/homebrew/bin
+#
 # if ! command -v omf >/dev/null; then
 #   fancy_echo "Installing oh-my-fish..."
 #   curl -L https://get.oh-my.fish | fish
