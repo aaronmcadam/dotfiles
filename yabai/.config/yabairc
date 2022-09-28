@@ -1,0 +1,56 @@
+# #!/usr/bin/env sh
+
+# Script additions needed for focusing spaces, but they require SIP to be disabled.
+# sudo yabai --load-sa
+# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# general space settings
+yabai -m config layout                       bsp
+yabai -m config top_padding                  0
+yabai -m config bottom_padding               0
+yabai -m config left_padding                 0
+yabai -m config right_padding                0
+yabai -m config window_gap                   0
+
+yabai -m config window_border off
+yabai -m config active_window_border_color 0xFF32A14B
+
+# App settings
+# Ignored apps
+yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off
+yabai -m rule --add app="^Cypress$" manage=off
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^zoom\.us$" manage=off
+yabai -m rule --add app="^CleanShot$" manage=off
+# Outlook reminders
+yabai -m rule --add app="Microsoft Outlook" title="Reminder" manage=off layer=above border=off
+
+# Spaces are arranged as follows:
+# Left monitor: 1, 2, 3, 4
+# Right monitor: 5, 6, 7, 8
+
+# Space 1
+yabai -m rule --add app="kitty" space=1
+
+# Space 2
+yabai -m rule --add app="Obsidian" space=2
+
+# Space 3
+yabai -m rule --add app="^(Spark|Microsoft Outlook)$" space=3
+
+# Space 4
+yabai -m rule --add app="^(Spotify|Music)$" space=4
+
+# Space 5
+yabai -m rule --add app="Firefox Developer Edition" space=5
+
+# Space 6
+yabai -m rule --add app="Figma" space=6
+
+# Space 7
+yabai -m rule --add app="^(Slack|Discord)$" space=7
+
+# Space 8
+yabai -m rule --add app="Chrome" space=8
+
+echo "yabai configuration loaded."
