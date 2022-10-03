@@ -42,3 +42,6 @@ end
 -- netrw
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+
+-- fugitive
+vim.g.fugitive_gitlab_domains = { 'https://git.tmaws.io' }

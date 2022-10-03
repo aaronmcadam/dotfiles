@@ -99,7 +99,7 @@ return packer.startup(function(use)
   use "akinsho/toggleterm.nvim" -- Manage terminal windows
   use "lewis6991/gitsigns.nvim" -- Git integration for buffers
   use "tpope/vim-fugitive" -- Git wrapper
-
+  use "shumphrey/fugitive-gitlab.vim" -- support GitLab in fugitive
 
   -- DAP debugging
   use "mfussenegger/nvim-dap" -- DAP (Debug Adapter Protocol)
