@@ -12,7 +12,6 @@ catppuccin.setup({
     gitsigns = true,
     telescope = true,
     treesitter = true,
-    treesitter_context = true,
 
 		-- Special integrations, see https://github.com/catppuccin/nvim#special-integrations
     navic = {

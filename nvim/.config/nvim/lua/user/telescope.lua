@@ -12,7 +12,11 @@ telescope.setup({
       theme = "ivy",
     },
     live_grep = {
-      theme = "ivy"
+      theme = "ivy",
+      additional_args = function()
+        -- search hidden files
+        return { "--hidden" }
+      end
     },
     grep_string = {
       theme = "ivy"

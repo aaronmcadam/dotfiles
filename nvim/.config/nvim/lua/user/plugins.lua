@@ -92,13 +92,13 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
-  use "nvim-treesitter/nvim-treesitter-context"
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "windwp/nvim-ts-autotag"
 
   -- Git
   use "akinsho/toggleterm.nvim" -- Manage terminal windows
   use "lewis6991/gitsigns.nvim" -- Git integration for buffers
+  use "tpope/vim-fugitive" -- Git wrapper
 
 
   -- DAP debugging
