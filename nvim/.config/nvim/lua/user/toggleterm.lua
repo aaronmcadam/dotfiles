@@ -5,7 +5,7 @@ end
 
 toggleterm.setup({
 	size = 20,
-	open_mapping = [[<c-\>]],
+	open_mapping = [[<c-]>]],
 	hide_numbers = true,
 	shade_terminals = true,
 	shading_factor = 2,
@@ -17,7 +17,6 @@ toggleterm.setup({
 		border = "curved",
 	},
 })
-
 
 local Terminal = require("toggleterm.terminal").Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
