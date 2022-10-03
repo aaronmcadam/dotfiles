@@ -49,6 +49,10 @@ keymap("v", "<Leader>y", "\"+y", opts)
 
 -- Lazygit
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+-- Git
+keymap("n", "<Leader>gr", "<cmd>Gread<CR>", opts)
+keymap("n", "<Leader>gc", "<cmd>G commit<CR>", opts)
+keymap("n", "<Leader>gs", "<cmd>G<CR>", opts)
 
 -- Telescope
 -- Find file
