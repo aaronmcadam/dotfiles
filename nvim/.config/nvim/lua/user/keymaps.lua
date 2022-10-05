@@ -35,8 +35,7 @@ keymap("n", "<Leader><Leader>", "<cmd>noh<CR>", opts)
 -- Better paste that doesn't lose what was in the paste register when we want to replace the selected text.
 -- We delete to the Black Hole register ("_") so that our paste register will keep the text that we copied.
 -- @see https://youtu.be/qZO9A5F6BZs?t=352
-keymap("n", "<Leader>p", "\"_dP", opts)
-keymap("v", "<Leader>p", "\"_dP", opts)
+keymap("x", "<Leader>p", "\"_dP", opts)
 
 -- Better delete
 keymap("n", "<Leader>d", "\"_d")
