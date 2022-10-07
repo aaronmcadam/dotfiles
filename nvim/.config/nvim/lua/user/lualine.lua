@@ -9,13 +9,12 @@ if not status_navic_ok then
 end
 
 lualine.setup({
-  sections = {
-    lualine_c = {
-      { 'filename' },
-      { navic.get_location, cond = navic.is_available },
-    }
-  },
   options = {
 		theme = "catppuccin"
+  },
+  winbar = {
+    lualine_a = {
+      { navic.get_location, cond = navic.is_available },
+    }
   }
 })
