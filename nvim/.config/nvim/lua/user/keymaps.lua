@@ -70,6 +70,7 @@ keymap("n", "<Leader>fw", "<cmd>Telescope grep_string<CR>", opts)
 keymap("n", "<Leader>fb", "<cmd>Telescope buffers<CR>", opts)
 -- Go to definition
 keymap("n", "<Leader>fd", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
+keymap("n", "<Leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", opts)
 keymap("n", "<c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
 keymap("n", "gs", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='split' })<CR>", opts)
 -- Harpoon marks
