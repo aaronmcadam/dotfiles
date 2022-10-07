@@ -14,8 +14,11 @@ telescope.setup({
     live_grep = {
       theme = "ivy",
       additional_args = function()
-        -- search hidden files
-        return { "--hidden" }
+        -- Dotfiles are getting hidden because they're technically hidden files.
+        -- If we set ripgrep to include hidden files, we see too many files that we don't care about.
+        -- But ripgrep doesn't seem to support searching hidden files that are tracked by git.
+        -- We can filter out git repos though.
+        return { "--hidden", "-g", "!.git" }
       end
     },
     grep_string = {
