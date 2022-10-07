@@ -29,17 +29,18 @@ for _, server in pairs(servers) do
   -- add a special case for tsserver, since we want to go through typescript.nvim here
   if server == "tsserver" then
     require("typescript").setup({ server = opts })
-  end
+  else
+    if server == "jsonls" then
+      local jsonls_opts = require "user.lsp.settings.jsonls"
+      opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
 
-  if server == "jsonls" then
-    local jsonls_opts = require "user.lsp.settings.jsonls"
-    opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-  end
+    end
 
-  if server == "sumneko_lua" then
-    local sumneko_opts = require "user.lsp.settings.sumneko_lua"
-    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-  end
+    if server == "sumneko_lua" then
+      local sumneko_opts = require "user.lsp.settings.sumneko_lua"
+      opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+    end
 
-  lspconfig[server].setup(opts)
+    lspconfig[server].setup(opts)
+  end
 end
