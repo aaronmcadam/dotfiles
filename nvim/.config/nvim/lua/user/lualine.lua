@@ -10,12 +10,16 @@ end
 
 lualine.setup({
   options = {
-    theme = "catppuccin"
+    theme = "catppuccin",
+    section_separators = { left = '', right = '' },
   },
   sections = {
+    lualine_a = {
+      { 'mode', separator = { left = '' }, right_padding = 2 },
+    },
     lualine_c = {
       { 'filename' },
-      { navic.get_location, cond = navic.is_available },
+      { navic.get_location, cond = navic.is_available, },
     }
   },
   winbar = {
