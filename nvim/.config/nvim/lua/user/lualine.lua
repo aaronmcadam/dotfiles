@@ -17,5 +17,15 @@ lualine.setup({
       { 'filename' },
       { navic.get_location, cond = navic.is_available },
     }
+  },
+  winbar = {
+    lualine_a = {
+      { 'filename' },
+    }
+  },
+  inactive_winbar = {
+    lualine_a = {
+      { 'filename' },
+    }
   }
 })
