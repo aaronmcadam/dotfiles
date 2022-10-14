@@ -7,8 +7,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Normal mode --
--- Avoid invalid commands by avoiding the shift key for commands
-keymap("n", ";", ":", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -38,8 +36,15 @@ keymap("n", "<Leader><Leader>", "<cmd>noh<CR>", opts)
 keymap("x", "<Leader>p", "\"_dP", opts)
 
 -- Better delete
-keymap("n", "<Leader>d", "\"_d")
-keymap("v", "<Leader>d", "\"_d")
+keymap("n", "<Leader>d", "\"_d", opts)
+keymap("v", "<Leader>d", "\"_d", opts)
+
+--- Easier saving
+keymap("n", "<Leader>w", "<cmd>w<CR>", opts)
+
+-- Easier quitting
+keymap("n", "<Leader>q", "<cmd>q<CR>", opts)
+keymap("n", "<Leader>qq", "<cmd>qa<CR>", opts)
 
 --- copy to system clipboard
 keymap("n", "<Leader>y", "\"+y", opts)
@@ -71,10 +76,11 @@ keymap("n", "<Leader>fb", "<cmd>Telescope buffers<CR>", opts)
 -- Go to definition
 keymap("n", "<Leader>fd", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
 keymap("n", "<Leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", opts)
-keymap("n", "<c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
+keymap("n", "<c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", opts)
+keymap("n", "<c-w><c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
 keymap("n", "gs", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='split' })<CR>", opts)
 -- Harpoon marks
-keymap("n", "<Leader>fm", "<cmd>Telescope harpoon marks<CR>", opts)
+keymap("n", "<Leader>fh", "<cmd>Telescope harpoon marks<CR>", opts)
 
 -- Harpoon
 keymap("n", "<Leader>hm", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
@@ -88,14 +94,13 @@ keymap("n", "<Leader>kt", "<cmd>OtherVSplit test<CR>", opts)
 keymap("n", "<Leader>ks", "<cmd>OtherVSplit story<CR>", opts)
 keymap("n", "<Leader>ki", "<cmd>OtherVSplit implementation<CR>", opts)
 
-keymap("n", "<Leader>q", "<cmd>qa<CR>", opts)
 keymap("n", "<Leader>r", "<cmd>lua require('user.utils').reload_config()<CR>", opts)
-keymap("n", "<Leader>tt", "<cmd>lua require('neotest').run.run()<CR>", opts)
-keymap("n", "<Leader>td", "<cmd>lua require('neotest').run.run({ strategy = 'dap' })<CR>", opts)
-keymap("n", "<Leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts)
-keymap("n", "<Leader>tl", "<cmd>lua require('neotest').run.run_last()<CR>", opts)
-keymap("n", "<Leader>ts", "<cmd>lua require('neotest').summary.toggle()<CR>", opts)
-keymap("n", "<Leader>tr", "<cmd>lua require('neotest').output.open({ enter = true })<CR>", opts)
+keymap("n", "<Leader>tt", "<cmd>w<CR><cmd>lua require('neotest').run.run()<CR>", opts)
+keymap("n", "<Leader>td", "<cmd>w<CR><cmd>lua require('neotest').run.run({ strategy = 'dap' })<CR>", opts)
+keymap("n", "<Leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts)
+keymap("n", "<Leader>tl", "<cmd>w<CR><cmd>lua require('neotest').run.run_last()<CR>", opts)
+keymap("n", "<Leader>ts", "<cmd>w<CR><cmd>lua require('neotest').summary.toggle()<CR>", opts)
+keymap("n", "<Leader>tr", "<cmd>w<CR><cmd>lua require('neotest').output.open({ enter = true })<CR>", opts)
 
 -- Debugging tests:
 -- keymap("n", "<Leader>ta", '<cmd>lua require("neotest").run.attach()<CR>', opts)

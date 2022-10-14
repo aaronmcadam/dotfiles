@@ -12,6 +12,11 @@ lualine.setup({
   options = {
     theme = "catppuccin",
     section_separators = { left = '', right = '' },
+    disabled_filetypes = {
+      winbar = {
+        'alpha'
+      }
+    }
   },
   sections = {
     lualine_a = {
