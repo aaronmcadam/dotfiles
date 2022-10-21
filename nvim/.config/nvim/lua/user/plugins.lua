@@ -54,6 +54,7 @@ return packer.startup(function(use)
   use "ahmedkhalf/project.nvim" -- Projects
   use "nvim-lualine/lualine.nvim" -- Status line
   use "NvChad/nvim-colorizer.lua" -- highlight colours
+  use "elihunter173/dirbuf.nvim" -- edit your filesystem like you edit text
 
   --- Buffers
   use "rgroli/other.nvim" -- Open related files in another buffer
