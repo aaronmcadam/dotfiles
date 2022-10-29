@@ -29,11 +29,11 @@ keymap("n", "<Leader>r", "<cmd>lua require('user.core.utils').reload_config()<CR
 -- Better paste that doesn't lose what was in the paste register when we want to replace the selected text.
 -- We delete to the Black Hole register ("_") so that our paste register will keep the text that we copied.
 -- @see https://youtu.be/qZO9A5F6BZs?t=352
-keymap("x", "<Leader>p", "\"_dP", opts)
+keymap("x", "<Leader>p", '"_dP', opts)
 
 -- Better delete
-keymap("n", "<Leader>d", "\"_d", opts)
-keymap("v", "<Leader>d", "\"_d", opts)
+keymap("n", "<Leader>d", '"_d', opts)
+keymap("v", "<Leader>d", '"_d', opts)
 
 --- Easier saving
 keymap("n", "<Leader>w", "<cmd>w<CR>", opts)
@@ -43,9 +43,9 @@ keymap("n", "<Leader>q", "<cmd>q<CR>", opts)
 keymap("n", "<Leader>qq", "<cmd>qa<CR>", opts)
 
 --- copy to system clipboard
-keymap("n", "<Leader>y", "\"+y", opts)
-keymap("n", "<Leader>Y", "\"+Y", opts)
-keymap("v", "<Leader>y", "\"+y", opts)
+keymap("n", "<Leader>y", '"+y', opts)
+keymap("n", "<Leader>Y", '"+Y', opts)
+keymap("v", "<Leader>y", '"+y', opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -59,7 +59,7 @@ keymap("n", "<Leader>gw", "<cmd>Gwrite<CR>", opts)
 
 -- Telescope
 -- Find file
-keymap("n", "<Leader>ff", "<cmd>lua require('user.plugins.telescope').project_files()<CR>", opts)
+keymap("n", "<Leader>ff", "<cmd>lua require('user.plugins.configs.telescope').project_files()<CR>", opts)
 -- Find text
 keymap("n", "<Leader>ft", "<cmd>Telescope live_grep<CR>", opts)
 -- Find word
@@ -86,7 +86,6 @@ keymap("n", "<Leader>kc", "<cmd>OtherClear<CR>", opts)
 keymap("n", "<Leader>kt", "<cmd>OtherVSplit test<CR>", opts)
 keymap("n", "<Leader>ks", "<cmd>OtherVSplit story<CR>", opts)
 keymap("n", "<Leader>ki", "<cmd>OtherVSplit implementation<CR>", opts)
-
 
 -- Tests
 keymap("n", "<Leader>tt", "<cmd>w<CR><cmd>lua require('neotest').run.run()<CR>", opts)
