@@ -6,13 +6,10 @@ end
 telescope.setup({
   pickers = {
     find_files = {
-      theme = "ivy",
     },
     git_files = {
-      theme = "ivy",
     },
     live_grep = {
-      theme = "ivy",
       additional_args = function()
         -- Dotfiles are getting hidden because they're technically hidden files.
         -- If we set ripgrep to include hidden files, we see too many files that we don't care about.
@@ -22,15 +19,12 @@ telescope.setup({
       end
     },
     grep_string = {
-      theme = "ivy"
     },
     buffers = {
-      theme = "ivy"
     }
   },
   extensions = {
     file_browser = {
-      theme = "ivy",
       -- show hidden files
       hidden = true,
       -- Open browser from within the folder of the current buffer
