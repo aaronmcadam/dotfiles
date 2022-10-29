@@ -17,7 +17,7 @@ dashboard.section.header.val = {
 }
 
 dashboard.section.buttons.val = {
-  dashboard.button("f", " " .. " Find file", "<cmd>lua require('user.telescope').project_files()<CR>"),
+  dashboard.button("f", " " .. " Find file", "<cmd>lua require('user.plugins.telescope').project_files()<CR>"),
   dashboard.button("e", " " .. " New file", ":ene <BAR> startinsert<CR>"),
   dashboard.button("p", " " .. " Find project", "<cmd>Telescope projects<CR>"),
   dashboard.button("r", " " .. " Recent files", "<cmd>Telescope oldfiles<CR>"),
