@@ -1,6 +1,6 @@
 local cmp_status, cmp = pcall(require, "cmp")
 if not cmp_status then
-  return
+	return
 end
 
 local luasnip_status, luasnip = pcall(require, "luasnip")
@@ -44,7 +44,4 @@ cmp.setup({
 			ellipsis_char = "...",
 		}),
 	},
-  experimental = {
-    ghost_text = true,
-  },
 })

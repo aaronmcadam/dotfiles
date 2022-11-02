@@ -9,26 +9,25 @@ if not actions_setup then
 end
 
 telescope.setup({
-  defaults = {
-    mappings = {
-      i = {
-        ["<C-k>"] = actions.move_selection_previous, -- move to prev result
+	defaults = {
+		mappings = {
+			i = {
+				["<C-k>"] = actions.move_selection_previous, -- move to prev result
 				["<C-j>"] = actions.move_selection_next, -- move to next result
-				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- send selected to quickfixlist
-      },
-    },
-  },
-  pickers = {
-    live_grep = {
-      additional_args = function()
-        -- Dotfiles are getting hidden because they're technically hidden files.
-        -- If we set ripgrep to include hidden files, we see too many files that we don't care about.
-        -- But ripgrep doesn't seem to support searching hidden files that are tracked by git.
-        -- We can filter out git repos though.
-        return { "--hidden", "-g", "!.git" }
-      end
-    },
-  },
+			},
+		},
+	},
+	pickers = {
+		live_grep = {
+			additional_args = function()
+				-- Dotfiles are getting hidden because they're technically hidden files.
+				-- If we set ripgrep to include hidden files, we see too many files that we don't care about.
+				-- But ripgrep doesn't seem to support searching hidden files that are tracked by git.
+				-- We can filter out git repos though.
+				return { "--hidden", "-g", "!.git" }
+			end,
+		},
+	},
 })
 
 telescope.load_extension("fzf")
@@ -40,9 +39,11 @@ local M = {}
 -- but showing all hidden files shows too many, such as files within `.git`.
 -- We fall back to find_files if git_files fails when there's no `.git` directory.
 M.project_files = function()
-  local ok = pcall(require("telescope.builtin").git_files, { show_untracked = true })
+	local ok = pcall(require("telescope.builtin").git_files, { show_untracked = true })
 
-  if not ok then require("telescope.builtin").find_files() end
+	if not ok then
+		require("telescope.builtin").find_files()
+	end
 end
 
 return M
