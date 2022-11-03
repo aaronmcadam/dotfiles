@@ -40,6 +40,7 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("numToStr/Comment.nvim") -- Commenting
+	use("JoosepAlviste/nvim-ts-context-commentstring") -- TSX support for commenting
 	use("kyazdani42/nvim-web-devicons") -- Icons
 	use("kylechui/nvim-surround") -- Surround text objects
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
