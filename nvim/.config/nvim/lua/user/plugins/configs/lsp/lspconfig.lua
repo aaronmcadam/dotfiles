@@ -13,6 +13,11 @@ if not typescript_setup then
 	return
 end
 
+local tailwind_highlight_setup, tailwind_highlight = pcall(require, "tailwind-highlight")
+if not tailwind_highlight_setup then
+	return
+end
+
 local keymap = vim.keymap
 
 -- enable keybinds only for when lsp server available
@@ -50,6 +55,10 @@ end
 -- used to enable autocompletion (assign to every lsp server config)
 local capabilities = cmp_nvim_lsp.default_capabilities()
 
+-- Show line diagnostics automatically in hover window
+vim.o.updatetime = 250
+vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+
 -- Change the Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
 
@@ -65,6 +74,15 @@ typescript.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
 	},
+})
+
+-- configure tailwind
+lspconfig["tailwindcss"].setup({
+	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+		on_attach(client, bufnr)
+		tailwind_highlight.setup(client, bufnr)
+	end,
 })
 
 -- configure lua server (with special settings)

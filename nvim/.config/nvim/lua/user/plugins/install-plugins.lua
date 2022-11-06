@@ -73,6 +73,7 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use("glepnir/lspsaga.nvim") -- shows a popup for things like code actions
 	use("jose-elias-alvarez/typescript.nvim") -- for TypeScript LSP commands
+	use("princejoogie/tailwind-highlight.nvim") -- Highlight Tailwind CSS classes
 	use("onsails/lspkind.nvim") -- icons for autocompletion
 
 	-- formatting and linting
@@ -104,6 +105,11 @@ return packer.startup(function(use)
 	-- Testing
 	use("nvim-neotest/neotest")
 	use("haydenmeade/neotest-jest")
+
+	-- debugging
+	use("mfussenegger/nvim-dap") -- debugger
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
 
 	-- winbar
 	use("SmiteshP/nvim-navic") -- winbar for code navigation
