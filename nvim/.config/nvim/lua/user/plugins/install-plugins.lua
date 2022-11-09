@@ -50,6 +50,7 @@ return packer.startup(function(use)
 	use("elihunter173/dirbuf.nvim") -- edit your filesystem like you edit text
 	use("rgroli/other.nvim") -- Open related files in another buffer
 	use("ThePrimeagen/harpoon") -- mark files to navigate between
+	use("rcarriga/nvim-notify") -- notification manager
 
 	-- Colorschemes
 	use({ "catppuccin/nvim", as = "catppuccin" })
