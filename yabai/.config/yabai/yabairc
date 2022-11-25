@@ -35,7 +35,7 @@ yabai -m rule --add app="kitty" space=1
 yabai -m rule --add app="Obsidian" space=2
 
 # Space 3
-yabai -m rule --add app="^(Spark|Microsoft Outlook|Fantastical)$" space=3
+yabai -m rule --add app="^(Spark Desktop|Microsoft Outlook|Fantastical)$" space=3
 
 # Space 4
 yabai -m rule --add app="^(Spotify|Music)$" space=4
@@ -51,6 +51,7 @@ yabai -m rule --add app="^(Slack|Discord)$" space=7
 
 # Space 8
 yabai -m rule --add app="Chrome" space=8
+yabai -m rule --add app="1Password" space=8
 yabai -m rule --add app="Cypress" space=8 manage=off layer=below 
 yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" space=8 manage=off layer=below
 
