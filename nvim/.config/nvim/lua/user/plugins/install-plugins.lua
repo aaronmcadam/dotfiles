@@ -76,6 +76,22 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/typescript.nvim") -- for TypeScript LSP commands
 	use("princejoogie/tailwind-highlight.nvim") -- Highlight Tailwind CSS classes
 	use("onsails/lspkind.nvim") -- icons for autocompletion
+	use({
+		"zbirenbaum/copilot.lua",
+		event = "VimEnter",
+		config = function()
+			vim.defer_fn(function()
+				require("copilot").setup()
+			end, 100)
+		end,
+	}) -- GitHub Copilot
+	use({
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	})
 
 	-- formatting and linting
 	use("jose-elias-alvarez/null-ls.nvim") -- configure formatters & linters

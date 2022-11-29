@@ -33,6 +33,7 @@ cmp.setup({
 	-- sources for autocompletion
 	sources = cmp.config.sources({
 		{ name = "luasnip" }, -- snippets
+		{ name = "copilot" },
 		{ name = "nvim_lsp" }, -- lsp
 		{ name = "buffer" }, -- text within current buffer
 		{ name = "path" }, -- file system paths
@@ -42,6 +43,7 @@ cmp.setup({
 		format = lspkind.cmp_format({
 			maxwidth = 50,
 			ellipsis_char = "...",
+			symbol_map = { Copilot = "" },
 		}),
 	},
 })
