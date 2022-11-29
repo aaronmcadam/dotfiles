@@ -76,6 +76,20 @@ typescript.setup({
 	},
 })
 
+lspconfig["yamlls"].setup({
+	server = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	},
+})
+
+lspconfig["jsonls"].setup({
+	server = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	},
+})
+
 -- configure tailwind
 lspconfig["tailwindcss"].setup({
 	capabilities = capabilities,

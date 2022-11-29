@@ -29,7 +29,20 @@ end
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local lazygit = Terminal:new({
+	cmd = "lazygit",
+	hidden = true,
+	on_open = function(term)
+		local opts = { noremap = true, silent = true }
+
+		vim.cmd("startinsert!")
+		vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", opts)
+		-- Reset keymaps so that we can use lazygit's keymaps.
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-[>", [[<C-[>]], opts)
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-u>", [[<C-u>]], opts)
+		vim.api.nvim_buf_set_keymap(term.bufnr, "t", "<C-d>", [[<C-d>]], opts)
+	end,
+})
 
 function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
