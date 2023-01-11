@@ -1,4 +1,4 @@
-# Tip: use skhd --observe in a terminal and type a key to find its keycode
+# Tip: Run `skhd --observe` in a terminal and type a key to find its keycode
 
 # focus window
 alt - h : yabai -m window --focus west
