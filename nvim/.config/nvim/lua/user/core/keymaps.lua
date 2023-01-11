@@ -40,7 +40,6 @@ keymap("n", "<Leader>w", "<cmd>w<CR>", opts)
 
 -- Easier quitting
 keymap("n", "<Leader>q", "<cmd>q<CR>", opts)
-keymap("n", "<Leader>qq", "<cmd>qa<CR>", opts)
 
 --- copy to system clipboard
 keymap("n", "<Leader>y", '"+y', opts)
