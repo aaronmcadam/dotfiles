@@ -12,6 +12,7 @@ configs.setup({
 		"javascript",
 		"json",
 		"lua",
+		"markdown",
 		"tsx",
 		"typescript",
 		"yaml",
