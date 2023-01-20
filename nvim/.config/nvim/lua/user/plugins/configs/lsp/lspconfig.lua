@@ -25,17 +25,24 @@ local on_attach = function(client, bufnr)
 	-- keybind options
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
+	local nmap = function(keys, func, desc)
+		if desc then
+			desc = "LSP: " .. desc
+		end
+
+		vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+	end
+
 	-- set keybinds
 	keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
 	keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
 	keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	keymap.set("n", "gT", vim.lsp.buf.type_definition, opts)
-	keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-	keymap.set("n", "gr", vim.lsp.buf.references, opts)
-	keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+	nmap("gT", vim.lsp.buf.type_definition, "[G]oto [T]ype definition")
+	nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	keymap.set("n", "<leader>la", "<cmd>Lspsaga code_action<CR>", opts)
-	keymap.set("n", "<leader>lf", vim.lsp.buf.format, opts)
+	nmap("<leader>lf", vim.lsp.buf.format, "[F]ormat")
 	keymap.set("n", "<leader>lj", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 	keymap.set("n", "<leader>lk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 	keymap.set("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", opts)
