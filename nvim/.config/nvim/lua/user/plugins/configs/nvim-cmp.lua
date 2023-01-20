@@ -15,6 +15,7 @@ end
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
+local cmp_select = { behavior = cmp.SelectBehavior.select }
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -22,12 +23,12 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<C-n>"] = cmp.mapping.select_next_item(), -- next suggestion
-		["<C-p>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+		["<C-n>"] = cmp.mapping.select_next_item(cmp_select), -- next suggestion
+		["<C-p>"] = cmp.mapping.select_prev_item(cmp_select), -- previous suggestion
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-u>"] = cmp.mapping.scroll_docs(4),
 		["<C-e>"] = cmp.mapping.abort(), -- close completion window
-		["<C-y>"] = cmp.mapping.confirm({ select = false }),
+		["<C-y>"] = cmp.mapping.confirm({ select = true }),
 		["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 	}),
 	-- sources for autocompletion
