@@ -97,6 +97,16 @@ lspconfig["tailwindcss"].setup({
 		on_attach(client, bufnr)
 		tailwind_highlight.setup(client, bufnr)
 	end,
+	settings = {
+		tailwindCSS = {
+			experimental = {
+				classRegex = {
+					"cva\\(([^)]*)\\)",
+					"[\"'`]([^\"'`]*).*?[\"'`]",
+				},
+			},
+		},
+	},
 })
 
 -- configure lua server (with special settings)

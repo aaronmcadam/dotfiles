@@ -1,5 +1,5 @@
 # General
-alias ... "cd ../../.."
+alias ... "cd ../.."
 alias ag "rg"
 alias c "clear"
 alias cat "bat"

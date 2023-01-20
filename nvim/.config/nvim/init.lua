@@ -28,6 +28,5 @@ require("user.plugins.configs.lsp.null-ls")
 
 -- Plugins that may depend upon LSP
 require("user.plugins.configs.nvim-cmp")
--- Disable autopairs for now because when completing with Copilot, I get the extra closing symbol.
--- require("user.plugins.configs.autopairs")
+require("user.plugins.configs.autopairs")
 require("user.plugins.configs.treesitter")
