@@ -6,6 +6,9 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Better file system navigation
+keymap("n", "-", vim.cmd.Ex, opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -27,7 +30,7 @@ keymap("n", "<Leader><Leader>", "<cmd>noh<CR>", opts)
 keymap("n", "<Leader>r", "<cmd>lua require('user.core.utils').reload_config()<CR>", opts)
 
 -- Better paste that doesn't lose what was in the paste register when we want to replace the selected text.
--- We delete to the Black Hole register ("_") so that our paste register will keep the text that we copied.
+-- We delete to the Black Hole register ("_") so our paste register will keep the text we copied.
 -- @see https://youtu.be/qZO9A5F6BZs?t=352
 keymap("x", "<Leader>p", '"_dP', opts)
 
@@ -36,10 +39,10 @@ keymap("n", "<Leader>d", '"_d', opts)
 keymap("v", "<Leader>d", '"_d', opts)
 
 --- Easier saving
-keymap("n", "<Leader>w", "<cmd>w<CR>", opts)
+keymap("n", "<Leader>w", vim.cmd.write, opts)
 
 -- Easier quitting
-keymap("n", "<Leader>q", "<cmd>q<CR>", opts)
+keymap("n", "<Leader>q", vim.cmd.quit, opts)
 
 --- copy to system clipboard
 keymap("n", "<Leader>y", '"+y', opts)
@@ -48,13 +51,13 @@ keymap("v", "<Leader>y", '"+y', opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-keymap("n", "<Leader>gb", "<cmd>GBrowse<CR>", opts)
+keymap("n", "<Leader>gb", vim.cmd.GBrowse, opts)
 keymap("n", "<Leader>gc", "<cmd>G commit<CR>", opts)
-keymap("n", "<Leader>gd", "<cmd>Gdiffsplit<CR>", opts)
+keymap("n", "<Leader>gd", vim.cmd.Gdiffsplit, opts)
 keymap("n", "<Leader>gp", "<cmd>G push<CR>", opts)
-keymap("n", "<Leader>gr", "<cmd>Gread<CR>", opts)
-keymap("n", "<Leader>gs", "<cmd>G<CR>", opts)
-keymap("n", "<Leader>gw", "<cmd>Gwrite<CR>", opts)
+keymap("n", "<Leader>gr", vim.cmd.Gread, opts)
+keymap("n", "<Leader>gs", vim.cmd.Git, opts)
+keymap("n", "<Leader>gw", vim.cmd.Gwrite, opts)
 
 -- Telescope
 -- Find file
@@ -104,3 +107,6 @@ keymap("n", "<leader>dr", "<cmd>lua require('dap').repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require('dap').run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require('dap').terminate()<cr>", opts)
+
+-- undo tree
+keymap("n", "<Leader>u", vim.cmd.UndotreeToggle, opts)

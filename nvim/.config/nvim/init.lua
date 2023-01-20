@@ -1,4 +1,4 @@
-require("user.plugins.install-plugins")
+require("user.plugins.packer")
 require("user.core.options")
 require("user.core.keymaps")
 require("user.core.colorscheme")

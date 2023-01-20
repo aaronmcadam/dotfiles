@@ -16,7 +16,7 @@ local packer_bootstrap = ensure_packer() -- true if packer was just installed
 vim.cmd([[ 
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost install-plugins.lua source <afile> | PackerSync
+    autocmd BufWritePost packer.lua source <afile> | PackerSync
   augroup end
 ]])
 
@@ -47,10 +47,10 @@ return packer.startup(function(use)
 	use("goolord/alpha-nvim") -- Dashboard
 	use("nvim-lualine/lualine.nvim") -- Status line
 	use("NvChad/nvim-colorizer.lua") -- highlight colours
-	use("elihunter173/dirbuf.nvim") -- edit your filesystem like you edit text
 	use("rgroli/other.nvim") -- Open related files in another buffer
 	use("ThePrimeagen/harpoon") -- mark files to navigate between
 	use("rcarriga/nvim-notify") -- notification manager
+	use("mbbill/undotree") -- undo history
 
 	-- Colorschemes
 	use({ "catppuccin/nvim", as = "catppuccin" })
