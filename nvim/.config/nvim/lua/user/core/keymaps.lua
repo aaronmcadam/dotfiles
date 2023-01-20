@@ -78,6 +78,7 @@ keymap("n", "<Leader>fw", require("telescope.builtin").grep_string, { desc = "[F
 keymap("n", "<Leader>fb", require("telescope.builtin").buffers, { desc = "[F]ind existing [B]uffers" })
 keymap("n", "<Leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
 keymap("n", "<Leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })
+keymap("n", "<Leader>fk", require("telescope.builtin").keymaps, { desc = "[F]ind [K]eymapping" })
 keymap("n", "<Leader>fs", require("telescope.builtin").lsp_document_symbols, { desc = "[F]ind [S]ymbols" })
 keymap("n", "<Leader>fr", require("telescope.builtin").oldfiles, { desc = "[F]ind [R]ecently opened files" })
 -- Go to definition
