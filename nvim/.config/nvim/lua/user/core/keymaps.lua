@@ -60,17 +60,28 @@ keymap("n", "<Leader>gs", vim.cmd.Git, opts)
 keymap("n", "<Leader>gw", vim.cmd.Gwrite, opts)
 
 -- Telescope
--- Find file
-keymap("n", "<Leader>ff", "<cmd>lua require('user.plugins.configs.telescope').project_files()<CR>", opts)
--- Find text
-keymap("n", "<Leader>ft", "<cmd>Telescope live_grep<CR>", opts)
--- Find word
-keymap("n", "<Leader>fw", "<cmd>Telescope grep_string<CR>", opts)
--- Find buffer
-keymap("n", "<Leader>fb", "<cmd>Telescope buffers<CR>", opts)
+keymap(
+	"n",
+	"<Leader>ff",
+	"<cmd>lua require('user.plugins.configs.telescope').project_files()<CR>",
+	{ desc = "[F]ind [F]ile" }
+)
+keymap("n", "<Leader>/", function()
+	-- You can pass additional configuration to telescope to change theme, layout, etc.
+	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
+end, { desc = "[/] Fuzzily search in current buffer" })
+keymap("n", "<Leader>ft", require("telescope.builtin").live_grep, { desc = "[F]ind [T]ext" })
+keymap("n", "<Leader>fw", require("telescope.builtin").grep_string, { desc = "[F]ind current [W]ord" })
+keymap("n", "<Leader>fb", require("telescope.builtin").buffers, { desc = "[F]ind existing [B]uffers" })
+keymap("n", "<Leader>fd", require("telescope.builtin").diagnostics, { desc = "[F]ind [D]iagnostics" })
+keymap("n", "<Leader>fh", require("telescope.builtin").help_tags, { desc = "[F]ind [H]elp" })
+keymap("n", "<Leader>fs", require("telescope.builtin").lsp_document_symbols, { desc = "[F]ind [S]ymbols" })
+keymap("n", "<Leader>fr", require("telescope.builtin").oldfiles, { desc = "[F]ind [R]ecently opened files" })
 -- Go to definition
-keymap("n", "<Leader>fd", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
-keymap("n", "<Leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", opts)
+keymap("n", "<Leader>fg", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
 keymap("n", "<c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", opts)
 keymap("n", "<c-w><c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
 keymap("n", "gs", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='split' })<CR>", opts)
