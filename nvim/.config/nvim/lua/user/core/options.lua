@@ -37,8 +37,8 @@ opt.wrap = false -- display lines as one long line
 opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
 
 -- netrw
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
+-- vim.g.netrw_banner = 0
+-- vim.g.netrw_winsize = 25
 
 -- fugitive
-vim.g.fugitive_gitlab_domains = { 'https://git.tmaws.io' }
+vim.g.fugitive_gitlab_domains = { "https://git.tmaws.io" }

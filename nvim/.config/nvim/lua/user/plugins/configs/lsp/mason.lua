@@ -18,10 +18,11 @@ mason.setup()
 mason_lspconfig.setup({
 	-- list of servers for mason to install
 	ensure_installed = {
-		"sumneko_lua",
+		"lua_ls",
 		"tsserver",
 		"jsonls",
 		"tailwindcss",
+		"terraformls",
 		"yamlls",
 	},
 	-- auto-install configured servers (with lspconfig)
@@ -34,6 +35,7 @@ mason_null_ls.setup({
 		"eslint_d", -- ts/js linter
 		"prettier", -- ts/js formatter
 		"stylua", -- lua formatter
+		"tflint", -- terraform linter
 	},
 	-- auto-install configured formatters & linters (with null-ls)
 	automatic_installation = true,

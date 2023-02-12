@@ -6,18 +6,26 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Better file system navigation
-keymap("n", "-", vim.cmd.Ex, opts)
+-- Stolen from theprimeagen
+-- @see https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
+-- @see https://www.youtube.com/watch?v=w7i4amO_zaE
+-- Move selected line / block of text in visual mode
+keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
+-- Stop cursor jumping to the end of the line when joining lines with J
+keymap("n", "J", "mzJ`z", opts)
+-- Less jarring paging
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
+-- Keep cursor centered when going through search matches
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-
--- Less jarring paging
-keymap("n", "<C-u>", "<C-u>zz", opts)
-keymap("n", "<C-d>", "<C-d>zz", opts)
 
 -- Resize with arrows
 keymap("n", "<A-Up>", ":resize -2<CR>", opts)
@@ -87,11 +95,15 @@ keymap("n", "<c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR
 keymap("n", "<c-w><c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
 keymap("n", "gs", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='split' })<CR>", opts)
 -- Harpoon marks
-keymap("n", "<Leader>fh", "<cmd>Telescope harpoon marks<CR>", opts)
+keymap("n", "<Leader>fm", "<cmd>Telescope harpoon marks<CR>", opts)
 
 -- Harpoon
-keymap("n", "<Leader>hm", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
-keymap("n", "<Leader>hh", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
+keymap("n", "<Leader>ha", "<cmd>lua require('harpoon.mark').add_file()<CR>", opts)
+keymap("n", "<Leader>hm", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
+keymap("n", "<Leader>hh", "<cmd>lua require('harpoon.ui').nav_file(1)<CR>", opts)
+keymap("n", "<Leader>hj", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>", opts)
+keymap("n", "<Leader>hk", "<cmd>lua require('harpoon.ui').nav_file(3)<CR>", opts)
+keymap("n", "<Leader>hl", "<cmd>lua require('harpoon.ui').nav_file(4)<CR>", opts)
 
 -- Related buffer navigation
 keymap("n", "<Leader>kk", "<cmd>Other<CR>", opts)
@@ -108,6 +120,12 @@ keymap("n", "<Leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.
 keymap("n", "<Leader>tl", "<cmd>w<CR><cmd>lua require('neotest').run.run_last()<CR>", opts)
 keymap("n", "<Leader>ts", "<cmd>w<CR><cmd>lua require('neotest').summary.toggle()<CR>", opts)
 keymap("n", "<Leader>tr", "<cmd>w<CR><cmd>lua require('neotest').output.open({ enter = true })<CR>", opts)
+keymap(
+	"n",
+	"<leader>tw",
+	"<cmd>w<CR><cmd>lua require('neotest').run.run({ jestCommand = 'pnpm jest --watch ' })<CR>",
+	opts
+)
 
 -- Debugging
 keymap("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", opts)

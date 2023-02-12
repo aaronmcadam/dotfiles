@@ -51,6 +51,7 @@ return packer.startup(function(use)
 	use("ThePrimeagen/harpoon") -- mark files to navigate between
 	use("rcarriga/nvim-notify") -- notification manager
 	use("mbbill/undotree") -- undo history
+	use("tpope/vim-vinegar") -- better netrw
 
 	-- Colorschemes
 	use({ "catppuccin/nvim", as = "catppuccin" })
@@ -121,8 +122,15 @@ return packer.startup(function(use)
 	use("shumphrey/fugitive-gitlab.vim") -- support GitLab in fugitive
 
 	-- Testing
-	use("nvim-neotest/neotest")
-	use("haydenmeade/neotest-jest")
+	use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"haydenmeade/neotest-jest",
+		},
+	})
 
 	-- debugging
 	use("mfussenegger/nvim-dap") -- debugger

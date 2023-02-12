@@ -28,5 +28,6 @@ require("user.plugins.configs.lsp.null-ls")
 
 -- Plugins that may depend upon LSP
 require("user.plugins.configs.nvim-cmp")
-require("user.plugins.configs.autopairs")
+-- Experimenting turning this off again
+-- require("user.plugins.configs.autopairs")
 require("user.plugins.configs.treesitter")

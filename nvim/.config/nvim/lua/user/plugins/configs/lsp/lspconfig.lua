@@ -97,6 +97,13 @@ lspconfig["jsonls"].setup({
 	},
 })
 
+lspconfig["terraformls"].setup({
+	server = {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	},
+})
+
 -- configure tailwind
 lspconfig["tailwindcss"].setup({
 	capabilities = capabilities,
@@ -117,7 +124,7 @@ lspconfig["tailwindcss"].setup({
 })
 
 -- configure lua server (with special settings)
-lspconfig["sumneko_lua"].setup({
+lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = { -- custom settings for lua

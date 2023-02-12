@@ -24,35 +24,21 @@ yabai -m rule --add app="^CleanShot$" manage=off
 # Outlook reminders
 yabai -m rule --add app="Microsoft Outlook" title="Reminder" manage=off layer=above border=off
 
-# Spaces are arranged as follows:
-# Left monitor: 1, 2, 3, 4
-# Right monitor: 5, 6, 7, 8
-
-# Space 1
+# Left monitor: 1, 2, 3, 4, 5
 yabai -m rule --add app="kitty" space=1
-
-# Space 2
 yabai -m rule --add app="Obsidian" space=2
-
-# Space 3
 yabai -m rule --add app="^(Spark Desktop|Microsoft Outlook|Fantastical)$" space=3
-
-# Space 4
 yabai -m rule --add app="^(Spotify|Music)$" space=4
+yabai -m rule --add app="1Password" space=5
 
-# Space 5
-yabai -m rule --add app="Firefox Developer Edition" space=5
+# Right monitor: 6, 7, 8, 9, 10
+yabai -m rule --add app="^(Firefox Developer Edition|Postman)" space=6
+yabai -m rule --add app="Figma" space=7
+yabai -m rule --add app="^(Slack|Discord)$" space=8
 
-# Space 6
-yabai -m rule --add app="Figma" space=6
+yabai -m rule --add app="Chrome" space=9
+yabai -m rule --add app="^Cisco AnyConnect" space=9 manage=off layer=below
 
-# Space 7
-yabai -m rule --add app="^(Slack|Discord)$" space=7
-
-# Space 8
-yabai -m rule --add app="Chrome" space=8
-yabai -m rule --add app="1Password" space=8
-yabai -m rule --add app="Cypress" space=8 manage=off layer=below 
-yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" space=8 manage=off layer=below
+yabai -m rule --add app="Cypress" space=10
 
 echo "yabai configuration loaded."

@@ -5,10 +5,16 @@ end
 
 neotest.setup({
 	adapters = {
-		require("neotest-jest"),
+		require("neotest-jest")({
+			jestCommand = "pnpm jest --watch",
+			cwd = function(path)
+				local cwd = require("neotest-jest.util").find_package_json_ancestor(path)
+				return cwd
+			end,
+		}),
 	},
 	output = {
 		enabled = true,
-		open_on_run = "short",
+		open_on_run = "true",
 	},
 })
