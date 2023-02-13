@@ -6,15 +6,15 @@ require("user.core.autocommands")
 
 -- plugin config
 require("user.plugins.configs.alpha")
-require("user.plugins.configs.colorizer")
 require("user.plugins.configs.comment")
 require("user.plugins.configs.gitsigns")
+require("user.plugins.configs.highlight-colors")
 require("user.plugins.configs.impatient")
 require("user.plugins.configs.lualine")
 require("user.plugins.configs.navic")
 require("user.plugins.configs.dap")
 require("user.plugins.configs.neotest")
-require("user.plugins.configs.nvim-notify")
+require("user.plugins.configs.notify")
 require("user.plugins.configs.other")
 require("user.plugins.configs.surround")
 require("user.plugins.configs.telescope")
@@ -27,7 +27,5 @@ require("user.plugins.configs.lsp.lspconfig")
 require("user.plugins.configs.lsp.null-ls")
 
 -- Plugins that may depend upon LSP
-require("user.plugins.configs.nvim-cmp")
--- Experimenting turning this off again
--- require("user.plugins.configs.autopairs")
+require("user.plugins.configs.cmp")
 require("user.plugins.configs.treesitter")

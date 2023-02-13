@@ -6,7 +6,6 @@ end
 local formatting = null_ls.builtins.formatting -- to setup formatters
 local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 local code_actions = null_ls.builtins.code_actions -- to setup code actions
-local hover = null_ls.builtins.hover -- to setup hover sources
 
 -- to setup format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -26,7 +25,6 @@ null_ls.setup({
 		diagnostics.markdownlint,
 		diagnostics.yamllint,
 		code_actions.eslint_d,
-		code_actions.gitsigns,
 		code_actions.gitrebase,
 	},
 	-- configure format on save
@@ -43,6 +41,7 @@ null_ls.setup({
 							return client.name == "null-ls"
 						end,
 						bufnr = bufnr,
+						timeout_ms = 10000,
 					})
 				end,
 			})

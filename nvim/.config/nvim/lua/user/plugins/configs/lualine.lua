@@ -3,11 +3,6 @@ if not status_ok then
 	return
 end
 
-local status_navic_ok, navic = pcall(require, "nvim-navic")
-if not status_navic_ok then
-	return
-end
-
 lualine.setup({
 	options = {
 		theme = "catppuccin",
@@ -21,18 +16,8 @@ lualine.setup({
 			{ "mode", separator = { left = "" }, right_padding = 2 },
 		},
 		lualine_c = {
-			{ "filename" },
-			{ navic.get_location, cond = navic.is_available },
+			-- @see https://github.com/nvim-lualine/lualine.nvim#filename-component-options
+			{ "filename", path = 1 },
 		},
 	},
-	-- winbar = {
-	-- 	lualine_z = {
-	-- 		{ "filename" },
-	-- 	},
-	-- },
-	-- inactive_winbar = {
-	-- 	lualine_z = {
-	-- 		{ "filename" },
-	-- 	},
-	-- },
 })

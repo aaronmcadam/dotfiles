@@ -13,11 +13,6 @@ if not typescript_setup then
 	return
 end
 
-local tailwind_highlight_setup, tailwind_highlight = pcall(require, "tailwind-highlight")
-if not tailwind_highlight_setup then
-	return
-end
-
 local keymap = vim.keymap
 
 -- enable keybinds only for when lsp server available
@@ -42,7 +37,9 @@ local on_attach = function(client, bufnr)
 	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 	keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 	keymap.set("n", "<leader>la", "<cmd>Lspsaga code_action<CR>", opts)
-	nmap("<leader>lf", vim.lsp.buf.format, "[F]ormat")
+	nmap("<leader>lf", function()
+		vim.lsp.buf.format({ timeout_ms = 10000 })
+	end, "[F]ormat")
 	keymap.set("n", "<leader>lj", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 	keymap.set("n", "<leader>lk", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 	keymap.set("n", "<leader>lr", "<cmd>Lspsaga rename<CR>", opts)
@@ -107,10 +104,7 @@ lspconfig["terraformls"].setup({
 -- configure tailwind
 lspconfig["tailwindcss"].setup({
 	capabilities = capabilities,
-	on_attach = function(client, bufnr)
-		on_attach(client, bufnr)
-		tailwind_highlight.setup(client, bufnr)
-	end,
+	on_attach = on_attach,
 	settings = {
 		tailwindCSS = {
 			experimental = {

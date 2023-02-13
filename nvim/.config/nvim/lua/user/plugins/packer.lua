@@ -46,7 +46,8 @@ return packer.startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("goolord/alpha-nvim") -- Dashboard
 	use("nvim-lualine/lualine.nvim") -- Status line
-	use("NvChad/nvim-colorizer.lua") -- highlight colours
+	use("SmiteshP/nvim-navic") -- code navigation
+	use("brenoprata10/nvim-highlight-colors") -- highlight colours
 	use("rgroli/other.nvim") -- Open related files in another buffer
 	use("ThePrimeagen/harpoon") -- mark files to navigate between
 	use("rcarriga/nvim-notify") -- notification manager
@@ -75,7 +76,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
 	use("glepnir/lspsaga.nvim") -- shows a popup for things like code actions
 	use("jose-elias-alvarez/typescript.nvim") -- for TypeScript LSP commands
-	use("princejoogie/tailwind-highlight.nvim") -- Highlight Tailwind CSS classes
 	use("onsails/lspkind.nvim") -- icons for autocompletion
 	use({
 		"zbirenbaum/copilot.lua",
@@ -136,9 +136,6 @@ return packer.startup(function(use)
 	use("mfussenegger/nvim-dap") -- debugger
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
-
-	-- winbar
-	use("SmiteshP/nvim-navic") -- winbar for code navigation
 
 	if packer_bootstrap then
 		require("packer").sync()

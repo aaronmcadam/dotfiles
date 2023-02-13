@@ -9,4 +9,7 @@ saga.setup({
 		colors = require("catppuccin.groups.integrations.lsp_saga").custom_colors(),
 		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
 	},
+	symbol_in_winbar = {
+		folder_level = 5,
+	},
 })
