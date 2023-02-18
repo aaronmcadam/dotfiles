@@ -1,0 +1,21 @@
+{
+  "name": "nvim-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./snippets/typescript/typescript.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets/typescript/react.json"
+      }
+    ]
+  }
+}

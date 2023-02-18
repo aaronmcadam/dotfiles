@@ -13,9 +13,10 @@ if not lspkind_status then
 	return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip/loaders/from_vscode").load({
+	paths = vim.fn.stdpath("config") .. "/snippets",
+})
 
-local cmp_select = { behavior = cmp.SelectBehavior.select }
 cmp.setup({
 	snippet = {
 		expand = function(args)

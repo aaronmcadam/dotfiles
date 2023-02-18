@@ -63,8 +63,13 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path") -- path completions
 
 	-- Snippets
-	use("L3MON4D3/LuaSnip") -- snippet engine
-	use("rafamadriz/friendly-snippets") -- snippets collection
+	use({
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		tag = "v<CurrentMajor>.*",
+		-- install jsregexp (optional!:).
+		run = "make install_jsregexp",
+	})
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
 
 	-- managing & installing lsp servers, linters & formatters
