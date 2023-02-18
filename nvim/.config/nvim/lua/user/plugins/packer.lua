@@ -53,6 +53,7 @@ return packer.startup(function(use)
 	use("rcarriga/nvim-notify") -- notification manager
 	use("mbbill/undotree") -- undo history
 	use("tpope/vim-vinegar") -- better netrw
+	use("RRethy/vim-illuminate") -- highlight other uses of the word under the cursor
 
 	-- Colorschemes
 	use({ "catppuccin/nvim", as = "catppuccin" })
@@ -65,9 +66,6 @@ return packer.startup(function(use)
 	-- Snippets
 	use({
 		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		tag = "v<CurrentMajor>.*",
-		-- install jsregexp (optional!:).
 		run = "make install_jsregexp",
 	})
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
