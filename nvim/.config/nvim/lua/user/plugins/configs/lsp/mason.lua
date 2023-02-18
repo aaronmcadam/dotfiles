@@ -36,7 +36,6 @@ mason_null_ls.setup({
 		"prettier", -- ts/js formatter
 		"stylua", -- lua formatter
 		"tflint", -- terraform linter
-		"yamlfmt", -- yaml formatter
 		"yamllint", -- yaml linter
 	},
 	-- auto-install configured formatters & linters (with null-ls)

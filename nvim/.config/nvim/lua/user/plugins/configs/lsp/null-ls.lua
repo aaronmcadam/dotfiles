@@ -20,7 +20,6 @@ null_ls.setup({
 		formatting.eslint_d,
 		formatting.stylua,
 		formatting.terraform_fmt,
-		formatting.yamlfmt,
 		diagnostics.eslint_d,
 		diagnostics.markdownlint,
 		diagnostics.yamllint,
