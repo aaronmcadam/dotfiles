@@ -33,6 +33,7 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("harpoon")
 telescope.load_extension("notify")
+telescope.load_extension("projects")
 
 local M = {}
 

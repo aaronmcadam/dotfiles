@@ -108,29 +108,22 @@ keymap("n", "<Leader>ks", "<cmd>OtherVSplit story<CR>", opts)
 keymap("n", "<Leader>ki", "<cmd>OtherVSplit implementation<CR>", opts)
 
 -- Tests
-keymap("n", "<Leader>tt", "<cmd>w<CR><cmd>lua require('neotest').run.run()<CR>", opts)
-keymap("n", "<Leader>td", "<cmd>w<CR><cmd>lua require('neotest').run.run({ strategy = 'dap' })<CR>", opts)
-keymap("n", "<Leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts)
-keymap("n", "<Leader>tl", "<cmd>w<CR><cmd>lua require('neotest').run.run_last()<CR>", opts)
-keymap("n", "<Leader>ts", "<cmd>w<CR><cmd>lua require('neotest').summary.toggle()<CR>", opts)
-keymap("n", "<Leader>tr", "<cmd>w<CR><cmd>lua require('neotest').output.open({ enter = true })<CR>", opts)
-keymap(
-	"n",
-	"<leader>tw",
-	"<cmd>w<CR><cmd>lua require('neotest').run.run({ jestCommand = 'pnpm jest --watch ' })<CR>",
-	opts
-)
+keymap("n", "<Leader>tt", "<cmd>w<CR><cmd>TestNearest<CR>", opts)
+keymap("n", "<Leader>tf", "<cmd>w<CR><cmd>TestFile<CR>", opts)
+keymap("n", "<Leader>tl", "<cmd>w<CR><cmd>TestLast<CR>", opts)
+keymap("n", "<Leader>tv", "<cmd>w<CR><cmd>TestVisit<CR>", opts)
+keymap("n", "<Leader>tp", "<cmd>w<CR><cmd>Playwright<CR>", opts)
 
 -- Debugging
-keymap("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require('dap').continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require('dap').step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require('dap').step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require('dap').step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require('dap').repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require('dap').run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require('dap').terminate()<cr>", opts)
+-- keymap("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", opts)
+-- keymap("n", "<leader>dc", "<cmd>lua require('dap').continue()<cr>", opts)
+-- keymap("n", "<leader>di", "<cmd>lua require('dap').step_into()<cr>", opts)
+-- keymap("n", "<leader>do", "<cmd>lua require('dap').step_over()<cr>", opts)
+-- keymap("n", "<leader>dO", "<cmd>lua require('dap').step_out()<cr>", opts)
+-- keymap("n", "<leader>dr", "<cmd>lua require('dap').repl.toggle()<cr>", opts)
+-- keymap("n", "<leader>dl", "<cmd>lua require('dap').run_last()<cr>", opts)
+-- keymap("n", "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", opts)
+-- keymap("n", "<leader>dt", "<cmd>lua require('dap').terminate()<cr>", opts)
 
 -- undo tree
 keymap("n", "<Leader>u", vim.cmd.UndotreeToggle, opts)

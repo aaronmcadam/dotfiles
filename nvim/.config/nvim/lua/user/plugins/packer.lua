@@ -124,14 +124,12 @@ return packer.startup(function(use)
 	use("shumphrey/fugitive-gitlab.vim") -- support GitLab in fugitive
 
 	-- Testing
+	use("vim-test/vim-test")
 	use({
-		"nvim-neotest/neotest",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
-			"haydenmeade/neotest-jest",
-		},
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup()
+		end,
 	})
 
 	-- debugging
