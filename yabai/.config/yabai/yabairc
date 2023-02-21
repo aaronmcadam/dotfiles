@@ -1,16 +1,12 @@
 # #!/usr/bin/env sh
 
-# Script additions needed for focusing spaces, but they require SIP to be disabled.
-# sudo yabai --load-sa
-# yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  0
-yabai -m config bottom_padding               0
-yabai -m config left_padding                 0
-yabai -m config right_padding                0
-yabai -m config window_gap                   0
+yabai -m config top_padding                  12
+yabai -m config bottom_padding               12
+yabai -m config left_padding                 12
+yabai -m config right_padding                12
+yabai -m config window_gap                   12
 
 yabai -m config window_border off
 yabai -m config active_window_border_color 0xFF32A14B
