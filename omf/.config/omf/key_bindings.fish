@@ -37,7 +37,7 @@ abbr -a pt "pnpm test"
 abbr -a ptw "pnpm test --watch"
 
 # Git
-alias gdb "git branch | fzf -m | xargs -n 1 git branch -D"
+alias gdb "git branch | fzf --reverse -m | xargs -n 1 git branch -D"
 abbr -a grbi git rebase --interactive
 abbr -a grbim git rebase --interactive main
 abbr -a grbil git rebase --interactive HEAD~2
