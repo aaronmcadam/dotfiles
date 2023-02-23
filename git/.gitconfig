@@ -30,6 +30,8 @@
   navigate = true
 [interactive]
   diffFilter = delta --color-only
+[push]
+  autoSetupRemote = true
 [pull]
   rebase = true
 [init]

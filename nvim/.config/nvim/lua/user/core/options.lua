@@ -6,6 +6,7 @@ opt.clipboard = "" -- explicitly copy to the clipboard to keep control of what g
 opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
 opt.conceallevel = 0 -- so that `` is visible in markdown files
+opt.equalalways = true -- make windows the samue width when closing one
 opt.fileencoding = "utf-8" -- the encoding written to a file
 opt.hlsearch = true -- highlight all matches on previous search pattern
 opt.ignorecase = true -- ignore case in search patterns

@@ -52,13 +52,13 @@ keymap("n", "<Leader>Y", '"+Y', opts)
 keymap("v", "<Leader>y", '"+y', opts)
 
 -- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+keymap("n", "<leader>gl", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+keymap("n", "<Leader>gg", vim.cmd.Git, opts)
 keymap("n", "<Leader>gb", vim.cmd.GBrowse, opts)
 keymap("n", "<Leader>gc", "<cmd>G commit<CR>", opts)
 keymap("n", "<Leader>gd", vim.cmd.Gdiffsplit, opts)
 keymap("n", "<Leader>gp", "<cmd>G push<CR>", opts)
 keymap("n", "<Leader>gr", vim.cmd.Gread, opts)
-keymap("n", "<Leader>gs", vim.cmd.Git, opts)
 keymap("n", "<Leader>gw", vim.cmd.Gwrite, opts)
 
 -- Telescope
@@ -111,8 +111,10 @@ keymap("n", "<Leader>ki", "<cmd>OtherVSplit implementation<CR>", opts)
 keymap("n", "<Leader>tt", "<cmd>w<CR><cmd>TestNearest<CR>", opts)
 keymap("n", "<Leader>tf", "<cmd>w<CR><cmd>TestFile<CR>", opts)
 keymap("n", "<Leader>tl", "<cmd>w<CR><cmd>TestLast<CR>", opts)
+keymap("n", "<Leader>ts", "<cmd>w<CR><cmd>TestSuite<CR>", opts)
 keymap("n", "<Leader>tv", "<cmd>w<CR><cmd>TestVisit<CR>", opts)
-keymap("n", "<Leader>tp", "<cmd>w<CR><cmd>Playwright<CR>", opts)
+keymap("n", "<Leader>tp", "<cmd>w<CR><cmd>Playwright --project=chromium<CR>", opts)
+keymap("n", "<Leader>td", "<cmd>w<CR><cmd>Playwright --project=chromium --debug<CR>", opts)
 
 -- Debugging
 -- keymap("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<cr>", opts)
