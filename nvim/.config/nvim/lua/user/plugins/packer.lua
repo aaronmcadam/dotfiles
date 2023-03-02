@@ -53,7 +53,6 @@ return packer.startup(function(use)
 	use("rcarriga/nvim-notify") -- notification manager
 	use("mbbill/undotree") -- undo history
 	use("tpope/vim-vinegar") -- better netrw
-	use("RRethy/vim-illuminate") -- highlight other uses of the word under the cursor
 
 	-- Colorschemes
 	use({ "catppuccin/nvim", as = "catppuccin" })

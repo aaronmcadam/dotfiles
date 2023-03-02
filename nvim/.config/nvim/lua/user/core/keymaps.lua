@@ -114,6 +114,7 @@ keymap("n", "<Leader>tl", "<cmd>w<CR><cmd>TestLast<CR>", opts)
 keymap("n", "<Leader>ts", "<cmd>w<CR><cmd>TestSuite<CR>", opts)
 keymap("n", "<Leader>tv", "<cmd>w<CR><cmd>TestVisit<CR>", opts)
 keymap("n", "<Leader>tp", "<cmd>w<CR><cmd>Playwright --project=chromium<CR>", opts)
+keymap("n", "<Leader>th", "<cmd>w<CR><cmd>Playwright --project=chromium --headed<CR>", opts)
 keymap("n", "<Leader>td", "<cmd>w<CR><cmd>Playwright --project=chromium --debug<CR>", opts)
 
 -- Debugging
