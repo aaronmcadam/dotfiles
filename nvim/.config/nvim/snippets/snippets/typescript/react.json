@@ -8,7 +8,7 @@
     "body": [
       "import * as React from 'react'",
       "",
-      "export type ${1:${TM_FILENAME_BASE}}Props = {}",
+      "export type ${1:${TM_FILENAME_BASE}}Props = unknown",
       "",
       "export function ${1:first}({}: ${1:first}Props) {",
       "  return (",
