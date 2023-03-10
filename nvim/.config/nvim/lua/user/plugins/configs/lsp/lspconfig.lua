@@ -3,11 +3,6 @@ if not lspconfig_status then
 	return
 end
 
-local cmp_nvim_lsp_status, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not cmp_nvim_lsp_status then
-	return
-end
-
 local typescript_setup, typescript = pcall(require, "typescript")
 if not typescript_setup then
 	return
@@ -56,9 +51,6 @@ local on_attach = function(client, bufnr)
 	end
 end
 
--- used to enable autocompletion (assign to every lsp server config)
-local capabilities = cmp_nvim_lsp.default_capabilities()
-
 -- Show line diagnostics automatically in hover window
 vim.o.updatetime = 250
 vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
@@ -75,35 +67,30 @@ end
 -- configure typescript server with plugin
 typescript.setup({
 	server = {
-		capabilities = capabilities,
 		on_attach = on_attach,
 	},
 })
 
 lspconfig["yamlls"].setup({
 	server = {
-		capabilities = capabilities,
 		on_attach = on_attach,
 	},
 })
 
 lspconfig["jsonls"].setup({
 	server = {
-		capabilities = capabilities,
 		on_attach = on_attach,
 	},
 })
 
 lspconfig["terraformls"].setup({
 	server = {
-		capabilities = capabilities,
 		on_attach = on_attach,
 	},
 })
 
 -- configure tailwind
 lspconfig["tailwindcss"].setup({
-	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = {
 		tailwindCSS = {
@@ -119,7 +106,6 @@ lspconfig["tailwindcss"].setup({
 
 -- configure lua server (with special settings)
 lspconfig["lua_ls"].setup({
-	capabilities = capabilities,
 	on_attach = on_attach,
 	settings = { -- custom settings for lua
 		Lua = {

@@ -47,6 +47,12 @@ return {
 				},
 			},
 			pickers = {
+				find_files = {
+					theme = "dropdown",
+				},
+				git_files = {
+					theme = "dropdown",
+				},
 				live_grep = {
 					additional_args = function()
 						-- Dotfiles are getting hidden because they're technically hidden files.

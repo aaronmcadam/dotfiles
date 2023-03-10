@@ -7,7 +7,6 @@ return {
 		"jayp0521/mason-null-ls.nvim",
 		"jose-elias-alvarez/null-ls.nvim",
 		"jose-elias-alvarez/typescript.nvim",
-		"hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
 		-- MASON
@@ -45,7 +44,6 @@ return {
 
 		-- LSP CONFIG
 		local lspconfig = require("lspconfig")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local typescript = require("typescript")
 
 		local keymap = vim.keymap
@@ -65,7 +63,7 @@ return {
 
 			-- set keybinds
 			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-			keymap.set("n", "gD", "<cmd>Telescope lsp_declarations<CR>", opts)
+			keymap.set("n", "gf", "<cmd>Telescope lsp_references<CR>", opts)
 			keymap.set("n", "K", vim.lsp.buf.hover, opts)
 			keymap.set("n", "<leader>la", vim.lsp.buf.code_action, opts)
 			nmap("<leader>lf", function()
@@ -85,13 +83,6 @@ return {
 			end
 		end
 
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
-		-- Show line diagnostics automatically in hover window
-		vim.o.updatetime = 250
-		vim.cmd([[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
-
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		local signs = { Error = " ", Warn = " ", Hint = "ﴞ ", Info = " " }
 
@@ -104,35 +95,30 @@ return {
 		-- configure typescript server with plugin
 		typescript.setup({
 			server = {
-				capabilities = capabilities,
 				on_attach = on_attach,
 			},
 		})
 
 		lspconfig["yamlls"].setup({
 			server = {
-				capabilities = capabilities,
 				on_attach = on_attach,
 			},
 		})
 
 		lspconfig["jsonls"].setup({
 			server = {
-				capabilities = capabilities,
 				on_attach = on_attach,
 			},
 		})
 
 		lspconfig["terraformls"].setup({
 			server = {
-				capabilities = capabilities,
 				on_attach = on_attach,
 			},
 		})
 
 		-- configure tailwind
 		lspconfig["tailwindcss"].setup({
-			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
 				tailwindCSS = {
@@ -148,7 +134,6 @@ return {
 
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
-			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = { -- custom settings for lua
 				Lua = {
@@ -180,8 +165,6 @@ return {
 		null_ls.setup({
 			-- setup formatters & linters
 			sources = {
-				--  to disable file types use
-				--  "formatting.prettier.with({disabled_filetypes: {}})" (see null-ls docs)
 				formatting.prettier,
 				formatting.eslint_d,
 				formatting.stylua,

@@ -15,6 +15,7 @@ alias r "rm"
 alias rr "rm -rf"
 alias v "nvim"
 alias v. "nvim"
+alias update-vim-plugins "nvim --headless '+Lazy! sync' +qa"
 alias zz "z -"
 
 # JavaScript
@@ -37,7 +38,8 @@ abbr -a pt "pnpm test"
 abbr -a ptw "pnpm test --watch"
 
 # Git
-alias gdb "git branch | fzf --reverse -m | xargs -n 1 git branch -D"
+alias gdb "git branch | fzf --header 'Delete Branch' --reverse -m --pointer='' | xargs -n 1 git branch -D"
+alias gcr "git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff --color=always {1}' --reverse -m --pointer='' | xargs -n 1 git checkout"
 abbr -a grbi git rebase --interactive
 abbr -a grbim git rebase --interactive main
 abbr -a grbil git rebase --interactive HEAD~2

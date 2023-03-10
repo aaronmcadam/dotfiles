@@ -3,8 +3,12 @@
 	name = Aaron McAdam
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[diff]
+  colorMoved = default
 [difftool]
 	prompt = false
+[merge]
+  conflictstyle = diff3
 [mergetool]
 	prompt = false
 [core]
