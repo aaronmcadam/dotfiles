@@ -33,7 +33,7 @@ return {
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-y>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
+					behavior = cmp.ConfirmBehavior.Insert,
 					select = true,
 				}),
 				["<C-n>"] = cmp.mapping(function(fallback)

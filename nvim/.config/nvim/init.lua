@@ -122,4 +122,7 @@ keymap("n", "<Leader>y", '"+y', opts)
 keymap("n", "<Leader>Y", '"+Y', opts)
 keymap("v", "<Leader>y", '"+y', opts)
 
-require("lazy").setup('plugins')
+-- Update plugins
+keymap("n", "<Leader>u", "<cmd>Lazy<CR>", opts)
+
+require("lazy").setup("plugins")
