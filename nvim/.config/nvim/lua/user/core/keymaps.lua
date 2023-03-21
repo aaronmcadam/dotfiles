@@ -83,9 +83,8 @@ keymap("n", "<Leader>fs", require("telescope.builtin").lsp_document_symbols, { d
 keymap("n", "<Leader>fr", require("telescope.builtin").oldfiles, { desc = "[F]ind [R]ecently opened files" })
 -- Go to definition
 keymap("n", "<Leader>fg", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
-keymap("n", "<c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", opts)
-keymap("n", "<c-w><c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
 keymap("n", "gs", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='split' })<CR>", opts)
+keymap("n", "gv", "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>", opts)
 -- Harpoon marks
 keymap("n", "<Leader>fm", "<cmd>Telescope harpoon marks<CR>", opts)
 

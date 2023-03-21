@@ -1,6 +1,9 @@
 vim.g["test#strategy"] = "neovim"
 vim.g["test#runner_commands"] = { "Jest", "Playwright" }
 
+-- Map Esc to Normal mode in terminal buffers
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
+
 return {
 	{
 		"vim-test/vim-test",

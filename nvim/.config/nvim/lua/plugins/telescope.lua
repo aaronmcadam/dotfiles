@@ -26,9 +26,9 @@ return {
 		{ "<leader>ff", project_files, desc = "Find Files" },
 		{ "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "Find Buffers" },
 		{ "<leader>ft", "<cmd>lua require('telescope.builtin').live_grep()<CR>", desc = "Find Text" },
-		{ "<c-]>", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", desc = "Jump to definition" },
+		{ "gs", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", desc = "Jump to definition" },
 		{
-			"<c-w><c-]>",
+			"gv",
 			"<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>",
 			desc = "Jump to definition in vsplit",
 		},

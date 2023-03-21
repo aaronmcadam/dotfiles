@@ -11,6 +11,12 @@ return {
 		},
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind.nvim",
+		{
+			"zbirenbaum/copilot.lua",
+			dependencies = {
+				"zbirenbaum/copilot-cmp",
+			},
+		},
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -20,6 +26,9 @@ return {
 		require("luasnip/loaders/from_vscode").load({
 			paths = vim.fn.stdpath("config") .. "/snippets",
 		})
+
+		require("copilot").setup()
+		require("copilot_cmp").setup()
 
 		cmp.setup({
 			snippet = {
@@ -58,7 +67,7 @@ return {
 			-- sources for autocompletion
 			sources = cmp.config.sources({
 				{ name = "luasnip" }, -- snippets
-				-- { name = "copilot" },
+				{ name = "copilot" },
 				-- { name = "nvim_lsp_signature_help" },
 				{ name = "nvim_lsp" }, -- lsp
 				{ name = "buffer" }, -- text within current buffer
