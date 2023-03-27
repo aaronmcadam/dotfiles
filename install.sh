@@ -7,6 +7,11 @@ fancy_echo() {
   printf "\\n$fmt\\n" "$@"
 }
 
+# If running a fresh install, generate a new SSH key first:
+# ssh-keygen -t ed25519 -C "your_email@example.com"
+# Now add it to GitHub:
+# @see https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
 if ! command -v brew >/dev/null; then
   fancy_echo "Installing Homebrew ..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
@@ -37,14 +42,12 @@ add_or_update_asdf_plugin "nodejs"
 add_or_update_asdf_plugin "python"
 # This will install languages based on .tool-versions
 asdf install
-# Install Yarn with NPM
-npm install --global yarn
-npm install -g eslint_d
 
 if ! [[ $SHELL =~ "fish" ]]; then
   fancy_echo "Configuring shell..."
   echo "$(which fish)" | sudo tee -a /etc/shells
-  chsh -s $(which fish)
+  # chsh -s $(which fish)
+  # fish_add_path /opt/homebrew/bin
   fancy_echo "Installing oh-my-fish..."
   curl -L https://get.oh-my.fish > install-omf
   fish install-omf --noninteractive
