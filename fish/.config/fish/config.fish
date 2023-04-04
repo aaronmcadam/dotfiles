@@ -7,6 +7,8 @@ zoxide init fish | source
 # https://starship.rs/
 starship init fish | source
 
+set -gx SHELL "/opt/homebrew/bin/fish"
+
 # pnpm
 set -gx PNPM_HOME "/Users/Aaron.Mcadam/Library/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
