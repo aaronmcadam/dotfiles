@@ -42,7 +42,7 @@ return {
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-y>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Insert,
+					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				}),
 				["<C-n>"] = cmp.mapping(function(fallback)
@@ -53,7 +53,7 @@ return {
 					else
 						fallback()
 					end
-				end, { "i", "s", "c" }),
+				end, { "i", "s" }),
 				["C-p"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
@@ -62,18 +62,16 @@ return {
 					else
 						fallback()
 					end
-				end, { "i", "s", "c" }),
+				end, { "i", "s" }),
 			}),
 			-- sources for autocompletion
 			sources = cmp.config.sources({
-				{ name = "luasnip" }, -- snippets
-				{ name = "copilot" },
-				-- { name = "nvim_lsp_signature_help" },
-				{ name = "nvim_lsp" }, -- lsp
-				{ name = "buffer" }, -- text within current buffer
-				{ name = "path" }, -- file system paths
+				{ name = "nvim_lsp", priority = 1000 },
+				{ name = "copilot", priority = 800 },
+				{ name = "luasnip", priority = 700 },
+				{ name = "buffer", priority = 500 },
+				{ name = "path", priority = 250 },
 			}),
-			-- configure lspkind for vs-code like icons
 			formatting = {
 				format = lspkind.cmp_format({
 					maxwidth = 50,

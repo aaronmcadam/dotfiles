@@ -18,6 +18,7 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
+				"astro",
 				"lua_ls",
 				"tsserver",
 				"jsonls",
@@ -94,6 +95,12 @@ return {
 
 		-- configure typescript server with plugin
 		typescript.setup({
+			server = {
+				on_attach = on_attach,
+			},
+		})
+
+		lspconfig["astro"].setup({
 			server = {
 				on_attach = on_attach,
 			},

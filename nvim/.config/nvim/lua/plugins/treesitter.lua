@@ -4,29 +4,28 @@ return {
 	event = "BufReadPost",
 	config = function()
 		require("nvim-treesitter.configs").setup({
-			opts = {
-				ensure_installed = {
-					"bash",
-					"css",
-					"fish",
-					"html",
-					"javascript",
-					"json",
-					"lua",
-					"markdown",
-					"markdown_inline",
-					"hcl",
-					"terraform",
-					"tsx",
-					"typescript",
-					"yaml",
-				},
-				highlight = {
-					enable = true, -- false will disable the whole extension
-				},
-				indent = {
-					enable = true,
-				},
+			ensure_installed = {
+				"astro",
+				"bash",
+				"css",
+				"fish",
+				"html",
+				"javascript",
+				"json",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"hcl",
+				"terraform",
+				"tsx",
+				"typescript",
+				"yaml",
+			},
+			highlight = {
+				enable = true, -- false will disable the whole extension
+			},
+			indent = {
+				enable = true,
 			},
 		})
 	end,
