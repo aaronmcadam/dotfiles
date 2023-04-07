@@ -12,27 +12,49 @@ shift + alt - j : yabai -m window --swap south
 shift + alt - k : yabai -m window --swap north
 shift + alt - l : yabai -m window --swap east
 
-# move managed window
-shift + alt + ctrl - h : yabai -m window --warp west
-shift + alt + ctrl - j : yabai -m window --warp south
-shift + alt + ctrl - k : yabai -m window --warp north
-shift + alt + ctrl - l : yabai -m window --warp east
+# rotate layout clockwise
+shift + alt - r : yabai -m space --rotate 270
 
-# move window and focus desktop
-ctrl + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
-ctrl + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
-ctrl + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
-ctrl + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
-ctrl + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
-ctrl + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
-ctrl + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
-ctrl + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
+# flip along y-axis
+shift + alt - y : yabai -m space --mirror y-axis
+
+# flip along x-axis
+# I can't use the X key because that's bound to Alt on my keyboard so I can't press it while also holding it down.
+# So I use the U key for "up" instead
+shift + alt - u : yabai -m space --mirror x-axis
+
+# toggle window float
+shift + alt - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# move managed window
+shift + ctrl + alt - h : yabai -m window --warp west
+shift + ctrl + alt - j : yabai -m window --warp south
+shift + ctrl + alt - k : yabai -m window --warp north
+shift + ctrl + alt - l : yabai -m window --warp east
+
+# move window to display left and right
+shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
+shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
+
+# move window to prev and next space
+shift + alt - p : yabai -m window --space prev;
+shift + alt - n : yabai -m window --space next;
+
+# move window and focus space
+shift + alt - 1 : yabai -m window --space 1; yabai -m space --focus 1
+shift + alt - 2 : yabai -m window --space 2; yabai -m space --focus 2
+shift + alt - 3 : yabai -m window --space 3; yabai -m space --focus 3
+shift + alt - 4 : yabai -m window --space 4; yabai -m space --focus 4
+shift + alt - 5 : yabai -m window --space 5; yabai -m space --focus 5
+shift + alt - 6 : yabai -m window --space 6; yabai -m space --focus 6
+shift + alt - 7 : yabai -m window --space 7; yabai -m space --focus 7
+shift + alt - 8 : yabai -m window --space 8; yabai -m space --focus 8
 
 # toggle window fullscreen zoom
-alt - return : yabai -m window --toggle zoom-fullscreen
+shift + alt - return : yabai -m window --toggle zoom-fullscreen
 
 # balance size of windows
-ctrl + alt - b : yabai -m space --balance
+shift + alt - b : yabai -m space --balance
 
 # restart yabai
-ctrl + alt - r : brew services restart yabai
+ctrl + shift + alt - r : brew services restart yabai
