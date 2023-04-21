@@ -33,8 +33,8 @@ shift + ctrl + alt - k : yabai -m window --warp north
 shift + ctrl + alt - l : yabai -m window --warp east
 
 # move window to display left and right
-shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
-shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
+shift + alt - a : yabai -m window --display west; yabai -m display --focus west;
+shift + alt - q : yabai -m window --display east; yabai -m display --focus east;
 
 # move window to prev and next space
 shift + alt - p : yabai -m window --space prev;
@@ -57,4 +57,4 @@ shift + alt - return : yabai -m window --toggle zoom-fullscreen
 shift + alt - b : yabai -m space --balance
 
 # restart yabai
-ctrl + shift + alt - r : brew services restart yabai
+shift + alt - y : brew services restart yabai
