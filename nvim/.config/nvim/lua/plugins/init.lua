@@ -2,5 +2,5 @@ return {
 	-- try mini surround
 	-- try mini dashboard (alpha replacement)
 	-- try todo
-	"tpope/vim-vinegar",
+	-- "tpope/vim-vinegar",
 }
