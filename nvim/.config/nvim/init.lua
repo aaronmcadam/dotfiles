@@ -116,6 +116,6 @@ keymap("n", "<Leader>Y", '"+Y', opts)
 keymap("v", "<Leader>y", '"+y', opts)
 
 -- Update plugins
-keymap("n", "<Leader>u", "<cmd>Lazy<CR>", opts)
+keymap("n", "<Leader>u", "<cmd>Lazy sync<CR>", opts)
 
 require("lazy").setup("plugins")

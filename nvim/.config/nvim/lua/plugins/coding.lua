@@ -1,17 +1,17 @@
 return {
-  -- snippets
-  {
-    "L3MON4D3/LuaSnip",
-    build = "make install_jsregexp",
-    config = function()
-      require('luasnip').setup({
-        history = true,
-        delete_check_events = "TextChanged",
-      })
-      require("luasnip/loaders/from_vscode").load({
-        paths = vim.fn.stdpath("config") .. "/snippets",
-      })
-    end,
+	-- snippets
+	{
+		"L3MON4D3/LuaSnip",
+		build = "make install_jsregexp",
+		config = function()
+			require("luasnip").setup({
+				history = true,
+				delete_check_events = "TextChanged",
+			})
+			require("luasnip/loaders/from_vscode").load({
+				paths = vim.fn.stdpath("config") .. "/snippets",
+			})
+		end,
     -- stylua: ignore
     keys = {
       {
@@ -24,86 +24,86 @@ return {
       { "<C-y>", function() require("luasnip").jump(1) end, mode = "s" },
       { "<M-y>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
-  },
+	},
 
-  -- completion
-  {
+	-- completion
+	{
 
-    "hrsh7th/nvim-cmp",
-    version = false, -- last release is way too old
-    event = "InsertEnter",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      {
-        "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp",
-      },
-      "saadparwaiz1/cmp_luasnip",
-    },
-    opts = function()
-      local cmp = require("cmp")
-      local behaviour = cmp.SelectBehavior.Insert
+		"hrsh7th/nvim-cmp",
+		version = false, -- last release is way too old
+		event = "InsertEnter",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			{
+				"L3MON4D3/LuaSnip",
+				build = "make install_jsregexp",
+			},
+			"saadparwaiz1/cmp_luasnip",
+		},
+		opts = function()
+			local cmp = require("cmp")
+			local behaviour = cmp.SelectBehavior.Insert
 
-      return {
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-        },
-        snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-n>"] = cmp.mapping(function() 
-            if cmp.visible() then
-              cmp.select_next_item({ behavior = behaviour })
-            else
-              cmp.complete()
-            end
-          end),
-          ["<C-p>"] = cmp.mapping(function() 
-            if cmp.visible() then
-              cmp.select_prev_item({ behavior = behaviour })
-            else
-              cmp.complete()
-            end
-          end),
-          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-u>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ["<M-y>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        }),
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
-        }),
-      }
-    end,
-  },
+			return {
+				completion = {
+					completeopt = "menu,menuone,noinsert",
+				},
+				snippet = {
+					expand = function(args)
+						require("luasnip").lsp_expand(args.body)
+					end,
+				},
+				mapping = cmp.mapping.preset.insert({
+					["<C-n>"] = cmp.mapping(function()
+						if cmp.visible() then
+							cmp.select_next_item({ behavior = behaviour })
+						else
+							cmp.complete()
+						end
+					end),
+					["<C-p>"] = cmp.mapping(function()
+						if cmp.visible() then
+							cmp.select_prev_item({ behavior = behaviour })
+						else
+							cmp.complete()
+						end
+					end),
+					["<C-u>"] = cmp.mapping.scroll_docs(-4),
+					["<C-d>"] = cmp.mapping.scroll_docs(4),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.abort(),
+					["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					["<M-y>"] = cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					}), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				}),
+				sources = cmp.config.sources({
+					{ name = "luasnip", priority = 1000 },
+					{ name = "nvim_lsp", priority = 800 },
+					{ name = "buffer", priority = 500 },
+					{ name = "path", priority = 250 },
+				}),
+			}
+		end,
+	},
 
-  -- commenting
-  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-  {
-    "echasnovski/mini.comment",
-    event = "VeryLazy",
-    opts = {
-      hooks = {
-        pre = function()
-          require("ts_context_commentstring.internal").update_commentstring({})
-        end,
-      },
-    },
-    config = function(_, opts)
-      require("mini.comment").setup(opts)
-    end,
-  },
+	-- commenting
+	{ "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+	{
+		"echasnovski/mini.comment",
+		event = "VeryLazy",
+		opts = {
+			hooks = {
+				pre = function()
+					require("ts_context_commentstring.internal").update_commentstring({})
+				end,
+			},
+		},
+		config = function(_, opts)
+			require("mini.comment").setup(opts)
+		end,
+	},
 }
