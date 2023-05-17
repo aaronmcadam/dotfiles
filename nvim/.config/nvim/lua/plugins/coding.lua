@@ -26,6 +26,17 @@ return {
     },
 	},
 
+	-- copilot
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		build = ":Copilot auth",
+		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+		},
+	},
+
 	-- completion
 	{
 
@@ -41,6 +52,13 @@ return {
 				build = "make install_jsregexp",
 			},
 			"saadparwaiz1/cmp_luasnip",
+			{
+				"zbirenbaum/copilot-cmp",
+				dependencies = "zbirenbaum/copilot.lua",
+				config = function()
+					require("copilot_cmp").setup()
+				end,
+			},
 		},
 		opts = function()
 			local cmp = require("cmp")
@@ -83,6 +101,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "luasnip", priority = 1000 },
 					{ name = "nvim_lsp", priority = 800 },
+					{ name = "copilot", priority = 700 },
 					{ name = "buffer", priority = 500 },
 					{ name = "path", priority = 250 },
 				}),
