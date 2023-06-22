@@ -57,4 +57,4 @@ shift + alt - return : yabai -m window --toggle zoom-fullscreen
 shift + alt - b : yabai -m space --balance
 
 # restart yabai
-shift + alt - y : brew services restart yabai
+shift + ctrl + alt - y : brew services restart yabai

@@ -8,9 +8,9 @@ return {
 		"jose-elias-alvarez/null-ls.nvim",
 		"jose-elias-alvarez/typescript.nvim",
 	},
-  cmd = {
-    "Mason"
-  },
+	cmd = {
+		"Mason",
+	},
 	config = function()
 		-- MASON
 		local mason = require("mason")
@@ -28,6 +28,7 @@ return {
 				"terraformls",
 				"tsserver",
 				"yamlls",
+				"solargraph",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -40,7 +41,7 @@ return {
 				"stylua", -- lua formatter
 				"tflint", -- terraform linter
 				"yamllint", -- yaml linter
-        "prettierd",
+				"prettierd",
 			},
 			-- auto-install configured formatters & linters (with null-ls)
 			automatic_installation = true,
@@ -121,6 +122,12 @@ return {
 			},
 		})
 
+		lspconfig["solargraph"].setup({
+			server = {
+				on_attach = on_attach,
+			},
+		})
+
 		lspconfig["terraformls"].setup({
 			server = {
 				on_attach = on_attach,
@@ -175,7 +182,7 @@ return {
 		null_ls.setup({
 			-- setup formatters & linters
 			sources = {
-				formatting.prettierd,
+				formatting.prettierd.with({ extra_filetypes = { "eruby" } }),
 				formatting.eslint_d,
 				formatting.stylua,
 				formatting.terraform_fmt,

@@ -42,7 +42,7 @@ return {
 
 		"hrsh7th/nvim-cmp",
 		version = false, -- last release is way too old
-		event = "InsertEnter",
+		event = "BufReadPre",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -63,6 +63,15 @@ return {
 		opts = function()
 			local cmp = require("cmp")
 			local behaviour = cmp.SelectBehavior.Insert
+			local has_words_before = function()
+				if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+					return false
+				end
+				local line, col = vim.F.unpack_len(vim.api.nvim_win_get_cursor(0))
+				return col ~= 0
+					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+			end
+			local luasnip = require("luasnip")
 
 			return {
 				completion = {
@@ -74,18 +83,24 @@ return {
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping(function()
+					["<C-n>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item({ behavior = behaviour })
-						else
+						elseif luasnip.expand_or_jumpable() then
+							luasnip.expand_or_jump()
+						elseif has_words_before() then
 							cmp.complete()
+						else
+							fallback()
 						end
 					end),
-					["<C-p>"] = cmp.mapping(function()
+					["<C-p>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item({ behavior = behaviour })
+						elseif luasnip.jumpable(-1) then
+							luasnip.jump(-1)
 						else
-							cmp.complete()
+							fallback()
 						end
 					end),
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),

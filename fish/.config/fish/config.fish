@@ -11,5 +11,7 @@ set -gx SHELL "/opt/homebrew/bin/fish"
 
 # pnpm
 set -gx PNPM_HOME "/Users/Aaron.Mcadam/Library/pnpm"
-set -gx PATH "$PNPM_HOME" $PATH
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
 # pnpm end
