@@ -16,6 +16,7 @@ return {
 		local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
 		local mason_null_ls = require("mason-null-ls")
+		local util = require("lspconfig/util")
 		mason.setup()
 
 		mason_lspconfig.setup({
@@ -105,8 +106,15 @@ return {
 		})
 
 		lspconfig["gopls"].setup({
-			server = {
-				on_attach = on_attach,
+			on_attach = on_attach,
+			cmd = { "gopls" },
+			filetypes = { "go", "gomod", "gowork", "gotmpl" },
+			root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+			settings = {
+				gopls = {
+					completeUnimported = true,
+					usePlaceholders = true,
+				},
 			},
 		})
 
@@ -196,7 +204,10 @@ return {
 			-- configure format on save
 			on_attach = function(current_client, bufnr)
 				if current_client.supports_method("textDocument/formatting") then
-					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+					vim.api.nvim_clear_autocmds({
+						group = augroup,
+						buffer = bufnr,
+					})
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						group = augroup,
 						buffer = bufnr,

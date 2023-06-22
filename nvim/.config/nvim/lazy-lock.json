@@ -1,4 +1,5 @@
 {
+  "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
   "LuaSnip": { "branch": "master", "commit": "3d2ad0c0fa25e4e272ade48a62a185ebd0fe26c1" },
   "alpha-nvim": { "branch": "main", "commit": "9e33db324b8bb7a147bce9ea5496686ee859461d" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
@@ -15,6 +16,8 @@
   "mason-null-ls.nvim": { "branch": "main", "commit": "73c68abdf65279e41526eb152876511a8ae84ea2" },
   "mason.nvim": { "branch": "main", "commit": "664c987c3b14d2262a4e580f993a3e5045baded0" },
   "mini.comment": { "branch": "main", "commit": "877acea5b2a32ff55f808fc0ebe9aa898648318c" },
+  "neotest": { "branch": "master", "commit": "e46eae5739c470aa011ee43108ea8a730736174e" },
+  "neotest-go": { "branch": "main", "commit": "4e7a87967e45f2b357fd546b0b7877774191772e" },
   "null-ls.nvim": { "branch": "main", "commit": "bbaf5a96913aa92281f154b08732be2f57021c45" },
   "nvim-cmp": { "branch": "main", "commit": "8a1694ff330ed58ed29716686fcef79c28090354" },
   "nvim-lspconfig": { "branch": "master", "commit": "11a1be0e5f180b57079db56de10a20b4323111ae" },
@@ -30,6 +33,5 @@
   "tokyonight.nvim": { "branch": "main", "commit": "a0a7bfbc4c54348b56880a162afac9d103c618c1" },
   "trouble.nvim": { "branch": "main", "commit": "2af0dd9767526410c88c628f1cbfcb6cf22dd683" },
   "typescript.nvim": { "branch": "main", "commit": "5b3680e5c386e8778c081173ea0c978c14a40ccb" },
-  "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" },
-  "vim-test": { "branch": "master", "commit": "08250c56f11cb3460c8a02c8fdb80c8d39c92173" }
+  "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" }
 }
