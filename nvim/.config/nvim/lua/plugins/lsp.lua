@@ -21,7 +21,7 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				"astro",
+				"gopls",
 				"jsonls",
 				"lua_ls",
 				"tailwindcss",
@@ -104,7 +104,7 @@ return {
 			},
 		})
 
-		lspconfig["astro"].setup({
+		lspconfig["gopls"].setup({
 			server = {
 				on_attach = on_attach,
 			},
@@ -182,8 +182,9 @@ return {
 		null_ls.setup({
 			-- setup formatters & linters
 			sources = {
-				formatting.prettierd.with({ extra_filetypes = { "eruby" } }),
+				formatting.prettierd,
 				formatting.eslint_d,
+				formatting.gofmt,
 				formatting.stylua,
 				formatting.terraform_fmt,
 				diagnostics.eslint_d,
