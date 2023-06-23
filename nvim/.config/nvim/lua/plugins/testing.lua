@@ -29,13 +29,23 @@ return {
 			})
 		end,
 		keys = {
-			{ "<leader>tt", "<cmd>w<CR><cmd>lua require('neotest').run.run()<CR>", desc = "Test Nearest" },
+			-- { "<leader>tt", "<cmd>w<CR><cmd>lua require('neotest').run.run()<CR>", desc = "Test Nearest" },
 			{
 				"<leader>tf",
 				"<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>",
 				desc = "Test File",
 			},
-			-- { "<leader>tl", "<cmd>w<CR><cmd>TestLast<CR>", desc = "Test Last" },
+			{ "<leader>tl", "<cmd>w<CR><cmd>lua require('neotest').run.run_last()<CR>", desc = "Test Last" },
+			{
+				"<leader>to",
+				"<cmd>w<CR><cmd>lua require('neotest').output.open()<CR>",
+				desc = "Open Test Output",
+			},
+			{
+				"<leader>ts",
+				"<cmd>w<CR><cmd>lua require('neotest').output_panel.open()<CR>",
+				desc = "Open Test Summary",
+			},
 			-- { "<leader>ts", "<cmd>w<CR><cmd>TestSuite<CR>", desc = "Test Suite" },
 			-- { "<leader>tv", "<cmd>w<CR><cmd>TestVisit<CR>", desc = "Test Visit" },
 			-- { "<leader>tp", "<cmd>w<CR><cmd>Playwright --project=chromium<CR>", desc = "Playwright" },

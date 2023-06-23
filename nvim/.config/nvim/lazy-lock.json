@@ -9,6 +9,7 @@
   "copilot-cmp": { "branch": "master", "commit": "c2cdb3c0f5078b0619055af192295830a7987790" },
   "copilot.lua": { "branch": "master", "commit": "9cb5396205faf609bc9df0e841e133ccb1b70540" },
   "gitsigns.nvim": { "branch": "main", "commit": "a36bc3360d584d39b4fb076d855c4180842d4444" },
+  "kanagawa.nvim": { "branch": "master", "commit": "1749cea392acb7d1548a946fcee1e6f1304cd3cb" },
   "lazy.nvim": { "branch": "main", "commit": "b7043f2983d7aead78ca902f3f2053907081859a" },
   "lualine-so-fancy.nvim": { "branch": "main", "commit": "163451d877a42ee220f7e6f46f322dc23d23f9f1" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
@@ -30,7 +31,6 @@
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9bc8237565ded606e6c366a71c64c0af25cd7a50" },
   "telescope.nvim": { "branch": "master", "commit": "ffe35cb433192fcb5080b557c1aef14d37092035" },
-  "tokyonight.nvim": { "branch": "main", "commit": "a0a7bfbc4c54348b56880a162afac9d103c618c1" },
   "trouble.nvim": { "branch": "main", "commit": "2af0dd9767526410c88c628f1cbfcb6cf22dd683" },
   "typescript.nvim": { "branch": "main", "commit": "5b3680e5c386e8778c081173ea0c978c14a40ccb" },
   "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" }
