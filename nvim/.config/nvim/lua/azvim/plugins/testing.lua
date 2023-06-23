@@ -43,8 +43,8 @@ return {
 			},
 			{
 				"<leader>ts",
-				"<cmd>w<CR><cmd>lua require('neotest').output_panel.open()<CR>",
-				desc = "Open Test Summary",
+				"<cmd>w<CR><cmd>lua require('neotest').output_panel.toggle()<CR>",
+				desc = "Toggle Test Summary",
 			},
 			-- { "<leader>ts", "<cmd>w<CR><cmd>TestSuite<CR>", desc = "Test Suite" },
 			-- { "<leader>tv", "<cmd>w<CR><cmd>TestVisit<CR>", desc = "Test Visit" },
