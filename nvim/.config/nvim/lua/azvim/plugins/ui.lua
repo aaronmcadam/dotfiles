@@ -118,7 +118,7 @@ return {
 				desc = "Add Harpoon mark",
 			},
 			{
-				"<leader>hm",
+				"<leader>hh",
 				function()
 					require("harpoon.ui").toggle_quick_menu()
 				end,
