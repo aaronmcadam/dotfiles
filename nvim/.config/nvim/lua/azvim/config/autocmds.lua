@@ -83,3 +83,10 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 })
+
+-- Fixes Autocomment
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+	callback = function()
+		vim.cmd("set formatoptions-=cro")
+	end,
+})
