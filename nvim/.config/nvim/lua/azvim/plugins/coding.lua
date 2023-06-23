@@ -9,7 +9,7 @@ return {
 				delete_check_events = "TextChanged",
 			})
 			require("luasnip/loaders/from_vscode").load({
-				paths = vim.fn.stdpath("config") .. "/snippets",
+				paths = vim.fn.stdpath("config") .. "/lua/azvim/snippets",
 			})
 		end,
     -- stylua: ignore

@@ -1,0 +1,42 @@
+-- required to before lazy so mappings are correct
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+local opt = vim.opt
+
+opt.backup = false -- creates a backup file
+opt.background = "dark" -- default themes to dark
+opt.clipboard = "" -- explicitly copy to the clipboard to keep control of what gets copied there.
+opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
+opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
+opt.conceallevel = 0 -- so that `` is visible in markdown files
+opt.equalalways = true -- make windows the samue width when closing one
+opt.fileencoding = "utf-8" -- the encoding written to a file
+opt.hlsearch = true -- highlight all matches on previous search pattern
+opt.ignorecase = true -- ignore case in search patterns
+opt.mouse = "a" -- allow the mouse to be used in neovim
+opt.pumheight = 10 -- pop up menu height
+opt.showmode = false -- we don't need to see things like -- INSERT -- anymore
+opt.showtabline = 0 -- always show tabs
+opt.smartcase = true -- smart case
+opt.smartindent = true -- make indenting smarter again
+opt.splitbelow = true -- force all horizontal splits to go below current window
+opt.splitright = true -- force all vertical splits to go to the right of current window
+opt.swapfile = false -- creates a swapfile
+opt.termguicolors = true -- set term gui colors (most terminals support this)
+opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds).
+opt.undofile = true -- enable persistent undo
+opt.updatetime = 300 -- faster completion (4000ms default)
+opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+opt.expandtab = true -- convert tabs to spaces
+opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
+opt.tabstop = 2 -- insert 2 spaces for a tab
+opt.cursorline = true -- highlight the current line
+opt.laststatus = 3
+opt.showcmd = false
+opt.ruler = false
+opt.number = true -- set numbered lines
+opt.relativenumber = true -- set relative numbered lines
+opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
+opt.wrap = false -- display lines as one long line
+opt.guifont = "monospace:h17" -- the font used in graphical neovim applications
