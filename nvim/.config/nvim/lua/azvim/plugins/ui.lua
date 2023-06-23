@@ -102,4 +102,31 @@ return {
 			}
 		end,
 	},
+	-- harpoon
+	{
+		"ThePrimeagen/harpoon",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		lazy = true,
+		keys = {
+			{
+				"<leader>ha",
+				function()
+					require("harpoon.mark").add_file()
+				end,
+				desc = "Add Harpoon mark",
+			},
+			{
+				"<leader>hm",
+				function()
+					require("harpoon.ui").toggle_quick_menu()
+				end,
+				desc = "View Harpoon marks",
+			},
+		},
+		config = function()
+			require("harpoon").setup()
+		end,
+	},
 }

@@ -11,6 +11,7 @@ return {
 				["gz"] = { name = "+surround" },
 				["<leader>b"] = { name = "+buffer" },
 				["<leader>f"] = { name = "+find" },
+				["<leader>h"] = { name = "+harpoon" },
 				["<leader>g"] = { name = "+git" },
 				["<leader>k"] = { name = "+related" },
 				["<leader>l"] = { name = "+lsp" },
