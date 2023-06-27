@@ -191,6 +191,7 @@ return {
 			-- setup formatters & linters
 			sources = {
 				formatting.prettierd,
+				formatting.erb_format,
 				formatting.eslint_d,
 				formatting.gofmt,
 				formatting.stylua,
