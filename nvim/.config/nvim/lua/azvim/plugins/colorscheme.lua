@@ -1,22 +1,45 @@
 return {
-	"folke/tokyonight.nvim",
-	lazy = false, -- make sure we load this during startup if it is your main colorscheme
-	priority = 1000, -- make sure to load this before all the other start plugins
-	config = function()
-		require("tokyonight").setup({
-			transparent = true,
-			on_highlights = function(hl, c)
-				hl.CursorLineNr = {
-					fg = c.orange,
-					bold = true,
-				}
-				hl.LineNr = {
-					fg = c.blue,
-				}
-			end,
-		})
 
-		-- load the colorscheme here
-		vim.cmd([[colorscheme tokyonight]])
-	end,
+  -- tokyonight
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    opts = { style = "moon" },
+  },
+
+  -- catppuccin
+  {
+    "catppuccin/nvim",
+    lazy = true,
+    name = "catppuccin",
+    opts = {
+      integrations = {
+        alpha = true,
+        cmp = true,
+        gitsigns = true,
+        illuminate = true,
+        indent_blankline = { enabled = true },
+        lsp_trouble = true,
+        mini = true,
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+          },
+        },
+        navic = { enabled = true },
+        neotest = true,
+        noice = true,
+        notify = true,
+        nvimtree = true,
+        semantic_tokens = true,
+        telescope = true,
+        treesitter = true,
+        which_key = true,
+      },
+    },
+  },
 }
