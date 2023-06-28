@@ -72,9 +72,7 @@ return {
 						{ "location", padding = { left = 0, right = 1 } },
 					},
 					lualine_z = {
-						function()
-							return " " .. os.date("%R")
-						end,
+						"filetype",
 					},
 				},
 				extensions = { "neo-tree", "lazy" },

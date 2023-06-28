@@ -188,12 +188,15 @@ return {
 
 		-- configure null_ls
 		null_ls.setup({
+			debug = true, -- use :NullLsLog to see debug output
 			-- setup formatters & linters
 			sources = {
-				formatting.prettierd,
-				formatting.erb_format,
+				formatting.prettierd.with({
+					extra_filetypes = { "eruby" },
+				}),
 				formatting.eslint_d,
 				formatting.gofmt,
+				formatting.rubocop,
 				formatting.stylua,
 				formatting.terraform_fmt,
 				diagnostics.eslint_d,

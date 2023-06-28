@@ -41,7 +41,7 @@ map("v", "<Leader>y", '"+y', { desc = "Copy to system clipboard" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- save file
-map({ "i", "v", "n", "s" }, "<leader>w", "<cmd>w<cr><esc>", { desc = "Save file" })
+map("n", "<leader>w", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
