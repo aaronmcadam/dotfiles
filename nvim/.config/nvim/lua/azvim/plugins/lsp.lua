@@ -14,6 +14,7 @@ return {
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					"gopls",
 					"lua_ls",
 					"solargraph",
 				},
@@ -83,8 +84,22 @@ return {
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+			local lspconfig = require("lspconfig")
+
+			-- Golang
+			lspconfig["gopls"].setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				settings = {
+					gopls = {
+						completeUnimported = true,
+						usePlaceholders = true,
+					},
+				},
+			})
+
 			-- Lua
-			require("lspconfig")["lua_ls"].setup({
+			lspconfig["lua_ls"].setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 				settings = {
@@ -106,7 +121,7 @@ return {
 			})
 
 			-- Ruby
-			require("lspconfig")["solargraph"].setup({
+			lspconfig["solargraph"].setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
 				settings = {

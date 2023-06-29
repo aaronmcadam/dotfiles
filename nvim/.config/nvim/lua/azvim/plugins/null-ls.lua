@@ -35,6 +35,7 @@ return {
 					formatting.prettierd.with({
 						extra_filetypes = { "eruby" },
 					}),
+					formatting.gofmt,
 					formatting.stylua,
 					formatting.standardrb,
 				},

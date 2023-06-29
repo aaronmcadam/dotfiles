@@ -16,18 +16,23 @@ return {
 			})
 		end,
 	},
+	-- Show buffer names
 	{
 		"akinsho/bufferline.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
-		opts = {
-			-- NOTE: this will be called a lot so don't do any heavy processing here
-			custom_filter = function(buf_number, buf_numbers)
-				-- filter out filetypes you don't want to see
-				if vim.bo[buf_number].filetype ~= "oil" then
-					return true
-				end
-			end,
-		},
+		config = function()
+			require("bufferline").setup({
+				options = {
+					-- NOTE: this will be called a lot so don't do any heavy processing here
+					custom_filter = function(buf_number, _buf_numbers)
+						-- filter out filetypes you don't want to see
+						if vim.bo[buf_number].filetype ~= "oil" then
+							return true
+						end
+					end,
+				},
+			})
+		end,
 	},
 	-- harpoon
 	{
@@ -190,7 +195,6 @@ return {
 	-- Better `vim.notify()`
 	{
 		"rcarriga/nvim-notify",
-		event = "ColorScheme",
 		keys = {
 			{
 				"<leader>un",
