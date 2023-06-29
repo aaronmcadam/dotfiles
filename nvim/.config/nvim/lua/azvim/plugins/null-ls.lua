@@ -5,6 +5,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"jayp0521/mason-null-ls.nvim",
 		},
+		build = "npm install -g @prettier/plugin-ruby prettier-plugin-erb",
 		config = function()
 			local mason_null_ls = require("mason-null-ls")
 			mason_null_ls.setup({
@@ -28,6 +29,7 @@ return {
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 			null_ls.setup({
+				debug = true,
 				sources = {
 					diagnostics.standardrb,
 					formatting.prettierd.with({
