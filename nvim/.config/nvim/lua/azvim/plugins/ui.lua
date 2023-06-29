@@ -19,7 +19,15 @@ return {
 	{
 		"akinsho/bufferline.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
-		opts = {},
+		opts = {
+			-- NOTE: this will be called a lot so don't do any heavy processing here
+			custom_filter = function(buf_number, buf_numbers)
+				-- filter out filetypes you don't want to see
+				if vim.bo[buf_number].filetype ~= "oil" then
+					return true
+				end
+			end,
+		},
 	},
 	-- harpoon
 	{
