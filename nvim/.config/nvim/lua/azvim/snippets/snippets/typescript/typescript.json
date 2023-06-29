@@ -1,0 +1,17 @@
+{
+  "consoleLog": {
+    "prefix": "log",
+    "body": ["console.log(${1:first})"],
+    "description": "Log to the console"
+  },
+  "detailedLog": {
+    "prefix": "dlog",
+    "body": ["console.log('${1:first}', ${1:first})"],
+    "description": "Log to the console with a label"
+  },
+  "testBlock": {
+    "prefix": "test",
+    "body": ["test('${1:first}', () => { ${2:second} })"],
+    "description": "Testing `test` block"
+  }
+}

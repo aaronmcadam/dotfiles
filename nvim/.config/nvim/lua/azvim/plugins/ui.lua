@@ -21,6 +21,32 @@ return {
 		dependencies = "nvim-tree/nvim-web-devicons",
 		opts = {},
 	},
+	-- harpoon
+	{
+		"ThePrimeagen/harpoon",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		keys = {
+			{
+				"<leader>ha",
+				function()
+					require("harpoon.mark").add_file()
+				end,
+				desc = "Add Harpoon mark",
+			},
+			{
+				"<leader>hh",
+				function()
+					require("harpoon.ui").toggle_quick_menu()
+				end,
+				desc = "View Harpoon marks",
+			},
+		},
+		config = function()
+			require("harpoon").setup()
+		end,
+	},
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
