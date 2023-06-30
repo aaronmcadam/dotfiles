@@ -54,10 +54,12 @@ M.opts = function()
     }),
     formatting = {
       format = function(_, item)
-        local icons = require("azvim.core.icons").icons.kinds
+        local icons = require("azvim.core.helpers").icons.kinds
+
         if icons[item.kind] then
           item.kind = icons[item.kind] .. item.kind
         end
+
         return item
       end,
     },

@@ -16,7 +16,12 @@ M.setup = function()
   })
 
   -- This function gets run when an LSP connects to a particular buffer.
+  local navic = require("nvim-navic")
   local on_attach = function(client, bufnr)
+    if client.server_capabilities.documentSymbolProvider then
+      navic.attach(client, bufnr)
+    end
+
     local lsp_map = require("azvim.helpers.keys").lsp_map
 
     lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
@@ -107,7 +112,7 @@ M.setup = function()
   require("fidget").setup()
 
   -- Set up cool signs for diagnostics
-  local icons = require("azvim.core.icons").icons.diagnostics
+  local icons = require("azvim.core.helpers").icons.diagnostics
   local signs = {
     Error = icons.Error,
     Warn = icons.Warn,

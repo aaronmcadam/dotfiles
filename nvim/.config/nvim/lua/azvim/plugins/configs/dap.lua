@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-  local icons = require("azvim.core.icons").icons.dap
+  local icons = require("azvim.core.helpers").icons.dap
   vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
   for name, sign in pairs(icons) do

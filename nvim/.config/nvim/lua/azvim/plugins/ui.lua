@@ -31,13 +31,21 @@ return {
   -- Fancier statusline
   {
     "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup({
-        options = {
-          theme = "auto",
-          disabled_filetypes = { "alpha" },
-        },
-      })
+    dependencies = {
+      "SmiteshP/nvim-navic",
+    },
+    event = "VeryLazy",
+    opts = require("azvim.plugins.configs.lualine").opts,
+  },
+  {
+    "SmiteshP/nvim-navic",
+    opts = function()
+      return {
+        separator = " ",
+        highlight = true,
+        depth_limit = 5,
+        icons = require("azvim.core.helpers").icons.kinds,
+      }
     end,
   },
 
@@ -50,7 +58,7 @@ return {
         always_show_bufferline = false,
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(_, _, diag)
-          local icons = require("azvim.core.icons").icons.diagnostics
+          local icons = require("azvim.core.helpers").icons.diagnostics
           local ret = (diag.error and icons.Error .. diag.error .. " " or "")
             .. (diag.warning and icons.Warn .. diag.warning or "")
           return vim.trim(ret)

@@ -75,6 +75,7 @@ return {
       { "j-hui/fidget.nvim", tag = "legacy" },
       "folke/neodev.nvim",
       "hrsh7th/cmp-nvim-lsp",
+      "SmiteshP/nvim-navic",
     },
     config = require("azvim.plugins.configs.mason").setup,
   },
