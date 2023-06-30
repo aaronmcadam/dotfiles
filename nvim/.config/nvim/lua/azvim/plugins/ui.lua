@@ -28,6 +28,30 @@ return {
 		},
 	},
 
+	-- Fancier statusline
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("lualine").setup({
+				options = {
+					theme = "auto",
+					disabled_filetypes = { "alpha" },
+				},
+			})
+		end,
+	},
+
+	-- buffer line
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		opts = {
+			options = {
+				always_show_bufferline = false,
+			},
+		},
+	},
+
 	-- harpoon
 	{
 		"ThePrimeagen/harpoon",
