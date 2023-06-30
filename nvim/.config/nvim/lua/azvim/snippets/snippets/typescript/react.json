@@ -1,0 +1,27 @@
+{
+  "importReact": {
+    "prefix": "imr",
+    "body": ["import * as React from 'react'"]
+  },
+  "reactComponent": {
+    "prefix": "rc",
+    "body": [
+      "import * as React from 'react'",
+      "",
+      "export type ${1:${TM_FILENAME_BASE}}Props = unknown",
+      "",
+      "export function ${1:first}(props: ${1:first}Props) {",
+      "  return (",
+      "    <div>${2:second}</div>",
+      "  )",
+      "}"
+    ],
+    "description": "Creates a React function component"
+  },
+  "useState": {
+    "prefix": "us",
+    "body": [
+      "const [${1:first}, set${1/(.*)/${1:/capitalize}/}] = useState(${2:''})"
+    ]
+  }
+}
