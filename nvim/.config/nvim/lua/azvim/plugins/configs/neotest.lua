@@ -37,6 +37,14 @@ M.keys = function()
       "<cmd>w<CR><cmd>lua require('neotest').output_panel.toggle()<CR>",
       desc = "Toggle Test Summary",
     },
+    {
+      "<leader>td",
+      function()
+        vim.cmd("w")
+        require("neotest").run.run({ strategy = "dap" })
+      end,
+      desc = "Debug Nearest",
+    },
     -- { "<leader>ts", "<cmd>w<CR><cmd>TestSuite<CR>", desc = "Test Suite" },
     -- { "<leader>tv", "<cmd>w<CR><cmd>TestVisit<CR>", desc = "Test Visit" },
     -- { "<leader>tp", "<cmd>w<CR><cmd>Playwright --project=chromium<CR>", desc = "Playwright" },

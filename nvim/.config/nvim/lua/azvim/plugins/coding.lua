@@ -120,6 +120,42 @@ return {
     keys = require("azvim.plugins.configs.neotest").keys,
   },
 
+  -- debugging
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      -- fancy UI for the debugger
+      {
+        "rcarriga/nvim-dap-ui",
+        config = require("azvim.plugins.configs.dap").setup_ui,
+        opts = {},
+        keys = require("azvim.plugins.configs.dap").ui_keys,
+      },
+
+      -- virtual text for the debugger
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        opts = {},
+      },
+
+      -- mason.nvim integration
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = "mason.nvim",
+        cmd = { "DapInstall", "DapUninstall" },
+        opts = {
+          ensure_installed = {
+            "delve", -- Go debugger
+          },
+          automatic_installation = true,
+          handlers = {},
+        },
+      },
+    },
+
+    keys = require("azvim.plugins.configs.dap").keys,
+  },
+
   -- surround
   {
     "echasnovski/mini.surround",
