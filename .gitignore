@@ -4,3 +4,4 @@ lazygit/.config/lazygit/state.yml
 nvim/.config/nvim/plugin
 ssh
 ssh/!config
+.DS_Store
