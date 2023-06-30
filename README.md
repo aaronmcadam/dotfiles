@@ -6,7 +6,7 @@ TypeScript development with neovim.
 
 The following repos were useful when building these files:
 
-* https://github.com/thoughtbot/dotfiles
-* https://github.com/thoughtbot/laptop
-* https://github.com/LunarVim/nvim-basic-ide
-* https://github.com/Mach-OS/Machfiles
+- https://github.com/thoughtbot/dotfiles
+- https://github.com/thoughtbot/laptop
+- https://github.com/LunarVim/nvim-basic-ide
+- https://github.com/Mach-OS/Machfiles
