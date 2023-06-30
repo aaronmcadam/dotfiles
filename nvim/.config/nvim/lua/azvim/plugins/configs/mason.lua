@@ -11,6 +11,7 @@ M.setup = function()
     ensure_installed = {
       "lua_ls", -- LSP for Lua language
       "gopls", -- LSP for Go
+      "solargraph", -- LSP for Ruby
     },
   })
 
@@ -86,6 +87,17 @@ M.setup = function()
         },
       })
     end,
+    ["solargraph"] = function()
+      lspconfig.solargraph.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+          solargraph = {
+            diagnostics = false,
+          },
+        },
+      })
+    end,
   })
 
   -- Neodev setup before LSP config
@@ -95,7 +107,13 @@ M.setup = function()
   require("fidget").setup()
 
   -- Set up cool signs for diagnostics
-  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  local icons = require("azvim.core.icons").icons.diagnostics
+  local signs = {
+    Error = icons.Error,
+    Warn = icons.Warn,
+    Hint = icons.Hint,
+    Info = icons.Info,
+  }
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })

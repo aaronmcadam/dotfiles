@@ -52,6 +52,15 @@ M.opts = function()
         select = true,
       }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
+    formatting = {
+      format = function(_, item)
+        local icons = require("azvim.core.icons").icons.kinds
+        if icons[item.kind] then
+          item.kind = icons[item.kind] .. item.kind
+        end
+        return item
+      end,
+    },
     sources = cmp.config.sources({
       { name = "luasnip", priority = 1000 },
       { name = "nvim_lsp", priority = 800 },

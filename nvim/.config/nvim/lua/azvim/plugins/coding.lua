@@ -152,7 +152,7 @@ return {
         },
       },
     },
-
+    config = require("azvim.plugins.configs.dap").setup,
     keys = require("azvim.plugins.configs.dap").keys,
   },
 

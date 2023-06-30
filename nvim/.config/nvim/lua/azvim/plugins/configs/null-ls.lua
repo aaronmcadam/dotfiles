@@ -7,6 +7,7 @@ M.setup = function()
       "gofumpt",
       "prettierd",
       "stylua",
+      "standardrb",
     },
     automatic_installation = true,
     handlers = {
