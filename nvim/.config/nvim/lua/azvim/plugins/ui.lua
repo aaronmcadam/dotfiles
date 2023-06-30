@@ -99,46 +99,23 @@ return {
 
 	-- which key
 	{
-		{
-			"folke/which-key.nvim",
-			event = "VeryLazy",
-			opts = {
-				plugins = { spelling = true },
-				defaults = {
-					mode = { "n", "v" },
-					["g"] = { name = "+goto" },
-					["gz"] = { name = "+surround" },
-					["<leader>b"] = { name = "+buffer" },
-					["<leader>f"] = { name = "+find" },
-					-- ["<leader>h"] = { name = "+harpoon" },
-					["<leader>g"] = { name = "+git" },
-					-- ["<leader>k"] = { name = "+related" },
-					-- ["<leader>l"] = { name = "+lsp" },
-					["<leader>q"] = { name = "+quit" },
-					-- ["<leader>t"] = { name = "+test" },
-					-- ["<leader>x"] = { name = "+diagnostics" },
-				},
-			},
-			config = function(_, opts)
-				local wk = require("which-key")
-				wk.setup(opts)
-				wk.register(opts.defaults)
-			end,
-		},
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = require("azvim.plugins.configs.which-key").opts,
+		config = require("azvim.plugins.configs.which-key").setup,
+	},
+
+	-- related files (like projectionist or rails.vim)
+	{
+		"rgroli/other.nvim",
+		event = "BufReadPost",
+		config = require("azvim.plugins.configs.other").setup,
+		keys = require("azvim.plugins.configs.other").keys,
 	},
 
 	-- Better `vim.notify()`
 	{
 		"rcarriga/nvim-notify",
-		keys = {
-			{
-				"<leader>un",
-				function()
-					require("notify").dismiss({ silent = true, pending = true })
-				end,
-				desc = "Dismiss all Notifications",
-			},
-		},
 		opts = {
 			timeout = 3000,
 			max_height = function()
@@ -147,6 +124,15 @@ return {
 			max_width = function()
 				return math.floor(vim.o.columns * 0.75)
 			end,
+		},
+		keys = {
+			{
+				"<leader>un",
+				function()
+					require("notify").dismiss({ silent = true, pending = true })
+				end,
+				desc = "Dismiss all Notifications",
+			},
 		},
 		init = function()
 			vim.notify = require("notify")
@@ -198,6 +184,47 @@ return {
 			},
 			show_trailing_blankline_indent = false,
 			show_current_context = false,
+		},
+	},
+
+	-- Nicer UI
+	{
+		"stevearc/dressing.nvim",
+		lazy = true,
+		init = function()
+			vim.ui.select = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.select(...)
+			end
+			vim.ui.input = function(...)
+				require("lazy").load({ plugins = { "dressing.nvim" } })
+				return vim.ui.input(...)
+			end
+		end,
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			lsp = {
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+			},
+			-- you can enable a preset for easier configuration
+			presets = {
+				bottom_search = true, -- use a classic bottom cmdline for search
+				command_palette = true, -- position the cmdline and popupmenu together
+				long_message_to_split = true, -- long messages will be sent to a split
+				inc_rename = true, -- enables an input dialog for inc-rename.nvim
+				lsp_doc_border = true, -- add a border to hover docs and signature help
+			},
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
 		},
 	},
 }
