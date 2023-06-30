@@ -35,6 +35,7 @@
   "plenary.nvim": { "branch": "master", "commit": "36aaceb6e93addd20b1b18f94d86aecc552f30c4" },
   "telescope.nvim": { "branch": "master", "commit": "e651c3731749f71a36d414e7cbb6b36bcf30aee6" },
   "trouble.nvim": { "branch": "main", "commit": "d99e2abd10808ef91738ce98a5c767e6a51df449" },
+  "typescript-tools.nvim": { "branch": "master", "commit": "4f4f3874475ea08fbc6ed7a002495bdd24376932" },
   "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" },
   "which-key.nvim": { "branch": "main", "commit": "d871f2b664afd5aed3dc1d1573bef2fb24ce0484" }
 }

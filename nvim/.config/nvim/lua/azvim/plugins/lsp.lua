@@ -132,4 +132,11 @@ return {
 			})
 		end,
 	},
+	-- New TypeScript LSP plugin
+	-- Replaces nvim-lspconfig setup
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
 }
