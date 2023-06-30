@@ -41,6 +41,3 @@ opt.undofile = true -- enable persistent undo
 opt.updatetime = 300 -- faster completion (4000ms default)
 opt.wrap = false -- display lines as one long line
 opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-
--- Disable comments on pressing Enter
-vim.cmd[[autocmd FileType * setlocal formatoptions-=cro]]
