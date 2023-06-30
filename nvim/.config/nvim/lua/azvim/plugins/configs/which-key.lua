@@ -22,7 +22,9 @@ M.opts = function()
       ["<leader>k"] = { name = "+related" },
       ["<leader>l"] = { name = "+lsp" },
       ["<leader>q"] = { name = "+quit" },
+      ["<leader>s"] = { name = "+search" },
       ["<leader>t"] = { name = "+test" },
+      ["<leader>u"] = { name = "+ui" },
       ["<leader>x"] = { name = "+diagnostics" },
     },
   }
