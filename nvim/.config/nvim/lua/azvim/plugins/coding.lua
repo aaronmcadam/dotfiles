@@ -190,4 +190,13 @@ return {
       { "<leader>cs", "<cmd>LBSubmit<cr>", desc = "Submit Code" },
     },
   },
+
+  -- better undo
+  {
+    "mbbill/undotree",
+    cmd = "UndotreeToggle",
+    keys = {
+      { "<leader>uu", vim.cmd.UndotreeToggle, desc = "Open Undotree" },
+    },
+  },
 }

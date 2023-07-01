@@ -23,6 +23,7 @@ opt.number = true -- set numbered lines
 opt.pumheight = 10 -- pop up menu height
 opt.relativenumber = true -- set relative numbered lines
 opt.ruler = false
+-- TODO: test if the binaries get added to the PATH with this setting.
 -- opt.shell = "/bin/sh" -- Fish can be slow with neovim: https://github.com/fish-shell/fish-shell/issues/7004
 opt.shiftwidth = 2 -- the number of spaces inserted for each indentation
 opt.showcmd = false
@@ -37,6 +38,7 @@ opt.swapfile = false -- creates a swapfile
 opt.tabstop = 2 -- insert 2 spaces for a tab
 opt.termguicolors = true -- set term gui colors (most terminals support this)
 opt.timeoutlen = 1000 -- time to wait for a mapped sequence to complete (in milliseconds).
+opt.undodir = os.getenv("HOME") .. "/.config/nvim/undodir" -- set an undo directory
 opt.undofile = true -- enable persistent undo
 opt.updatetime = 300 -- faster completion (4000ms default)
 opt.wrap = false -- display lines as one long line
