@@ -10,11 +10,11 @@
           "typescript",
           "typescriptreact"
         ],
-        "path": "./snippets/typescript/typescript.json"
+        "path": "./typescript/typescript.json"
       },
       {
         "language": "typescriptreact",
-        "path": "./snippets/typescript/react.json"
+        "path": "./typescript/react.json"
       }
     ]
   }
