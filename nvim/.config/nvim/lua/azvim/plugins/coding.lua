@@ -169,4 +169,25 @@ return {
     "andymass/vim-matchup",
     opts = {},
   },
+
+  -- LeetCode
+  {
+    "Dhanus3133/LeetBuddy.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("leetbuddy").setup({
+        language = "ts",
+      })
+    end,
+    keys = {
+      { "<leader>cq", "<cmd>LBQuestions<cr>", desc = "List Questions" },
+      { "<leader>cl", "<cmd>LBQuestion<cr>", desc = "View Question" },
+      { "<leader>cr", "<cmd>LBReset<cr>", desc = "Reset Code" },
+      { "<leader>ct", "<cmd>LBTest<cr>", desc = "Run Code" },
+      { "<leader>cs", "<cmd>LBSubmit<cr>", desc = "Submit Code" },
+    },
+  },
 }
