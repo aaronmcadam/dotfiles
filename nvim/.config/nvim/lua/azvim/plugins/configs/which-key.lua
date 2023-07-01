@@ -14,6 +14,7 @@ M.opts = function()
       ["g"] = { name = "+goto" },
       ["gz"] = { name = "+surround" },
       ["<leader>b"] = { name = "+buffer" },
+      ["<leader>c"] = { name = "+leetcode" },
       ["<leader>d"] = { name = "+debug" },
       ["<leader>da"] = { name = "+adapters" },
       ["<leader>f"] = { name = "+find" },
