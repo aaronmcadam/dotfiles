@@ -197,6 +197,7 @@ return {
     cmd = "UndotreeToggle",
     keys = {
       { "<leader>uu", vim.cmd.UndotreeToggle, desc = "Open Undotree" },
+      { "<leader>uf", vim.cmd.UndotreeFocus, desc = "Focus Undotree" },
     },
   },
 }

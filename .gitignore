@@ -2,6 +2,7 @@ fish_variables
 install-omf
 lazygit/.config/lazygit/state.yml
 nvim/.config/nvim/plugin
+nvim/.config/nvim/undodir
 ssh
 ssh/!config
 .DS_Store
