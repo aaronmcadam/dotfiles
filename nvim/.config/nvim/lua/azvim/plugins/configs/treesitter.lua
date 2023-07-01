@@ -28,6 +28,9 @@ M.setup = function()
     indent = {
       enable = true,
     },
+    matchup = {
+      enable = true,
+    },
   })
 end
 

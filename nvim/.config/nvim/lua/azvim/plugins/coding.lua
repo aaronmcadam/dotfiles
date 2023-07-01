@@ -163,4 +163,10 @@ return {
     opts = require("azvim.plugins.configs.mini-surround").opts,
     keys = require("azvim.plugins.configs.mini-surround").keys,
   },
+
+  -- better matchit
+  {
+    "andymass/vim-matchup",
+    opts = {},
+  },
 }
