@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   require("other-nvim").setup({
     rememberBuffers = false,
     mappings = {
@@ -47,7 +47,7 @@ M.setup = function()
   })
 end
 
-M.keys = function()
+function M.keys()
   return {
     { "<leader>kk", "<cmd>Other<CR>", desc = "Open related file" },
     { "<leader>kv", "<cmd>OtherVSplit<CR>", desc = "Open related file in split" },

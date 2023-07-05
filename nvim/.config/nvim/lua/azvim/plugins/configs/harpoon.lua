@@ -1,10 +1,10 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   require("harpoon").setup()
 end
 
-M.keys = function()
+function M.keys()
   local mark = require("harpoon.mark")
   local ui = require("harpoon.ui")
 

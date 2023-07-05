@@ -1,12 +1,12 @@
 local M = {}
 
-M.opts = function()
+function M.opts()
   local helpers = require("azvim.core.helpers")
   local icons = helpers.icons
 
   return {
     options = {
-      theme = "auto",
+      theme = "catppuccin",
       globalstatus = true,
       disabled_filetypes = { statusline = { "dashboard", "alpha" } },
     },

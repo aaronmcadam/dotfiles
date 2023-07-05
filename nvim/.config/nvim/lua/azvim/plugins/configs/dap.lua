@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   local icons = require("azvim.core.helpers").icons.dap
   vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
@@ -13,7 +13,7 @@ M.setup = function()
   end
 end
 
-M.setup_ui = function(_, opts)
+function M.setup_ui(_, opts)
   local dap = require("dap")
   local dapui = require("dapui")
   dapui.setup(opts)
@@ -28,7 +28,7 @@ M.setup_ui = function(_, opts)
   end
 end
 
-M.ui_keys = function()
+function M.ui_keys()
   return {
     {
       "<leader>du",
@@ -48,7 +48,7 @@ M.ui_keys = function()
   }
 end
 
-M.keys = function()
+function M.keys()
   return {
     {
       "<leader>dB",

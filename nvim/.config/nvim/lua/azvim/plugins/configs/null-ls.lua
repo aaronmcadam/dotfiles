@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   local null_ls = require("null-ls")
   require("mason-null-ls").setup({
     ensure_installed = {

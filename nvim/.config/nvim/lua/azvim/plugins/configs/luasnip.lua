@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   require("luasnip").setup({
     history = true,
     delete_check_events = "TextChanged",
@@ -10,7 +10,7 @@ M.setup = function()
   })
 end
 
-M.keys = function()
+function M.keys()
   return {
     {
       "<C-y>",

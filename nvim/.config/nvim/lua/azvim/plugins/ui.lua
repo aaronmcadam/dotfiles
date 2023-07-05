@@ -53,18 +53,20 @@ return {
   {
     "akinsho/bufferline.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
-    opts = {
-      options = {
-        always_show_bufferline = false,
-        diagnostics = "nvim_lsp",
-        diagnostics_indicator = function(_, _, diag)
-          local icons = require("azvim.core.helpers").icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-            .. (diag.warning and icons.Warn .. diag.warning or "")
-          return vim.trim(ret)
-        end,
-      },
-    },
+    opts = function()
+      return {
+        options = {
+          always_show_bufferline = false,
+          diagnostics = "nvim_lsp",
+          diagnostics_indicator = function(_, _, diag)
+            local icons = require("azvim.core.helpers").icons.diagnostics
+            local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+              .. (diag.warning and icons.Warn .. diag.warning or "")
+            return vim.trim(ret)
+          end,
+        },
+      }
+    end,
   },
 
   -- harpoon
@@ -115,12 +117,13 @@ return {
   {
     "rcarriga/nvim-notify",
     opts = {
+      background_colour = "#1e222a",
       timeout = 3000,
-      max_height = function()
-        return math.floor(vim.o.lines * 0.75)
-      end,
       max_width = function()
-        return math.floor(vim.o.columns * 0.75)
+        return math.ceil(math.max(vim.opt.columns:get() / 3, 10))
+      end,
+      max_height = function()
+        return math.ceil(math.max(vim.opt.lines:get() / 3, 4))
       end,
     },
     keys = {
@@ -166,23 +169,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      char = "│",
-      filetype_exclude = {
-        "help",
-        "alpha",
-        "dashboard",
-        "neo-tree",
-        "Trouble",
-        "lazy",
-        "mason",
-        "notify",
-        "toggleterm",
-        "lazyterm",
-      },
-      show_trailing_blankline_indent = false,
-      show_current_context = false,
-    },
+    opts = require("azvim.plugins.configs.indent-blankline").opts,
   },
 
   -- Nicer UI
@@ -203,23 +190,7 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-      lsp = {
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
-      },
-      -- you can enable a preset for easier configuration
-      presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
-        long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = true, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = true, -- add a border to hover docs and signature help
-      },
-    },
+    opts = require("azvim.plugins.configs.noice").opts,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
@@ -232,15 +203,8 @@ return {
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
     config = true,
-    -- stylua: ignore
-    keys = {
-      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
-      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
-    },
+    opts = require("azvim.plugins.configs.todo-comments").opts,
+    keys = require("azvim.plugins.configs.todo-comments").keys,
   },
 
   -- search/replace in multiple files

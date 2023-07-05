@@ -1,6 +1,6 @@
 local M = {}
 
-M.opts = function()
+function M.opts()
   local cmp = require("cmp")
   local behaviour = cmp.SelectBehavior.Insert
   local has_words_before = function()

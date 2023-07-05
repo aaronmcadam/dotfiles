@@ -1,12 +1,12 @@
 local M = {}
 
-M.setup = function(_, opts)
+function M.setup(_, opts)
   local wk = require("which-key")
   wk.setup(opts)
   wk.register(opts.defaults)
 end
 
-M.opts = function()
+function M.opts()
   return {
     plugins = { spelling = true },
     defaults = {

@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   -- get neotest namespace (api call creates or returns namespace)
   local neotest_ns = vim.api.nvim_create_namespace("neotest")
   vim.diagnostic.config({
@@ -18,7 +18,7 @@ M.setup = function()
   })
 end
 
-M.keys = function()
+function M.keys()
   return {
     -- { "<leader>tt", "<cmd>w<CR><cmd>lua require('neotest').run.run()<CR>", desc = "Test Nearest" },
     {

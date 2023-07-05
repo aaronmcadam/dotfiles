@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   require("nvim-treesitter.configs").setup({
     ensure_installed = {
       "bash",

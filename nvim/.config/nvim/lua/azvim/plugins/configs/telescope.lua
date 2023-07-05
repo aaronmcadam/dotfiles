@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
   local sorter = require("mini.fuzzy").get_telescope_sorter
@@ -38,7 +38,7 @@ M.setup = function()
   telescope.load_extension("harpoon")
 end
 
-M.project_files = function()
+function M.project_files()
   local ok = pcall(require("telescope.builtin").git_files, { show_untracked = true })
 
   if not ok then
@@ -46,7 +46,7 @@ M.project_files = function()
   end
 end
 
-M.keys = function()
+function M.keys()
   return {
     { "<leader>ff", M.project_files, desc = "Find Files" },
     { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "Find Buffers" },

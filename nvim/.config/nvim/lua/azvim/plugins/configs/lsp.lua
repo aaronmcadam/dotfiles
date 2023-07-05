@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
   -- Set up Mason before anything else
   local mason = require("mason")
   local mason_lspconfig = require("mason-lspconfig")
@@ -14,34 +14,6 @@ M.setup = function()
       "solargraph", -- LSP for Ruby
     },
   })
-
-  -- This function gets run when an LSP connects to a particular buffer.
-  local navic = require("nvim-navic")
-  local on_attach = function(client, bufnr)
-    if client.server_capabilities.documentSymbolProvider then
-      navic.attach(client, bufnr)
-    end
-
-    local lsp_map = require("azvim.helpers.keys").lsp_map
-
-    lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
-    lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
-    lsp_map("<leader>ld", vim.lsp.buf.type_definition, bufnr, "Type definition")
-    lsp_map("<leader>lj", vim.diagnostic.goto_next, bufnr, "Go to next diagnostic")
-    lsp_map("<leader>lk", vim.diagnostic.goto_prev, bufnr, "Go to previous diagnostic")
-    lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
-
-    lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition")
-    lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
-    lsp_map("gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
-    lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
-    lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
-
-    -- Create a command `:Format` local to the LSP buffer
-    vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-      vim.lsp.buf.format()
-    end, { desc = "Format current buffer with LSP" })
-  end
 
   -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -69,13 +41,13 @@ M.setup = function()
     function(server_name)
       lspconfig[server_name].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
+        on_attach = M.on_attach,
       })
     end,
     ["lua_ls"] = function()
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
-        on_attach = on_attach,
+        on_attach = M.on_attach,
         settings = {
           Lua = {
             completion = {
@@ -97,7 +69,7 @@ M.setup = function()
     ["solargraph"] = function()
       lspconfig.solargraph.setup({
         capabilities = capabilities,
-        on_attach = on_attach,
+        on_attach = M.on_attach,
         settings = {
           solargraph = {
             diagnostics = false,
@@ -111,7 +83,11 @@ M.setup = function()
   require("neodev").setup()
 
   -- Turn on LSP status information
-  require("fidget").setup()
+  require("fidget").setup({
+    window = {
+      blend = 0,
+    },
+  })
 
   -- Set up cool signs for diagnostics
   local icons = require("azvim.core.helpers").icons.diagnostics
@@ -145,6 +121,42 @@ M.setup = function()
     },
   }
   vim.diagnostic.config(config)
+end
+
+function M.on_attach(client, bufnr)
+  local navic = require("nvim-navic")
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
+
+  local lsp_map = require("azvim.helpers.keys").lsp_map
+
+  lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
+  lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
+  lsp_map("<leader>ld", vim.lsp.buf.type_definition, bufnr, "Type definition")
+  lsp_map("<leader>lj", vim.diagnostic.goto_next, bufnr, "Go to next diagnostic")
+  lsp_map("<leader>lk", vim.diagnostic.goto_prev, bufnr, "Go to previous diagnostic")
+  lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
+
+  lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition")
+  lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
+  lsp_map("gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
+  lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
+  lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
+
+  -- TypeScript specific keymaps
+  -- stylua: ignore
+  if client.name == "typescript-tools" then
+    lsp_map("<leader>lg", function() vim.cmd("TSToolsGoToSourceDefinition") end, bufnr, "Go to source definition")
+    lsp_map("<leader>li", function() vim.cmd("TSToolsAddMissingImports") end, bufnr, "Add missing imports")
+    lsp_map("<leader>lo", function() vim.cmd("TSToolsOrganizeImports") end, bufnr, "Organize imports")
+    lsp_map("<leader>lu", function() vim.cmd("TSToolsRemoveUnused") end, bufnr, "Remove unused statements")
+  end
+
+  -- Create a command `:Format` local to the LSP buffer
+  vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+    vim.lsp.buf.format()
+  end, { desc = "Format current buffer with LSP" })
 end
 
 return M

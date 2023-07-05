@@ -1,6 +1,6 @@
 local M = {}
 
-M.opts = function()
+function M.opts()
   return {
     mappings = {
       add = "gza", -- Add surrounding in Normal and Visual modes
@@ -14,7 +14,7 @@ M.opts = function()
   }
 end
 
-M.keys = function(_, keys)
+function M.keys(_, keys)
   -- Populate the keys based on the user's options
   local plugin = require("lazy.core.config").spec.plugins["mini.surround"]
   local opts = require("lazy.core.plugin").values(plugin, "opts", false)

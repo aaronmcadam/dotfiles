@@ -77,7 +77,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "SmiteshP/nvim-navic",
     },
-    config = require("azvim.plugins.configs.mason").setup,
+    config = require("azvim.plugins.configs.lsp").setup,
   },
 
   -- New TypeScript LSP plugin
@@ -85,7 +85,9 @@ return {
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
+    opts = {
+      on_attach = require("azvim.plugins.configs.lsp").on_attach,
+    },
   },
 
   -- diagnostics and formatting
