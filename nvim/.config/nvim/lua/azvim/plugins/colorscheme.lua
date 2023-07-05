@@ -8,6 +8,7 @@ return {
       integrations = {
         alpha = true,
         fidget = true,
+        gitsigns = true,
         harpoon = true,
         lsp_trouble = true,
         mason = true,
@@ -21,6 +22,11 @@ return {
         treesitter = true,
         which_key = true,
       },
+      custom_highlights = function(colors)
+        return {
+          LineNr = { fg = colors.overlay0 },
+        }
+      end,
     },
     init = function()
       vim.cmd.colorscheme("catppuccin")
