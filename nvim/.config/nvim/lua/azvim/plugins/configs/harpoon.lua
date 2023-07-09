@@ -5,8 +5,17 @@ function M.setup()
 end
 
 function M.keys()
-  local mark = require("harpoon.mark")
-  local ui = require("harpoon.ui")
+  -- The dependencies might not be installed when this function is called.
+  -- For example, on a fresh install.
+  -- So, we can load dependencies using pcall instead of directly requiring.
+  local mark_status_ok, mark = pcall(require, "harpoon.mark")
+  if not mark_status_ok then
+    return
+  end
+  local ui_status_ok, ui = pcall(require, "harpoon.ui")
+  if not ui_status_ok then
+    return
+  end
 
   return {
     {
