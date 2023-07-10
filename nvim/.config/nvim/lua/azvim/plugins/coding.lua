@@ -98,7 +98,7 @@ return {
       "williamboman/mason.nvim",
       "jose-elias-alvarez/null-ls.nvim",
     },
-    build = "npm install -g @prettier/plugin-ruby prettier-plugin-erb",
+    -- build = "npm install -g @prettier/plugin-ruby prettier-plugin-erb",
     config = require("azvim.plugins.configs.null-ls").setup,
   },
 

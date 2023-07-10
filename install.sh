@@ -38,24 +38,24 @@ add_or_update_asdf_plugin() {
 }
 
 add_or_update_asdf_plugin "nodejs"
+add_or_update_asdf_plugin "golang"
+add_or_update_asdf_plugin "ruby"
 # For AWS CLI
 add_or_update_asdf_plugin "python"
 # This will install languages based on .tool-versions
 asdf install
 
-if ! [[ $SHELL =~ "fish" ]]; then
-  fancy_echo "Configuring shell..."
-  echo "$(which fish)" | sudo tee -a /etc/shells
+# if ! [[ $SHELL =~ "fish" ]]; then
+  # fancy_echo "Configuring shell..."
+  # echo "$(which fish)" | sudo tee -a /etc/shells
   # chsh -s $(which fish)
   # fish_add_path /opt/homebrew/bin
-  fancy_echo "Installing oh-my-fish..."
-  curl -L https://get.oh-my.fish > install-omf
-  fish install-omf --noninteractive
-  fish -c "omf install https://github.com/jhillyerd/plugin-git"
-fi
+  # fancy_echo "Installing Fisher..."
+  # curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+# fi
 
-fancy_echo "Fetching environment info..."
-neofetch
-
-fancy_echo "Starting fish..."
-fish
+# fancy_echo "Fetching environment info..."
+# neofetch
+# 
+# fancy_echo "Starting fish..."
+# fish
