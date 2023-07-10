@@ -1,4 +1,4 @@
-nodejs lts
+nodejs 18.16.1
 python 3.10.4
 golang 1.20.5
 ruby 3.0.6
