@@ -1,5 +1,6 @@
 fish_variables
 install-omf
+brew/Brewfile.lock.json
 lazygit/.config/lazygit/state.yml
 nvim/.config/nvim/plugin
 nvim/.config/nvim/undodir
