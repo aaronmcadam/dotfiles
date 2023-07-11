@@ -62,4 +62,4 @@ alt + shift + ctrl - l : yabai -m window --focus east
 
 
 # restart yabai
-alt + shift + ctrl - y : brew services restart yabai
+alt + shift + ctrl - y : yabai --restart-service
