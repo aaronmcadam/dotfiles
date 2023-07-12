@@ -18,18 +18,18 @@ map("n", "N", "Nzzzv")
 -- Better paste that doesn't lose what was in the paste register when we want to replace the selected text.
 -- We delete to the Black Hole register ("_") so our paste register will keep the text we copied.
 -- @see https://youtu.be/qZO9A5F6BZs?t=352
-map("x", "<Leader>p", '"_dP', { desc = "Better Paste" })
+map("x", "<Leader>p", '"_dP', "Paste")
 
 --- copy to system clipboard
-map("n", "<Leader>y", '"+y', { desc = "Copy to system clipboard" })
-map("n", "<Leader>Y", '"+Y', { desc = "Copy to system clipboard" })
-map("v", "<Leader>y", '"+y', { desc = "Copy to system clipboard" })
+map("n", "<Leader>y", '"+y', "Copy to system clipboard")
+map("n", "<Leader>Y", '"+Y', "Copy to system clipboard")
+map("v", "<Leader>y", '"+y', "Copy to system clipboard")
 
 -- buffers
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+map("n", "<leader>bb", "<cmd>e #<cr>", "Switch to Other Buffer")
 
 -- save file
-map("n", "<leader>w", "<cmd>w<cr><esc>", { desc = "Save file" })
+map("n", "<leader>s", "<cmd>w<cr><esc>", "Save file")
 
 -- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
+map("n", "<leader>qq", "<cmd>qa<cr>", "Quit all")

@@ -7,6 +7,9 @@ set -gx GIT_EDITOR nvim
 set -gx AWS_SDK_LOAD_CONFIG 1
 # Configure lazy git configuration directory.
 set -gx CONFIG_DIR ~/.config/lazygit
+set -gx LDFLAGS "-L/opt/homebrew/opt/libpq/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/libpq/include"
+
 
 # https://github.com/asdf-vm/asdf
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
@@ -68,3 +71,10 @@ abbr -a s "git status -s"
 abbr -a h "gh"
 abbr -a hb "gh browse"
 abbr -a hc "gh repo clone"
+
+# pnpm
+set -gx PNPM_HOME "/Users/aaronmcadam/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
