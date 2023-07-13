@@ -18,6 +18,7 @@ return {
         noice = true,
         neotest = true,
         notify = true,
+        octo = true,
         telescope = true,
         treesitter = true,
         which_key = true,

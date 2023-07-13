@@ -224,4 +224,32 @@ return {
       },
     },
   },
+
+  -- Manage GitHub issues and PRs
+  {
+    "pwntester/octo.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("octo").setup()
+    end,
+  },
+
+  -- Write Obsidian notes in neovim
+  {
+    "epwalsh/obsidian.nvim",
+    lazy = true,
+    event = { "BufReadPre " .. vim.fn.expand("~") .. "/Documents/Remote Second Brain/**.md" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+      "nvim-telescope/telescope.nvim",
+    },
+    opts = require("azvim.plugins.configs.obsidian").opts,
+    config = require("azvim.plugins.configs.obsidian").setup,
+    keys = require("azvim.plugins.configs.obsidian").keys,
+  },
 }
