@@ -1,0 +1,4 @@
+[character]
+success_symbol = "[❯](green)" # ❯
+vicmd_symbol = "[\ue62b](green)" # 
+error_symbol = "[\uf467](red)" # 

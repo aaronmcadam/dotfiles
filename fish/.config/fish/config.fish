@@ -1,15 +1,14 @@
 fish_add_path "/opt/homebrew/bin"
 
-set -gx PATH "/opt/homebrew/bin:$PATH"
+set -U fish_greeting # disable greeting
+set -U fish_key_bindings fish_vi_key_bindings
+
 set -gx VISUAL nvim
 set -gx EDITOR nvim
 set -gx GIT_EDITOR nvim
 set -gx AWS_SDK_LOAD_CONFIG 1
 # Configure lazy git configuration directory.
 set -gx CONFIG_DIR ~/.config/lazygit
-set -gx LDFLAGS "-L/opt/homebrew/opt/libpq/lib"
-set -gx CPPFLAGS "-I/opt/homebrew/opt/libpq/include"
-
 
 # https://github.com/asdf-vm/asdf
 source /opt/homebrew/opt/asdf/libexec/asdf.fish
@@ -64,6 +63,7 @@ abbr -a ptw "pnpm test --watch"
 # Git
 alias gdb "git branch | fzf --header 'Delete Branch' --reverse -m --pointer='' | xargs -n 1 git branch -D"
 alias gcr "git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff --color=always {1}' --reverse -m --pointer='' | xargs -n 1 git checkout"
+alias gv "nvim '+:horizontal topleft Git'"
 abbr -a grbi git rebase --interactive
 abbr -a grbim git rebase --interactive main
 abbr -a grbil git rebase --interactive HEAD~2
