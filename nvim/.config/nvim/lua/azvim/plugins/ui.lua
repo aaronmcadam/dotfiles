@@ -28,7 +28,7 @@ return {
     },
   },
 
-  -- Fancier statusline
+  -- Better statusline and winbar
   {
     "nvim-lualine/lualine.nvim",
     dependencies = {
@@ -45,26 +45,6 @@ return {
         highlight = true,
         depth_limit = 5,
         icons = require("azvim.core.helpers").icons.kinds,
-      }
-    end,
-  },
-
-  -- buffer line
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    opts = function()
-      return {
-        options = {
-          always_show_bufferline = false,
-          diagnostics = "nvim_lsp",
-          diagnostics_indicator = function(_, _, diag)
-            local icons = require("azvim.core.helpers").icons.diagnostics
-            local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-              .. (diag.warning and icons.Warn .. diag.warning or "")
-            return vim.trim(ret)
-          end,
-        },
       }
     end,
   },

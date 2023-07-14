@@ -8,7 +8,10 @@ function M.opts()
     options = {
       theme = "catppuccin",
       globalstatus = true,
-      disabled_filetypes = { statusline = { "dashboard", "alpha" } },
+      disabled_filetypes = {
+        statusline = { "dashboard", "alpha" },
+        winbar = { "dashboard", "alpha" },
+      },
     },
     sections = {
       lualine_a = { "mode" },
@@ -23,8 +26,21 @@ function M.opts()
             hint = icons.diagnostics.Hint,
           },
         },
-        { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-        { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+        {
+          "filetype",
+          icon_only = true,
+          separator = "",
+          padding = { left = 1, right = 0 },
+        },
+        {
+          "filename",
+          path = 1,
+          symbols = {
+            modified = "  ",
+            readonly = "",
+            unnamed = "",
+          },
+        },
         {
           function()
             return require("nvim-navic").get_location()
@@ -79,7 +95,37 @@ function M.opts()
       },
       lualine_z = { "filetype" },
     },
-    extensions = { "neo-tree", "lazy" },
+    winbar = {
+      lualine_z = {
+        {
+          "filename",
+          path = 1,
+          symbols = {
+            modified = "  ",
+            readonly = "",
+            unnamed = "",
+          },
+        },
+      },
+    },
+    inactive_winbar = {
+      lualine_z = {
+        {
+          "filename",
+          path = 1,
+          symbols = {
+            modified = "  ",
+            readonly = "",
+            unnamed = "",
+          },
+        },
+      },
+    },
+    extensions = {
+      "fugitive",
+      "lazy",
+      "trouble",
+    },
   }
 end
 
