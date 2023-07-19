@@ -119,6 +119,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-neotest/neotest-go",
+      "marilari88/neotest-vitest",
     },
     config = require("azvim.plugins.configs.neotest").setup,
     keys = require("azvim.plugins.configs.neotest").keys,
@@ -226,6 +227,9 @@ return {
           font = "+6",
         },
       },
+    },
+    keys = {
+      { "<leader>z", "<cmd>ZenMode<CR>", desc = "Toggle Zen Mode" },
     },
   },
 }

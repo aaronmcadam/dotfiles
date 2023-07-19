@@ -8,12 +8,27 @@ function M.setup()
       "prettierd",
       "stylua",
       "standardrb",
+      "markdownlint",
     },
     automatic_installation = true,
     handlers = {
+      markdownlint = function()
+        null_ls.register(null_ls.builtins.formatting.markdownlint.with({
+          filetypes = { "markdown" },
+        }))
+      end,
       prettierd = function()
         null_ls.register(null_ls.builtins.formatting.prettierd.with({
-          extra_filetypes = { "eruby" },
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "json",
+            "yaml",
+            "graphql",
+            "eruby",
+          },
         }))
       end,
     },

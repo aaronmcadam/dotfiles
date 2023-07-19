@@ -8,9 +8,11 @@ return {
       integrations = {
         alpha = true,
         fidget = true,
+        flash = true,
         gitsigns = true,
         harpoon = true,
         lsp_trouble = true,
+        markdown = true,
         mason = true,
         navic = {
           enabled = true,
@@ -19,7 +21,10 @@ return {
         neotest = true,
         notify = true,
         octo = true,
-        telescope = true,
+        telescope = {
+          enabled = true,
+          style = "nvchad",
+        },
         treesitter = true,
         which_key = true,
       },
