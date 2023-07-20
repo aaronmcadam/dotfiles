@@ -21,7 +21,8 @@ function M.opts()
     dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles<CR>"),
     dashboard.button("t", " " .. " Find text", ":Telescope live_grep<CR>"),
     dashboard.button("c", " " .. " Config", ":e $MYVIMRC<CR>"),
-    dashboard.button("l", "󰒲 " .. " Lazy", ":Lazy<CR>"),
+    dashboard.button("u", "󰚰 " .. " Update plugins", ":Lazy! sync<CR>:qa<CR>"),
+    dashboard.button("p", " " .. " View plugins", ":Lazy<CR>"),
     dashboard.button("q", " " .. " Quit", ":qa<CR>"),
   }
 
