@@ -136,7 +136,6 @@ function M.on_attach(client, bufnr)
   lsp_map("<leader>ld", vim.lsp.buf.type_definition, bufnr, "Type definition")
   lsp_map("<leader>lj", vim.diagnostic.goto_next, bufnr, "Go to next diagnostic")
   lsp_map("<leader>lk", vim.diagnostic.goto_prev, bufnr, "Go to previous diagnostic")
-  lsp_map("<leader>lr", require("telescope.builtin").lsp_references, bufnr, "Open References")
   lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
 
   lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition")

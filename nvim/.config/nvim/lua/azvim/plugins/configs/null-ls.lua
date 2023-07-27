@@ -4,6 +4,7 @@ function M.setup()
   local null_ls = require("null-ls")
   require("mason-null-ls").setup({
     ensure_installed = {
+      "eslint_d",
       "gofumpt",
       "prettierd",
       "stylua",
