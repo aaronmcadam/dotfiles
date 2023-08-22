@@ -85,7 +85,10 @@ return {
   -- Replaces nvim-lspconfig setup
   {
     "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig",
+    },
     opts = {
       on_attach = require("azvim.plugins.configs.lsp").on_attach,
     },
@@ -231,5 +234,17 @@ return {
     keys = {
       { "<leader>z", "<cmd>ZenMode<CR>", desc = "Toggle Zen Mode" },
     },
+  },
+
+  -- refactoring
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("refactoring").setup()
+    end,
   },
 }

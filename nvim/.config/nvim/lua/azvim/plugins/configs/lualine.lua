@@ -96,7 +96,7 @@ function M.opts()
       lualine_z = { "filetype" },
     },
     winbar = {
-      lualine_z = {
+      lualine_a = {
         {
           "filename",
           path = 1,
@@ -109,7 +109,7 @@ function M.opts()
       },
     },
     inactive_winbar = {
-      lualine_z = {
+      lualine_a = {
         {
           "filename",
           path = 1,

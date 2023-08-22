@@ -45,6 +45,9 @@ map("n", "<leader>wl", "<C-w>l", "Move right a window")
 map("n", "<leader>wo", "<C-w>o", "Close other windows")
 map("n", "<leader>wb", "<C-o>", "Go back in the jump list")
 
+-- insert date
+map("n", "<leader>a", ":put =strftime('%Y-%m-%d')<CR>", "Insert date")
+
 local Job = require("plenary.job")
 
 local function getURLTitle(url, callback)

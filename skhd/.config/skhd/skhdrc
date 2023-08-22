@@ -28,23 +28,27 @@ alt + shift + ctrl + cmd - y : yabai -m space --mirror y-axis
 alt + shift + ctrl + cmd - x : yabai -m space --mirror x-axis
 
 # toggle window float
-alt + shift + ctrl + cmd - f : yabai -m window --toggle float --grid 4:4:1:1:2:2
+alt + shift + ctrl + cmd - f : yabai -m window --toggle float --grid 6:6:1:1:4:4
 
 # move window to display left and right
-alt + shift + ctrl + cmd - w : yabai -m window --display west; yabai -m display --focus west;
-alt + shift + ctrl + cmd - e : yabai -m window --display east; yabai -m display --focus east;
+alt + shift + ctrl + cmd - w : yabai -m window --display west; yabai -m display --focus west
+alt + shift + ctrl + cmd - e : yabai -m window --display east; yabai -m display --focus east
 
 # move window to prev and next space
-alt + shift + ctrl + cmd - p : yabai -m window --space prev;
-alt + shift + ctrl + cmd - n : yabai -m window --space next;
+alt + shift + ctrl + cmd - p : yabai -m window --space prev
+alt + shift + ctrl + cmd - n : yabai -m window --space next
 
-# move window and focus space
-alt + shift + ctrl + cmd - 1 : yabai -m window --space 1; yabai -m space --focus 1
-alt + shift + ctrl + cmd - 2 : yabai -m window --space 2; yabai -m space --focus 2
-alt + shift + ctrl + cmd - 3 : yabai -m window --space 3; yabai -m space --focus 3
-alt + shift + ctrl + cmd - 4 : yabai -m window --space 4; yabai -m space --focus 4
-alt + shift + ctrl + cmd - 5 : yabai -m window --space 5; yabai -m space --focus 5
-alt + shift + ctrl + cmd - 6 : yabai -m window --space 6; yabai -m space --focus 6
+# move window to space
+alt + shift + ctrl + cmd - 1 : yabai -m window --space 1 
+alt + shift + ctrl + cmd - 2 : yabai -m window --space 2 
+alt + shift + ctrl + cmd - 3 : yabai -m window --space 3 
+alt + shift + ctrl + cmd - 4 : yabai -m window --space 4 
+alt + shift + ctrl + cmd - 5 : yabai -m window --space 5 
+alt + shift + ctrl + cmd - 6 : yabai -m window --space 6 
+alt + shift + ctrl + cmd - 7 : yabai -m window --space 7 
+alt + shift + ctrl + cmd - 8 : yabai -m window --space 8 
+alt + shift + ctrl + cmd - 9 : yabai -m window --space 9
+alt + shift + ctrl + cmd - 0 : yabai -m window --space 9
 
 # toggle window fullscreen zoom
 alt + shift + ctrl + cmd - return : yabai -m window --toggle zoom-fullscreen

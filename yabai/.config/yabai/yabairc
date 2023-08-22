@@ -7,7 +7,7 @@ yabai -m config layout bsp
 yabai -m config window_placement second_child
 
 # yabai -m config window_border off
-yabai -m config active_window_border_color 0xFF32A14B
+# yabai -m config active_window_border_color 0xFF32A14B
 
 # padding set to 12px
 yabai -m config top_padding 12
@@ -29,7 +29,6 @@ yabai -m config mouse_action2 resize
 # when window is dropped in center of another window, swap them (on edges it will split it)
 yabai -m mouse_drop_action swap
 
-# App settings
 # Ignored apps
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^zoom\.us$" manage=off
@@ -45,8 +44,9 @@ yabai -m rule --add app="1Password" space=5
 
 # Right monitor: 6, 7, 8, 9, 10
 yabai -m rule --add app="Chrome" space=6
-yabai -m rule --add app="Figma" space=7
-yabai -m rule --add app="^(Slack|Discord)$" space=8
-yabai -m rule --add app="^(Firefox Developer Edition|Postman)" space=9
+yabai -m rule --add app="Firefox Developer Edition" space=7
+yabai -m rule --add app="Figma" space=8
+yabai -m rule --add app="^(Slack|Discord)$" space=9
+yabai -m rule --add app="Raindrop" space=10
 
 echo "yabai configuration loaded."
