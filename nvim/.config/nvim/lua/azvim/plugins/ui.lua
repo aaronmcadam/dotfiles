@@ -133,9 +133,9 @@ return {
       "Gvdiffsplit",
     },
     keys = {
-      { "<leader>gg", "<cmd>Git<CR>", desc = "Git" },
+      -- { "<leader>gg", "<cmd>Git<CR>", desc = "Git" },
       { "<leader>gb", "<cmd>GBrowse<CR>", desc = "Git Browse" },
-      { "<leader>gd", "<cmd>Gvdiffsplit<CR>", desc = "Git Diff" },
+      -- { "<leader>gd", "<cmd>Gvdiffsplit<CR>", desc = "Git Diff" },
       { "<leader>gp", "<cmd>G push<CR>", desc = "Git Push" },
       { "<leader>gr", "<cmd>Gread<CR>", desc = "Git Read" },
       { "<leader>gw", "<cmd>Gwrite<CR>", desc = "Git Write" },
@@ -156,6 +156,10 @@ return {
       "sindrets/diffview.nvim", -- optional
     },
     config = true,
+    keys = {
+      { "<leader>gg", "<cmd>Neogit<CR>", desc = "Git" },
+      { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Git Diff" },
+    },
   },
 
   -- indent guides for Neovim
