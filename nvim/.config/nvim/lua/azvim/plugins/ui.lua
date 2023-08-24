@@ -134,9 +134,9 @@ return {
     },
     keys = {
       -- { "<leader>gg", "<cmd>Git<CR>", desc = "Git" },
-      { "<leader>gb", "<cmd>GBrowse<CR>", desc = "Git Browse" },
+      { "<leader>gv", "<cmd>GBrowse<CR>", desc = "Git View in Browser" },
       -- { "<leader>gd", "<cmd>Gvdiffsplit<CR>", desc = "Git Diff" },
-      { "<leader>gp", "<cmd>G push<CR>", desc = "Git Push" },
+      -- { "<leader>gp", "<cmd>G push<CR>", desc = "Git Push" },
       { "<leader>gr", "<cmd>Gread<CR>", desc = "Git Read" },
       { "<leader>gw", "<cmd>Gwrite<CR>", desc = "Git Write" },
     },
@@ -145,8 +145,32 @@ return {
     "tpope/vim-rhubarb",
   },
   {
-    "lewis6991/gitsigns.nvim",
+    "ruifm/gitlinker.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     opts = {},
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufReadPre",
+    opts = function()
+      local C = {
+        on_attach = function(buffer)
+          local gs = package.loaded.gitsigns
+
+          local function map(mode, l, r, desc)
+            vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+          end
+
+          map("n", "]g", gs.next_hunk, "Next Hunk")
+          map("n", "[g", gs.prev_hunk, "Prev Hunk")
+          map("n", "<leader>gb", function()
+            gs.blame_line({ full = true })
+          end, "Blame Line")
+        end,
+      }
+
+      return C
+    end,
   },
   {
     "NeogitOrg/neogit",
@@ -159,6 +183,24 @@ return {
     keys = {
       { "<leader>gg", "<cmd>Neogit<CR>", desc = "Git" },
       { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Git Diff" },
+      { "<leader>gp", "<cmd>Neogit push<CR>", desc = "Git Push" },
+    },
+  },
+  -- Manage GitHub issues and PRs
+  {
+    "pwntester/octo.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "nvim-tree/nvim-web-devicons",
+    },
+    cmd = "Octo",
+    config = function()
+      require("octo").setup({ enable_builtin = true })
+    end,
+    keys = {
+      { "<leader>gh", "<cmd>Octo<CR>", desc = "Open Octo" },
+      { "<leader>gr", "<cmd>Octo pr create<CR>", desc = "Octo PR" },
     },
   },
 
@@ -220,19 +262,6 @@ return {
         desc = "Replace in files (Spectre)",
       },
     },
-  },
-
-  -- Manage GitHub issues and PRs
-  {
-    "pwntester/octo.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("octo").setup()
-    end,
   },
 
   -- Write Obsidian notes in neovim
