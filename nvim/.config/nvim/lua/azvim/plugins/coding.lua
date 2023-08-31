@@ -216,26 +216,6 @@ return {
     keys = require("azvim.plugins.configs.flash").keys,
   },
 
-  -- zen mode
-  {
-    "folke/zen-mode.nvim",
-    opts = {
-      plugins = {
-        -- this will change the font size on kitty when in zen mode
-        -- to make this work, you need to set the following kitty options:
-        -- - allow_remote_control socket-only
-        -- - listen_on unix:/tmp/kitty
-        kitty = {
-          enabled = true,
-          font = "+6",
-        },
-      },
-    },
-    keys = {
-      { "<leader>z", "<cmd>ZenMode<CR>", desc = "Toggle Zen Mode" },
-    },
-  },
-
   -- refactoring
   {
     "ThePrimeagen/refactoring.nvim",

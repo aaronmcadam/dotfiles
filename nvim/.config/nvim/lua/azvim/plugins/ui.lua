@@ -147,7 +147,10 @@ return {
   {
     "ruifm/gitlinker.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    opts = {},
+    opts = {
+      -- default mapping to call url generation with action_callback
+      mappings = "<leader>gy",
+    },
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -179,12 +182,16 @@ return {
       "nvim-telescope/telescope.nvim", -- optional
       "sindrets/diffview.nvim", -- optional
     },
-    config = true,
     keys = {
       { "<leader>gg", "<cmd>Neogit<CR>", desc = "Git" },
       { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Git Diff" },
       { "<leader>gp", "<cmd>Neogit push<CR>", desc = "Git Push" },
     },
+    config = function()
+      require("neogit").setup({
+        ignored_settings = {},
+      })
+    end,
   },
   -- Manage GitHub issues and PRs
   {
@@ -196,11 +203,14 @@ return {
     },
     cmd = "Octo",
     config = function()
-      require("octo").setup({ enable_builtin = true })
+      require("octo").setup({
+        enable_builtin = true,
+      })
     end,
     keys = {
       { "<leader>gh", "<cmd>Octo<CR>", desc = "Open Octo" },
-      { "<leader>gr", "<cmd>Octo pr create<CR>", desc = "Octo PR" },
+      { "<leader>gr", "<cmd>Octo pr create<CR>", desc = "Octo PR Create" },
+      { "<leader>gm", "<cmd>Octo pr merge squash delete<CR>", desc = "Octo PR Merge" },
     },
   },
 
@@ -277,5 +287,47 @@ return {
     opts = require("azvim.plugins.configs.obsidian").opts,
     config = require("azvim.plugins.configs.obsidian").setup,
     keys = require("azvim.plugins.configs.obsidian").keys,
+  },
+
+  -- Window resizing
+  {
+    "anuvyklack/windows.nvim",
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    },
+    config = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require("windows").setup()
+    end,
+    keys = {
+      {
+        "<leader>zz",
+        "<cmd>WindowsMaximize<CR>",
+        desc = "Maximize Window",
+      },
+      {
+        "<leader>zv",
+        "<cmd>WindowsMaximizeVertically<CR>",
+        desc = "Maximize Window Vertically",
+      },
+      {
+        "<leader>zh",
+        "<cmd>WindowsMaximizeHorizontally<CR>",
+        desc = "Maximize Window Horizontally",
+      },
+      {
+        "<leader>ze",
+        "<cmd>WindowsEqualize<CR>",
+        desc = "Equalize all Windows",
+      },
+      {
+        "<leader>zt",
+        "<cmd>WindowsToggleAutowidth<CR>",
+        desc = "Toggle Windows Auto-width",
+      },
+    },
   },
 }
