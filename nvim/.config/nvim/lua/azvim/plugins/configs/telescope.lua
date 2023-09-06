@@ -51,6 +51,11 @@ function M.keys()
     { "<leader>ff", M.project_files, desc = "Find Files" },
     { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "Find Buffers" },
     { "<leader>fh", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon Marks" },
+    {
+      "<leader>fs",
+      "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>",
+      desc = "Find Document Symbols",
+    },
     { "<leader>ft", "<cmd>lua require('telescope.builtin').live_grep()<CR>", desc = "Find Text" },
     {
       "<leader>fw",
