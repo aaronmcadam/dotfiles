@@ -209,8 +209,8 @@ return {
     end,
     keys = {
       { "<leader>gh", "<cmd>Octo<CR>", desc = "Open Octo" },
-      { "<leader>gr", "<cmd>Octo pr create<CR>", desc = "Octo PR Create" },
-      { "<leader>gm", "<cmd>Octo pr merge squash delete<CR>", desc = "Octo PR Merge" },
+      { "<leader>gc", "<cmd>Octo pr create<CR>", desc = "Octo Create PR" },
+      { "<leader>gm", "<cmd>Octo pr merge squash delete<CR>", desc = "Octo Merge PR" },
     },
   },
 
@@ -328,6 +328,15 @@ return {
         "<cmd>WindowsToggleAutowidth<CR>",
         desc = "Toggle Windows Auto-width",
       },
+    },
+  },
+
+  -- Improve vim habits
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {
+      max_count = 100,
     },
   },
 }
