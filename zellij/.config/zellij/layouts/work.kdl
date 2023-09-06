@@ -1,20 +1,31 @@
 layout {
-  tab name="work" {
+  default_tab_template {
     pane size=1 borderless=true {
       plugin location="zellij:tab-bar"
     }
-    pane
+    children
     pane size=2 borderless=true {
       plugin location="zellij:status-bar"
     }
   }
-  tab name="dotfiles" {
-    pane size=1 borderless=true {
-      plugin location="zellij:tab-bar"
-    }
-    pane
-    pane size=2 borderless=true {
-      plugin location="zellij:status-bar"
-    }
+
+  pane_template name="nvim" {
+    command "nvim"
+  }
+
+  tab name="obsidian" focus=true cwd="~/Documents/Remote Second Brain/"{
+    nvim
+  }
+
+  tab name="dotfiles" cwd="~/dotfiles" {
+    nvim
+  }
+
+  tab name="fe" cwd="~/Developer/superwave-fe" {
+    nvim
+  }
+
+  tab name="api" cwd="~/Developer/superwave-api"{
+    nvim
   }
 }
