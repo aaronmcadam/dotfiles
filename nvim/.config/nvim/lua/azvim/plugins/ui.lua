@@ -183,8 +183,11 @@ return {
       "sindrets/diffview.nvim", -- optional
     },
     keys = {
-      { "<leader>gg", "<cmd>Neogit<CR>", desc = "Git" },
-      { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Git Diff" },
+      { "<leader>gg", "<cmd>Neogit kind=vsplit<CR>", desc = "Git" },
+      { "<leader>gdd", "<cmd>DiffviewOpen<CR>", desc = "Git Diff Open" },
+      { "<leader>gdc", "<cmd>DiffviewClose<CR>", desc = "Git Diff Close" },
+      { "<leader>gdh", "<cmd>DiffviewFileHistory %<CR>", desc = "Git Diff Current File History" },
+      { "<leader>gda", "<cmd>DiffviewFileHistory<CR>", desc = "Git Diff All File History" },
       { "<leader>gp", "<cmd>Neogit push<CR>", desc = "Git Push" },
     },
     config = function()
