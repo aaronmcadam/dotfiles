@@ -133,16 +133,11 @@ return {
       "Gvdiffsplit",
     },
     keys = {
-      -- { "<leader>gg", "<cmd>Git<CR>", desc = "Git" },
       { "<leader>gv", "<cmd>GBrowse<CR>", desc = "Git View in Browser" },
       -- { "<leader>gd", "<cmd>Gvdiffsplit<CR>", desc = "Git Diff" },
-      -- { "<leader>gp", "<cmd>G push<CR>", desc = "Git Push" },
       { "<leader>gr", "<cmd>Gread<CR>", desc = "Git Read" },
       { "<leader>gw", "<cmd>Gwrite<CR>", desc = "Git Write" },
     },
-  },
-  {
-    "tpope/vim-rhubarb",
   },
   {
     "ruifm/gitlinker.nvim",
@@ -183,7 +178,7 @@ return {
       "sindrets/diffview.nvim", -- optional
     },
     keys = {
-      { "<leader>gg", "<cmd>Neogit kind=vsplit<CR>", desc = "Git" },
+      { "<leader>gg", "<cmd>Neogit<CR>", desc = "Git" },
       { "<leader>gdd", "<cmd>DiffviewOpen<CR>", desc = "Git Diff Open" },
       { "<leader>gdc", "<cmd>DiffviewClose<CR>", desc = "Git Diff Close" },
       { "<leader>gdh", "<cmd>DiffviewFileHistory %<CR>", desc = "Git Diff Current File History" },
