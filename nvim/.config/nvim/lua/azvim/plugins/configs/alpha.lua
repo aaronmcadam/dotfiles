@@ -12,18 +12,14 @@ function M.opts()
       ]]
   dashboard.section.header.val = vim.split(logo, "\n")
   dashboard.section.buttons.val = {
-    dashboard.button(
-      "f",
-      " " .. " Find file",
-      ":lua require('azvim.plugins.configs.telescope').project_files()<CR>"
-    ),
-    dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert<CR>"),
-    dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles<CR>"),
-    dashboard.button("t", " " .. " Find text", ":Telescope live_grep<CR>"),
-    dashboard.button("c", " " .. " Config", ":e $MYVIMRC<CR>"),
-    dashboard.button("u", "󰚰 " .. " Update plugins", ":Lazy! sync<CR>"),
-    dashboard.button("p", " " .. " View plugins", ":Lazy<CR>"),
-    dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+    dashboard.button("f", " " .. " Find file", "<cmd>lua require('telescope.builtin').find_files()<CR>"),
+    dashboard.button("n", " " .. " New file", "<cmd>ene <BAR> startinsert<CR>"),
+    dashboard.button("r", " " .. " Recent files", "<cmd>Telescope oldfiles<CR>"),
+    dashboard.button("t", " " .. " Find text", "<cmd>Telescope live_grep<CR>"),
+    dashboard.button("c", " " .. " Config", "<cmd>e $MYVIMRC<CR>"),
+    dashboard.button("u", "󰚰 " .. " Update plugins", "<cmd>Lazy! sync<CR>"),
+    dashboard.button("p", " " .. " View plugins", "<cmd>Lazy<CR>"),
+    dashboard.button("q", " " .. " Quit", "<cmd>qa<CR>"),
   }
 
   for _, button in ipairs(dashboard.section.buttons.val) do

@@ -25,6 +25,10 @@ layout {
     nvim
   }
 
+  tab name="integrations" cwd="~/Developer/superwave-integrations"{
+    nvim
+  }
+
   tab name="api" cwd="~/Developer/superwave-api"{
     nvim
   }

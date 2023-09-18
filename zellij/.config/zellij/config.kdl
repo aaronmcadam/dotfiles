@@ -1,36 +1,14 @@
 theme "catppuccin-mocha"
 
 // Keybindings inspired by https://github.com/zellij-org/zellij/blob/main/example/alt-centered-config.kdl
-
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
-// keybinds clear-defaults=true {
-//   normal {
-//     bind "Alt n" { NewPane; }
-//
-//     bind "Alt H" { MovePane "Left"; }
-//     bind "Alt L" { MovePane "Right"; }
-//     bind "Alt J" { MovePane "Down"; }
-//     bind "Alt K" { MovePane "Up"; }
-//
-//     bind "Alt Right" { GoToNextTab; }
-//     bind "Alt Left" { GoToPreviousTab; }
-//
-//     bind "Alt f" { ToggleFocusFullscreen; }
-//     bind "Alt 1" { GoToTab 1; SwitchToMode "Normal"; }
-//     bind "Alt 2" { GoToTab 2; SwitchToMode "Normal"; }
-//     bind "Alt 3" { GoToTab 3; SwitchToMode "Normal"; }
-//     bind "Alt 4" { GoToTab 4; SwitchToMode "Normal"; }
-//     bind "Alt 5" { GoToTab 5; SwitchToMode "Normal"; }
-//     bind "Alt 6" { GoToTab 6; SwitchToMode "Normal"; }
-//     bind "Alt 7" { GoToTab 7; SwitchToMode "Normal"; }
-//     bind "Alt w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
-//   }
-// }
 
 keybinds clear-defaults=true {
   normal {
     bind "Alt q" { Quit; }
     bind "Alt d" { Detach; }
+    bind "Alt f" { ToggleFocusFullscreen; }
+    bind "Alt e" { EditScrollback; SwitchToMode "normal"; }
     bind "Alt p" { SwitchToMode "pane"; }
     bind "Alt r" { SwitchToMode "resize"; }
     bind "Alt t" { SwitchToMode "tab"; }
@@ -41,7 +19,11 @@ keybinds clear-defaults=true {
     bind "Alt l" { MoveFocusOrTab "Right"; }
     bind "Alt j" { MoveFocus "Down"; }
     bind "Alt k" { MoveFocus "Up"; }
-    bind "Alt w" { ToggleFloatingPanes; }
+    bind "Alt H" { MovePane "Left"; }
+    bind "Alt L" { MovePane "Right"; }
+    bind "Alt J" { MovePane "Down"; }
+    bind "Alt K" { MovePane "Up"; }
+    bind "Alt w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
     bind "Alt +" { Resize "Increase"; }
     bind "Alt -" { Resize "Decrease"; }
     bind "Alt Right" { GoToNextTab; }
@@ -50,6 +32,11 @@ keybinds clear-defaults=true {
     bind "Alt 2" { GoToTab 2; SwitchToMode "Normal"; }
     bind "Alt 3" { GoToTab 3; SwitchToMode "Normal"; }
     bind "Alt 4" { GoToTab 4; SwitchToMode "Normal"; }
+    bind "Alt 5" { GoToTab 5; SwitchToMode "Normal"; }
+    bind "Alt 6" { GoToTab 6; SwitchToMode "Normal"; }
+    bind "Alt 7" { GoToTab 7; SwitchToMode "Normal"; }
+    bind "Alt 8" { GoToTab 8; SwitchToMode "Normal"; }
+    bind "Alt 9" { GoToTab 9; SwitchToMode "Normal"; }
   }
 
    pane {
@@ -82,15 +69,15 @@ keybinds clear-defaults=true {
     bind "Alt l" { MoveFocus "Right"; }
     bind "Alt j" { MoveFocus "Down"; }
     bind "Alt k" { MoveFocus "Up"; }
-    bind "1" { GoToTab 1; }
-    bind "2" { GoToTab 2; }
-    bind "3" { GoToTab 3; }
-    bind "4" { GoToTab 4; }
-    bind "5" { GoToTab 5; }
-    bind "6" { GoToTab 6; }
-    bind "7" { GoToTab 7; }
-    bind "8" { GoToTab 8; }
-    bind "9" { GoToTab 9; }
+    bind "1" { GoToTab 1; SwitchToMode "Normal"; }
+    bind "2" { GoToTab 2; SwitchToMode "Normal"; }
+    bind "3" { GoToTab 3; SwitchToMode "Normal"; }
+    bind "4" { GoToTab 4; SwitchToMode "Normal"; }
+    bind "5" { GoToTab 5; SwitchToMode "Normal"; }
+    bind "6" { GoToTab 6; SwitchToMode "Normal"; }
+    bind "7" { GoToTab 7; SwitchToMode "Normal"; }
+    bind "8" { GoToTab 8; SwitchToMode "Normal"; }
+    bind "9" { GoToTab 9; SwitchToMode "Normal"; }
     bind "Tab" { ToggleTab; }
   }
 

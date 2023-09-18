@@ -15,18 +15,19 @@ function M.setup()
     adapters = {
       require("neotest-go"),
       require("neotest-vitest"),
+      require("neotest-rspec"),
     },
   })
 end
 
 function M.keys()
   return {
-    -- { "<leader>tt", "<cmd>w<CR><cmd>lua require('neotest').run.run()<CR>", desc = "Test Nearest" },
     {
-      "<leader>tt",
+      "<leader>tf",
       "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>",
       desc = "Test File",
     },
+    { "<leader>tt", "<cmd>w<CR><cmd>lua require('neotest').run.run()<CR>", desc = "Test Nearest" },
     { "<leader>tl", "<cmd>w<CR><cmd>lua require('neotest').run.run_last()<CR>", desc = "Test Last" },
     {
       "<leader>to",

@@ -123,6 +123,7 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-neotest/neotest-go",
       "marilari88/neotest-vitest",
+      "olimorris/neotest-rspec",
     },
     config = require("azvim.plugins.configs.neotest").setup,
     keys = require("azvim.plugins.configs.neotest").keys,

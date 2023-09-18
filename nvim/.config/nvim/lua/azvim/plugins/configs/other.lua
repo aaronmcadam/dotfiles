@@ -4,6 +4,7 @@ function M.setup()
   require("other-nvim").setup({
     rememberBuffers = false,
     mappings = {
+      "rails",
       {
         pattern = "/(.*)/(.*).ts(.*)$",
         target = {

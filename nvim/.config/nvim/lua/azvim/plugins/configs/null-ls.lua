@@ -8,7 +8,8 @@ function M.setup()
       "gofumpt",
       "prettierd",
       "stylua",
-      "standardrb",
+      -- FIXME: Disabling this for now until I can configure it to apply to certain projects only
+      -- "standardrb",
       "markdownlint",
     },
     automatic_installation = true,
