@@ -10,6 +10,7 @@ function M.setup()
       "stylua",
       -- FIXME: Disabling this for now until I can configure it to apply to certain projects only
       -- "standardrb",
+      "rubocop",
       "markdownlint",
     },
     automatic_installation = true,

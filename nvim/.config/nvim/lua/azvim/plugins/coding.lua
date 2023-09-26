@@ -228,4 +228,18 @@ return {
       require("refactoring").setup()
     end,
   },
+
+  -- split/join
+  {
+    "Wansmer/treesj",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    cmd = { "TSJToggle", "TSJJoin", "TSJSplit" },
+    keys = {
+      {
+        "<leader>j",
+        "<cmd>TSJToggle<cr>",
+        desc = "Toggle Split/Join",
+      },
+    },
+  },
 }

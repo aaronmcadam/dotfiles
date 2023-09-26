@@ -22,7 +22,6 @@ function M.opts()
       ["<leader>g"] = { name = "+git" },
       ["<leader>k"] = { name = "+related" },
       ["<leader>l"] = { name = "+lsp" },
-      ["<leader>m"] = { name = "+markdown" },
       ["<leader>o"] = { name = "+obsidian" },
       ["<leader>ol"] = { name = "+link" },
       ["<leader>q"] = { name = "+quit" },

@@ -186,9 +186,7 @@ return {
       { "<leader>gp", "<cmd>Neogit push<CR>", desc = "Git Push" },
     },
     config = function()
-      require("neogit").setup({
-        ignored_settings = {},
-      })
+      require("neogit").setup()
     end,
   },
   -- Manage GitHub issues and PRs
@@ -329,12 +327,10 @@ return {
     },
   },
 
-  -- Improve vim habits
+  -- better quickfix
   {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    opts = {
-      max_count = 100,
-    },
+    "kevinhwang91/nvim-bqf",
+    event = "VeryLazy",
+    opts = {},
   },
 }
