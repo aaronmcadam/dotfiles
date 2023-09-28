@@ -241,5 +241,6 @@ return {
         desc = "Toggle Split/Join",
       },
     },
+    opts = { use_default_keymaps = false },
   },
 }

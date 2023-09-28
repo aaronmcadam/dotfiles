@@ -47,6 +47,7 @@ function M.setup()
   })
 
   telescope.load_extension("harpoon")
+  telescope.load_extension("undo")
 end
 
 function M.keys()
@@ -60,6 +61,7 @@ function M.keys()
       desc = "Find Document Symbols",
     },
     { "<leader>ft", "<cmd>lua require('telescope.builtin').live_grep()<CR>", desc = "Find Text" },
+    { "<leader>fu", "<cmd>Telescope undo<CR>", desc = "Find Undo Tree" },
     {
       "<leader>fw",
       "<cmd>lua require('telescope.builtin').grep_string()<CR>",

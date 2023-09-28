@@ -65,6 +65,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "ThePrimeagen/harpoon",
+      "debugloop/telescope-undo.nvim",
       {
         "echasnovski/mini.fuzzy",
         config = function()
@@ -213,6 +214,7 @@ return {
   -- indent guides for Neovim
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
     opts = require("azvim.plugins.configs.indent-blankline").opts,
   },
@@ -330,6 +332,7 @@ return {
   -- better quickfix
   {
     "kevinhwang91/nvim-bqf",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     event = "VeryLazy",
     opts = {},
   },
