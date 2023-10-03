@@ -19,6 +19,9 @@ function M.opts()
         "lazyterm",
       },
     },
+    scope = {
+      enabled = false,
+    },
   }
 end
 
