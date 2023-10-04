@@ -21,6 +21,7 @@ function M.setup()
       "lua_ls", -- LSP for Lua language
       "gopls", -- LSP for Go
       "solargraph", -- LSP for Ruby
+      "tailwindcss",
     },
   })
   mason_tool_installer.setup({

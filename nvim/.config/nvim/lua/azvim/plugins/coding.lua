@@ -95,7 +95,7 @@ return {
     },
   },
 
-  -- linting and formatting
+  -- formatting
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
@@ -111,6 +111,9 @@ return {
         yaml = { { "prettierd", "prettier" } },
         -- Use the "*" filetype to run formatters on all filetypes.
         ["*"] = { "codespell" },
+        -- Use the "_" filetype to run formatters on filetypes that don't
+        -- have other formatters configured.
+        ["_"] = { "trim_whitespace" },
       },
       format_on_save = {
         -- It's safer for now to turn off async formatting
@@ -118,11 +121,12 @@ return {
         -- updating the buffer text in unpredictable ways.
         async = false,
         lsp_fallback = true,
-        timeout_ms = 500,
+        timeout_ms = 1000,
       },
     },
   },
 
+  -- linting
   {
     "mfussenegger/nvim-lint",
     event = { "BufReadPre", "BufNewFile" },
@@ -145,6 +149,17 @@ return {
         end,
       })
     end,
+  },
+
+  -- color design tokens
+  {
+    "NvChad/nvim-colorizer.lua",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      user_default_options = {
+        tailwind = true,
+      },
+    },
   },
 
   -- better diagnostics list
