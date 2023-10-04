@@ -72,6 +72,7 @@ return {
     build = ":MasonUpdate",
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
       "neovim/nvim-lspconfig",
       { "j-hui/fidget.nvim", tag = "legacy" },
       "folke/neodev.nvim",
@@ -94,19 +95,59 @@ return {
     },
   },
 
-  -- diagnostics and formatting
+  -- linting and formatting
   {
-    "jay-babu/mason-null-ls.nvim",
+    "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
+    opts = {
+      formatters_by_ft = {
+        html = { { "prettierd", "prettier" } },
+        javascript = { { "prettierd", "prettier" } },
+        javascriptreact = { { "prettierd", "prettier" } },
+        json = { { "prettierd", "prettier" } },
+        lua = { "stylua" },
+        typescript = { { "prettierd", "prettier" } },
+        typescriptreact = { { "prettierd", "prettier" } },
+        yaml = { { "prettierd", "prettier" } },
+        -- Use the "*" filetype to run formatters on all filetypes.
+        ["*"] = { "codespell" },
+      },
+      format_on_save = {
+        -- It's safer for now to turn off async formatting
+        -- because it could lead to strange behavior such as
+        -- updating the buffer text in unpredictable ways.
+        async = false,
+        lsp_fallback = true,
+        timeout_ms = 500,
+      },
     },
-    -- build = "npm install -g @prettier/plugin-ruby prettier-plugin-erb",
-    config = require("azvim.plugins.configs.null-ls").setup,
   },
 
-  -- better diagnostics list and others
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local lint = require("lint")
+
+      lint.linters_by_ft = {
+        javascript = { "eslint_d" },
+        typescript = { "eslint_d" },
+        javascriptreact = { "eslint_d" },
+        typescriptreact = { "eslint_d" },
+      }
+
+      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+      vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+        group = lint_augroup,
+        callback = function()
+          lint.try_lint()
+        end,
+      })
+    end,
+  },
+
+  -- better diagnostics list
   {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },

@@ -4,14 +4,32 @@ function M.setup()
   -- Set up Mason before anything else
   local mason = require("mason")
   local mason_lspconfig = require("mason-lspconfig")
+  local mason_tool_installer = require("mason-tool-installer")
   local lspconfig = require("lspconfig")
 
-  mason.setup()
+  mason.setup({
+    ui = {
+      icons = {
+        package_installed = "✓",
+        package_pending = "➜",
+        package_uninstalled = "✗",
+      },
+    },
+  })
   mason_lspconfig.setup({
     ensure_installed = {
       "lua_ls", -- LSP for Lua language
       "gopls", -- LSP for Go
       "solargraph", -- LSP for Ruby
+    },
+  })
+  mason_tool_installer.setup({
+    ensure_installed = {
+      "codespell",
+      "eslint_d",
+      "prettierd",
+      "rubocop",
+      "stylua",
     },
   })
 
