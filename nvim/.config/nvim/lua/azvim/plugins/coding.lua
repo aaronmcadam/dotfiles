@@ -2,6 +2,9 @@ return {
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     config = require("azvim.plugins.configs.treesitter").setup,

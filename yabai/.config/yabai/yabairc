@@ -47,6 +47,6 @@ yabai -m rule --add app="Chrome" space=6
 yabai -m rule --add app="Firefox Developer Edition" space=7
 yabai -m rule --add app="Figma" space=8
 yabai -m rule --add app="^(Slack|Discord)$" space=9
-yabai -m rule --add app="Raindrop" space=10
+yabai -m rule --add app="Chromium" space=10
 
 echo "yabai configuration loaded."
