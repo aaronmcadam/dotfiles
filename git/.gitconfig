@@ -1,10 +1,11 @@
-[user]
+[user]gitco
 	email = aaron@aaronmcadam.com
 	name = Aaron McAdam
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [diff]
   colorMoved = default
+  external = difft
 [difftool]
 	prompt = false
 [merge]
@@ -12,7 +13,7 @@
 [mergetool]
 	prompt = false
 [core]
-	pager = delta
+	pager = difftastic
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -27,13 +28,6 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-[delta]
-  plus-style = "syntax #012800"
-  minus-style = "syntax #340001"
-  syntax-theme = Monokai Extended
-  navigate = true
-[interactive]
-  diffFilter = delta --color-only
 [push]
   autoSetupRemote = true
 [pull]
