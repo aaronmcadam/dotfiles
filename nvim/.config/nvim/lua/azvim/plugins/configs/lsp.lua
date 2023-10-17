@@ -22,6 +22,7 @@ function M.setup()
       "gopls", -- LSP for Go
       "solargraph", -- LSP for Ruby
       "tailwindcss",
+      "eslint", -- LSP for ESLint code actions
     },
   })
   mason_tool_installer.setup({
@@ -150,23 +151,24 @@ function M.on_attach(client, bufnr)
 
   local lsp_map = require("azvim.helpers.keys").lsp_map
 
-  lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
+  lsp_map("gd", vim.lsp.buf.definition, bufnr, "Go to Definition")
+  lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Go to Declaration")
+  lsp_map("gI", vim.lsp.buf.implementation, bufnr, "Go to Implementation")
+  lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Go to References")
+  lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
+
   lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
   lsp_map("<leader>ld", vim.lsp.buf.type_definition, bufnr, "Type definition")
   lsp_map("<leader>lj", vim.diagnostic.goto_next, bufnr, "Go to next diagnostic")
   lsp_map("<leader>lk", vim.diagnostic.goto_prev, bufnr, "Go to previous diagnostic")
+  lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
   lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
-
-  lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition")
-  lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
-  lsp_map("gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
-  lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
-  lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
 
   -- TypeScript specific keymaps
   -- stylua: ignore
   if client.name == "typescript-tools" then
-    lsp_map("<leader>lg", function() vim.cmd("TSToolsGoToSourceDefinition") end, bufnr, "Go to source definition")
+    lsp_map("<leader>ld", function() vim.cmd("TSToolsGoToSourceDefinition") end, bufnr, "Go to source definition")
+    lsp_map("<leader>lf", function() vim.cmd("TSToolsRenameFile") end, bufnr, "Rename file")
     lsp_map("<leader>li", function() vim.cmd("TSToolsAddMissingImports") end, bufnr, "Add missing imports")
     lsp_map("<leader>lo", function() vim.cmd("TSToolsOrganizeImports") end, bufnr, "Organize imports")
     lsp_map("<leader>lu", function() vim.cmd("TSToolsRemoveUnused") end, bufnr, "Remove unused statements")
