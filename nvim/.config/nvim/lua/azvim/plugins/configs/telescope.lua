@@ -36,6 +36,7 @@ function M.setup()
         theme = "dropdown",
       },
       live_grep = {
+        theme = "dropdown",
         additional_args = function()
           -- Dotfiles are getting hidden because they're technically hidden files.
           -- If we set ripgrep to include hidden files, we see too many files that we don't care about.
@@ -43,6 +44,13 @@ function M.setup()
           -- We can filter out git repos though.
           return { "--hidden", "-g", "!.git" }
         end,
+      },
+      lsp_references = {
+        theme = "dropdown",
+        fname_width = 100,
+      },
+      oldfiles = {
+        theme = "dropdown",
       },
     },
   })
