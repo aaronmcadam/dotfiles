@@ -16,7 +16,11 @@ function M.opts()
     dashboard.button("n", " " .. " New file", "<cmd>ene <BAR> startinsert<CR>"),
     dashboard.button("r", " " .. " Recent files", "<cmd>Telescope oldfiles<CR>"),
     dashboard.button("t", " " .. " Find text", "<cmd>Telescope live_grep<CR>"),
-    dashboard.button("c", " " .. " Config", "<cmd>e $MYVIMRC<CR>"),
+    dashboard.button(
+      "c",
+      " " .. " Config",
+      "<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })<CR>"
+    ),
     dashboard.button("u", "󰚰 " .. " Update plugins", "<cmd>Lazy! sync<CR>"),
     dashboard.button("p", " " .. " View plugins", "<cmd>Lazy<CR>"),
     dashboard.button("q", " " .. " Quit", "<cmd>qa<CR>"),
