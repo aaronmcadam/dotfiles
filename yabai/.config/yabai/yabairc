@@ -43,10 +43,10 @@ yabai -m rule --add app="^(Spotify|Music)$" space=4
 yabai -m rule --add app="1Password" space=5
 
 # Right monitor: 6, 7, 8, 9, 10
-yabai -m rule --add app="Chrome" space=6
+yabai -m rule --add app="^(Arc|Chrome)$" space=6
 yabai -m rule --add app="Firefox Developer Edition" space=7
 yabai -m rule --add app="Figma" space=8
-yabai -m rule --add app="^(Slack|Discord)$" space=9
+yabai -m rule --add app="^(Discord|Slack)$" space=9
 yabai -m rule --add app="Chromium" space=10
 
 echo "yabai configuration loaded."
