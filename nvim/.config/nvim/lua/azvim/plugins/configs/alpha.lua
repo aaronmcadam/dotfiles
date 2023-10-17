@@ -12,10 +12,22 @@ function M.opts()
       ]]
   dashboard.section.header.val = vim.split(logo, "\n")
   dashboard.section.buttons.val = {
-    dashboard.button("f", " " .. " Find file", "<cmd>lua require('telescope.builtin').find_files()<CR>"),
+    dashboard.button(
+      "f",
+      " " .. " Find file",
+      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyFilesPicker({ picker = 'find_files' })<CR>"
+    ),
     dashboard.button("n", " " .. " New file", "<cmd>ene <BAR> startinsert<CR>"),
-    dashboard.button("r", " " .. " Recent files", "<cmd>Telescope oldfiles<CR>"),
-    dashboard.button("t", " " .. " Find text", "<cmd>Telescope live_grep<CR>"),
+    dashboard.button(
+      "r",
+      " " .. " Recent files",
+      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyFilesPicker({ picker = 'oldfiles' })<CR>"
+    ),
+    dashboard.button(
+      "t",
+      " " .. " Find text",
+      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyGrepPicker({ picker = 'live_grep' })<CR>"
+    ),
     dashboard.button(
       "c",
       " " .. " Config",

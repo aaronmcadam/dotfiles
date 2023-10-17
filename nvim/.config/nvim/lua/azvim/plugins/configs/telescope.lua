@@ -61,7 +61,11 @@ end
 
 function M.keys()
   return {
-    { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<CR>", desc = "Find Files" },
+    {
+      "<leader>ff",
+      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyFilesPicker({ picker = 'find_files' })<CR>",
+      desc = "Find Files",
+    },
     { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "Find Buffers" },
     { "<leader>fh", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon Marks" },
     {
@@ -69,11 +73,15 @@ function M.keys()
       "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>",
       desc = "Find Document Symbols",
     },
-    { "<leader>ft", "<cmd>lua require('telescope.builtin').live_grep()<CR>", desc = "Find Text" },
+    {
+      "<leader>ft",
+      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyGrepPicker({ picker = 'live_grep' })<CR>",
+      desc = "Find Text",
+    },
     { "<leader>fu", "<cmd>Telescope undo<CR>", desc = "Find Undo Tree" },
     {
       "<leader>fw",
-      "<cmd>lua require('telescope.builtin').grep_string()<CR>",
+      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyGrepPicker({ picker = 'grep_string' })<CR>",
       desc = "Find Word Under Cursor",
     },
     { "gs", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", desc = "Jump to definition" },
