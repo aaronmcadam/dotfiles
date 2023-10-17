@@ -15,6 +15,7 @@ function M.setup()
       },
       file_sorter = sorter,
       generic_sorter = sorter,
+      path_display = { "smart" },
     },
     pickers = {
       find_files = {
