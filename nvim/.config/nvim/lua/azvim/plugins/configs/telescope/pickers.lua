@@ -1,3 +1,5 @@
+-- Taken from https://github.com/nvim-telescope/telescope.nvim/issues/2014#issuecomment-1690573382
+
 -- Declare the module
 local telescopePickers = {}
 
