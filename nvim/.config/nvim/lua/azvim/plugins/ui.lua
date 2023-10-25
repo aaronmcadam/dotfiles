@@ -66,6 +66,7 @@ return {
       "nvim-lua/plenary.nvim",
       "ThePrimeagen/harpoon",
       "debugloop/telescope-undo.nvim",
+      "kkharji/sqlite.lua",
       { "prochri/telescope-all-recent.nvim", opts = {} },
       {
         "echasnovski/mini.fuzzy",
