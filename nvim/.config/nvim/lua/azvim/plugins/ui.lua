@@ -208,8 +208,15 @@ return {
     end,
     keys = {
       { "<leader>gh", "<cmd>Octo<CR>", desc = "Open Octo" },
-      { "<leader>gc", "<cmd>Octo pr create<CR>", desc = "Octo Create PR" },
-      { "<leader>gm", "<cmd>Octo pr merge squash delete<CR>", desc = "Octo Merge PR" },
+      { "<leader>pb", "<cmd>Octo pr browser<CR>", desc = "Octo PR open in browser" },
+      { "<leader>pc", "<cmd>Octo pr create<CR>", desc = "Octo PR create" },
+      { "<leader>pd", "<cmd>Octo pr diff<CR>", desc = "Octo PR diff" },
+      { "<leader>pf", "<cmd>Octo pr changes<CR>", desc = "Octo PR list changed files" },
+      { "<leader>pl", "<cmd>Octo pr commits<CR>", desc = "Octo PR list commits" },
+      { "<leader>pm", "<cmd>Octo pr merge squash delete<CR>", desc = "Octo PR merge" },
+      { "<leader>pp", "<cmd>Octo pr list<CR>", desc = "Octo PR list all" },
+      { "<leader>pu", "<cmd>Octo pr url<CR>", desc = "Octo PR copy URL" },
+      { "<leader>px", "<cmd>Octo pr create draft<CR>", desc = "Octo PR create draft" },
     },
   },
 
