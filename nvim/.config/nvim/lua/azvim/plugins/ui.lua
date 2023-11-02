@@ -103,6 +103,7 @@ return {
       background_colour = "#1e222a",
       timeout = 3000,
       stages = "fade",
+      top_down = false,
       max_width = function()
         return math.ceil(math.max(vim.opt.columns:get() / 3, 10))
       end,
