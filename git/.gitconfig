@@ -12,8 +12,6 @@
   conflictstyle = diff3
 [mergetool]
 	prompt = false
-[core]
-	pager = difftastic
 [color]
 	ui = true
 [color "diff-highlight"]
