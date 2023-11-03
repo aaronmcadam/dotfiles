@@ -13,10 +13,6 @@ layout {
     command "nvim"
   }
 
-  tab name="obsidian" focus=true cwd="~/Documents/Remote Second Brain/"{
-    nvim
-  }
-
   tab name="dotfiles" cwd="~/dotfiles" {
     nvim
   }

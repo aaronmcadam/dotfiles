@@ -209,15 +209,15 @@ return {
     end,
     keys = {
       { "<leader>gh", "<cmd>Octo<CR>", desc = "Open Octo" },
-      { "<leader>pb", "<cmd>Octo pr browser<CR>", desc = "Octo PR open in browser" },
-      { "<leader>pc", "<cmd>Octo pr create<CR>", desc = "Octo PR create" },
-      { "<leader>pd", "<cmd>Octo pr diff<CR>", desc = "Octo PR diff" },
-      { "<leader>pf", "<cmd>Octo pr changes<CR>", desc = "Octo PR list changed files" },
-      { "<leader>pl", "<cmd>Octo pr commits<CR>", desc = "Octo PR list commits" },
-      { "<leader>pm", "<cmd>Octo pr merge squash delete<CR>", desc = "Octo PR merge" },
-      { "<leader>pp", "<cmd>Octo pr list<CR>", desc = "Octo PR list all" },
-      { "<leader>pu", "<cmd>Octo pr url<CR>", desc = "Octo PR copy URL" },
-      { "<leader>px", "<cmd>Octo pr create draft<CR>", desc = "Octo PR create draft" },
+      { "<leader>ob", "<cmd>Octo pr browser<CR>", desc = "Octo PR open in browser" },
+      { "<leader>oc", "<cmd>Octo pr create<CR>", desc = "Octo PR create" },
+      { "<leader>od", "<cmd>Octo pr diff<CR>", desc = "Octo PR diff" },
+      { "<leader>of", "<cmd>Octo pr changes<CR>", desc = "Octo PR list changed files" },
+      { "<leader>ol", "<cmd>Octo pr commits<CR>", desc = "Octo PR list commits" },
+      { "<leader>om", "<cmd>Octo pr merge squash delete<CR>", desc = "Octo PR merge" },
+      { "<leader>oo", "<cmd>Octo pr list<CR>", desc = "Octo PR list all" },
+      { "<leader>ox", "<cmd>Octo pr create draft<CR>", desc = "Octo PR create draft" },
+      { "<leader>oy", "<cmd>Octo pr url<CR>", desc = "Octo PR copy URL" },
     },
   },
 
@@ -280,21 +280,6 @@ return {
         desc = "Replace in files (Spectre)",
       },
     },
-  },
-
-  -- Write Obsidian notes in neovim
-  {
-    "epwalsh/obsidian.nvim",
-    lazy = true,
-    event = { "BufReadPre " .. vim.fn.expand("~") .. "/Documents/Remote Second Brain/**.md" },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-      "nvim-telescope/telescope.nvim",
-    },
-    opts = require("azvim.plugins.configs.obsidian").opts,
-    config = require("azvim.plugins.configs.obsidian").setup,
-    keys = require("azvim.plugins.configs.obsidian").keys,
   },
 
   -- Window resizing
