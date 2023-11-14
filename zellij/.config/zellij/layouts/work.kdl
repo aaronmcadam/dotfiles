@@ -17,15 +17,15 @@ layout {
     nvim
   }
 
-  tab name="fe" cwd="~/Developer/superwave-fe" {
+  tab name="fe" cwd="~/Developer/hopin/superwave-fe" {
     nvim
   }
 
-  tab name="integrations" cwd="~/Developer/superwave-integrations"{
+  tab name="integrations" cwd="~/Developer/hopin/superwave-integrations"{
     nvim
   }
 
-  tab name="api" cwd="~/Developer/superwave-api"{
+  tab name="api" cwd="~/Developer/hopin/superwave-api"{
     nvim
   }
 }
