@@ -66,13 +66,14 @@ return {
       "nvim-lua/plenary.nvim",
       "ThePrimeagen/harpoon",
       "debugloop/telescope-undo.nvim",
-      "kkharji/sqlite.lua",
-      { "prochri/telescope-all-recent.nvim", opts = {} },
+      "natecraddock/telescope-zf-native.nvim",
       {
-        "echasnovski/mini.fuzzy",
-        config = function()
-          require("mini.fuzzy").setup()
-        end,
+        "danielfalk/smart-open.nvim",
+        branch = "0.2.x",
+        dependencies = {
+          "kkharji/sqlite.lua",
+          "nvim-telescope/telescope-fzy-native.nvim",
+        },
       },
     },
     cmd = "Telescope",
@@ -97,33 +98,34 @@ return {
   },
 
   -- Better `vim.notify()`
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      background_colour = "#1e222a",
-      timeout = 3000,
-      stages = "fade",
-      top_down = false,
-      max_width = function()
-        return math.ceil(math.max(vim.opt.columns:get() / 3, 10))
-      end,
-      max_height = function()
-        return math.ceil(math.max(vim.opt.lines:get() / 3, 4))
-      end,
-    },
-    keys = {
-      {
-        "<leader>un",
-        function()
-          require("notify").dismiss({ silent = true, pending = true })
-        end,
-        desc = "Dismiss all Notifications",
-      },
-    },
-    init = function()
-      vim.notify = require("notify")
-    end,
-  },
+  -- Disabling this for now because it annoys me when the notifications block my view
+  -- {
+  --   "rcarriga/nvim-notify",
+  --   opts = {
+  --     background_colour = "#1e222a",
+  --     timeout = 3000,
+  --     stages = "fade",
+  --     top_down = false,
+  --     max_width = function()
+  --       return math.ceil(math.max(vim.opt.columns:get() / 3, 10))
+  --     end,
+  --     max_height = function()
+  --       return math.ceil(math.max(vim.opt.lines:get() / 3, 4))
+  --     end,
+  --   },
+  --   keys = {
+  --     {
+  --       "<leader>un",
+  --       function()
+  --         require("notify").dismiss({ silent = true, pending = true })
+  --       end,
+  --       desc = "Dismiss all Notifications",
+  --     },
+  --   },
+  --   init = function()
+  --     vim.suppressnotify = require("notify")
+  --   end,
+  -- },
 
   -- Git
   {
@@ -251,7 +253,7 @@ return {
     opts = require("azvim.plugins.configs.noice").opts,
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      -- "rcarriga/nvim-notify",
     },
   },
 
@@ -288,12 +290,8 @@ return {
     "anuvyklack/windows.nvim",
     dependencies = {
       "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim",
     },
     config = function()
-      vim.o.winwidth = 10
-      vim.o.winminwidth = 10
-      vim.o.equalalways = false
       require("windows").setup()
     end,
     keys = {

@@ -15,19 +15,11 @@ function M.opts()
     dashboard.button(
       "f",
       " " .. " Find file",
-      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyFilesPicker({ picker = 'find_files' })<CR>"
+      "<cmd>lua require('telescope').extensions.smart_open.smart_open()<CR>"
     ),
     dashboard.button("n", " " .. " New file", "<cmd>ene <BAR> startinsert<CR>"),
-    dashboard.button(
-      "r",
-      " " .. " Recent files",
-      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyFilesPicker({ picker = 'oldfiles' })<CR>"
-    ),
-    dashboard.button(
-      "t",
-      " " .. " Find text",
-      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyGrepPicker({ picker = 'live_grep' })<CR>"
-    ),
+    dashboard.button("r", " " .. " Recent files", "<cmd>lua require('telescope.builtin').oldfiles()<CR>"),
+    dashboard.button("t", " " .. " Find text", "<cmd>lua require('telescope.builtin').live_grep()<CR>"),
     dashboard.button(
       "c",
       " " .. " Config",

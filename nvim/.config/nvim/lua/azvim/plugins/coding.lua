@@ -113,7 +113,7 @@ return {
         typescriptreact = { { "prettierd", "prettier" } },
         yaml = { { "prettierd", "prettier" } },
         -- Use the "*" filetype to run formatters on all filetypes.
-        ["*"] = { "codespell" },
+        -- ["*"] = { "codespell" }, -- this is incorrectly respelling Vitest hooks (after*)
         -- Use the "_" filetype to run formatters on filetypes that don't
         -- have other formatters configured.
         ["_"] = { "trim_whitespace" },

@@ -3,7 +3,6 @@ local M = {}
 function M.setup()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
-  local sorter = require("mini.fuzzy").get_telescope_sorter
 
   telescope.setup({
     defaults = {
@@ -13,8 +12,6 @@ function M.setup()
           ["<C-j>"] = actions.move_selection_next, -- move to next result
         },
       },
-      file_sorter = sorter,
-      generic_sorter = sorter,
       path_display = { "smart" },
     },
     pickers = {
@@ -53,17 +50,37 @@ function M.setup()
         theme = "dropdown",
       },
     },
+    extensions = {
+      ["zf-native"] = {
+        file = { -- options for sorting file-like items
+          enable = true, -- override default telescope file sorter
+          highlight_results = true, -- highlight matching text in results
+          match_filename = true, -- enable zf filename match priority
+        },
+        generic = { -- options for sorting all other items
+          enable = true, -- override default telescope generic item sorter
+          highlight_results = true, -- highlight matching text in results
+          match_filename = false, -- disable zf filename match priority
+        },
+      },
+      smart_open = {
+        cwd_only = true,
+        filename_first = true,
+      },
+    },
   })
 
   telescope.load_extension("harpoon")
+  telescope.load_extension("smart_open")
   telescope.load_extension("undo")
+  telescope.load_extension("zf-native")
 end
 
 function M.keys()
   return {
     {
       "<leader>ff",
-      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyFilesPicker({ picker = 'find_files' })<CR>",
+      "<cmd>lua require('telescope').extensions.smart_open.smart_open()<CR>",
       desc = "Find Files",
     },
     { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "Find Buffers" },
@@ -75,13 +92,13 @@ function M.keys()
     },
     {
       "<leader>ft",
-      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyGrepPicker({ picker = 'live_grep' })<CR>",
+      "<cmd>lua require('telescope.builtin').live_grep()<CR>",
       desc = "Find Text",
     },
     { "<leader>fu", "<cmd>Telescope undo<CR>", desc = "Find Undo Tree" },
     {
       "<leader>fw",
-      "<cmd>lua require('azvim.plugins.configs.telescope.pickers').prettyGrepPicker({ picker = 'grep_string' })<CR>",
+      "<cmd>lua require('telescope.builtin').grep_string()<CR>",
       desc = "Find Word Under Cursor",
     },
     { "gs", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", desc = "Jump to definition" },
