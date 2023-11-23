@@ -18,7 +18,6 @@ function M.opts()
       "<cmd>lua require('telescope').extensions.smart_open.smart_open()<CR>"
     ),
     dashboard.button("n", " " .. " New file", "<cmd>ene <BAR> startinsert<CR>"),
-    dashboard.button("r", " " .. " Recent files", "<cmd>lua require('telescope.builtin').oldfiles()<CR>"),
     dashboard.button("t", " " .. " Find text", "<cmd>lua require('telescope.builtin').live_grep()<CR>"),
     dashboard.button(
       "c",
