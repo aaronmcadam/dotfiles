@@ -95,11 +95,6 @@ return {
     },
     opts = {
       on_attach = require("azvim.plugins.configs.lsp").on_attach,
-      settings = {
-        jsx_close_tag = {
-          enable = true,
-        },
-      },
     },
   },
 
