@@ -20,6 +20,7 @@ function M.setup()
     ensure_installed = {
       "lua_ls", -- LSP for Lua language
       "gopls", -- LSP for Go
+      "clangd", -- LSP for C/C++
       "solargraph", -- LSP for Ruby
       "tailwindcss",
       "eslint", -- LSP for ESLint code actions
@@ -27,6 +28,7 @@ function M.setup()
   })
   mason_tool_installer.setup({
     ensure_installed = {
+      "codelldb", -- Debugger for C/C++
       "codespell",
       "eslint_d",
       "prettierd",
@@ -84,6 +86,19 @@ function M.setup()
             },
           },
         },
+      })
+    end,
+    ["clangd"] = function()
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+        on_attach = M.on_attach,
+        cmd = { "clangd", "--background-index", "--clang-tidy" },
+      })
+    end,
+    ["cmake"] = function()
+      lspconfig.cmake.setup({
+        capabilities = capabilities,
+        on_attach = M.on_attach,
       })
     end,
     ["solargraph"] = function()
