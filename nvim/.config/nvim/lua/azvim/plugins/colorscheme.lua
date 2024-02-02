@@ -31,6 +31,7 @@ return {
       custom_highlights = function(colors)
         return {
           LineNr = { fg = colors.overlay0 },
+          PackageInfoOutdatedVersion = { fg = colors.peach },
         }
       end,
     },

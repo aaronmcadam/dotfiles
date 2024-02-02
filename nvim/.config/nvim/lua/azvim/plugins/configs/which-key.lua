@@ -22,6 +22,7 @@ function M.opts()
       ["<leader>g"] = { name = "+git" },
       ["<leader>k"] = { name = "+related" },
       ["<leader>l"] = { name = "+lsp" },
+      ["<leader>lp"] = { name = "+packages" },
       ["<leader>o"] = { name = "+octo-pr" },
       ["<leader>q"] = { name = "+quit" },
       ["<leader>t"] = { name = "+test" },

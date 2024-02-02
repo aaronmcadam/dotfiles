@@ -88,6 +88,10 @@ function M.opts()
             removed = icons.git.removed,
           },
         },
+        {
+          require("package-info").get_status,
+          color = helpers.fg("Statement"),
+        },
       },
       lualine_y = {
         { "progress", separator = " ", padding = { left = 1, right = 0 } },

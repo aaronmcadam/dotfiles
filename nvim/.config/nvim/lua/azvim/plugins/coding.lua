@@ -112,8 +112,6 @@ return {
         typescript = { { "prettierd", "prettier" } },
         typescriptreact = { { "prettierd", "prettier" } },
         yaml = { { "prettierd", "prettier" } },
-        -- Use the "*" filetype to run formatters on all filetypes.
-        -- ["*"] = { "codespell" }, -- this is incorrectly respelling Vitest hooks (after*)
         -- Use the "_" filetype to run formatters on filetypes that don't
         -- have other formatters configured.
         ["_"] = { "trim_whitespace" },
@@ -301,5 +299,53 @@ return {
       },
     },
     opts = { use_default_keymaps = false },
+  },
+
+  -- package.json info
+  {
+    "vuki656/package-info.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    config = function()
+      local colors = require("catppuccin.palettes").get_palette("mocha")
+
+      require("package-info").setup({
+        -- autostart = false,
+        package_manager = "pnpm",
+        colors = {
+          outdated = colors.peach,
+        },
+        hide_up_to_date = true,
+      })
+    end,
+    keys = {
+      { "<leader>lpt", "<cmd>lua require('package-info').toggle()<cr>", desc = "Toggle" },
+      { "<leader>lpd", "<cmd>lua require('package-info').delete()<cr>", desc = "Delete package" },
+      { "<leader>lpu", "<cmd>lua require('package-info').update()<cr>", desc = "Update package" },
+      { "<leader>lpi", "<cmd>lua require('package-info').install()<cr>", desc = "Install package" },
+      { "<leader>lpc", "<cmd>lua require('package-info').change_version()<cr>", desc = "Change package version" },
+    },
+  },
+
+  -- c lang
+  { -- This plugin
+    "Zeioth/compiler.nvim",
+    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    dependencies = { "stevearc/overseer.nvim" },
+    opts = {},
+    keys = {
+      { "<leader>lc", "<cmd>CompilerOpen<cr>", desc = "Toggle Compiler" },
+    },
+  },
+  { -- The task runner we use
+    "stevearc/overseer.nvim",
+    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    opts = {
+      task_list = {
+        direction = "bottom",
+        min_height = 25,
+        max_height = 25,
+        default_detail = 1,
+      },
+    },
   },
 }

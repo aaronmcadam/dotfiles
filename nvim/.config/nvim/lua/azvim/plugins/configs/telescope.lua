@@ -49,6 +49,9 @@ function M.setup()
       oldfiles = {
         theme = "dropdown",
       },
+      package_info = {
+        theme = "dropdown",
+      },
     },
     extensions = {
       ["zf-native"] = {
@@ -71,6 +74,7 @@ function M.setup()
   })
 
   telescope.load_extension("harpoon")
+  telescope.load_extension("package_info")
   telescope.load_extension("smart_open")
   telescope.load_extension("undo")
   telescope.load_extension("zf-native")

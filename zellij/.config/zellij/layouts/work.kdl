@@ -20,12 +20,4 @@ layout {
   tab name="fe" cwd="~/Developer/hopin/superwave-fe" {
     nvim
   }
-
-  tab name="integrations" cwd="~/Developer/hopin/superwave-integrations"{
-    nvim
-  }
-
-  tab name="api" cwd="~/Developer/hopin/superwave-api"{
-    nvim
-  }
 }
