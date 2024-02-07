@@ -1,6 +1,5 @@
 {
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
-  "LeetBuddy.nvim": { "branch": "main", "commit": "8eecdd907a17a7f96dde9e7f072c45926b8d34c8" },
   "LuaSnip": { "branch": "master", "commit": "2dbef19461198630b3d7c39f414d09fb07d1fdd2" },
   "alpha-nvim": { "branch": "main", "commit": "1356b9ef31b985d541d94314f2cf73c61124bf1d" },
   "catppuccin": { "branch": "main", "commit": "c2034f7b549152e5cc757820426341ea5000bc7a" },
@@ -8,7 +7,7 @@
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
-  "compiler.nvim": { "branch": "main", "commit": "84ba4ed59d0d22bdee5480f2e11f9ed54b084809" },
+  "compiler.nvim": { "branch": "main", "commit": "4107218d25fd424203f81c60e5249144dc1e5fde" },
   "conform.nvim": { "branch": "master", "commit": "4588008a7c5b57fbff97fdfb529c059235cdc7ee" },
   "copilot-cmp": { "branch": "master", "commit": "72fbaa03695779f8349be3ac54fa8bd77eed3ee3" },
   "copilot.lua": { "branch": "master", "commit": "71382c2efec76647287d46a4fbe0ec8c9809e2ee" },

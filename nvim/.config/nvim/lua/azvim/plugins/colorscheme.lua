@@ -21,6 +21,7 @@ return {
         neotest = true,
         notify = true,
         octo = true,
+        overseer = true,
         telescope = {
           enabled = true,
           style = "nvchad",

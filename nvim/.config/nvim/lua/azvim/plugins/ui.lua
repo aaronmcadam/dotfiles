@@ -97,36 +97,6 @@ return {
     keys = require("azvim.plugins.configs.other").keys,
   },
 
-  -- Better `vim.notify()`
-  -- Disabling this for now because it annoys me when the notifications block my view
-  -- {
-  --   "rcarriga/nvim-notify",
-  --   opts = {
-  --     background_colour = "#1e222a",
-  --     timeout = 3000,
-  --     stages = "fade",
-  --     top_down = false,
-  --     max_width = function()
-  --       return math.ceil(math.max(vim.opt.columns:get() / 3, 10))
-  --     end,
-  --     max_height = function()
-  --       return math.ceil(math.max(vim.opt.lines:get() / 3, 4))
-  --     end,
-  --   },
-  --   keys = {
-  --     {
-  --       "<leader>un",
-  --       function()
-  --         require("notify").dismiss({ silent = true, pending = true })
-  --       end,
-  --       desc = "Dismiss all Notifications",
-  --     },
-  --   },
-  --   init = function()
-  --     vim.suppressnotify = require("notify")
-  --   end,
-  -- },
-
   -- Git
   {
     "tpope/vim-fugitive",
