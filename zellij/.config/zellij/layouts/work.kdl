@@ -17,6 +17,10 @@ layout {
     nvim
   }
 
+  tab name="algos" cwd="~/Developer/learning/algorithms/my-algos/" {
+    nvim
+  }
+
   tab name="fe" cwd="~/Developer/hopin/superwave-fe" {
     nvim
   }
