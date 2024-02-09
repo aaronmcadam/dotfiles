@@ -34,6 +34,7 @@ function M.setup()
       "terraform",
       "tsx",
       "typescript",
+      "vimdoc",
       "yaml",
     },
     highlight = {
