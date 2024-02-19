@@ -13,7 +13,7 @@ function M.setup()
             context = "test",
           },
           {
-            target = "/%1/%2.stories.ts",
+            target = "/%1/%2.stories.tsx",
             context = "story",
           },
         },
@@ -26,13 +26,13 @@ function M.setup()
             context = "implementation",
           },
           {
-            target = "/%1/%2.stories.ts",
+            target = "/%1/%2.stories.tsx",
             context = "story",
           },
         },
       },
       {
-        pattern = "/(.*)/(.*).stories.ts$",
+        pattern = "/(.*)/(.*).stories.tsx$",
         target = {
           {
             target = "/%1/%2.tsx",

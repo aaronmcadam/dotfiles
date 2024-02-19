@@ -301,4 +301,130 @@ return {
     event = "VeryLazy",
     opts = {},
   },
+
+  -- Write Obsidian notes in neovim
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = true,
+    -- ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+      "nvim-telescope/telescope.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "Remote Second Brain",
+          path = "~/Documents/Remote Second Brain/",
+        },
+      },
+      notes_subdir = "30 Areas/31 Inbox",
+      new_notes_location = "notes_subdir",
+      templates = {
+        subdir = "50 Resources/54 Templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+      },
+      daily_notes = {
+        folder = "40 Journal/41 Daily Notes/2024",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+        template = "OTPL Daily Note.md",
+      },
+      -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
+      open_app_foreground = true,
+      -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
+      -- URL it will be ignored but you can customize this behavior here.
+      ---@param url string
+      follow_url_func = function(url)
+        -- Open the URL in the default web browser.
+        vim.fn.jobstart({ "open", url }) -- Mac OS
+        -- vim.fn.jobstart({"xdg-open", url})  -- linux
+      end,
+      note_id_func = function(title)
+        return title
+      end,
+      note_frontmatter_func = function(note)
+        -- Add the title of the note as an alias.
+        if note.title then
+          note:add_alias(note.title)
+        end
+
+        local out = { aliases = note.aliases, tags = note.tags }
+
+        -- `note.metadata` contains any manually added fields in the frontmatter.
+        -- So here we just make sure those fields are kept in the frontmatter.
+        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+          for k, v in pairs(note.metadata) do
+            out[k] = v
+          end
+        end
+
+        return out
+      end,
+    },
+    -- opts = require("azvim.plugins.configs.obsidian").opts,
+    -- config = require("azvim.plugins.configs.obsidian").setup,
+    -- keys = require("azvim.plugins.configs.obsidian").keys,
+    keys = {
+      {
+        "<leader>nb",
+        "<cmd>ObsidianBacklinks<cr>",
+        desc = "Show backlinks for current note",
+      },
+      {
+        "<leader>nt",
+        "<cmd>ObsidianToday<cr>",
+        desc = "Open new Daily Note",
+      },
+      {
+        "<leader>nf",
+        "<cmd>ObsidianFollowLink<cr>",
+        desc = "Follow link",
+      },
+      {
+        "<leader>nn",
+        "<cmd>ObsidianNew<cr>",
+        desc = "Create new note",
+      },
+      {
+        "<leader>no",
+        "<cmd>ObsidianOpen<cr>",
+        desc = "Open note in Obsidian",
+      },
+      {
+        "<leader>nll",
+        "<cmd>ObsidianLink<cr>",
+        desc = "Link selection",
+      },
+      {
+        "<leader>nln",
+        "<cmd>ObsidianLinkNew<cr>",
+        desc = "Create and link new note",
+      },
+      {
+        "<leader>nq",
+        "<cmd>ObsidianQuickSwitch<cr>",
+        desc = "Switch to another note",
+      },
+      {
+        "<leader>ns",
+        "<cmd>ObsidianSearch<cr>",
+        desc = "Search notes",
+      },
+      {
+        "<leader>nt",
+        "<cmd>ObsidianTemplate<cr>",
+        desc = "Insert template",
+      },
+      {
+        "<leader>ny",
+        "<cmd>ObsidianYesterday<cr>",
+        desc = "Open yesterday's Daily Note",
+      },
+    },
+  },
 }

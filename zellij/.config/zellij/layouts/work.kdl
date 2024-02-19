@@ -21,7 +21,11 @@ layout {
     nvim
   }
 
-  tab name="fe" cwd="~/Developer/hopin/superwave-fe" {
+  tab name="pkm" cwd="~/Documents/Remote Second Brain/"{
+    nvim
+  }
+
+  tab name="fe" focus=true cwd="~/Developer/hopin/superwave-fe" {
     nvim
   }
 }

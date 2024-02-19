@@ -5,18 +5,18 @@
 # swap managed window
 # Swapping exchanges positions of windows without moving anything.
 # see https://chat.openai.com/share/74266c70-1549-424c-ba83-a02b18440a5d
-# alt + shift + ctrl + cmd - h : yabai -m window --swap west
-# alt + shift + ctrl + cmd - j : yabai -m window --swap south
-# alt + shift + ctrl + cmd - k : yabai -m window --swap north
-# alt + shift + ctrl + cmd - l : yabai -m window --swap east
+alt + shift + ctrl + cmd - h : yabai -m window --swap west
+alt + shift + ctrl + cmd - j : yabai -m window --swap south
+alt + shift + ctrl + cmd - k : yabai -m window --swap north
+alt + shift + ctrl + cmd - l : yabai -m window --swap east
 
 # move managed window
 # Warping moves a window, pushing other windows out of the way if need be.
 # see https://chat.openai.com/share/74266c70-1549-424c-ba83-a02b18440a5d
-alt + shift + ctrl + cmd - h : yabai -m window --warp west
-alt + shift + ctrl + cmd - j : yabai -m window --warp south
-alt + shift + ctrl + cmd - k : yabai -m window --warp north
-alt + shift + ctrl + cmd - l : yabai -m window --warp east
+# alt + shift + ctrl + cmd - h : yabai -m window --warp west
+# alt + shift + ctrl + cmd - j : yabai -m window --warp south
+# alt + shift + ctrl + cmd - k : yabai -m window --warp north
+# alt + shift + ctrl + cmd - l : yabai -m window --warp east
 
 # flip along y-axis
 alt + shift + ctrl + cmd - y : yabai -m space --mirror y-axis
