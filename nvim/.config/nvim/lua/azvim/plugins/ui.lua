@@ -192,6 +192,7 @@ return {
       { "<leader>of", "<cmd>Octo pr changes<CR>", desc = "Octo PR list changed files" },
       { "<leader>oj", "<cmd>Octo pr checks<CR>", desc = "Octo PR checks" },
       { "<leader>ol", "<cmd>Octo pr commits<CR>", desc = "Octo PR list commits" },
+      { "<leader>or", "<cmd>Octo pr reload<CR>", desc = "Octo PR reload" },
     },
   },
 
@@ -307,7 +308,7 @@ return {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
-    -- ft = "markdown",
+    ft = "markdown",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
@@ -366,9 +367,6 @@ return {
         return out
       end,
     },
-    -- opts = require("azvim.plugins.configs.obsidian").opts,
-    -- config = require("azvim.plugins.configs.obsidian").setup,
-    -- keys = require("azvim.plugins.configs.obsidian").keys,
     keys = {
       {
         "<leader>nb",
@@ -376,7 +374,7 @@ return {
         desc = "Show backlinks for current note",
       },
       {
-        "<leader>nt",
+        "<leader>nd",
         "<cmd>ObsidianToday<cr>",
         desc = "Open new Daily Note",
       },
@@ -425,6 +423,31 @@ return {
         "<cmd>ObsidianYesterday<cr>",
         desc = "Open yesterday's Daily Note",
       },
+    },
+  },
+
+  -- for writing prose
+  {
+    "preservim/vim-pencil",
+  },
+
+  -- ChatGPT
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup({
+        popup_input = {
+          submit = "<CR>",
+          -- submit = "<C-s>",
+        },
+      })
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "nvim-telescope/telescope.nvim",
     },
   },
 }

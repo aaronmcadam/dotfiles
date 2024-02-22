@@ -65,6 +65,13 @@ return {
           require("copilot_cmp").setup()
         end,
       },
+      {
+        "petertriho/cmp-git",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+          require("cmp_git").setup()
+        end,
+      },
     },
     opts = require("azvim.plugins.configs.cmp").opts,
   },

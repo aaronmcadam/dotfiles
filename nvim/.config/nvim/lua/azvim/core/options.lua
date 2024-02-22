@@ -9,7 +9,6 @@ opt.backup = false -- creates a backup file
 opt.clipboard = "" -- explicitly copy to the clipboard to keep control of what gets copied there.
 opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
 opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
--- opt.conceallevel = 0 -- so that `` is visible in markdown files
 -- see https://github.com/epwalsh/obsidian.nvim?tab=readme-ov-file#concealing-characters
 opt.conceallevel = 2 -- for obsidian.nvim to concel characters.
 opt.cursorline = true -- highlight the current line

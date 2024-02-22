@@ -88,3 +88,19 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     vim.cmd("set formatoptions-=cro")
   end,
 })
+
+-- Enable prose tools for markdown files
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("prose"),
+  pattern = {
+    "markdown",
+  },
+  callback = function()
+    -- Set Pencil's conceallevel to 2 to avoid Obsidian.nvim warning
+    vim.api.nvim_set_var("pencil#conceallevel", 2)
+    -- enable Pencil
+    vim.cmd("PencilSoft")
+    -- set spell check
+    vim.opt_local.spell = true
+  end,
+})

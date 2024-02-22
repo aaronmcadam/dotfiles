@@ -7,3 +7,4 @@ nvim/.config/nvim/undodir
 ssh
 ssh/!config
 .DS_Store
+/fish/.config/fish/private.fish

@@ -1,5 +1,8 @@
 fish_add_path "/opt/homebrew/bin"
 
+# include private settings
+source ~/.config/fish/private.fish
+
 set -U fish_greeting # disable greeting
 set -U fish_key_bindings fish_vi_key_bindings
 
