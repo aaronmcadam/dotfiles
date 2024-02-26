@@ -366,6 +366,19 @@ return {
 
         return out
       end,
+      -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
+      ---@return string
+      image_name_func = function()
+        -- Prefix image names with timestamp.
+        return string.format("%s-", os.time())
+      end,
+      attachments = {
+        -- The default folder to place images in via `:ObsidianPasteImg`.
+        -- If this is a relative path it will be interpreted as relative to the vault root.
+        -- You can always override this per image by passing a full path to the command instead of just a filename.
+        -- img_folder = "50 Resources/51 Attachments",
+        img_folder = "TestAttachments",
+      },
     },
     keys = {
       {

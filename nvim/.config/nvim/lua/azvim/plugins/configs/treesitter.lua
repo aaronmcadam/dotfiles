@@ -22,6 +22,7 @@ function M.setup()
       "css",
       "fish",
       "go",
+      "gitignore",
       "html",
       "java",
       "javascript",

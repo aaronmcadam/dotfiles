@@ -31,6 +31,7 @@ brew "neovim", args: ["HEAD"]
 brew "nss"
 brew "pandoc"
 brew "postgresql@14", restart_service: true
+brew "pngpaste"
 brew "rename"
 brew "ripgrep"
 brew "shellcheck"

@@ -31,11 +31,10 @@ map("v", "<Leader>y", '"+y', "Copy to system clipboard")
 -- buffers
 map("n", "<leader>bb", "<cmd>e #<cr>", "Switch to Other Buffer")
 
--- save file
-map("n", "<leader>s", "<cmd>w<cr><esc>", "Save file")
-
--- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", "Quit all")
+-- save file and quit
+map("n", "<leader>s", "<cmd>update<cr>", "Save file")
+map("n", "<leader>qq", "<cmd>quit<cr>", "Quit")
+map("n", "<leader>qa", "<cmd>qa<cr>", "Quit all")
 
 -- window navigation
 map("n", "<leader>wj", "<C-w>j", "Move down a window")
