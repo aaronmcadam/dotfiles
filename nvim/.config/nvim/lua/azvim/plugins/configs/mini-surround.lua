@@ -2,17 +2,17 @@ local M = {}
 
 function M.opts()
   return {
-    -- - gsaiw) - [G]o [S]urround [A]dd [I]nner [W]ord [)]Paren
-    -- - gsd'   - [G]o [S]urround [D]elete [']quotes
-    -- - gsr)'  - [G]o [S]urround [R]eplace [)] [']
+    -- - gzaiw) - [G]o [Z]urround [A]dd [I]nner [W]ord [)]Paren
+    -- - gzd'   - [G]o [Z]urround [D]elete [']quotes
+    -- - gzr)'  - [G]o [Z]urround [R]eplace [)] [']
     mappings = {
-      add = "gsa", -- Add surrounding in Normal and Visual modes
-      delete = "gsd", -- Delete surrounding
-      find = "gsf", -- Find surrounding (to the right)
-      find_left = "gsF", -- Find surrounding (to the left)
-      highlight = "gsh", -- Highlight surrounding
-      replace = "gsr", -- Replace surrounding
-      update_n_lines = "gsn", -- Update `n_lines`
+      add = "gza", -- Add surrounding in Normal and Visual modes
+      delete = "gzd", -- Delete surrounding
+      find = "gzf", -- Find surrounding (to the right)
+      find_left = "gzF", -- Find surrounding (to the left)
+      highlight = "gzh", -- Highlight surrounding
+      replace = "gzr", -- Replace surrounding
+      update_n_lines = "gzn", -- Update `n_lines`
     },
   }
 end
