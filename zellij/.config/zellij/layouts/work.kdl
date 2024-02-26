@@ -13,15 +13,15 @@ layout {
     command "nvim"
   }
 
+  tab name="pkm" cwd="~/Documents/Remote Second Brain/"{
+    nvim
+  }
+
   tab name="dotfiles" cwd="~/dotfiles" {
     nvim
   }
 
   tab name="algos" cwd="~/Developer/learning/algorithms/my-algos/" {
-    nvim
-  }
-
-  tab name="pkm" cwd="~/Documents/Remote Second Brain/"{
     nvim
   }
 
