@@ -4,28 +4,32 @@ end
 
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+  desc = "Check if we need to reload the file when it changed",
   group = augroup("checktime"),
   command = "checktime",
 })
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
   group = augroup("highlight_yank"),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
--- resize splits if window got resized
+-- resize splits if window gets resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
+  desc = "Resize splits if window gets resized",
   group = augroup("resize_splits"),
   callback = function()
     vim.cmd("tabdo wincmd =")
   end,
 })
 
--- go to last loc when opening a buffer
+-- go to last location when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
+  desc = "Go to last location when opening a buffer",
   group = augroup("last_loc"),
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -38,6 +42,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
+  desc = "Close some filetypes with <q>",
   group = augroup("close_with_q"),
   pattern = {
     "PlenaryTestPopup",
@@ -60,18 +65,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- wrap and check for spell in text filetypes
--- vim.api.nvim_create_autocmd("FileType", {
---   group = augroup("wrap_spell"),
---   pattern = { "markdown" },
---   callback = function()
---     vim.opt_local.wrap = true
---     vim.opt_local.spell = true
---   end,
--- })
-
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  desc = "Auto create dir when saving a file if it doesn't exist",
   group = augroup("auto_create_dir"),
   callback = function(event)
     if event.match:match("^%w%w+://") then
@@ -84,6 +80,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- Fixes Autocomment
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  desc = "Fixes Autocomment",
   callback = function()
     vim.cmd("set formatoptions-=cro")
   end,
@@ -91,6 +88,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 
 -- Enable prose tools for markdown files
 vim.api.nvim_create_autocmd("FileType", {
+  desc = "Prose tools for markdown files",
   group = augroup("prose"),
   pattern = {
     "markdown",

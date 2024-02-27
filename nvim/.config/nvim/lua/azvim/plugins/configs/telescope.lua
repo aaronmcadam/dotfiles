@@ -85,31 +85,54 @@ function M.keys()
     {
       "<leader>ff",
       "<cmd>lua require('telescope').extensions.smart_open.smart_open()<CR>",
-      desc = "Find Files",
+      desc = "[F]ind [F]iles",
     },
-    { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "Find Buffers" },
-    { "<leader>fh", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon Marks" },
+    { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "[F]ind [B]uffers" },
+    -- { "<leader>fd", "<cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = "[F]ind [D]iagnostics" },
+    { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", desc = "[F]ind [H]elp" },
+    { "<leader>fh", "<cmd>lua require('telescope.builtin').keymaps()<CR>", desc = "[F]ind [K]eymaps" },
+    { "<leader>fm", "<cmd>Telescope harpoon marks<CR>", desc = "[F]ind Harpoon [M]arks" },
+    { "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<CR>", desc = "[F]ind [R]esume" },
+    {
+      "<leader>f.",
+      "<cmd>lua require('telescope.builtin').oldfiles()<CR>",
+      desc = "[F]ind recent files ('.' for repeat)",
+    },
     {
       "<leader>fs",
       "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>",
-      desc = "Find Document Symbols",
+      desc = "[F]ind Document [S]ymbols",
     },
     {
       "<leader>ft",
       "<cmd>lua require('telescope.builtin').live_grep()<CR>",
-      desc = "Find Text",
+      desc = "[F]ind [T]ext",
     },
-    { "<leader>fu", "<cmd>Telescope undo<CR>", desc = "Find Undo Tree" },
+    { "<leader>fu", "<cmd>Telescope undo<CR>", desc = "[F]ind [U]ndo Tree" },
     {
       "<leader>fw",
       "<cmd>lua require('telescope.builtin').grep_string()<CR>",
-      desc = "Find Word Under Cursor",
+      desc = "[F]ind current [W]ord",
     },
-    { "gs", "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", desc = "Jump to definition" },
+    {
+      "gs",
+      "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='split'})<CR>",
+      desc = "[G]o to definition in horizontal [S]plit",
+    },
     {
       "gv",
       "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>",
-      desc = "Jump to definition in vsplit",
+      desc = "[G]o to definition in vertical [S]plit",
+    },
+    {
+      "<leader>/",
+      function()
+        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+          winblend = 10,
+          previewer = false,
+        }))
+      end,
+      desc = "[/] Fuzzily search in current buffer",
     },
   }
 end

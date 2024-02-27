@@ -166,18 +166,40 @@ function M.on_attach(client, bufnr)
 
   local lsp_map = require("azvim.helpers.keys").lsp_map
 
-  lsp_map("gd", vim.lsp.buf.definition, bufnr, "Go to Definition")
-  lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Go to Declaration")
-  lsp_map("gI", vim.lsp.buf.implementation, bufnr, "Go to Implementation")
-  lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Go to References")
+  lsp_map("gd", require("telescope.builtin").lsp_definitions, bufnr, "[G]o to [D]efinition")
+  lsp_map("gI", require("telescope.builtin").lsp_implementations, bufnr, "[G]o to [I]mplementation")
+  lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "[G]o to [R]eferences")
+  -- Jump to the type of the word under your cursor.
+  --  Useful when you're not sure what type a variable is and you want to see
+  --  the definition of its *type*, not where it was *defined*.
+  lsp_map("gt", require("telescope.builtin").lsp_type_definitions, "[G]o to [T]ype")
+
+  -- Opens a popup that displays documentation about the word under your cursor
+  --  See `:help K` for why this keymap
   lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
 
-  lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
-  lsp_map("<leader>ld", vim.lsp.buf.type_definition, bufnr, "Type definition")
-  lsp_map("<leader>lj", vim.diagnostic.goto_next, bufnr, "Go to next diagnostic")
-  lsp_map("<leader>lk", vim.diagnostic.goto_prev, bufnr, "Go to previous diagnostic")
-  lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
-  lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
+  -- WARN: This is not Go to Definition, this is Go to Declaration.
+  --  For example, in C this would take you to the header
+  lsp_map("gD", vim.lsp.buf.declaration, "[G]o to [D]eclaration")
+
+  -- Execute a code action, usually your cursor needs to be on top of an error
+  -- or a suggestion from your LSP for this to activate.
+  lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code [A]ction")
+
+  lsp_map("<leader>lj", vim.diagnostic.goto_next, bufnr, "Go to next diagnostic ('j' for down)")
+  lsp_map("<leader>lk", vim.diagnostic.goto_prev, bufnr, "Go to previous diagnostic ('k' for up)")
+
+  -- Rename the variable under your cursor
+  --  Most Language Servers support renaming across files, etc.
+  lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "[R]ename symbol")
+
+  -- Fuzzy find all the symbols in your current document
+  --  Symbols are things like variables, functions, types, etc.
+  lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document [S]ymbols")
+
+  -- Fuzzy find all the symbols in your current workspace
+  --  Similar to document symbols, except searches over your whole project.
+  lsp_map("<leader>lw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace Symbols")
 
   -- TypeScript specific keymaps
   -- stylua: ignore

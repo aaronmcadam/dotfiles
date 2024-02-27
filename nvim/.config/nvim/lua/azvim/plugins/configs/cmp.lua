@@ -6,7 +6,10 @@ function M.opts()
 
   return {
     completion = {
-      completeopt = "menu,menuone,noinsert,noselect",
+      -- menu: This option enables the display of a popup menu for completions. Without it, the completion suggestions won't be shown in a menu format.
+      -- menuone: This ensures the completion menu is displayed even if there's only one match. Without this, the menu would only appear when there are multiple completion items.
+      -- noinsert: With this option, Neovim does not automatically insert the top completion item into your buffer as you type. It waits for you to explicitly select an item or complete typing.
+      completeopt = "menu,menuone,noinsert",
     },
     snippet = {
       expand = function(args)
