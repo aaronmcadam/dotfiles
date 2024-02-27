@@ -99,32 +99,6 @@ function M.opts()
       },
       lualine_z = { "filetype" },
     },
-    winbar = {
-      lualine_a = {
-        {
-          "filename",
-          path = 1,
-          symbols = {
-            modified = "  ",
-            readonly = "",
-            unnamed = "",
-          },
-        },
-      },
-    },
-    inactive_winbar = {
-      lualine_a = {
-        {
-          "filename",
-          path = 1,
-          symbols = {
-            modified = "  ",
-            readonly = "",
-            unnamed = "",
-          },
-        },
-      },
-    },
     extensions = {
       "fugitive",
       "lazy",

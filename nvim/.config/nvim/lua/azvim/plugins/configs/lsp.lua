@@ -172,7 +172,7 @@ function M.on_attach(client, bufnr)
   -- Jump to the type of the word under your cursor.
   --  Useful when you're not sure what type a variable is and you want to see
   --  the definition of its *type*, not where it was *defined*.
-  lsp_map("gt", require("telescope.builtin").lsp_type_definitions, "[G]o to [T]ype")
+  lsp_map("gt", require("telescope.builtin").lsp_type_definitions, bufnr, "[G]o to [T]ype")
 
   -- Opens a popup that displays documentation about the word under your cursor
   --  See `:help K` for why this keymap
@@ -180,7 +180,7 @@ function M.on_attach(client, bufnr)
 
   -- WARN: This is not Go to Definition, this is Go to Declaration.
   --  For example, in C this would take you to the header
-  lsp_map("gD", vim.lsp.buf.declaration, "[G]o to [D]eclaration")
+  lsp_map("gD", vim.lsp.buf.declaration, bufnr, "[G]o to [D]eclaration")
 
   -- Execute a code action, usually your cursor needs to be on top of an error
   -- or a suggestion from your LSP for this to activate.
@@ -199,7 +199,7 @@ function M.on_attach(client, bufnr)
 
   -- Fuzzy find all the symbols in your current workspace
   --  Similar to document symbols, except searches over your whole project.
-  lsp_map("<leader>lw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace Symbols")
+  lsp_map("<leader>lw", require("telescope.builtin").lsp_dynamic_workspace_symbols, bufnr, "[W]orkspace Symbols")
 
   -- TypeScript specific keymaps
   -- stylua: ignore

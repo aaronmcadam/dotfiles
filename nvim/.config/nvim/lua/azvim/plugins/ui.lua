@@ -48,6 +48,38 @@ return {
       }
     end,
   },
+  {
+    "b0o/incline.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    event = "VeryLazy",
+    config = function()
+      local helpers = require("incline.helpers")
+      local devicons = require("nvim-web-devicons")
+      require("incline").setup({
+        window = {
+          padding = 0,
+          margin = { horizontal = 0 },
+        },
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          if filename == "" then
+            filename = "[No Name]"
+          end
+          local ft_icon, ft_color = devicons.get_icon_color(filename)
+          local modified = vim.bo[props.buf].modified
+          return {
+            ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
+            " ",
+            { filename, gui = modified and "bold,italic" or "bold" },
+            " ",
+            guibg = "#44406e",
+          }
+        end,
+      })
+    end,
+  },
 
   -- harpoon
   {
@@ -376,8 +408,7 @@ return {
         -- The default folder to place images in via `:ObsidianPasteImg`.
         -- If this is a relative path it will be interpreted as relative to the vault root.
         -- You can always override this per image by passing a full path to the command instead of just a filename.
-        -- img_folder = "50 Resources/51 Attachments",
-        img_folder = "TestAttachments",
+        img_folder = "50 Resources/51 Attachments",
       },
     },
     keys = {
