@@ -100,5 +100,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.cmd("PencilSoft")
     -- set spell check
     vim.opt_local.spell = true
+    -- insert 2 spaces for a tab (this is my default but its getting to 4 in markdown files for some reason)
+    vim.opt_local.shiftwidth = 2
   end,
 })

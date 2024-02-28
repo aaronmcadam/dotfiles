@@ -337,8 +337,10 @@ return {
 
   -- Write Obsidian notes in neovim
   {
-    "epwalsh/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
+    -- "epwalsh/obsidian.nvim",
+    "aaronmcadam/obsidian.nvim",
+    -- version = "*", -- recommended, use latest release instead of latest commit
+    commit = "984a2d2",
     lazy = true,
     ft = "markdown",
     dependencies = {
@@ -402,13 +404,28 @@ return {
       ---@return string
       image_name_func = function()
         -- Prefix image names with timestamp.
-        return string.format("%s-", os.time())
+        return string.format("%s-image", os.time())
       end,
       attachments = {
         -- The default folder to place images in via `:ObsidianPasteImg`.
         -- If this is a relative path it will be interpreted as relative to the vault root.
         -- You can always override this per image by passing a full path to the command instead of just a filename.
         img_folder = "50 Resources/51 Attachments",
+        img_text_func = function(client, path)
+          ---@type string
+          local link_path
+          local vault_relative_path = client:vault_relative_path(path)
+          if vault_relative_path ~= nil then
+            -- Use relative path if the image is saved in the vault dir.
+            link_path = tostring(vault_relative_path)
+          else
+            -- Otherwise use the absolute path.
+            link_path = tostring(path)
+          end
+          local display_name = vim.fs.basename(link_path)
+          return string.format("![[%s]]", display_name)
+        end,
+        confirm_img_paste = false,
       },
     },
     keys = {
