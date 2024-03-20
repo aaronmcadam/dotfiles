@@ -104,6 +104,7 @@ return {
       on_attach = require("azvim.plugins.configs.lsp").on_attach,
     },
   },
+  { "dmmulroy/ts-error-translator.nvim", config = true },
 
   -- formatting
   {

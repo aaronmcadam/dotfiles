@@ -338,10 +338,8 @@ return {
 
   -- Write Obsidian notes in neovim
   {
-    -- "epwalsh/obsidian.nvim",
-    "aaronmcadam/obsidian.nvim",
-    -- version = "*", -- recommended, use latest release instead of latest commit
-    commit = "984a2d2",
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
     dependencies = {
@@ -350,142 +348,8 @@ return {
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = {
-      workspaces = {
-        {
-          name = "Remote Second Brain",
-          path = "~/Documents/Remote Second Brain/",
-        },
-      },
-      notes_subdir = "30 Areas/31 Inbox",
-      new_notes_location = "notes_subdir",
-      templates = {
-        subdir = "50 Resources/54 Templates",
-        date_format = "%Y-%m-%d",
-        time_format = "%H:%M",
-      },
-      daily_notes = {
-        folder = "40 Journal/41 Daily Notes/2024",
-        date_format = "%Y-%m-%d",
-        time_format = "%H:%M",
-        template = "OTPL Daily Note.md",
-      },
-      -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
-      open_app_foreground = true,
-      -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
-      -- URL it will be ignored but you can customize this behavior here.
-      ---@param url string
-      follow_url_func = function(url)
-        -- Open the URL in the default web browser.
-        vim.fn.jobstart({ "open", url }) -- Mac OS
-        -- vim.fn.jobstart({"xdg-open", url})  -- linux
-      end,
-      note_id_func = function(title)
-        return title
-      end,
-      note_frontmatter_func = function(note)
-        -- Add the title of the note as an alias.
-        if note.title then
-          note:add_alias(note.title)
-        end
-
-        local out = { aliases = note.aliases, tags = note.tags }
-
-        -- `note.metadata` contains any manually added fields in the frontmatter.
-        -- So here we just make sure those fields are kept in the frontmatter.
-        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-          for k, v in pairs(note.metadata) do
-            out[k] = v
-          end
-        end
-
-        return out
-      end,
-      -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
-      ---@return string
-      image_name_func = function()
-        -- Prefix image names with timestamp.
-        return string.format("%s-image", os.time())
-      end,
-      attachments = {
-        -- The default folder to place images in via `:ObsidianPasteImg`.
-        -- If this is a relative path it will be interpreted as relative to the vault root.
-        -- You can always override this per image by passing a full path to the command instead of just a filename.
-        img_folder = "50 Resources/51 Attachments",
-        img_text_func = function(client, path)
-          ---@type string
-          local link_path
-          local vault_relative_path = client:vault_relative_path(path)
-          if vault_relative_path ~= nil then
-            -- Use relative path if the image is saved in the vault dir.
-            link_path = tostring(vault_relative_path)
-          else
-            -- Otherwise use the absolute path.
-            link_path = tostring(path)
-          end
-          local display_name = vim.fs.basename(link_path)
-          return string.format("![[%s]]", display_name)
-        end,
-        confirm_img_paste = false,
-      },
-    },
-    keys = {
-      {
-        "<leader>nb",
-        "<cmd>ObsidianBacklinks<cr>",
-        desc = "Show backlinks for current note",
-      },
-      {
-        "<leader>nd",
-        "<cmd>ObsidianToday<cr>",
-        desc = "Open new Daily Note",
-      },
-      {
-        "<leader>nf",
-        "<cmd>ObsidianFollowLink<cr>",
-        desc = "Follow link",
-      },
-      {
-        "<leader>nn",
-        "<cmd>ObsidianNew<cr>",
-        desc = "Create new note",
-      },
-      {
-        "<leader>no",
-        "<cmd>ObsidianOpen<cr>",
-        desc = "Open note in Obsidian",
-      },
-      {
-        "<leader>nll",
-        "<cmd>ObsidianLink<cr>",
-        desc = "Link selection",
-      },
-      {
-        "<leader>nln",
-        "<cmd>ObsidianLinkNew<cr>",
-        desc = "Create and link new note",
-      },
-      {
-        "<leader>nq",
-        "<cmd>ObsidianQuickSwitch<cr>",
-        desc = "Switch to another note",
-      },
-      {
-        "<leader>ns",
-        "<cmd>ObsidianSearch<cr>",
-        desc = "Search notes",
-      },
-      {
-        "<leader>nt",
-        "<cmd>ObsidianTemplate<cr>",
-        desc = "Insert template",
-      },
-      {
-        "<leader>ny",
-        "<cmd>ObsidianYesterday<cr>",
-        desc = "Open yesterday's Daily Note",
-      },
-    },
+    opts = require("azvim.plugins.configs.obsidian").opts,
+    keys = require("azvim.plugins.configs.obsidian").keys,
   },
 
   -- for writing prose
@@ -497,14 +361,8 @@ return {
   {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
-    config = function()
-      require("chatgpt").setup({
-        popup_input = {
-          submit = "<CR>",
-          -- submit = "<C-s>",
-        },
-      })
-    end,
+    opts = require("azvim.plugins.configs.chatgpt").opts,
+    keys = require("azvim.plugins.configs.chatgpt").keys,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",

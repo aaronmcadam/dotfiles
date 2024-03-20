@@ -14,6 +14,7 @@ function M.opts()
       ["g"] = { name = "+goto" },
       ["gz"] = { name = "+surround" },
       ["<leader>b"] = { name = "+buffer" },
+      ["<leader>c"] = { name = "+chatgpt" },
       ["<leader>d"] = { name = "+debug" },
       ["<leader>da"] = { name = "+adapters" },
       ["<leader>f"] = { name = "+find" },

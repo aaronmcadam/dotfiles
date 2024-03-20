@@ -88,7 +88,7 @@ function M.keys()
       desc = "[F]ind [F]iles",
     },
     { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "[F]ind [B]uffers" },
-    -- { "<leader>fd", "<cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = "[F]ind [D]iagnostics" },
+    { "<leader>fx", "<cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = "[F]ind [D]iagnostics" },
     { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", desc = "[F]ind [H]elp" },
     { "<leader>fh", "<cmd>lua require('telescope.builtin').keymaps()<CR>", desc = "[F]ind [K]eymaps" },
     { "<leader>fm", "<cmd>Telescope harpoon marks<CR>", desc = "[F]ind Harpoon [M]arks" },
@@ -116,7 +116,7 @@ function M.keys()
     },
     {
       "gs",
-      "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='split'})<CR>",
+      "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>",
       desc = "[G]o to definition in horizontal [S]plit",
     },
     {
