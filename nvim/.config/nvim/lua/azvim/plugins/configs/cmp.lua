@@ -10,6 +10,7 @@ function M.opts()
       -- menuone: This ensures the completion menu is displayed even if there's only one match. Without this, the menu would only appear when there are multiple completion items.
       -- noinsert: With this option, Neovim does not automatically insert the top completion item into your buffer as you type. It waits for you to explicitly select an item or complete typing.
       completeopt = "menu,menuone,noinsert",
+      -- completeopt = "menu,menuone,preview,noselect",
     },
     snippet = {
       expand = function(args)
@@ -25,9 +26,12 @@ function M.opts()
     mapping = cmp.mapping.preset.insert({
       -- Select the [n]ext item
       ["<C-n>"] = cmp.mapping.select_next_item(),
-
       -- Select the [p]revious item
       ["<C-p>"] = cmp.mapping.select_prev_item(),
+
+      -- Scroll the documentation window [b]ack / [f]orward
+      ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
       -- Accept ([y]es) the completion.
       --  This will auto-import if your LSP supports it.
@@ -59,8 +63,6 @@ function M.opts()
       end, { "i", "s" }),
 
       ["<C-e>"] = cmp.mapping.abort(),
-      ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-d>"] = cmp.mapping.scroll_docs(4),
     }),
     formatting = {
       format = function(_, item)
@@ -74,12 +76,12 @@ function M.opts()
       end,
     },
     sources = cmp.config.sources({
-      { name = "nvim_lsp", priority = 1000 },
-      { name = "luasnip", priority = 800 },
-      { name = "git", priority = 600 },
-      { name = "copilot", priority = 600 },
-      { name = "buffer", priority = 400 },
-      { name = "path", priority = 250 },
+      { name = "nvim_lsp" },
+      { name = "luasnip" },
+      { name = "git" },
+      { name = "copilot" },
+      { name = "buffer" },
+      { name = "path" },
     }),
   }
 end

@@ -12,7 +12,7 @@ function M.setup()
           ["<C-j>"] = actions.move_selection_next, -- move to next result
         },
       },
-      path_display = { "smart" },
+      path_display = { "filename_first" },
     },
     pickers = {
       find_files = {

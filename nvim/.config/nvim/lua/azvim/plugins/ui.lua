@@ -48,39 +48,6 @@ return {
       }
     end,
   },
-  {
-    "b0o/incline.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    event = "VeryLazy",
-    config = function()
-      local helpers = require("incline.helpers")
-      local devicons = require("nvim-web-devicons")
-      require("incline").setup({
-        window = {
-          padding = 0,
-          margin = { horizontal = 0 },
-        },
-        render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-          if filename == "" then
-            filename = "[No Name]"
-          end
-          local ft_icon, ft_color = devicons.get_icon_color(filename)
-          local modified = vim.bo[props.buf].modified
-          return {
-            ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
-            " ",
-            { filename, gui = modified and "bold,italic" or "bold" },
-            modified and { " ●", guifg = "#d6991d" } or {},
-            " ",
-            guibg = "#44406e",
-          }
-        end,
-      })
-    end,
-  },
 
   -- harpoon
   {
@@ -122,12 +89,58 @@ return {
     config = require("azvim.plugins.configs.which-key").setup,
   },
 
-  -- related files (like projectionist or rails.vim)
+  -- related files
   {
-    "rgroli/other.nvim",
-    event = "BufReadPost",
-    config = require("azvim.plugins.configs.other").setup,
-    keys = require("azvim.plugins.configs.other").keys,
+    "tpope/vim-projectionist",
+    lazy = false,
+    config = function()
+      -- Borrowed ideas from:
+      -- https://github.com/akinsho/dotfiles/blob/d81e2f0cd00d71170107ed30db34fc644173a411/.config/nvim/lua/as/plugins/projects.lua#L2
+      vim.g.projectionist_heuristics = {
+        ["*"] = {
+          ["*.ts"] = {
+            alternate = "{}.test.ts",
+            type = "source",
+          },
+          ["*.tsx"] = {
+            alternate = { "{}.test.tsx", "{}.stories.tsx", "{}.stories.ts" },
+            type = "component",
+          },
+          ["*.test.ts"] = {
+            alternate = "{}.ts",
+            type = "test",
+          },
+          ["*.test.tsx"] = {
+            alternate = "{}.tsx",
+            type = "test",
+            template = {
+              "import {basename|camelcase|capitalize} from '.';",
+              "",
+              "describe('{basename|camelcase|capitalize}', () => {open}",
+              "  test('renders successfully', () => {open}",
+              "    render(<{basename|camelcase|capitalize} />, {open}{close});",
+              "    expect(true).toBe(true);",
+              "   {close});",
+              "{close});",
+            },
+          },
+          ["*.stories.ts"] = {
+            alternate = { "{}.tsx", "{}.test.tsx" },
+            type = "story",
+          },
+          ["*.stories.tsx"] = {
+            alternate = { "{}.tsx", "{}.test.tsx" },
+            type = "story",
+          },
+        },
+      }
+    end,
+    keys = {
+      { "<leader>kk", "<cmd>A<CR>", desc = "Open related file" },
+      { "<leader>kv", "<cmd>AV<CR>", desc = "Open related file in split" },
+      { "<leader>kt", "<cmd>Vtest<CR>", desc = "Open test" },
+      { "<leader>ks", "<cmd>Vstory<CR>", desc = "Open story" },
+    },
   },
 
   -- Git
