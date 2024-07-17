@@ -1,37 +1,32 @@
 local M = {}
 
-function M.setup(_, opts)
+function M.setup()
   local wk = require("which-key")
-  wk.setup(opts)
-  wk.register(opts.defaults)
-end
-
-function M.opts()
-  return {
+  wk.setup({
     plugins = { spelling = true },
-    defaults = {
-      mode = { "n", "v" },
-      ["g"] = { name = "+goto" },
-      ["gz"] = { name = "+surround" },
-      ["<leader>b"] = { name = "+buffer" },
-      ["<leader>c"] = { name = "+chatgpt" },
-      ["<leader>d"] = { name = "+debug" },
-      ["<leader>da"] = { name = "+adapters" },
-      ["<leader>f"] = { name = "+find" },
-      ["<leader>h"] = { name = "+harpoon" },
-      ["<leader>g"] = { name = "+git" },
-      ["<leader>k"] = { name = "+related" },
-      ["<leader>l"] = { name = "+lsp" },
-      ["<leader>lp"] = { name = "+packages" },
-      ["<leader>o"] = { name = "+octo-pr" },
-      ["<leader>n"] = { name = "+notes" },
-      ["<leader>q"] = { name = "+quit" },
-      ["<leader>t"] = { name = "+test" },
-      ["<leader>u"] = { name = "+ui" },
-      ["<leader>w"] = { name = "+window" },
-      ["<leader>x"] = { name = "+diagnostics" },
-    },
-  }
+  })
+  wk.add({
+    mode = { "n", "v" },
+    { "<leader>b", group = "buffer" },
+    { "<leader>c", group = "chatgpt" },
+    { "<leader>d", group = "debug" },
+    { "<leader>da", group = "adapters" },
+    { "<leader>f", group = "find" },
+    { "<leader>g", group = "git" },
+    { "<leader>h", group = "harpoon" },
+    { "<leader>k", group = "related" },
+    { "<leader>l", group = "lsp" },
+    { "<leader>lp", group = "packages" },
+    { "<leader>n", group = "notes" },
+    { "<leader>o", group = "octo-pr" },
+    { "<leader>q", group = "quit" },
+    { "<leader>t", group = "test" },
+    { "<leader>u", group = "ui" },
+    { "<leader>w", group = "window" },
+    { "<leader>x", group = "diagnostics" },
+    { "g", group = "goto" },
+    { "gz", group = "surround" },
+  })
 end
 
 return M

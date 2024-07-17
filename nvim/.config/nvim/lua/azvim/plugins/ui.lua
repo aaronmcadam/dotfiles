@@ -85,7 +85,6 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    opts = require("azvim.plugins.configs.which-key").opts,
     config = require("azvim.plugins.configs.which-key").setup,
   },
 
