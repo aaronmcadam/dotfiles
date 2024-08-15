@@ -17,6 +17,10 @@ layout {
     nvim
   }
 
+  tab name="manual" focus=true cwd="~/Developer/job-applications/manual/manual-quiz-lp/" {
+    nvim
+  }
+
   tab name="dotfiles" cwd="~/dotfiles" {
     nvim
   }
@@ -25,7 +29,7 @@ layout {
     nvim
   }
 
-  tab name="fe" focus=true cwd="~/Developer/hopin/superwave-fe" {
+  tab name="sw" cwd="~/Developer/hopin/superwave-fe" {
     nvim
   }
 }
