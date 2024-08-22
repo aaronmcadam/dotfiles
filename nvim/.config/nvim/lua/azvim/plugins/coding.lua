@@ -130,29 +130,33 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      formatters_by_ft = {
-        html = { { "prettierd", "prettier" } },
-        javascript = { { "prettierd", "prettier" } },
-        javascriptreact = { { "prettierd", "prettier" } },
-        json = { { "prettierd", "prettier" } },
-        lua = { "stylua" },
-        typescript = { { "prettierd", "prettier" } },
-        typescriptreact = { { "prettierd", "prettier" } },
-        yaml = { { "prettierd", "prettier" } },
-        -- Use the "_" filetype to run formatters on filetypes that don't
-        -- have other formatters configured.
-        ["_"] = { "trim_whitespace" },
-      },
-      format_on_save = {
-        -- It's safer for now to turn off async formatting
-        -- because it could lead to strange behavior such as
-        -- updating the buffer text in unpredictable ways.
-        async = false,
-        lsp_fallback = true,
-        timeout_ms = 1000,
-      },
-    },
+    opts = function()
+      local prettier = { "prettierd", "prettier", stop_after_first = true }
+
+      return {
+        formatters_by_ft = {
+          html = prettier,
+          javascript = prettier,
+          javascriptreact = prettier,
+          json = prettier,
+          lua = { "stylua" },
+          typescript = prettier,
+          typescriptreact = prettier,
+          yaml = prettier,
+          -- Use the "_" filetype to run formatters on filetypes that don't
+          -- have other formatters configured.
+          ["_"] = { "trim_whitespace" },
+        },
+        format_on_save = {
+          -- It's safer for now to turn off async formatting
+          -- because it could lead to strange behavior such as
+          -- updating the buffer text in unpredictable ways.
+          async = false,
+          lsp_fallback = true,
+          timeout_ms = 1000,
+        },
+      }
+    end,
   },
 
   -- linting

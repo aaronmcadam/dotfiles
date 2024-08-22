@@ -13,11 +13,7 @@ layout {
     command "nvim"
   }
 
-  tab name="pkm" cwd="~/Documents/Remote Second Brain/"{
-    nvim
-  }
-
-  tab name="manual" focus=true cwd="~/Developer/job-applications/manual/manual-quiz-lp/" {
+  tab name="pkm" focus=true cwd="~/Documents/Remote Second Brain/"{
     nvim
   }
 
@@ -26,10 +22,6 @@ layout {
   }
 
   tab name="algos" cwd="~/Developer/learning/algorithms/my-algos/" {
-    nvim
-  }
-
-  tab name="sw" cwd="~/Developer/hopin/superwave-fe" {
     nvim
   }
 }

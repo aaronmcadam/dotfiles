@@ -44,6 +44,7 @@ abbr -a v "nvim"
 abbr -a v. "nvim"
 abbr -a update-vim-plugins "nvim --headless '+Lazy! sync' +qa"
 abbr -a zz "z -"
+abbr -a work "zellij -l work"
 
 # JavaScript
 abbr -a n "npm install"
