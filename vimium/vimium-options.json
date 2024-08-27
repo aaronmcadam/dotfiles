@@ -1,0 +1,4 @@
+{
+  "keyMappings": "unmap d\nunmap u\n\nmap <c-d> scrollPageDown\nmap <c-f> scrollFullPageDown\nmap <c-b> scrollFullPageUp\nmap <c-i> goForward\nmap <c-o> goBack\nmap <c-u> scrollPageUp\nmap d$ closeTabsOnRight\nmap d^ closeTabsOnLeft\nmap dd removeTab",
+  "settingsVersion": "2.1.2"
+}
