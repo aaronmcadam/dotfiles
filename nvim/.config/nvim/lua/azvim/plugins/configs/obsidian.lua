@@ -19,7 +19,7 @@ function M.opts()
       folder = "40 Journal/41 Daily Notes/2024",
       date_format = "%Y-%m-%d",
       time_format = "%H:%M",
-      template = "OTPL Daily Note.md",
+      template = "Daily Note.md",
     },
     mappings = {},
     -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
