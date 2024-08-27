@@ -98,6 +98,7 @@ alt-shift-ctrl-cmd-1 = 'move-node-to-workspace 1'
 alt-shift-ctrl-cmd-2 = 'move-node-to-workspace 2'
 alt-shift-ctrl-cmd-b = 'move-node-to-workspace B' # Browser
 alt-shift-ctrl-cmd-c = 'move-node-to-workspace C' # Communications
+alt-shift-ctrl-cmd-d = 'move-node-to-workspace D' # Design
 alt-shift-ctrl-cmd-e = 'move-node-to-workspace E' # Email
 alt-shift-ctrl-cmd-f = 'move-node-to-workspace F' # Finder
 alt-shift-ctrl-cmd-m = 'move-node-to-workspace M' # Music
@@ -130,6 +131,7 @@ alt-shift-ctrl-1 = 'workspace 1'
 alt-shift-ctrl-2 = 'workspace 2'
 alt-shift-ctrl-b = 'workspace B' # Browser
 alt-shift-ctrl-c = 'workspace C' # Communications
+alt-shift-ctrl-d = 'workspace D' # Design
 alt-shift-ctrl-e = 'workspace E' # Email
 alt-shift-ctrl-f = 'workspace F' # Finder
 alt-shift-ctrl-m = 'workspace M' # Music
@@ -174,6 +176,7 @@ alt-shift-l = ['join-with right', 'mode main']
 2 = 'secondary'
 B = 'secondary'
 C = 'secondary'
+D = 'secondary'
 
 # Workspace B (Browser)
 [[on-window-detected]]
@@ -184,6 +187,11 @@ run = 'move-node-to-workspace B'
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
 run = 'move-node-to-workspace C'
+
+# Workspace D (Design)
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = 'move-node-to-workspace D'
 
 # Workspace E (Email)
 [[on-window-detected]]
