@@ -22,6 +22,7 @@ return {
         notify = true,
         octo = true,
         overseer = true,
+        render_markdown = true,
         telescope = {
           enabled = true,
           style = "nvchad",
