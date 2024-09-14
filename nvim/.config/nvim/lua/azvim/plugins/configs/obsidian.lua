@@ -2,6 +2,9 @@ local M = {}
 
 function M.opts()
   return {
+    ui = {
+      enable = false,
+    },
     workspaces = {
       {
         name = "Remote Second Brain",

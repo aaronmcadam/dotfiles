@@ -364,6 +364,13 @@ return {
     keys = require("azvim.plugins.configs.obsidian").keys,
   },
 
+  -- better markdown formatting
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {},
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+  },
+
   -- for writing prose
   {
     "preservim/vim-pencil",
