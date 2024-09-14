@@ -7,7 +7,7 @@ keybinds clear-defaults=true {
   normal {
     bind "Alt q" { Quit; }
     bind "Alt d" { Detach; }
-    bind "Alt f" { ToggleFocusFullscreen; }
+    bind "Alt f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
     bind "Alt e" { EditScrollback; SwitchToMode "normal"; }
     bind "Alt p" { SwitchToMode "pane"; }
     bind "Alt r" { SwitchToMode "resize"; }
@@ -53,7 +53,7 @@ keybinds clear-defaults=true {
      bind "n" { NewPane; }
      bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
      bind "x" { CloseFocus; }
-     bind "f" { ToggleFocusFullscreen; }
+     bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
      bind "z" { TogglePaneFrames; }
   }
 
@@ -61,10 +61,10 @@ keybinds clear-defaults=true {
     bind "Enter" "Esc" "Space" { SwitchToMode "normal"; }
     bind "h" "Left" { GoToPreviousTab; }
     bind "l" "Right" { GoToNextTab; }
-    bind "n" { NewTab; }
+    bind "n" { NewTab; SwitchToMode "Normal"; }
     bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
-    bind "x" { CloseTab; }
-    bind "s" { ToggleActiveSyncTab; }
+    bind "x" { CloseTab; SwitchToMode "Normal"; }
+    bind "s" { ToggleActiveSyncTab; SwitchToMode "Normal"; }
     bind "Alt h" { MoveFocus "Left"; }
     bind "Alt l" { MoveFocus "Right"; }
     bind "Alt j" { MoveFocus "Down"; }
