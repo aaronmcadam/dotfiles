@@ -1,7 +1,14 @@
 local M = {}
 
+local function header_color()
+  vim.api.nvim_set_hl(0, "AlphaCustom", { fg = "#8B00FF" }) -- Violet
+
+  return "AlphaCustom"
+end
+
 function M.opts()
   local dashboard = require("alpha.themes.dashboard")
+
   local logo = [[
   ______           __     __ __              
  /      \         |  \   |  \  \             
@@ -37,7 +44,7 @@ function M.opts()
     button.opts.hl_shortcut = "AlphaShortcut"
   end
 
-  dashboard.section.header.opts.hl = "AlphaHeader"
+  dashboard.section.header.opts.hl = header_color()
   dashboard.section.buttons.opts.hl = "AlphaButtons"
   dashboard.section.footer.opts.hl = "AlphaFooter"
   dashboard.opts.layout[1].val = 8
