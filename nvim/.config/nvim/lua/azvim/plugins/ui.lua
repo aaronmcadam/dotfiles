@@ -158,7 +158,7 @@ return {
     keys = {
       { "<leader>gv", "<cmd>GBrowse<CR>", desc = "Git View in Browser" },
       -- { "<leader>gd", "<cmd>Gvdiffsplit<CR>", desc = "Git Diff" },
-      { "<leader>gr", "<cmd>Gread<CR>", desc = "Git Read" },
+      { "<leader>gr", "<cmd>Gread<CR><cmd>update<CR>", desc = "Git Read" },
       { "<leader>gw", "<cmd>Gwrite<CR>", desc = "Git Write" },
     },
   },
