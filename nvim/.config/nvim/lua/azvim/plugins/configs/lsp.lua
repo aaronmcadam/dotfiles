@@ -134,22 +134,16 @@ function M.setup()
 
   -- Set up cool signs for diagnostics
   local icons = require("azvim.core.helpers").icons.diagnostics
-  local signs = {
-    Error = icons.Error,
-    Warn = icons.Warn,
-    Hint = icons.Hint,
-    Info = icons.Info,
-  }
-  for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-  end
-
-  -- Diagnostic config
+  local severity = vim.diagnostic.severity
   local config = {
     virtual_text = true,
     signs = {
-      active = signs,
+      text = {
+        [severity.ERROR] = icons.Error,
+        [severity.WARN] = icons.Warn,
+        [severity.INFO] = icons.Info,
+        [severity.HINT] = icons.Hint,
+      },
     },
     update_in_insert = true,
     underline = true,
@@ -157,7 +151,7 @@ function M.setup()
     float = {
       focusable = true,
       style = "minimal",
-      border = "rounded",
+      border = "single",
       source = "always",
       header = "",
       prefix = "",

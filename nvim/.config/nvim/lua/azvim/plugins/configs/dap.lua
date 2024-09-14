@@ -48,7 +48,7 @@ function M.ui_keys()
   }
 end
 
-function M.keys()
+M.keys = function()
   return {
     {
       "<leader>dB",
