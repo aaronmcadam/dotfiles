@@ -24,6 +24,7 @@ function M.setup()
       "solargraph", -- LSP for Ruby
       "tailwindcss",
       "eslint", -- LSP for ESLint code actions
+      "marksman", -- LSP for Markdown
     },
   })
   mason_tool_installer.setup({
@@ -34,6 +35,7 @@ function M.setup()
       "prettierd",
       "rubocop",
       "stylua",
+      "marksman",
     },
   })
 
@@ -110,6 +112,12 @@ function M.setup()
             diagnostics = false,
           },
         },
+      })
+    end,
+    ["marksman"] = function()
+      lspconfig.marksman.setup({
+        capabilities = capabilities,
+        on_attach = M.on_attach,
       })
     end,
   })

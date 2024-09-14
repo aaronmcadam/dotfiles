@@ -33,6 +33,8 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+      "meuter/lualine-so-fancy.nvim",
     },
     event = "VeryLazy",
     opts = require("azvim.plugins.configs.lualine").opts,
