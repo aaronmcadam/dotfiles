@@ -258,9 +258,6 @@ return {
   },
   {
     "folke/noice.nvim",
-    -- Lock the version until cursor jumping issue is fixed.
-    -- @see https://github.com/folke/noice.nvim/issues/923
-    commit = "d9328ef",
     event = "VeryLazy",
     opts = require("azvim.plugins.configs.noice").opts,
     dependencies = {
