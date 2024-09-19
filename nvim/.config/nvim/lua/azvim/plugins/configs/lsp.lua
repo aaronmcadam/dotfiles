@@ -23,7 +23,6 @@ function M.setup()
       "clangd", -- LSP for C/C++
       "solargraph", -- LSP for Ruby
       "tailwindcss",
-      "eslint", -- LSP for ESLint code actions
       "marksman", -- LSP for Markdown
     },
   })
@@ -62,12 +61,6 @@ function M.setup()
 
   -- Setup every needed language server in lspconfig
   mason_lspconfig.setup_handlers({
-    function(server_name)
-      lspconfig[server_name].setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
-      })
-    end,
     ["lua_ls"] = function()
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
