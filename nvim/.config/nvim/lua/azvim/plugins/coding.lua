@@ -198,8 +198,8 @@ return {
   -- better diagnostics list
   {
     "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
-    opts = { use_diagnostic_signs = true },
+    cmd = { "Trouble" },
+    opts = {},
     keys = require("azvim.plugins.configs.trouble").keys,
   },
 
