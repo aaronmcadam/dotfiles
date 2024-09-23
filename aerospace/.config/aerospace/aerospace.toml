@@ -182,6 +182,9 @@ D = 'secondary'
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace B'
+[[on-window-detected]]
+if.app-id = 'io.raindrop.macapp'
+run = 'move-node-to-workspace B'
 
 # Workspace C (Communications)
 [[on-window-detected]]
