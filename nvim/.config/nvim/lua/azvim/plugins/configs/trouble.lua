@@ -4,7 +4,7 @@ function M.keys()
   return {
     {
       "<leader>xx",
-      "<cmd>Trouble diagnostics toggle<cr>",
+      "<cmd>Trouble diagnostics toggle focus=true<cr>",
       desc = "Diagnostics (Trouble)",
     },
     {
