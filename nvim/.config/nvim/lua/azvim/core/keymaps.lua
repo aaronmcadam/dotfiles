@@ -44,3 +44,7 @@ map("n", "<leader>wh", "<C-w>h", "Move left a window")
 map("n", "<leader>wl", "<C-w>l", "Move right a window")
 map("n", "<leader>wo", "<C-w>o", "Close other windows")
 map("n", "<leader>wb", "<C-o>", "Go back in the jump list")
+
+-- Management tools like Lazy and Mason
+map("n", "<leader>ml", "<cmd>Lazy<CR>", "Open Lazy")
+map("n", "<leader>mm", "<cmd>Mason<CR>", "Open Mason")

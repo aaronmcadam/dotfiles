@@ -17,6 +17,7 @@ function M.setup()
     { "<leader>k", group = "related" },
     { "<leader>l", group = "lsp" },
     { "<leader>lp", group = "packages" },
+    { "<leader>m", group = "manage" },
     { "<leader>n", group = "notes" },
     { "<leader>o", group = "octo-pr" },
     { "<leader>q", group = "quit" },
