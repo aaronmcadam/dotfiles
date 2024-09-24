@@ -181,8 +181,12 @@ function M.on_attach(client, bufnr)
   -- or a suggestion from your LSP for this to activate.
   lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code [A]ction")
 
-  lsp_map("<leader>lj", vim.diagnostic.goto_next, bufnr, "Go to next diagnostic ('j' for down)")
-  lsp_map("<leader>lk", vim.diagnostic.goto_prev, bufnr, "Go to previous diagnostic ('k' for up)")
+  lsp_map("<leader>lj", function()
+    vim.diagnostic.jump({ count = 1 })
+  end, bufnr, "Go to next diagnostic ('j' for down)")
+  lsp_map("<leader>lk", function()
+    vim.diagnostic.jump({ count = -1 })
+  end, bufnr, "Go to previous diagnostic ('k' for up)")
 
   -- Rename the variable under your cursor
   --  Most Language Servers support renaming across files, etc.
