@@ -18,12 +18,12 @@ function M.setup()
   })
   mason_lspconfig.setup({
     ensure_installed = {
-      "lua_ls", -- LSP for Lua language
-      "gopls", -- LSP for Go
       "clangd", -- LSP for C/C++
+      "gopls", -- LSP for Go
+      "lua_ls", -- LSP for Lua language
+      "marksman", -- LSP for Markdown
       "solargraph", -- LSP for Ruby
       "tailwindcss",
-      "marksman", -- LSP for Markdown
     },
   })
   mason_tool_installer.setup({
@@ -31,10 +31,10 @@ function M.setup()
       "codelldb", -- Debugger for C/C++
       "codespell",
       "eslint_d",
+      "marksman",
       "prettierd",
       "rubocop",
       "stylua",
-      "marksman",
     },
   })
 
@@ -61,6 +61,25 @@ function M.setup()
 
   -- Setup every needed language server in lspconfig
   mason_lspconfig.setup_handlers({
+    ["clangd"] = function()
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+        on_attach = M.on_attach,
+        cmd = { "clangd", "--background-index", "--clang-tidy" },
+      })
+    end,
+    ["cmake"] = function()
+      lspconfig.cmake.setup({
+        capabilities = capabilities,
+        on_attach = M.on_attach,
+      })
+    end,
+    ["gopls"] = function()
+      lspconfig.cmake.setup({
+        capabilities = capabilities,
+        on_attach = M.on_attach,
+      })
+    end,
     ["lua_ls"] = function()
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
@@ -83,15 +102,8 @@ function M.setup()
         },
       })
     end,
-    ["clangd"] = function()
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
-        cmd = { "clangd", "--background-index", "--clang-tidy" },
-      })
-    end,
-    ["cmake"] = function()
-      lspconfig.cmake.setup({
+    ["marksman"] = function()
+      lspconfig.marksman.setup({
         capabilities = capabilities,
         on_attach = M.on_attach,
       })
@@ -107,8 +119,8 @@ function M.setup()
         },
       })
     end,
-    ["marksman"] = function()
-      lspconfig.marksman.setup({
+    ["tailwindcss"] = function()
+      lspconfig.tailwindcss.setup({
         capabilities = capabilities,
         on_attach = M.on_attach,
       })
