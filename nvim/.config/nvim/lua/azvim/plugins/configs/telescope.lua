@@ -74,6 +74,7 @@ function M.setup()
   })
 
   telescope.load_extension("harpoon")
+  telescope.load_extension("noice")
   telescope.load_extension("package_info")
   telescope.load_extension("smart_open")
   telescope.load_extension("undo")
@@ -92,6 +93,7 @@ function M.keys()
     { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", desc = "[F]ind [H]elp" },
     { "<leader>fh", "<cmd>lua require('telescope.builtin').keymaps()<CR>", desc = "[F]ind [K]eymaps" },
     { "<leader>fm", "<cmd>Telescope harpoon marks<CR>", desc = "[F]ind Harpoon [M]arks" },
+    { "<leader>fn", "<cmd>Telescope noice<CR>", desc = "[F]ind [N]otification Messages (Noice)" },
     { "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<CR>", desc = "[F]ind [R]esume" },
     {
       "<leader>f.",
