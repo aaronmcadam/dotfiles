@@ -339,7 +339,7 @@ return {
   },
 
   -- c lang
-  { -- This plugin
+  {
     "Zeioth/compiler.nvim",
     cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
     dependencies = { "stevearc/overseer.nvim" },
@@ -348,7 +348,7 @@ return {
       { "<leader>lc", "<cmd>CompilerOpen<cr>", desc = "Toggle Compiler" },
     },
   },
-  { -- The task runner we use
+  {
     "stevearc/overseer.nvim",
     cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
     opts = {
