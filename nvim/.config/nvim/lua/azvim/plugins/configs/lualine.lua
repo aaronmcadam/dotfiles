@@ -18,12 +18,12 @@ function M.opts()
       },
     },
     sections = {
-      lualine_a = {},
+      lualine_a = {
+        "fancy_mode",
+      },
       lualine_b = {
         { "fancy_branch" },
         { "fancy_diff" },
-      },
-      lualine_c = {
         {
           "filename",
           path = 1,
@@ -39,6 +39,7 @@ function M.opts()
           end,
         },
       },
+      lualine_c = {},
       lualine_x = {},
       lualine_y = {
         { "fancy_macro" },
@@ -54,6 +55,7 @@ function M.opts()
           color = helpers.fg("Special"),
         },
         { "fancy_location" },
+        { "fancy_filetype" },
       },
       lualine_z = {},
     },
