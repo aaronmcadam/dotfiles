@@ -1,7 +1,8 @@
 local M = {}
 
 local function header_color()
-  vim.api.nvim_set_hl(0, "AlphaCustom", { fg = "#8B00FF" }) -- Violet
+  local colors = require("catppuccin.palettes").get_palette("mocha")
+  vim.api.nvim_set_hl(0, "AlphaCustom", { fg = colors.sapphire })
 
   return "AlphaCustom"
 end
