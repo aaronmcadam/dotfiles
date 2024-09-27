@@ -91,7 +91,7 @@ function M.keys()
     { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "[F]ind [B]uffers" },
     { "<leader>fx", "<cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = "[F]ind Diagnostics" },
     { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", desc = "[F]ind [H]elp" },
-    { "<leader>fh", "<cmd>lua require('telescope.builtin').keymaps()<CR>", desc = "[F]ind [K]eymaps" },
+    { "<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<CR>", desc = "[F]ind [K]eymaps" },
     { "<leader>fm", "<cmd>Telescope harpoon marks<CR>", desc = "[F]ind Harpoon [M]arks" },
     { "<leader>fn", "<cmd>Telescope noice<CR>", desc = "[F]ind [N]otification Messages (Noice)" },
     { "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<CR>", desc = "[F]ind [R]esume" },
