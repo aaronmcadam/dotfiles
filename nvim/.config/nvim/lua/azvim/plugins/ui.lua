@@ -3,9 +3,7 @@ return {
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
+    dependencies = { "echasnovski/mini.icons" },
     opts = require("azvim.plugins.configs.alpha").opts,
     config = require("azvim.plugins.configs.alpha").setup,
   },
@@ -13,7 +11,7 @@ return {
   -- better file browser
   {
     "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
     opts = {
       view_options = {
         show_hidden = true,
@@ -33,7 +31,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
+      "echasnovski/mini.icons",
       "meuter/lualine-so-fancy.nvim",
     },
     event = "VeryLazy",
@@ -221,7 +219,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
-      "nvim-tree/nvim-web-devicons",
+      "echasnovski/mini.icons",
     },
     cmd = "Octo",
     config = function()
@@ -362,7 +360,7 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     opts = {},
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
   },
 
   -- for writing prose
