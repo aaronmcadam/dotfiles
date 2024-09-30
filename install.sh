@@ -39,9 +39,10 @@ add_or_update_asdf_plugin() {
 
 add_or_update_asdf_plugin "nodejs"
 add_or_update_asdf_plugin "golang"
-add_or_update_asdf_plugin "ruby"
-# For AWS CLI
+add_or_update_asdf_plugin "lua"
 add_or_update_asdf_plugin "python"
+add_or_update_asdf_plugin "ruby"
+
 # This will install languages based on .tool-versions
 asdf install
 
