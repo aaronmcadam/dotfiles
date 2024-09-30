@@ -2,7 +2,6 @@ local M = {}
 
 function M.opts()
   local helpers = require("azvim.core.helpers")
-  local icons = helpers.icons
 
   return {
     options = {
