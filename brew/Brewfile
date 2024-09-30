@@ -46,7 +46,7 @@ brew "shellcheck"
 brew "starship"
 brew "stow"
 brew "terraform"
-brew "utf8proc"
+brew "utf8proc", args: ["HEAD"]
 brew "tmux"
 brew "tree"
 brew "yazi"
