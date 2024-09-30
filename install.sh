@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 fancy_echo() {
   local fmt="$1"; shift
@@ -56,6 +56,6 @@ asdf install
 
 # fancy_echo "Fetching environment info..."
 # neofetch
-# 
+#
 # fancy_echo "Starting fish..."
 # fish
