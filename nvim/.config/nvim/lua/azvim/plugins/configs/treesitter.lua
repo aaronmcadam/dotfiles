@@ -37,6 +37,7 @@ function M.setup()
       "toml",
       "tsx",
       "typescript",
+      "vim",
       "vimdoc",
       "yaml",
     },

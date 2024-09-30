@@ -54,18 +54,6 @@ function M.setup()
       },
     },
     extensions = {
-      ["zf-native"] = {
-        file = { -- options for sorting file-like items
-          enable = true, -- override default telescope file sorter
-          highlight_results = true, -- highlight matching text in results
-          match_filename = true, -- enable zf filename match priority
-        },
-        generic = { -- options for sorting all other items
-          enable = true, -- override default telescope generic item sorter
-          highlight_results = true, -- highlight matching text in results
-          match_filename = false, -- disable zf filename match priority
-        },
-      },
       smart_open = {
         cwd_only = true,
         filename_first = true,
@@ -73,12 +61,12 @@ function M.setup()
     },
   })
 
+  telescope.load_extension("fzf")
   telescope.load_extension("harpoon")
   telescope.load_extension("noice")
   telescope.load_extension("package_info")
   telescope.load_extension("smart_open")
   telescope.load_extension("undo")
-  telescope.load_extension("zf-native")
 end
 
 function M.keys()

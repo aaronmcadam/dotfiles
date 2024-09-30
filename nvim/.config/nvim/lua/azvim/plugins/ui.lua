@@ -80,13 +80,13 @@ return {
       "nvim-lua/plenary.nvim",
       "ThePrimeagen/harpoon",
       "debugloop/telescope-undo.nvim",
-      "natecraddock/telescope-zf-native.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       {
         "danielfalk/smart-open.nvim",
         branch = "0.2.x",
         dependencies = {
           "kkharji/sqlite.lua",
-          "nvim-telescope/telescope-fzy-native.nvim",
+          { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         },
       },
     },
