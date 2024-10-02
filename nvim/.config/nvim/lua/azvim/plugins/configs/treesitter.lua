@@ -32,6 +32,7 @@ function M.setup()
       "markdown",
       "markdown_inline",
       "hcl",
+      "regex",
       "ruby",
       "terraform",
       "toml",
