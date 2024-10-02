@@ -9,12 +9,12 @@ function M.keys()
     },
     {
       "<leader>xX",
-      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<cr>",
       desc = "Buffer Diagnostics (Trouble)",
     },
     {
       "<leader>xs",
-      "<cmd>Trouble symbols toggle focus=false<cr>",
+      "<cmd>Trouble symbols toggle focus=true<cr>",
       desc = "Symbols (Trouble)",
     },
     {
