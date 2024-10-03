@@ -18,7 +18,11 @@ layout {
     nvim
   }
 
-  tab name="algos" cwd="~/Developer/learning/algorithms/my-algos/" {
+  tab name="portal-cms" cwd="~/Developer/work/bp-portal-cms/" {
+    nvim
+  }
+
+  tab name="portal-web" cwd="~/Developer/work/bp-platform-web/" {
     nvim
   }
 }
