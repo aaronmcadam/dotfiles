@@ -32,6 +32,7 @@ function M.setup()
       "codespell",
       "eslint_d",
       "marksman",
+      "markdownlint-cli2",
       "prettierd",
       "rubocop",
       "stylua",

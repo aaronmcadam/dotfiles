@@ -140,6 +140,7 @@ return {
           javascriptreact = prettier,
           json = prettier,
           lua = { "stylua" },
+          markdown = prettier,
           typescript = prettier,
           typescriptreact = prettier,
           yaml = prettier,
@@ -171,6 +172,7 @@ return {
         typescript = { "eslint_d" },
         javascriptreact = { "eslint_d" },
         typescriptreact = { "eslint_d" },
+        markdown = { "markdownlint-cli2" },
       }
 
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
