@@ -4,13 +4,13 @@ function M.keys()
   return {
     {
       "<leader>xx",
-      "<cmd>Trouble diagnostics toggle focus=true<cr>",
-      desc = "Diagnostics (Trouble)",
+      "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<cr>",
+      desc = "Buffer Diagnostics (Trouble)",
     },
     {
       "<leader>xX",
-      "<cmd>Trouble diagnostics toggle focus=true filter.buf=0<cr>",
-      desc = "Buffer Diagnostics (Trouble)",
+      "<cmd>Trouble diagnostics toggle focus=true<cr>",
+      desc = "Project Diagnostics (Trouble)",
     },
     {
       "<leader>xs",
