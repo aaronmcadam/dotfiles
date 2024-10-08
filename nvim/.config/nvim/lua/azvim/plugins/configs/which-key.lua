@@ -5,7 +5,7 @@ function M.setup()
   wk.add({
     mode = { "n", "v" },
     { "<leader>b", group = "buffer" },
-    { "<leader>c", group = "chatgpt" },
+    -- { "<leader>c", group = "chatgpt" },
     { "<leader>d", group = "debug" },
     { "<leader>da", group = "adapters" },
     { "<leader>f", group = "find" },
@@ -25,6 +25,48 @@ function M.setup()
     { "g", group = "goto" },
     { "gz", group = "surround" },
   })
+
+  -- Add mini.ai keybindings
+  ---@type table<string, string|table>
+  local textobjects = {
+    [" "] = "Whitespace",
+    ['"'] = 'Balanced "',
+    ["'"] = "Balanced '",
+    ["`"] = "Balanced `",
+    ["("] = "Balanced (",
+    [")"] = "Balanced ) including white-space",
+    [">"] = "Balanced > including white-space",
+    ["<lt>"] = "Balanced <",
+    ["]"] = "Balanced ] including white-space",
+    ["["] = "Balanced [",
+    ["}"] = "Balanced } including white-space",
+    ["{"] = "Balanced {",
+    ["?"] = "User Prompt",
+    _ = "Underscore",
+    a = "Argument",
+    b = "Balanced ), ], }",
+    d = "Digit(s)",
+    f = "Function",
+    g = "Entire file",
+    i = "Indent",
+    o = "Block, conditional, loop",
+    q = "Quote `, \", '",
+    r = "Line",
+    t = "Tag",
+    u = "Use/call function & method",
+    U = "Use/call without dot in name",
+    x = "Diagnostic",
+  }
+
+  local mappings = {
+    mode = { "o", "x" }, -- Operator-pending and visual modes
+  }
+  for key, desc in pairs(textobjects) do
+    table.insert(mappings, { "i" .. key, desc = "Inside " .. desc })
+    table.insert(mappings, { "a" .. key, desc = "Around " .. desc })
+  end
+
+  wk.add(mappings)
 end
 
 return M
