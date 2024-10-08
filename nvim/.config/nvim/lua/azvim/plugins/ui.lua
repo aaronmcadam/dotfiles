@@ -27,6 +27,8 @@ return {
     "stevearc/oil.nvim",
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
     opts = {
+      -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
+      default_file_explorer = true,
       view_options = {
         show_hidden = true,
       },
