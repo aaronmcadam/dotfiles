@@ -110,8 +110,8 @@ function M.keys()
     },
     {
       "<leader>nn",
-      "<cmd>ObsidianNew<cr>",
-      desc = "Create new note",
+      "<cmd>ObsidianNewFromTemplate<cr>",
+      desc = "Create new note from template",
     },
     {
       "<leader>nb",
@@ -127,9 +127,20 @@ function M.keys()
       buffer = true,
     },
     {
-      "<leader>nt",
+      "<leader>ne",
+      ":ObsidianExtractNote<cr>",
+      mode = { "x" },
+      desc = "Extract note",
+    },
+    {
+      "<leader>nd", -- 'd' for 'day'
       "<cmd>ObsidianToday<cr>",
-      desc = "Open new Daily Note",
+      desc = "Open today's Daily Note",
+    },
+    {
+      "<leader>nt",
+      "<cmd>ObsidianTomorrow<cr>",
+      desc = "Open tomorrow's Daily Note",
     },
     {
       "<leader>ny",
