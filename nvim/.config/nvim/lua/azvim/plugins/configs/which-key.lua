@@ -5,7 +5,6 @@ function M.setup()
   wk.add({
     mode = { "n", "v" },
     { "<leader>b", group = "buffer" },
-    -- { "<leader>c", group = "chatgpt" },
     { "<leader>d", group = "debug" },
     { "<leader>da", group = "adapters" },
     { "<leader>f", group = "find" },

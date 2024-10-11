@@ -48,3 +48,6 @@ map("n", "<leader>wb", "<C-o>", "Go back in the jump list")
 -- Management tools like Lazy and Mason
 map("n", "<leader>ml", "<cmd>Lazy<CR>", "Open Lazy")
 map("n", "<leader>mm", "<cmd>Mason<CR>", "Open Mason")
+
+-- Autocorrect pick first option
+map("n", "<leader>c", "1z=<CR>", "Autocorrect word")
