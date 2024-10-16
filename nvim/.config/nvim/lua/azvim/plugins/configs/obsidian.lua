@@ -178,6 +178,11 @@ function M.keys()
       desc = "Paste image",
     },
     {
+      "<leader>nr",
+      "<cmd>ObsidianRename<cr>",
+      desc = "Rename note",
+    },
+    {
       "<leader>nll",
       "<cmd>ObsidianLink<cr>",
       desc = "Link selection",

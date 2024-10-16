@@ -22,6 +22,9 @@ zoxide init fish | source
 # https://starship.rs/
 starship init fish | source
 
+# atuin
+atuin init fish | source
+
 set -gx SHELL "/opt/homebrew/bin/fish"
 
 # keybindings

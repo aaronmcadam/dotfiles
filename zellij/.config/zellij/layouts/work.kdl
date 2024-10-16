@@ -25,4 +25,8 @@ layout {
   tab name="portal-web" cwd="~/Developer/work/bp-platform-web/" {
     nvim
   }
+
+  tab name="sw" cwd="~/Developer/projects/superwave-fe" {
+    nvim
+  }
 }

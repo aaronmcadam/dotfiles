@@ -115,7 +115,8 @@ alt-shift-ctrl-cmd-semicolon = 'mode service'
 alt-shift-ctrl-cmd-left = 'resize smart -50'
 alt-shift-ctrl-cmd-right = 'resize smart +50'
 
-alt-shift-ctrl-cmd-equal = 'balance-sizes'
+# X for crossing or balancing, representing symmetry in the layout
+alt-shift-ctrl-cmd-x = 'balance-sizes'
 
 # Meh key (alt + shift + ctrl)
 # Use meh for focusing windows and workspaces and other readonly actions
@@ -169,7 +170,9 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [workspace-to-monitor-force-assignment]
 # I often need to move a window to another monitor when pairing or presenting to show the code and the UI side by side.
-# When we want to move a window (a "node" in Aerospace) to another monitor, we should move it to a workspace on the other monitor (using the `move-workspace-to-monitor` command) instead of moving the entire workspace (with the `move-workspace-to-monitor` command). This way, we only move the specific window to the other monitor rather than transferring the whole workspace.
+# When we want to move a window (a "node" in Aerospace) to another monitor, we should move it to a workspace on the other
+# monitor (using the `move-workspace-to-monitor` command) instead of moving the entire workspace (with the `move-workspace-to-monitor` command).
+# This way, we only move the specific window to the other monitor rather than transferring the whole workspace.
 # Moving the node to the target workspace instead of the whole workspace ensures that the window is added to the workspace on the other monitor alongside other windows.
 
 # The default setting for workspaces is "main", so we only need to define the workspaces we want to lock to the secondary screen.
