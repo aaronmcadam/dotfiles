@@ -5,8 +5,7 @@ function M.setup()
   wk.add({
     mode = { "n", "v" },
     { "<leader>b", group = "buffer" },
-    { "<leader>d", group = "debug" },
-    { "<leader>da", group = "adapters" },
+    { "<leader>d", group = "diagnostics" },
     { "<leader>f", group = "find" },
     { "<leader>g", group = "git" },
     { "<leader>h", group = "harpoon" },
@@ -20,7 +19,6 @@ function M.setup()
     { "<leader>t", group = "test" },
     { "<leader>u", group = "ui" },
     { "<leader>w", group = "window" },
-    { "<leader>x", group = "diagnostics" },
     { "g", group = "goto" },
     { "gz", group = "surround" },
   })

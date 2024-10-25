@@ -10,6 +10,10 @@ function M.setup()
         i = {
           ["<C-k>"] = actions.move_selection_previous, -- move to prev result
           ["<C-j>"] = actions.move_selection_next, -- move to next result
+          ["<C-u>"] = false, -- let Ctrl + U clear the input
+          -- bind scrolling to the same keys as nvim-cmp autocompletion
+          ["<C-f>"] = actions.preview_scrolling_down, -- Scroll down (forward).
+          ["<C-b>"] = actions.preview_scrolling_up, -- Scroll up (backward).
         },
       },
       path_display = { "filename_first" },

@@ -51,3 +51,22 @@ map("n", "<leader>mm", "<cmd>Mason<CR>", "Open Mason")
 
 -- Autocorrect pick first option
 map("n", "<leader>c", "1z=<CR>", "Autocorrect word")
+
+-- Markdown
+
+-- Wrap the current word with a markdown link format and position the cursor to add link text.
+-- Steps:
+-- 1. `ciW`: Change the current "WORD" (the text under the cursor) to prepare it for wrapping.
+-- 2. `[](<C-r>")`: Wrap the word in `[]()` syntax, inserting the original word from the default `"` register into `[]`.
+--    The `"` register stores the last yanked or changed text (in this case, the word under the cursor).
+-- 3. `<Esc>F]`: Exit insert mode and move the cursor back to the starting `[` for text entry.
+-- 4. `i`: Enter insert mode so you can add the link text inside `[]`.
+map("n", "<leader>aa", 'ciW[](<C-r>")<Esc>F]i', "Wrap WORD with link - add text")
+
+-- Wrap the current word with a markdown link format and position the cursor to add the URL.
+-- Steps:
+-- 1. `ciW`: Change the current "WORD" to prepare it for wrapping.
+-- 2. `[<C-r>"]()`: Wrap the word in `[]()` syntax, inserting the original word from the default `"` register into `[]`.
+--    The `"` register stores the last yanked or changed text (in this case, the word under the cursor).
+-- 3. `<Esc>i`: Exit insert mode and immediately re-enter insert mode at `(` for URL entry.
+map("n", "<leader>au", 'ciW[<C-r>"]()<Esc>i', "Wrap WORD with link - add URL")

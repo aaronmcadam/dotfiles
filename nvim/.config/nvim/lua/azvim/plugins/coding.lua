@@ -73,12 +73,9 @@ return {
     },
     config = function()
       require("copilot").setup({
-        suggestion = { enabled = false },
+        suggestion = { enabled = true },
         panel = { enabled = false },
       })
-
-      -- Disable Copilot on startup
-      vim.cmd("Copilot disable")
 
       -- Create commands to manually enable and disable Copilot
       vim.api.nvim_create_user_command("CopilotEnable", function()
@@ -251,40 +248,40 @@ return {
   },
 
   -- debugging
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
-      -- fancy UI for the debugger
-      {
-        "rcarriga/nvim-dap-ui",
-        config = require("azvim.plugins.configs.dap").setup_ui,
-        opts = {},
-        keys = require("azvim.plugins.configs.dap").ui_keys,
-      },
-
-      -- virtual text for the debugger
-      {
-        "theHamsta/nvim-dap-virtual-text",
-        opts = {},
-      },
-
-      -- mason.nvim integration
-      {
-        "jay-babu/mason-nvim-dap.nvim",
-        dependencies = "mason.nvim",
-        cmd = { "DapInstall", "DapUninstall" },
-        opts = {
-          ensure_installed = {
-            "delve", -- Go debugger
-          },
-          automatic_installation = true,
-          handlers = {},
-        },
-      },
-    },
-    config = require("azvim.plugins.configs.dap").setup,
-    keys = require("azvim.plugins.configs.dap").keys,
-  },
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   dependencies = {
+  --     -- fancy UI for the debugger
+  --     {
+  --       "rcarriga/nvim-dap-ui",
+  --       config = require("azvim.plugins.configs.dap").setup_ui,
+  --       opts = {},
+  --       keys = require("azvim.plugins.configs.dap").ui_keys,
+  --     },
+  --
+  --     -- virtual text for the debugger
+  --     {
+  --       "theHamsta/nvim-dap-virtual-text",
+  --       opts = {},
+  --     },
+  --
+  --     -- mason.nvim integration
+  --     {
+  --       "jay-babu/mason-nvim-dap.nvim",
+  --       dependencies = "mason.nvim",
+  --       cmd = { "DapInstall", "DapUninstall" },
+  --       opts = {
+  --         ensure_installed = {
+  --           "delve", -- Go debugger
+  --         },
+  --         automatic_installation = true,
+  --         handlers = {},
+  --       },
+  --     },
+  --   },
+  --   config = require("azvim.plugins.configs.dap").setup,
+  --   keys = require("azvim.plugins.configs.dap").keys,
+  -- },
 
   -- surround
   {
@@ -304,7 +301,7 @@ return {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
     keys = {
-      { "<leader>uu", vim.cmd.UndotreeToggle, desc = "Open Undotree" },
+      { "<leader>uu", vim.cmd.UndotreeToggle, desc = "Toggle Undotree" },
       { "<leader>uf", vim.cmd.UndotreeFocus, desc = "Focus Undotree" },
     },
   },
