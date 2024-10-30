@@ -2,9 +2,9 @@ local M = {}
 
 function M.opts()
   return {
-    indent = {
-      char = "│",
-    },
+    -- indent = {
+    --   char = "│",
+    -- },
     exclude = {
       filetypes = {
         "help",

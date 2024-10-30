@@ -31,12 +31,12 @@ function M.keys()
     { "<leader>tl", "<cmd>w<CR><cmd>lua require('neotest').run.run_last()<CR>", desc = "Test Last" },
     {
       "<leader>to",
-      "<cmd>w<CR><cmd>lua require('neotest').output.open()<CR>",
+      "<cmd>w<CR><cmd>lua require('neotest').output.open({ enter = true })<CR>",
       desc = "Open Test Output",
     },
     {
       "<leader>ts",
-      "<cmd>w<CR><cmd>lua require('neotest').output_panel.toggle()<CR>",
+      "<cmd>w<CR><cmd>lua require('neotest').output_panel.toggle({ enter = true })<CR>",
       desc = "Toggle Test Summary",
     },
     {
