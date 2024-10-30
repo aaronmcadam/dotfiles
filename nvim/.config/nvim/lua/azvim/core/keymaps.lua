@@ -70,3 +70,10 @@ map("n", "<leader>aa", 'ciW[](<C-r>")<Esc>F]i', "Wrap WORD with link - add text"
 --    The `"` register stores the last yanked or changed text (in this case, the word under the cursor).
 -- 3. `<Esc>i`: Exit insert mode and immediately re-enter insert mode at `(` for URL entry.
 map("n", "<leader>au", 'ciW[<C-r>"]()<Esc>i', "Wrap WORD with link - add URL")
+
+-- Visual selection variant of the above
+-- Wrap the current visual selection with a markdown link format and position the cursor to add the URL.
+map("v", "<leader>av", 'c[<C-r>"]()<Esc>i', "Wrap visual selection with link - add URL")
+
+-- Wrap the current word with a markdown embed format and position the cursor to add text.
+map("n", "<leader>ae", 'ciW![](<C-r>")<Esc>F]i', "Wrap WORD with embed - add text")
