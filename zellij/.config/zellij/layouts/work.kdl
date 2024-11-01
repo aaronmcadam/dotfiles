@@ -18,23 +18,7 @@ layout {
     nvim
   }
 
-  tab name="portal-cms" cwd="~/Developer/work/bp-portal-cms/" {
-    nvim
-  }
-
-  tab name="portal-web" cwd="~/Developer/work/bp-portal-web/" {
-    nvim
-  }
-
-  tab name="platform-web" cwd="~/Developer/work/bp-platform-web/" {
-    nvim
-  }
-
-  tab name="sw" cwd="~/Developer/projects/superwave-fe" {
-    nvim
-  }
-
-  tab name="shadcn" cwd="~/Developer/learning/shadcn/shadcn-playground" {
+  tab name="dev" cwd="~/Developer/work/bp-portal-cms/" {
     nvim
   }
 }

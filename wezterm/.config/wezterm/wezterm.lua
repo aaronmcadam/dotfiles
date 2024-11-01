@@ -65,7 +65,7 @@ config.font_rules = {
 
 config.enable_kitty_graphics = true
 config.enable_tab_bar = false
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.95
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
 
