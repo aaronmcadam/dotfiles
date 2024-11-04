@@ -23,9 +23,9 @@ end
 function M.keys()
   return {
     {
-      "<leader>tf",
+      "<leader>ta",
       "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>",
-      desc = "Test File",
+      desc = "Test All",
     },
     { "<leader>tt", "<cmd>w<CR><cmd>lua require('neotest').run.run()<CR>", desc = "Test Nearest" },
     { "<leader>tl", "<cmd>w<CR><cmd>lua require('neotest').run.run_last()<CR>", desc = "Test Last" },
