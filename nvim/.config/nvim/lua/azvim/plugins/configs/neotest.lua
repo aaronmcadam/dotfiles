@@ -35,9 +35,14 @@ function M.keys()
       desc = "Open Test Output",
     },
     {
-      "<leader>ts",
+      "<leader>tp",
       "<cmd>w<CR><cmd>lua require('neotest').output_panel.toggle({ enter = true })<CR>",
-      desc = "Toggle Test Summary",
+      desc = "Toggle Test Output Panel",
+    },
+    {
+      "<leader>ts",
+      "<cmd>w<CR><cmd>lua require('neotest').summary.toggle()<CR>",
+      desc = "Toggle Test Output Panel",
     },
     {
       "<leader>td",

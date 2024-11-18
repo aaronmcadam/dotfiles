@@ -46,8 +46,8 @@ map("n", "<leader>wo", "<C-w>o", "Close other windows")
 map("n", "<leader>wb", "<C-o>", "Go back in the jump list")
 
 -- Management tools like Lazy and Mason
-map("n", "<leader>ml", "<cmd>Lazy<CR>", "Open Lazy")
-map("n", "<leader>mm", "<cmd>Mason<CR>", "Open Mason")
+map("n", "<leader>xl", "<cmd>Lazy<CR>", "Open Lazy")
+map("n", "<leader>xm", "<cmd>Mason<CR>", "Open Mason")
 
 -- Autocorrect pick first option
 map("n", "<leader>c", "1z=<CR>", "Autocorrect word")
@@ -61,7 +61,7 @@ map("n", "<leader>c", "1z=<CR>", "Autocorrect word")
 --    The `"` register stores the last yanked or changed text (in this case, the word under the cursor).
 -- 3. `<Esc>F]`: Exit insert mode and move the cursor back to the starting `[` for text entry.
 -- 4. `i`: Enter insert mode so you can add the link text inside `[]`.
-map("n", "<leader>aa", 'ciW[](<C-r>")<Esc>F]i', "Wrap WORD with link - add text")
+map("n", "<leader>ma", 'ciW[](<C-r>")<Esc>F]i', "Wrap WORD with link - add text")
 
 -- Wrap the current word with a markdown link format and position the cursor to add the URL.
 -- Steps:
@@ -69,11 +69,11 @@ map("n", "<leader>aa", 'ciW[](<C-r>")<Esc>F]i', "Wrap WORD with link - add text"
 -- 2. `[<C-r>"]()`: Wrap the word in `[]()` syntax, inserting the original word from the default `"` register into `[]`.
 --    The `"` register stores the last yanked or changed text (in this case, the word under the cursor).
 -- 3. `<Esc>i`: Exit insert mode and immediately re-enter insert mode at `(` for URL entry.
-map("n", "<leader>au", 'ciW[<C-r>"]()<Esc>i', "Wrap WORD with link - add URL")
+map("n", "<leader>mu", 'ciW[<C-r>"]()<Esc>i', "Wrap WORD with link - add URL")
 
 -- Visual selection variant of the above
 -- Wrap the current visual selection with a markdown link format and position the cursor to add the URL.
-map("v", "<leader>av", 'c[<C-r>"]()<Esc>i', "Wrap visual selection with link - add URL")
+map("v", "<leader>mv", 'c[<C-r>"]()<Esc>i', "Wrap visual selection with link - add URL")
 
 -- Wrap the current word with a markdown embed format and position the cursor to add text.
-map("n", "<leader>ae", 'ciW![](<C-r>")<Esc>F]i', "Wrap WORD with embed - add text")
+map("n", "<leader>me", 'ciW![](<C-r>")<Esc>F]i', "Wrap WORD with embed - add text")
