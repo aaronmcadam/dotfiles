@@ -72,8 +72,9 @@ abbr -a ptw "pnpm test --watch"
 alias gdb "git branch | fzf --header 'Delete Branch' --reverse -m --pointer='' | xargs -n 1 git branch -D"
 alias gcr "git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff --color=always {1}' --reverse -m --pointer='' | xargs -n 1 git checkout"
 alias gv "nvim '+:horizontal topleft Git'"
+alias grbim "git fetch origin main && git rebase --interactive origin/main"
+
 abbr -a grbi git rebase --interactive
-abbr -a grbim git rebase --interactive main
 abbr -a grbil git rebase --interactive HEAD~2
 abbr -a s "git status -s"
 abbr -a h "gh"
