@@ -66,6 +66,7 @@ function M.setup()
   })
 
   telescope.load_extension("fzf")
+  telescope.load_extension("git_worktree")
   telescope.load_extension("noice")
   telescope.load_extension("package_info")
   telescope.load_extension("smart_open")
@@ -116,6 +117,11 @@ function M.keys()
       "gv",
       "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>",
       desc = "[G]o to definition in vertical [S]plit",
+    },
+    {
+      "<leader>gt",
+      "<cmd>lua require('telescope').extensions.git_worktree.git_worktree()<CR>",
+      desc = "List [g]it [w]orktrees",
     },
     {
       "<leader>/",

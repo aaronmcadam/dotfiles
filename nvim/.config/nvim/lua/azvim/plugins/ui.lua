@@ -229,6 +229,29 @@ return {
       require("neogit").setup()
     end,
   },
+  -- Manage Git Worktrees
+  {
+    "polarmutex/git-worktree.nvim",
+    -- pull from main branch to fix issue with builtin switch
+    -- @see https://github.com/polarmutex/git-worktree.nvim/issues/24
+    -- version = "^2",
+    branch = "main",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local Hooks = require("git-worktree.hooks")
+      local config = require("git-worktree.config")
+      local update_on_switch = Hooks.builtins.update_current_buffer_on_switch
+
+      Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
+        vim.notify("Moved from " .. prev_path .. " to " .. path)
+        update_on_switch(path, prev_path)
+      end)
+
+      Hooks.register(Hooks.type.DELETE, function()
+        vim.cmd(config.update_on_change_command)
+      end)
+    end,
+  },
   -- Manage GitHub issues and PRs
   {
     "pwntester/octo.nvim",
@@ -381,7 +404,7 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
   },
 
-  -- AI
+  -- AI Chat
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
@@ -389,9 +412,10 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
       provider = "openai",
-      auto_suggestions_provider = "copilot",
+      auto_suggestions_provider = "openai",
       openai = {
-        model = "gpt-4o",
+        -- model = "gpt-4o",
+        model = "gpt-4o-mini",
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
