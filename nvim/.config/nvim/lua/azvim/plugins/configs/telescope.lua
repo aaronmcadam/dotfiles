@@ -20,7 +20,7 @@ function M.setup()
     },
     pickers = {
       find_files = {
-        theme = "dropdown",
+        theme = "ivy",
         find_command = {
           "rg",
           "--files",
@@ -34,10 +34,10 @@ function M.setup()
         },
       },
       git_files = {
-        theme = "dropdown",
+        theme = "ivy",
       },
       live_grep = {
-        theme = "dropdown",
+        theme = "ivy",
         additional_args = function()
           -- Dotfiles are getting hidden because they're technically hidden files.
           -- If we set ripgrep to include hidden files, we see too many files that we don't care about.
@@ -47,14 +47,14 @@ function M.setup()
         end,
       },
       lsp_references = {
-        theme = "dropdown",
+        theme = "ivy",
         fname_width = 100,
       },
       oldfiles = {
-        theme = "dropdown",
+        theme = "ivy",
       },
       package_info = {
-        theme = "dropdown",
+        theme = "ivy",
       },
     },
     extensions = {
