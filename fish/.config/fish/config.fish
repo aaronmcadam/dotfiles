@@ -1,4 +1,7 @@
 fish_add_path "/opt/homebrew/bin"
+fish_add_path "$HOME/bin"
+
+set -gx SHELL "/opt/homebrew/bin/fish"
 
 # include private settings
 source ~/.config/fish/private.fish
@@ -24,8 +27,6 @@ starship init fish | source
 
 # atuin
 atuin init fish | source
-
-set -gx SHELL "/opt/homebrew/bin/fish"
 
 # keybindings
 # General
@@ -74,16 +75,14 @@ alias gcr "git branch --sort=-committerdate | fzf --header 'Checkout Recent Bran
 alias gv "nvim '+:horizontal topleft Git'"
 alias grbim "git fetch origin main && git rebase --interactive origin/main"
 
+# Remove the current git worktree and navigate to the repo root
+# and list worktrees to show the worktree has been removed.
+# Must be run from within the worktree directory
+alias gwr "git worktree remove . --force && cd .. && git worktree list"
+
 abbr -a grbi git rebase --interactive
 abbr -a grbil git rebase --interactive HEAD~2
 abbr -a s "git status -s"
 abbr -a h "gh"
 abbr -a hb "gh browse"
 abbr -a hc "gh repo clone"
-
-# pnpm
-set -gx PNPM_HOME "/Users/aaronmcadam/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end

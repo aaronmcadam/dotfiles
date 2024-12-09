@@ -39,3 +39,5 @@
 	required = true
 [http]
   postBuffer = 52428800
+[github]
+  user = aaronmcadam
