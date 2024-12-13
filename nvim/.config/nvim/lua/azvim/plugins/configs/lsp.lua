@@ -30,7 +30,6 @@ function M.setup()
     ensure_installed = {
       "codelldb", -- Debugger for C/C++
       "codespell",
-      "eslint_d",
       "marksman",
       "markdownlint-cli2",
       "prettierd",

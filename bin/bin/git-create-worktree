@@ -184,4 +184,5 @@ cd "$worktree"
 update_remote "$branch"
 run_command "Checking out submodules..." git submodule update --init
 run_command "Installing dependencies..." pnpm install
+run_command "Copying over .env file..." cp ../main/.env.test.local .
 msg "${GREEN}Success.${NOFORMAT}"
