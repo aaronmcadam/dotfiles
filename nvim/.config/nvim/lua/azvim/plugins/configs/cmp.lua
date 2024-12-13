@@ -77,10 +77,9 @@ function M.opts()
     sources = cmp.config.sources({
       { name = "nvim_lsp", priority = 1000 },
       { name = "luasnip", priority = 800 },
-      { name = "copilot", priority = 600 },
-      { name = "git", priority = 600 },
       { name = "buffer", priority = 400 },
       { name = "path", priority = 250 },
+      { name = "copilot", priority = 100 },
     }),
   }
 end
