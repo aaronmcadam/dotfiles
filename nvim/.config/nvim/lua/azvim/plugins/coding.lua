@@ -148,6 +148,14 @@ return {
     },
     opts = {
       on_attach = require("azvim.plugins.configs.lsp").on_attach,
+      settings = {
+        tsserver_file_preferences = {
+          autoImportFileExcludePatterns = {
+            "@radix-ui/*",
+            "node:test",
+          },
+        },
+      },
     },
   },
   { "dmmulroy/ts-error-translator.nvim", config = true },
