@@ -19,6 +19,7 @@ function M.setup()
   mason_lspconfig.setup({
     ensure_installed = {
       "clangd", -- LSP for C/C++
+      "eslint",
       "gopls", -- LSP for Go
       "lua_ls", -- LSP for Lua language
       "marksman", -- LSP for Markdown
@@ -72,6 +73,13 @@ function M.setup()
       lspconfig.cmake.setup({
         capabilities = capabilities,
         on_attach = M.on_attach,
+      })
+    end,
+    ["eslint"] = function()
+      lspconfig.eslint.setup({
+        capabilities = capabilities,
+        on_attach = M.on_attach,
+        root_dir = lspconfig.util.root_pattern(".git", ".eslintrc*", ".yarnrc*", ".npmrc*", ".prettierrc*"),
       })
     end,
     ["gopls"] = function()
