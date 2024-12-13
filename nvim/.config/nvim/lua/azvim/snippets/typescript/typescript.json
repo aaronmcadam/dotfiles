@@ -21,12 +21,12 @@
   },
   "functionDeclaration": {
     "prefix": "fnd",
-    "body": ["function ${1:name}(${2:}) { ${3:contents} }"],
+    "body": ["function ${1:name}(${2}) { ${3:contents} }"],
     "description": "Function declaration"
   },
   "functionExpression": {
     "prefix": "fne",
-    "body": ["const ${1:name} = function(${2:}) { ${3:contents} }"],
+    "body": ["const ${1:name} = function(${2}) { ${3:contents} }"],
     "description": "Function expression"
   }
 }

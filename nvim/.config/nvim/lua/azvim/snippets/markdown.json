@@ -1,0 +1,6 @@
+{
+  "tsxCodeBlock": {
+    "prefix": "tsx",
+    "body": ["```tsx", "${1}", "```"]
+  }
+}
