@@ -102,6 +102,7 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
+      preset = "helix",
       plugins = { spelling = true },
     },
     config = require("azvim.plugins.configs.which-key").setup,
