@@ -192,6 +192,7 @@ function M.on_attach(client, bufnr)
   -- Opens a popup that displays documentation about the word under your cursor
   --  See `:help K` for why this keymap
   lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
+  lsp_map("gK", vim.lsp.buf.signature_help, bufnr, "Signature Help")
 
   -- WARN: This is not Go to Definition, this is Go to Declaration.
   --  For example, in C this would take you to the header
