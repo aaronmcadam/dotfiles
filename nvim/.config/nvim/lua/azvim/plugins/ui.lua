@@ -225,7 +225,7 @@ return {
       { "<leader>gdc", "<cmd>DiffviewClose<CR>", desc = "Git Diff Close" },
       { "<leader>gdh", "<cmd>DiffviewFileHistory %<CR>", desc = "Git Diff Current File History" },
       { "<leader>gda", "<cmd>DiffviewFileHistory<CR>", desc = "Git Diff All File History" },
-      { "<leader>gp", "<cmd>Neogit push<CR>", desc = "Git Push" },
+      -- { "<leader>gp", "<cmd>Neogit push<CR>", desc = "Git Push" },
     },
     config = function()
       require("neogit").setup()
