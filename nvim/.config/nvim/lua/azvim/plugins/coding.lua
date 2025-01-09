@@ -158,9 +158,6 @@ return {
             end,
           },
         },
-        min_keyword_length = function()
-          return vim.bo.filetype == "markdown" and 2 or 0
-        end,
       },
     },
   },
