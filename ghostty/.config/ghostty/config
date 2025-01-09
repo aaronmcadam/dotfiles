@@ -1,0 +1,18 @@
+font-family = "Monaspace Neon"
+font-family-italic = "Monaspace Radon"
+font-family-bold-italic = "Monaspace Radon"
+font-size = 18
+theme = catppuccin-mocha
+cursor-style = block
+
+macos-option-as-alt = true
+keybind = alt+left=unbind
+keybind = alt+right=unbind
+
+macos-titlebar-style = transparent
+window-padding-x = 12
+window-padding-y = 12
+window-decoration = false
+
+copy-on-select = clipboard
+shell-integration-features = cursor,sudo,no-title

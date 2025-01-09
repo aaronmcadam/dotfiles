@@ -1,11 +1,11 @@
 {
   "consoleLog": {
-    "prefix": "log",
+    "prefix": "clg",
     "body": ["console.log(${1:variable})"],
     "description": "Log to the console"
   },
   "detailedLog": {
-    "prefix": "dlog",
+    "prefix": "dlg",
     "body": ["console.log('${1:variable}', ${1:variable})"],
     "description": "Log to the console with a label"
   },
@@ -28,5 +28,9 @@
     "prefix": "fne",
     "body": ["const ${1:name} = (${2}) => {", "  ${3:contents}", "}"],
     "description": "Function expression"
+  },
+  "importReact": {
+    "prefix": "imr",
+    "body": ["import * as React from 'react'"]
   }
 }

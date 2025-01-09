@@ -11,6 +11,9 @@ function M.opts()
         path = "~/Documents/Remote Second Brain/",
       },
     },
+    completion = {
+      nvim_cmp = true,
+    },
     notes_subdir = "30 Areas/31 Inbox",
     new_notes_location = "notes_subdir",
     templates = {

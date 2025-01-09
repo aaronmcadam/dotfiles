@@ -6,6 +6,7 @@ return {
     opts = {
       transparent_background = true,
       integrations = {
+        blink_cmp = false,
         fidget = true,
         harpoon = true,
         lsp_trouble = true,

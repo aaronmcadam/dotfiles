@@ -3,8 +3,8 @@ fish_add_path "$HOME/bin"
 
 set -gx SHELL "/opt/homebrew/bin/fish"
 
-# include private settings
-source ~/.config/fish/private.fish
+# include local settings
+source ~/.config/fish/config.local.fish
 
 set -U fish_greeting # disable greeting
 set -U fish_key_bindings fish_vi_key_bindings

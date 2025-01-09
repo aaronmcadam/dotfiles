@@ -298,7 +298,7 @@ return {
       input = { enabled = true },
       notifier = { enabled = true },
       quickfile = { enabled = true },
-      scroll = { enabled = true },
+      -- scroll = { enabled = true },
       statuscolumn = { enabled = true },
       -- words = { enabled = true },
     },
@@ -394,7 +394,6 @@ return {
     ft = "markdown",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
       "nvim-telescope/telescope.nvim",
       "nvim-treesitter/nvim-treesitter",
     },

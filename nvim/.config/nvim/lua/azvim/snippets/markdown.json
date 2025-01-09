@@ -1,6 +1,10 @@
 {
+  "tsCodeBlock": {
+    "prefix": "ts",
+    "body": ["```typescript", "${1}", "```"]
+  },
   "tsxCodeBlock": {
-    "prefix": "tsx",
+    "prefix": "tx",
     "body": ["```tsx", "${1}", "```"]
   }
 }

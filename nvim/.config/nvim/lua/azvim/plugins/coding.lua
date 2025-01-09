@@ -22,6 +22,7 @@ return {
       return {
         n_lines = 500,
         custom_textobjects = {
+          c = gen_bundled_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
           d = gen_extra_spec.number(), -- digits
           f = gen_bundled_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
           g = gen_extra_spec.buffer(), -- buffer. g similar to G/gg motion
@@ -33,7 +34,7 @@ return {
           r = gen_extra_spec.line(), -- r for "Row"
           u = gen_bundled_spec.function_call(), -- u for "Usage"
           U = gen_bundled_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
-          x = gen_extra_spec.diagnostic(), -- diagnostic (Trouble is bound to "x")
+          x = gen_extra_spec.diagnostic(), -- diagnostic
         },
       }
     end,
@@ -56,6 +57,7 @@ return {
   -- snippets
   {
     "L3MON4D3/LuaSnip",
+    version = "v2.*",
     build = "make install_jsregexp",
     config = require("azvim.plugins.configs.luasnip").setup,
     keys = require("azvim.plugins.configs.luasnip").keys,
@@ -92,34 +94,75 @@ return {
 
   -- completion
   {
-    "hrsh7th/nvim-cmp",
-    version = false, -- last release is way too old
-    event = "BufReadPre",
+    "saghen/blink.cmp",
+    version = "*",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      {
-        "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp",
+      { "saghen/blink.compat", lazy = true },
+      { "L3MON4D3/LuaSnip", version = "v2.*" },
+    },
+    opts = {
+      keymap = { preset = "default" },
+      completion = {
+        accept = {
+          -- experimental auto-brackets support
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+        menu = {
+          border = "single",
+          draw = {
+            treesitter = { "lsp" },
+          },
+        },
+        -- Show documentation when selecting a completion item
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+          window = {
+            border = "single",
+          },
+        },
       },
-      "saadparwaiz1/cmp_luasnip",
-      {
-        "zbirenbaum/copilot-cmp",
-        dependencies = "zbirenbaum/copilot.lua",
-        config = function()
-          require("copilot_cmp").setup()
-        end,
-      },
-      {
-        "petertriho/cmp-git",
-        dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-          require("cmp_git").setup()
+      snippets = { preset = "luasnip" },
+      sources = {
+        default = {
+          "obsidian",
+          "obsidian_new",
+          "obsidian_tags",
+          "lsp",
+          "path",
+          "snippets",
+          "buffer",
+        },
+        -- Disable cmdline completions
+        cmdline = {},
+        providers = {
+          obsidian = {
+            name = "obsidian",
+            module = "blink.compat.source",
+          },
+          obsidian_new = {
+            name = "obsidian_new",
+            module = "blink.compat.source",
+          },
+          obsidian_tags = {
+            name = "obsidian_tags",
+            module = "blink.compat.source",
+          },
+          lsp = {
+            enabled = function()
+              -- We want to use the obsidian completion source for markdown
+              -- to avoid entries for both marksman and obsidian.
+              return vim.bo.filetype ~= "markdown"
+            end,
+          },
+        },
+        min_keyword_length = function()
+          return vim.bo.filetype == "markdown" and 2 or 0
         end,
       },
     },
-    opts = require("azvim.plugins.configs.cmp").opts,
   },
 
   -- LSP
@@ -130,9 +173,9 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "neovim/nvim-lspconfig",
+      "saghen/blink.cmp",
       { "j-hui/fidget.nvim", tag = "legacy" },
       "folke/neodev.nvim",
-      "hrsh7th/cmp-nvim-lsp",
       "SmiteshP/nvim-navic",
     },
     config = require("azvim.plugins.configs.lsp").setup,
