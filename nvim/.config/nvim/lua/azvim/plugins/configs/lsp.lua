@@ -19,6 +19,7 @@ function M.setup()
   mason_lspconfig.setup({
     ensure_installed = {
       "clangd", -- LSP for C/C++
+      "cmake", -- LSP for cmake
       "eslint",
       "gopls", -- LSP for Go
       "lua_ls", -- LSP for Lua language
@@ -61,6 +62,13 @@ function M.setup()
 
   -- Setup every needed language server in lspconfig
   mason_lspconfig.setup_handlers({
+    -- default handler for installed servers
+    function(server_name)
+      lspconfig[server_name].setup({
+        capabilities = capabilities,
+        on_attach = M.on_attach,
+      })
+    end,
     ["clangd"] = function()
       lspconfig.clangd.setup({
         capabilities = capabilities,
@@ -68,23 +76,11 @@ function M.setup()
         cmd = { "clangd", "--background-index", "--clang-tidy" },
       })
     end,
-    ["cmake"] = function()
-      lspconfig.cmake.setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
-      })
-    end,
     ["eslint"] = function()
       lspconfig.eslint.setup({
         capabilities = capabilities,
         on_attach = M.on_attach,
         root_dir = lspconfig.util.root_pattern(".git", ".eslintrc*", ".yarnrc*", ".npmrc*", ".prettierrc*"),
-      })
-    end,
-    ["gopls"] = function()
-      lspconfig.cmake.setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
       })
     end,
     ["lua_ls"] = function()
@@ -109,12 +105,6 @@ function M.setup()
         },
       })
     end,
-    ["marksman"] = function()
-      lspconfig.marksman.setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
-      })
-    end,
     ["solargraph"] = function()
       lspconfig.solargraph.setup({
         capabilities = capabilities,
@@ -124,12 +114,6 @@ function M.setup()
             diagnostics = false,
           },
         },
-      })
-    end,
-    ["tailwindcss"] = function()
-      lspconfig.tailwindcss.setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
       })
     end,
   })
