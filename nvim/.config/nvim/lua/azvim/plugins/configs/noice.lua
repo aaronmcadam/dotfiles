@@ -8,6 +8,11 @@ function M.opts()
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
       },
+      hover = {
+        -- Set not show a message if hover is not available
+        -- ex: Shift+K on TypeScript code
+        silent = true,
+      },
     },
     -- you can enable a preset for easier configuration
     presets = {
