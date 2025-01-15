@@ -315,6 +315,7 @@ return {
   -- todo comments
   {
     "folke/todo-comments.nvim",
+    version = "*",
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
     config = true,

@@ -61,7 +61,7 @@ map("n", "<leader>c", "1z=<CR>", "Autocorrect word")
 --    The `"` register stores the last yanked or changed text (in this case, the word under the cursor).
 -- 3. `<Esc>F]`: Exit insert mode and move the cursor back to the starting `[` for text entry.
 -- 4. `i`: Enter insert mode so you can add the link text inside `[]`.
-map("n", "<leader>ma", 'ciW[](<C-r>")<Esc>F]i', "add link text")
+map("n", "<leader>ma", 'ciW[](<C-r>")<Esc>F]i', "Add link text")
 
 -- Wrap the current word with a markdown link format and position the cursor to add the URL.
 -- Steps:
@@ -69,14 +69,14 @@ map("n", "<leader>ma", 'ciW[](<C-r>")<Esc>F]i', "add link text")
 -- 2. `[<C-r>"]()`: Wrap the word in `[]()` syntax, inserting the original word from the default `"` register into `[]`.
 --    The `"` register stores the last yanked or changed text (in this case, the word under the cursor).
 -- 3. `<Esc>i`: Exit insert mode and immediately re-enter insert mode at `(` for URL entry.
-map("n", "<leader>mu", 'ciW[<C-r>"]()<Esc>i', "add link URL")
+map("n", "<leader>mu", 'ciW[<C-r>"]()<Esc>i', "Add link URL")
 
 -- Visual selection variant of the above
 -- Wrap the current visual selection with a markdown link format and position the cursor to add the URL.
-map("v", "<leader>mv", 'c[<C-r>"]()<Esc>i', "wrap with link URL")
+map("v", "<leader>mv", 'c[<C-r>"]()<Esc>i', "Wrap with link URL")
 
 -- Wrap the current word with a markdown embed format and position the cursor to add text.
-map("n", "<leader>me", 'ciW![](<C-r>")<Esc>F]i', "wrap with embed link text")
+map("n", "<leader>me", 'ciW![](<C-r>")<Esc>F]i', "Wrap with embed link text")
 
 -- Wrap the current word with code backticks.
-map("n", "<leader>mc", 'cE`<C-r>"`<Esc>wi', "wrap word with code backticks")
+map("n", "<leader>mc", 'ciW`<C-r>"`<Esc>wi', "Wrap word with code backticks")

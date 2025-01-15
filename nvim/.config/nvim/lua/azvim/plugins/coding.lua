@@ -123,12 +123,6 @@ return {
         ["<C-h>"] = { "snippet_backward", "fallback" },
       },
       completion = {
-        accept = {
-          -- experimental auto-brackets support
-          auto_brackets = {
-            enabled = true,
-          },
-        },
         menu = {
           border = "single",
           draw = {
@@ -151,9 +145,9 @@ return {
           "obsidian_new",
           "obsidian_tags",
           "lsp",
-          "path",
           "snippets",
           "buffer",
+          "path",
         },
         -- Disable cmdline completions
         cmdline = {},
@@ -415,31 +409,6 @@ return {
       },
     },
     opts = { use_default_keymaps = false },
-  },
-
-  -- package.json info
-  {
-    "vuki656/package-info.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    config = function()
-      local colors = require("catppuccin.palettes").get_palette("mocha")
-
-      require("package-info").setup({
-        -- autostart = false,
-        package_manager = "pnpm",
-        colors = {
-          outdated = colors.peach,
-        },
-        hide_up_to_date = true,
-      })
-    end,
-    keys = {
-      { "<leader>lpt", "<cmd>lua require('package-info').toggle()<cr>", desc = "Toggle" },
-      { "<leader>lpd", "<cmd>lua require('package-info').delete()<cr>", desc = "Delete package" },
-      { "<leader>lpu", "<cmd>lua require('package-info').update()<cr>", desc = "Update package" },
-      { "<leader>lpi", "<cmd>lua require('package-info').install()<cr>", desc = "Install package" },
-      { "<leader>lpc", "<cmd>lua require('package-info').change_version()<cr>", desc = "Change package version" },
-    },
   },
 
   -- c lang
