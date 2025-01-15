@@ -18,6 +18,7 @@ return {
         neotest = true,
         octo = true,
         overseer = true,
+        snacks = true,
         telescope = {
           enabled = true,
           style = "nvchad",
