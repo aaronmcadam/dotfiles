@@ -170,16 +170,17 @@ return {
       "GBrowse",
       "Gread",
       "Gwrite",
-      "Gdiffsplit",
-      "Gvdiffsplit",
+      "Gdiffsplit!",
+      "Gvdiffsplit!",
     },
     keys = {
       { "<leader>gg", "<cmd>Git<CR>", desc = "Git" },
       { "<leader>gv", "<cmd>GBrowse<CR>", desc = "Git View in Browser" },
-      -- { "<leader>gd", "<cmd>Gvdiffsplit<CR>", desc = "Git Diff" },
+      { "<leader>gd", "<cmd>Gvdiffsplit!<CR>", desc = "Git Diff" },
       { "<leader>gr", "<cmd>Gread<CR><cmd>update<CR>", desc = "Git Read" },
       { "<leader>gw", "<cmd>Gwrite<CR>", desc = "Git Write" },
       { "<leader>gp", "<cmd>Git push<CR>", desc = "Git Push" },
+      { "<leader>gl", "<cmd>Git log<CR>", desc = "Git Log" },
     },
   },
   {
@@ -211,25 +212,6 @@ return {
       }
 
       return C
-    end,
-  },
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim", -- optional
-    },
-    keys = {
-      -- { "<leader>gg", "<cmd>Neogit<CR>", desc = "Git" },
-      { "<leader>gdd", "<cmd>DiffviewOpen<CR>", desc = "Git Diff Open" },
-      { "<leader>gdc", "<cmd>DiffviewClose<CR>", desc = "Git Diff Close" },
-      { "<leader>gdh", "<cmd>DiffviewFileHistory %<CR>", desc = "Git Diff Current File History" },
-      { "<leader>gda", "<cmd>DiffviewFileHistory<CR>", desc = "Git Diff All File History" },
-      -- { "<leader>gp", "<cmd>Neogit push<CR>", desc = "Git Push" },
-    },
-    config = function()
-      require("neogit").setup()
     end,
   },
   -- Manage Git Worktrees
