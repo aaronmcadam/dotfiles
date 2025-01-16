@@ -170,8 +170,8 @@ return {
       "GBrowse",
       "Gread",
       "Gwrite",
-      "Gdiffsplit!",
-      "Gvdiffsplit!",
+      "Gdiffsplit",
+      "Gvdiffsplit",
     },
     keys = {
       { "<leader>gg", "<cmd>Git<CR>", desc = "Git" },
