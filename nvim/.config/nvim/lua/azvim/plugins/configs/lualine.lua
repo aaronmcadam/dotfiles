@@ -45,6 +45,10 @@ function M.opts()
         { "fancy_diagnostics" },
         { "fancy_searchcount" },
         {
+          require("package-info").get_status,
+          color = helpers.fg("Statement"),
+        },
+        {
           require("lazy.status").updates,
           cond = require("lazy.status").has_updates,
           color = helpers.fg("Special"),

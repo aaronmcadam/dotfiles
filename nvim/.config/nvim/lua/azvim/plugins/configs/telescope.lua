@@ -58,6 +58,9 @@ function M.setup()
       },
     },
     extensions = {
+      package_info = {
+        theme = "ivy",
+      },
       smart_open = {
         cwd_only = true,
         filename_first = true,
@@ -68,6 +71,7 @@ function M.setup()
   telescope.load_extension("fzf")
   telescope.load_extension("git_worktree")
   telescope.load_extension("noice")
+  telescope.load_extension("package_info")
   telescope.load_extension("smart_open")
   telescope.load_extension("undo")
 end
@@ -106,6 +110,11 @@ function M.keys()
       "<leader>fw",
       "<cmd>lua require('telescope.builtin').grep_string()<CR>",
       desc = "[F]ind current [W]ord",
+    },
+    {
+      "<leader>fp",
+      "<cmd>Telescope package_info<CR>",
+      desc = "Open [p]ackage info menu",
     },
     {
       "gs",
