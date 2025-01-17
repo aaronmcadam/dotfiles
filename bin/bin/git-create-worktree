@@ -14,7 +14,7 @@ script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 
 usage() {
   cat <<EOF
-Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-f] [-b] [-B] [-p] [-N] <path>
+Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-b] [-B] [-p] [-N] <path>
 
 Script the creation of a new worktree.
 
@@ -34,6 +34,16 @@ This script performs the following steps:
 2. Create a new upstream branch to track the work
 3. Check out submodules
 4. Install dependencies
+
+Examples:
+# Create a worktree using a branch name
+$(basename "${BASH_SOURCE[0]}") -b aaronmcadam/TICKET-123/add-feature
+
+# Create a worktree with explicit path (generates branch name using prefix)
+$(basename "${BASH_SOURCE[0]}") add-feature
+
+# Create a worktree from a different base branch
+$(basename "${BASH_SOURCE[0]}") -B origin/develop -b feature/new-thing
 EOF
   exit
 }
@@ -140,15 +150,28 @@ parse_params() {
   args=("$@")
 
   # check required params and arguments
-  # [[ -z "${param-}" ]] && die "Missing required parameter: param"
-  [[ ${#args[@]} -eq 0 ]] && die "Missing script arguments"
+  if [[ ${#args[@]} -eq 0 && -z "${branch}" ]]; then
+    die "Missing script arguments"
+  fi
 
   # if a branch was not specified, generate one based on the prefix and folder name
   if [[ -z "$branch" ]]; then
     branch="${prefix}${args[0]}"
   fi
 
-  worktree="${args[0]}"
+  # the branches I typically use are in this format: aaronmcadam/ticket-number/ticket-summary
+  # if branch is set, use its ticket-summary (the final segment) as the worktree folder name
+  if [[ -n "${branch}" ]]; then
+    # Extract the last part after the last '/'
+    # Example: for branch "aaronmcadam/TICKET-123/add-feature":
+    # 1. rev -> reverses to "erutaef-dda/321-TEKCIT/madacmnoraa"
+    # 2. cut -d'/' -f1 -> gets first segment "erutaef-dda"
+    # 3. rev -> reverses back to "add-feature"
+    # This clever double-reverse trick lets us extract the last segment of a path
+    worktree=$(echo "$branch" | rev | cut -d'/' -f1 | rev)
+  else
+    worktree="${args[0]}"
+  fi
 
   return 0
 }
