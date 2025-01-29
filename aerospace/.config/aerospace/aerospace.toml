@@ -182,12 +182,23 @@ C = 'secondary'
 D = 'secondary'
 
 # Workspace B (Browser)
+# Arc
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 run = 'move-node-to-workspace B'
+# Chrome
 [[on-window-detected]]
 if.app-id = 'org.chromium.Chromium'
 run = 'move-node-to-workspace B'
+# Firefox Developer Edition
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefoxdeveloperedition'
+run = 'move-node-to-workspace B'
+# Zen Browser
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run = 'move-node-to-workspace B'
+# Raindrop
 [[on-window-detected]]
 if.app-id = 'io.raindrop.macapp'
 run = 'move-node-to-workspace B'
