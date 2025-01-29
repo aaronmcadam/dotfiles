@@ -4,7 +4,7 @@
     "body": ["```typescript", "${1}", "```"]
   },
   "tsxCodeBlock": {
-    "prefix": "tx",
+    "prefix": "tsx",
     "body": ["```tsx", "${1}", "```"]
   }
 }
