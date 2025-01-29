@@ -264,7 +264,10 @@ return {
       { "<leader>of", "<cmd>Octo pr changes<CR>", desc = "Octo PR list changed files" },
       { "<leader>oj", "<cmd>Octo pr checks<CR>", desc = "Octo PR checks" },
       { "<leader>ol", "<cmd>Octo pr commits<CR>", desc = "Octo PR list commits" },
-      { "<leader>or", "<cmd>Octo pr reload<CR>", desc = "Octo PR reload" },
+      { "<leader>ou", "<cmd>Octo pr reload<CR>", desc = "Octo PR reload" },
+      { "<leader>orr", "<cmd>Octo review<CR>", desc = "Octo PR review start" },
+      { "<leader>ors", "<cmd>Octo review submit<CR>", desc = "Octo PR review submit" },
+      { "<leader>orc", "<cmd>Octo review comments<CR>", desc = "Octo PR review comments" },
     },
   },
 
@@ -281,7 +284,6 @@ return {
       notifier = { enabled = true },
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
-      -- words = { enabled = true },
     },
   },
   {

@@ -138,14 +138,13 @@ return {
           },
         },
       },
-      snippets = { preset = "luasnip" },
       sources = {
         default = {
           "obsidian",
           "obsidian_new",
           "obsidian_tags",
-          "lsp",
           "snippets",
+          "lsp",
           "buffer",
           "path",
         },
