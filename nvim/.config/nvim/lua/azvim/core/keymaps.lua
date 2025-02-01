@@ -35,7 +35,7 @@ map("n", "<leader>bb", "<cmd>e #<cr>", "Switch to Other Buffer")
 -- save file and quit
 map("n", "<leader>s", "<cmd>update<cr>", "Save file")
 map("n", "<leader>qq", "<cmd>quit<cr>", "Quit")
-map("n", "<leader>qa", "<cmd>qa<cr>", "Quit all")
+map("n", "<leader>qa", "<cmd>qa!<cr>", "Quit all without saving")
 
 -- window navigation
 map("n", "<leader>wj", "<C-w>j", "Move down a window")
