@@ -133,7 +133,7 @@ return {
             alternate = "{}.tsx",
             type = "test",
             template = {
-              "import {basename|camelcase|capitalize} from '.';",
+              "import { {basename|camelcase|capitalize} } from './{basename|camelcase|capitalize}';",
               "",
               "describe('{basename|camelcase|capitalize}', () => {open}",
               "  test('renders successfully', () => {open}",
@@ -176,6 +176,7 @@ return {
     keys = {
       { "<leader>gg", "<cmd>Git<CR>", desc = "Git" },
       { "<leader>gv", "<cmd>GBrowse<CR>", desc = "Git View in Browser" },
+      { "<leader>gb", "<cmd>G blame<CR>", desc = "Git Blame" },
       { "<leader>gd", "<cmd>Gvdiffsplit!<CR>", desc = "Git Diff" },
       { "<leader>gr", "<cmd>Gread<CR><cmd>update<CR>", desc = "Git Read" },
       { "<leader>gw", "<cmd>Gwrite<CR>", desc = "Git Write" },
@@ -205,9 +206,6 @@ return {
 
           map("n", "]g", gs.next_hunk, "Next Hunk")
           map("n", "[g", gs.prev_hunk, "Prev Hunk")
-          map("n", "<leader>gb", function()
-            gs.blame_line({ full = true })
-          end, "Blame Line")
         end,
       }
 

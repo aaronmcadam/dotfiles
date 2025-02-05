@@ -80,3 +80,117 @@ map("n", "<leader>me", 'ciW![](<C-r>")<Esc>F]i', "Wrap with embed link text")
 
 -- Wrap the current word with code backticks.
 map("n", "<leader>mc", 'ciW`<C-r>"`<Esc>wi', "Wrap word with code backticks")
+
+-- I'm going to attempt to implement an Auto Title URL Paster command for
+-- [[Neovim]] today.
+--
+-- What should the command be able to do?
+--
+-- When I paste a link into a note, the command should:
+--
+-- 1. Fetch the title of the URL
+-- 2. Insert a markdown link using the title as the title and the URL as the url
+--
+-- For example, if I copy and paste `https://github.com/`, the command should paste
+-- the following into my markdown note:
+--
+-- ```md
+-- [GitHub](https://github.com/)
+-- ```
+
+-- chat gpt's attempt:
+local curl = require("plenary.curl")
+
+-- Debug helper function
+local function debug(msg)
+  vim.schedule(function()
+    vim.notify("[Auto Title URL Paster] " .. msg, vim.log.levels.INFO)
+  end)
+end
+
+-- Function to sanitize URL (trim whitespace and ensure https://)
+local function sanitize_url(url)
+  debug("Original clipboard content: " .. url)
+  url = url:gsub("^%s*(.-)%s*$", "%1") -- Trim spaces
+  if not url:match("^https?://") then
+    debug("URL missing scheme, prepending https://")
+    url = "https://" .. url
+  end
+  debug("Sanitized URL: " .. url)
+  return url
+end
+
+local function get_page_title(url, callback)
+  debug("Fetching title for: " .. url)
+
+  curl.request({
+    url = url,
+    method = "GET",
+    headers = {
+      ["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+      ["Accept-Language"] = "en-US,en;q=0.9",
+    },
+    redirect = true, -- Follow redirects
+    callback = function(res)
+      if not res or not res.status then
+        debug("Request failed. No response received.")
+        callback(url)
+        return
+      end
+
+      debug("Response received with status: " .. res.status)
+
+      if res.status ~= 200 then
+        debug("Failed to fetch page. Status: " .. res.status)
+        callback(url) -- Fallback if request fails
+        return
+      end
+
+      debug("Extracting title from response...")
+
+      local title = res.body and res.body:match("<title>(.-)</title>") or nil
+      if not title or title == "" then
+        debug("No title found. Using URL as fallback.")
+        title = url
+      else
+        debug("Extracted title: " .. title)
+      end
+
+      title = title:gsub("\n", ""):gsub("\r", ""):gsub("^%s*(.-)%s*$", "%1") -- Trim spaces
+      callback(title)
+    end,
+  })
+end
+
+-- Function to paste Markdown link
+local function paste_markdown_link()
+  local url = vim.fn.getreg("+") -- Get clipboard content
+  debug("Clipboard content: " .. url)
+
+  if not url:match("^https?://") then
+    debug("Invalid URL detected in clipboard.")
+    print("Clipboard does not contain a valid URL")
+    return
+  end
+
+  url = sanitize_url(url)
+
+  debug("Valid URL detected. Fetching title...")
+
+  -- Fetch the title and paste the Markdown link
+  get_page_title(url, function(title)
+    debug("Formatting Markdown link...")
+
+    local markdown_link = string.format("[%s](%s)", title, url)
+
+    vim.schedule(function()
+      vim.api.nvim_put({ markdown_link }, "", true, true) -- Paste at cursor
+      debug("Pasted Markdown link: " .. markdown_link)
+    end)
+  end)
+end
+
+-- Define the user command `:PasteMarkdownURL`
+vim.api.nvim_create_user_command("PasteMarkdownURL", paste_markdown_link, {})
+
+map("n", "<leader>mp", "<cmd>PasteMarkdownURL<CR>", "Paste markdown link")
