@@ -280,8 +280,91 @@ return {
       indent = { enabled = true },
       input = { enabled = true },
       notifier = { enabled = true },
+      picker = { enabled = true, layout = {
+        preset = "ivy",
+      } },
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
+    },
+    keys = {
+      {
+        "<leader>ff",
+        function()
+          require("snacks").picker.git_files()
+        end,
+        desc = "[F]ind [F]iles",
+      },
+      {
+        "<leader>fb",
+        function()
+          require("snacks").picker.buffers()
+        end,
+        desc = "[F]ind [B]uffers",
+      },
+      {
+        "<leader>fd",
+        function()
+          require("snacks").picker.diagnostics()
+        end,
+        desc = "[F]ind [D]iagnostics",
+      },
+      {
+        "<leader>fh",
+        function()
+          require("snacks").picker.help()
+        end,
+        desc = "[F]ind [H]elp",
+      },
+      {
+        "<leader>fk",
+        function()
+          require("snacks").picker.keymaps()
+        end,
+        desc = "[F]ind [K]eymaps",
+      },
+      {
+        "<leader>fn",
+        function()
+          require("snacks").picker.notifications()
+        end,
+        desc = "[F]ind [N]otifications",
+      },
+      {
+        "<leader>fr",
+        function()
+          require("snacks").picker.recent()
+        end,
+        desc = "[F]ind [R]ecent",
+      },
+      {
+        "<leader>fs",
+        function()
+          require("snacks").picker.lsp_symbols()
+        end,
+        desc = "[F]ind [S]ymbols",
+      },
+      {
+        "<leader>fw",
+        function()
+          require("snacks").picker.grep_word()
+        end,
+        desc = "[F]ind [W]ord or visual selection",
+        mode = { "n", "x" },
+      },
+      {
+        "<leader>ft",
+        function()
+          require("snacks").picker.grep()
+        end,
+        desc = "[F]ind [T]ext",
+      },
+      {
+        "gv",
+        function()
+          require("snacks").picker.lsp_definitions()
+        end,
+        desc = "[G]o to definition in vertical [S]plit",
+      },
     },
   },
   {

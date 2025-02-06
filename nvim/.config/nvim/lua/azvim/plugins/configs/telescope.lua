@@ -69,77 +69,15 @@ function M.setup()
   })
 
   telescope.load_extension("fzf")
-  telescope.load_extension("git_worktree")
-  telescope.load_extension("noice")
   telescope.load_extension("package_info")
-  telescope.load_extension("smart_open")
-  telescope.load_extension("undo")
 end
 
 function M.keys()
   return {
     {
-      "<leader>ff",
-      "<cmd>lua require('telescope').extensions.smart_open.smart_open()<CR>",
-      desc = "[F]ind [F]iles",
-    },
-    { "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<CR>", desc = "[F]ind [B]uffers" },
-    { "<leader>fx", "<cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = "[F]ind Diagnostics" },
-    { "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<CR>", desc = "[F]ind [H]elp" },
-    { "<leader>fk", "<cmd>lua require('telescope.builtin').keymaps()<CR>", desc = "[F]ind [K]eymaps" },
-    { "<leader>fm", "<cmd>Telescope harpoon marks<CR>", desc = "[F]ind Harpoon [M]arks" },
-    { "<leader>fn", "<cmd>Telescope noice<CR>", desc = "[F]ind [N]otification Messages (Noice)" },
-    { "<leader>fr", "<cmd>lua require('telescope.builtin').resume()<CR>", desc = "[F]ind [R]esume" },
-    {
-      "<leader>f.",
-      "<cmd>lua require('telescope.builtin').oldfiles()<CR>",
-      desc = "[F]ind recent files ('.' for repeat)",
-    },
-    {
-      "<leader>fs",
-      "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>",
-      desc = "[F]ind Document [S]ymbols",
-    },
-    {
-      "<leader>ft",
-      "<cmd>lua require('telescope.builtin').live_grep()<CR>",
-      desc = "[F]ind [T]ext",
-    },
-    { "<leader>fu", "<cmd>Telescope undo<CR>", desc = "[F]ind [U]ndo Tree" },
-    {
-      "<leader>fw",
-      "<cmd>lua require('telescope.builtin').grep_string()<CR>",
-      desc = "[F]ind current [W]ord",
-    },
-    {
       "<leader>fp",
       "<cmd>Telescope package_info<CR>",
       desc = "Open [p]ackage info menu",
-    },
-    {
-      "gs",
-      "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>",
-      desc = "[G]o to definition in horizontal [S]plit",
-    },
-    {
-      "gv",
-      "<cmd>lua require('telescope.builtin').lsp_definitions({ jump_type='vsplit' })<CR>",
-      desc = "[G]o to definition in vertical [S]plit",
-    },
-    {
-      "<leader>gt",
-      "<cmd>lua require('telescope').extensions.git_worktree.git_worktree()<CR>",
-      desc = "List [g]it [w]orktrees",
-    },
-    {
-      "<leader>/",
-      function()
-        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-          winblend = 10,
-          previewer = false,
-        }))
-      end,
-      desc = "[/] Fuzzily search in current buffer",
     },
   }
 end
