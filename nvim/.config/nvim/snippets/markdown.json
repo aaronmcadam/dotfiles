@@ -1,10 +1,92 @@
 {
-  "tsCodeBlock": {
-    "prefix": "ts",
-    "body": ["```typescript", "${1}", "```"]
+  "Header 1": {
+    "prefix": "h1",
+    "body": ["# ${0}"],
+    "description": "Add header level 1"
   },
-  "tsxCodeBlock": {
+  "Header 2": {
+    "prefix": "h2",
+    "body": ["## ${0}"],
+    "description": "Add header level 2"
+  },
+  "Header 3": {
+    "prefix": "h3",
+    "body": ["### ${0}"],
+    "description": "Add header level 3"
+  },
+  "Header 4": {
+    "prefix": "h4",
+    "body": ["#### ${0}"],
+    "description": "Add header level 4"
+  },
+  "Header 5": {
+    "prefix": "h5",
+    "body": ["##### ${0}"],
+    "description": "Add header level 5"
+  },
+  "Header 6": {
+    "prefix": "h6",
+    "body": ["###### ${0}"],
+    "description": "Add header level 6"
+  },
+  "Links": {
+    "prefix": ["l", "link"],
+    "body": ["[${1:text}](${2:url}) ${0}"],
+    "description": "Insert links"
+  },
+  "URLS": {
+    "prefix": ["u", "url"],
+    "body": ["<${1}> ${0}"],
+    "description": "Insert url"
+  },
+  "Code": {
+    "prefix": "code",
+    "body": "`${1}` $0",
+    "description": "Insert code"
+  },
+  "Code block": {
+    "prefix": "codeblock",
+    "body": ["```${1:language}", "$0", "```"],
+    "description": "Insert fenced code block"
+  },
+  "TypeScript code block": {
+    "prefix": "ts",
+    "body": ["```typescript", "${0}", "```"],
+    "description": "Insert fenced TypeScript code block"
+  },
+  "TSX code block": {
     "prefix": "tsx",
-    "body": ["```tsx", "${1}", "```"]
+    "body": ["```tsx", "${0}", "```"],
+    "description": "Insert fenced TSX code block"
+  },
+  "Info callout": {
+    "prefix": ["info", "i"],
+    "body": ["> [!INFO]", ">", "> ${0}"],
+    "description": "Insert info"
+  },
+  "Note callout": {
+    "prefix": ["note", "n"],
+    "body": ["> [!NOTE]", ">", "> ${0}"],
+    "description": "Insert question"
+  },
+  "Question callout": {
+    "prefix": ["question", "q"],
+    "body": ["> [!QUESTION]", ">", "> ${0}"],
+    "description": "Insert question"
+  },
+  "Warning callout": {
+    "prefix": ["warning", "w"],
+    "body": ["> [!WARNING]", ">", "> ${0}"],
+    "description": "Insert warning"
+  },
+  "Tip callout": {
+    "prefix": ["tip", "t"],
+    "body": ["> [!TIP]", ">", "> ${0}"],
+    "description": "Insert tip"
+  },
+  "Page break": {
+    "prefix": ["pagebreak", "pb"],
+    "body": ["<div style=\"page-break-before:always\"></div>", " ", "${0}"],
+    "description": "Insert page break"
   }
 }
