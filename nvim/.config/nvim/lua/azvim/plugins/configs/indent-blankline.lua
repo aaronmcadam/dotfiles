@@ -8,13 +8,10 @@ function M.opts()
     exclude = {
       filetypes = {
         "help",
-        "neo-tree",
         "Trouble",
         "lazy",
         "mason",
         "notify",
-        "toggleterm",
-        "lazyterm",
       },
     },
     scope = {
