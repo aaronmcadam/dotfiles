@@ -13,7 +13,7 @@ function M.opts()
         statusline = 100,
       },
       disabled_filetypes = {
-        statusline = { "dashboard", "alpha" },
+        statusline = { "snacks_dashboard" },
       },
     },
     sections = {

@@ -8,8 +8,6 @@ function M.opts()
     exclude = {
       filetypes = {
         "help",
-        "alpha",
-        "dashboard",
         "neo-tree",
         "Trouble",
         "lazy",

@@ -13,15 +13,6 @@ return {
     end,
   },
 
-  -- dashboard
-  {
-    "goolord/alpha-nvim",
-    event = "VimEnter",
-    dependencies = { "echasnovski/mini.icons" },
-    opts = require("azvim.plugins.configs.alpha").opts,
-    config = require("azvim.plugins.configs.alpha").setup,
-  },
-
   -- better file browser
   {
     "stevearc/oil.nvim",
@@ -274,9 +265,47 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    ---@type snacks.Config
     opts = {
-      -- dashboard = { enabled = true },
+      dashboard = {
+        enabled = true,
+        preset = {
+          header = [[
+ █████╗ ███████╗██╗   ██╗██╗███╗   ███╗
+██╔══██╗╚══███╔╝██║   ██║██║████╗ ████║
+███████║  ███╔╝ ██║   ██║██║██╔████╔██║
+██╔══██║ ███╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║
+██║  ██║███████╗ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+          keys = {
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+            {
+              icon = " ",
+              key = "c",
+              desc = "Config",
+              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+            },
+            {
+              icon = "",
+              key = "u",
+              desc = "Lazy Update",
+              action = ":Lazy! sync",
+              enabled = package.loaded.lazy ~= nil,
+            },
+            { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
+        },
+        sections = {
+          { section = "header" },
+          { section = "keys", gap = 1, padding = 2 },
+          { icon = " ", title = "Recent Files", section = "recent_files", padding = { 1, 1 } },
+          { icon = " ", title = "Projects", section = "projects", padding = { 1, 1 } },
+          { section = "startup" },
+        },
+      },
       indent = { enabled = true },
       input = { enabled = true },
       notifier = { enabled = true },
@@ -293,7 +322,7 @@ return {
       {
         "<leader>ff",
         function()
-          require("snacks").picker.git_files()
+          require("snacks").picker.files()
         end,
         desc = "[F]ind [F]iles",
       },
