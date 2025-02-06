@@ -280,9 +280,12 @@ return {
       indent = { enabled = true },
       input = { enabled = true },
       notifier = { enabled = true },
-      picker = { enabled = true, layout = {
-        preset = "ivy",
-      } },
+      picker = {
+        enabled = true,
+        layout = {
+          preset = "ivy",
+        },
+      },
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
     },
