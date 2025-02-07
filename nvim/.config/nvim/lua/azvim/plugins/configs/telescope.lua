@@ -61,10 +61,6 @@ function M.setup()
       package_info = {
         theme = "ivy",
       },
-      smart_open = {
-        cwd_only = true,
-        filename_first = true,
-      },
     },
   })
 
