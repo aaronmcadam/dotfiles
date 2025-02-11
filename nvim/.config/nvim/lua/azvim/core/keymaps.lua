@@ -101,8 +101,14 @@ map("n", "<leader>mc", 'ciW`<C-r>"`<Esc>wi', "Wrap word with code backticks")
 -- chat gpt's attempt:
 local curl = require("plenary.curl")
 
+local is_debug_enabled = false
+
 -- Debug helper function
 local function debug(msg)
+  if not is_debug_enabled then
+    return
+  end
+
   vim.schedule(function()
     vim.notify("[Auto Title URL Paster] " .. msg, vim.log.levels.INFO)
   end)

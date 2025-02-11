@@ -20,7 +20,6 @@ function M.setup()
     ensure_installed = {
       "clangd", -- LSP for C/C++
       "cmake", -- LSP for cmake
-      "eslint",
       "gopls", -- LSP for Go
       "lua_ls", -- LSP for Lua language
       "marksman", -- LSP for Markdown
@@ -80,7 +79,14 @@ function M.setup()
       lspconfig.eslint.setup({
         capabilities = capabilities,
         on_attach = M.on_attach,
-        root_dir = lspconfig.util.root_pattern(".git", ".eslintrc*", ".yarnrc*", ".npmrc*", ".prettierrc*"),
+        root_dir = lspconfig.util.root_pattern(
+          ".git",
+          ".eslintrc*",
+          "eslint.config.*",
+          ".yarnrc*",
+          ".npmrc*",
+          ".prettierrc*"
+        ),
       })
     end,
     ["lua_ls"] = function()
