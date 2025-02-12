@@ -84,6 +84,11 @@
     "body": ["> [!TIP]", ">", "> ${0}"],
     "description": "Insert tip"
   },
+  "Todo callout": {
+    "prefix": ["todo", "to"],
+    "body": ["> [!TODO]", ">", "> ${0}"],
+    "description": "Insert todo"
+  },
   "Page break": {
     "prefix": ["pagebreak", "pb"],
     "body": ["<div style=\"page-break-before:always\"></div>", " ", "${0}"],
