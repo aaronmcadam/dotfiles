@@ -74,6 +74,9 @@ alias gcr "git branch --sort=-committerdate | fzf --header 'Checkout Recent Bran
 alias gv "nvim '+:horizontal topleft Git'"
 alias grbim "git fetch origin main && git rebase --interactive origin/main"
 
+abbr -a gcw "git create-worktree"
+abbr -a gcwb "git create-worktree -b"
+
 # Remove the current git worktree and navigate to the repo root
 # and list worktrees to show the worktree has been removed.
 # Must be run from within the worktree directory
