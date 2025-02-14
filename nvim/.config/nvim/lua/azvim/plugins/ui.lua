@@ -438,11 +438,54 @@ return {
         desc = "[F]ind [T]ext",
       },
       {
-        "gv",
+        "gd",
         function()
           require("snacks").picker.lsp_definitions()
         end,
-        desc = "[G]o to definition in vertical [S]plit",
+        desc = "[G]o to [D]efinition",
+      },
+      {
+        "gD",
+        function()
+          require("snacks").picker.lsp_declarations()
+        end,
+        desc = "[G]oto [D]eclaration",
+      },
+
+      {
+        "gr",
+        function()
+          require("snacks").picker.lsp_references()
+        end,
+        desc = "References",
+      },
+      {
+        "gI",
+        function()
+          require("snacks").picker.lsp_implementations()
+        end,
+        desc = "[G]o to [I]mplementation",
+      },
+      {
+        "gt",
+        function()
+          require("snacks").picker.lsp_type_definitions()
+        end,
+        desc = "Goto [T]ype Definition",
+      },
+      {
+        "<leader>ls",
+        function()
+          require("snacks").picker.lsp_symbols()
+        end,
+        desc = "[L]SP Document [S]ymbols",
+      },
+      {
+        "<leader>lw",
+        function()
+          require("snacks").picker.lsp_workspace_symbols()
+        end,
+        desc = "[L]SP [W]orkspace Symbols",
       },
     },
   },
