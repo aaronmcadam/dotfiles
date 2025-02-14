@@ -54,15 +54,6 @@ return {
     },
   },
 
-  -- snippets
-  {
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    build = "make install_jsregexp",
-    config = require("azvim.plugins.configs.luasnip").setup,
-    keys = require("azvim.plugins.configs.luasnip").keys,
-  },
-
   -- copilot
   {
     "zbirenbaum/copilot.lua",
@@ -98,7 +89,6 @@ return {
     version = "*",
     dependencies = {
       { "saghen/blink.compat", lazy = true },
-      { "L3MON4D3/LuaSnip", version = "v2.*" },
     },
     opts = {
       keymap = {

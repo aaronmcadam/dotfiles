@@ -254,6 +254,16 @@ return {
 
   -- Nicer UI
   {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+  },
+  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
