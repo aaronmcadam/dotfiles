@@ -464,6 +464,16 @@ return {
     cmd = "Spectre",
     opts = {
       open_cmd = "noswapfile vnew",
+      replace_engine = {
+        ["sed"] = {
+          cmd = "sed",
+          args = {
+            "-i",
+            "",
+            "-E",
+          },
+        },
+      },
     },
     keys = {
       {
