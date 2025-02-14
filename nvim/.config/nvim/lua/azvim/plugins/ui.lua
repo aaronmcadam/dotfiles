@@ -325,6 +325,14 @@ return {
         layout = {
           preset = "ivy",
         },
+        win = {
+          -- input window
+          input = {
+            keys = {
+              ["<c-u>"] = false,
+            },
+          },
+        },
       },
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
