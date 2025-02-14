@@ -446,14 +446,6 @@ return {
       },
     },
   },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = require("azvim.plugins.configs.noice").opts,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
-  },
 
   -- todo comments
   {
