@@ -142,7 +142,6 @@ return {
           "avante_files",
         },
         -- Disable cmdline completions
-        cmdline = {},
         providers = {
           obsidian = {
             name = "obsidian",
@@ -189,6 +188,9 @@ return {
             end,
           },
         },
+      },
+      cmdline = {
+        enabled = false,
       },
     },
   },
