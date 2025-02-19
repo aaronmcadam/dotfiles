@@ -20,6 +20,10 @@ function M.setup()
     ensure_installed = {
       "clangd", -- LSP for C/C++
       "cmake", -- LSP for cmake
+      -- TODO: Configure LSP to use the current project's version of eslint
+      -- This is required for the lsp to attach
+      -- But I'd prefer LSP to use my project's version of eslint instead of installing it globally
+      "eslint",
       "gopls", -- LSP for Go
       "lua_ls", -- LSP for Lua language
       "marksman", -- LSP for Markdown
