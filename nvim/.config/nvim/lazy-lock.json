@@ -1,9 +1,9 @@
 {
   "FixCursorHold.nvim": { "branch": "master", "commit": "1900f89dc17c603eec29960f57c00bd9ae696495" },
-  "avante.nvim": { "branch": "main", "commit": "008e8c32b85fe22615d31d5a3c8da70c678b2d82" },
+  "avante.nvim": { "branch": "main", "commit": "9c9fadd256d6138d771e17b9ca68905908e16c17" },
   "blink.cmp": { "branch": "main", "commit": "18b352d12b35bca148427b607098df14b75a218f" },
   "blink.compat": { "branch": "main", "commit": "4104671562c663d059d91a99da3780bead5bc467" },
-  "catppuccin": { "branch": "main", "commit": "4bb938bbba41d306db18bf0eb0633a5f28fd7ba0" },
+  "catppuccin": { "branch": "main", "commit": "bb2be05089a08332d204e4ae31f02e245bb8c5c0" },
   "compiler.nvim": { "branch": "main", "commit": "eb7f82bb8f9e722dd194f638e67ec53c12ce5ac5" },
   "conform.nvim": { "branch": "master", "commit": "a6f5bdb78caa305496357d17e962bbc4c0b392e2" },
   "copilot.lua": { "branch": "master", "commit": "30321e33b03cb924fdcd6a806a0dc6fa0b0eafb9" },
