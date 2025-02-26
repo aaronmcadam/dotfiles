@@ -1,6 +1,6 @@
-golang 1.21.1
+golang 1.24.0
 lua 5.1.5
-nodejs 22.13.1
-python 3.12.0
-ruby 3.3.6
-rust 1.82.0
+nodejs 22.14.0
+python 3.13.2
+ruby 3.4.2
+rust 1.85.0
