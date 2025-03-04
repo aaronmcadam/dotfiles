@@ -49,6 +49,11 @@
     "body": ["```${1:language}", "$0", "```"],
     "description": "Insert fenced code block"
   },
+  "JavaScript code block": {
+    "prefix": "js",
+    "body": ["```js", "${0}", "```"],
+    "description": "Insert fenced JavaScript code block"
+  },
   "TypeScript code block": {
     "prefix": "ts",
     "body": ["```typescript", "${0}", "```"],
@@ -93,5 +98,10 @@
     "prefix": ["pagebreak", "pb"],
     "body": ["<div style=\"page-break-before:always\"></div>", " ", "${0}"],
     "description": "Insert page break"
+  },
+  "Horizontal rule": {
+    "prefix": "hr",
+    "body": ["---", "", "$0"],
+    "description": "Insert horizontal rule"
   }
 }
