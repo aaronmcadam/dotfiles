@@ -89,6 +89,7 @@ return {
     version = "*",
     dependencies = {
       { "saghen/blink.compat", lazy = true },
+      "Kaiser-Yang/blink-cmp-avante",
     },
     opts = {
       keymap = {
@@ -137,9 +138,7 @@ return {
           "lsp",
           "buffer",
           "path",
-          "avante_commands",
-          "avante_mentions",
-          "avante_files",
+          "avante",
         },
         -- Disable cmdline completions
         providers = {
@@ -155,24 +154,6 @@ return {
             name = "obsidian_tags",
             module = "blink.compat.source",
           },
-          avante_commands = {
-            name = "avante_commands",
-            module = "blink.compat.source",
-            score_offset = 90, -- show at a higher priority than lsp
-            opts = {},
-          },
-          avante_files = {
-            name = "avante_files",
-            module = "blink.compat.source",
-            score_offset = 100, -- show at a higher priority than lsp
-            opts = {},
-          },
-          avante_mentions = {
-            name = "avante_mentions",
-            module = "blink.compat.source",
-            score_offset = 1000, -- show at a higher priority than lsp
-            opts = {},
-          },
           lsp = {
             enabled = function()
               -- We want to use the obsidian completion source for markdown
@@ -186,6 +167,10 @@ return {
               -- so the note link completions are prioritised within Obisidian notes.
               return vim.bo.filetype ~= "markdown"
             end,
+          },
+          avante = {
+            name = "Avante",
+            module = "blink-cmp-avante",
           },
         },
       },
