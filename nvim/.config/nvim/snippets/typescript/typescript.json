@@ -11,12 +11,12 @@
   },
   "testBlock": {
     "prefix": "test",
-    "body": ["test('${1:name}', () => { ${2:contents} })"],
+    "body": ["test('${1:name}', () => {", "  ${2:contents}", "})"],
     "description": "Testing `test` block"
   },
   "functionCallback": {
     "prefix": "fnc",
-    "body": ["() => { ${1:contents} }"],
+    "body": ["() => {", "  ${1:contents}", "}"],
     "description": "Callback function"
   },
   "functionDeclaration": {
