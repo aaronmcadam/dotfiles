@@ -12,7 +12,7 @@ function M.opts()
       },
     },
     completion = {
-      nvim_cmp = true,
+      blink = true,
     },
     notes_subdir = "30 Areas/31 Inbox",
     new_notes_location = "notes_subdir",
@@ -30,6 +30,9 @@ function M.opts()
     mappings = {},
     -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
     open_app_foreground = true,
+    picker = {
+      name = "snacks.pick",
+    },
     -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
     -- URL it will be ignored but you can customize this behavior here.
     ---@param url string

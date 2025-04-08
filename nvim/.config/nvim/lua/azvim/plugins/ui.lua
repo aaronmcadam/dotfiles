@@ -595,7 +595,7 @@ return {
 
   -- Write Obsidian notes in neovim
   {
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
