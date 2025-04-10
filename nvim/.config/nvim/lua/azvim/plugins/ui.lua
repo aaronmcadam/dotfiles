@@ -223,13 +223,14 @@ return {
     "pwntester/octo.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
+      "folke/snacks.nvim",
       "echasnovski/mini.icons",
     },
     cmd = "Octo",
     config = function()
       require("octo").setup({
         enable_builtin = true,
+        picker = "snacks",
       })
     end,
     keys = {
