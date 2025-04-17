@@ -3,9 +3,8 @@ font-family-italic = "Monaspace Radon"
 font-family-bold-italic = "Monaspace Radon"
 font-size = 18
 theme = catppuccin-mocha
-cursor-style = block
 
-macos-option-as-alt = true
+macos-option-as-alt = left
 keybind = alt+left=unbind
 keybind = alt+right=unbind
 
@@ -15,4 +14,6 @@ window-padding-y = 12
 window-decoration = false
 
 copy-on-select = clipboard
-shell-integration-features = cursor,sudo,no-title
+
+# invert cursor colours so Neovim's block cursor reveals the character beneath
+cursor-invert-fg-bg = true
