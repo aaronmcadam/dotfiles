@@ -79,7 +79,16 @@ map("v", "<leader>mv", 'c[<C-r>"]()<Esc>i', "Wrap with link URL")
 map("n", "<leader>me", 'ciW![](<C-r>")<Esc>F]i', "Wrap with embed link text")
 
 -- Wrap the current word with code backticks.
-map("n", "<leader>mc", "bi`<Esc>ea`<Esc>", "Wrap word with code backticks")
+-- Steps:
+-- 1. `viw`: Visually select the inner word under the cursor.
+-- 2. `<Esc>`: Exit visual mode, leaving the selection marks.
+-- 3. ``<`: Jump to the start of the last visual selection.
+-- 4. `i``: Enter insert mode and type a backtick.
+-- 5. `<Esc>`: Exit insert mode.
+-- 6. `ea`: Move to the end of the word and enter append mode.
+-- 7. ``<Esc>`: Type a backtick and exit insert mode.
+-- This approach works regardless of cursor position within the word.
+map("n", "<leader>mc", "viw<Esc>`<i`<Esc>ea`<Esc>", "Wrap word with code backticks")
 
 -- I'm going to attempt to implement an Auto Title URL Paster command for
 -- [[Neovim]] today.
