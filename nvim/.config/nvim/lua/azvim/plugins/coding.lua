@@ -182,12 +182,12 @@ return {
 
   -- LSP
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     build = ":MasonUpdate",
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "mason-org/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
       "saghen/blink.cmp",
       { "j-hui/fidget.nvim", tag = "legacy" },
       "folke/neodev.nvim",

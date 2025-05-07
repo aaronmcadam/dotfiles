@@ -5,128 +5,6 @@ function M.setup()
   local mason = require("mason")
   local mason_lspconfig = require("mason-lspconfig")
   local mason_tool_installer = require("mason-tool-installer")
-  local lspconfig = require("lspconfig")
-
-  mason.setup({
-    ui = {
-      icons = {
-        package_installed = "✓",
-        package_pending = "➜",
-        package_uninstalled = "✗",
-      },
-    },
-  })
-  mason_lspconfig.setup({
-    ensure_installed = {
-      "clangd", -- LSP for C/C++
-      "cmake", -- LSP for cmake
-      -- TODO: Configure LSP to use the current project's version of eslint
-      -- This is required for the lsp to attach
-      -- But I'd prefer LSP to use my project's version of eslint instead of installing it globally
-      "eslint",
-      "gopls", -- LSP for Go
-      "lua_ls", -- LSP for Lua language
-      "marksman", -- LSP for Markdown
-      "solargraph", -- LSP for Ruby
-      "tailwindcss",
-    },
-  })
-  mason_tool_installer.setup({
-    ensure_installed = {
-      "codelldb", -- Debugger for C/C++
-      "codespell",
-      "marksman",
-      "markdownlint-cli2",
-      "prettierd",
-      "rubocop",
-      "stylua",
-    },
-  })
-
-  local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-  capabilities.textDocument.completion.completionItem = {
-    documentationFormat = { "markdown", "plaintext" },
-    snippetSupport = true,
-    preselectSupport = true,
-    insertReplaceSupport = true,
-    labelDetailsSupport = true,
-    deprecatedSupport = true,
-    commitCharactersSupport = true,
-    tagSupport = { valueSet = { 1 } },
-    resolveSupport = {
-      properties = {
-        "documentation",
-        "detail",
-        "additionalTextEdits",
-      },
-    },
-  }
-
-  -- Setup every needed language server in lspconfig
-  mason_lspconfig.setup_handlers({
-    -- default handler for installed servers
-    function(server_name)
-      lspconfig[server_name].setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
-      })
-    end,
-    ["clangd"] = function()
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
-        cmd = { "clangd", "--background-index", "--clang-tidy" },
-      })
-    end,
-    ["eslint"] = function()
-      lspconfig.eslint.setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
-        root_dir = lspconfig.util.root_pattern(
-          ".git",
-          ".eslintrc*",
-          "eslint.config.*",
-          ".yarnrc*",
-          ".npmrc*",
-          ".prettierrc*"
-        ),
-      })
-    end,
-    ["lua_ls"] = function()
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace",
-            },
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.stdpath("config") .. "/lua"] = true,
-              },
-            },
-          },
-        },
-      })
-    end,
-    ["solargraph"] = function()
-      lspconfig.solargraph.setup({
-        capabilities = capabilities,
-        on_attach = M.on_attach,
-        settings = {
-          solargraph = {
-            diagnostics = false,
-          },
-        },
-      })
-    end,
-  })
 
   -- Neodev setup before LSP config
   require("neodev").setup()
@@ -164,6 +42,154 @@ function M.setup()
     },
   }
   vim.diagnostic.config(config)
+
+  local capabilities = require("blink.cmp").get_lsp_capabilities()
+  capabilities.textDocument.completion.completionItem = {
+    documentationFormat = { "markdown", "plaintext" },
+    snippetSupport = true,
+    preselectSupport = true,
+    insertReplaceSupport = true,
+    labelDetailsSupport = true,
+    deprecatedSupport = true,
+    commitCharactersSupport = true,
+    tagSupport = { valueSet = { 1 } },
+    resolveSupport = {
+      properties = {
+        "documentation",
+        "detail",
+        "additionalTextEdits",
+      },
+    },
+  }
+
+  local lsps = {
+    "clangd", -- LSP for C/C++
+    "cmake", -- LSP for cmake
+    "eslint",
+    "harper_ls", -- Grammar checker
+    "gopls", -- LSP for Go
+    "lua_ls", -- LSP for Lua
+    "marksman", -- LSP for Markdown
+    "solargraph", -- LSP for Ruby
+    "tailwindcss",
+  }
+
+  vim.lsp.config("clangd", {
+    capabilities = capabilities,
+    on_attach = M.on_attach,
+    cmd = { "clangd", "--background-index", "--clang-tidy" },
+  })
+
+  vim.lsp.config("cmake", {
+    capabilities = capabilities,
+    on_attach = M.on_attach,
+  })
+
+  vim.lsp.config("eslint", {
+    capabilities = capabilities,
+    on_attach = M.on_attach,
+    root_markers = {
+      ".git",
+      ".eslintrc*",
+      "eslint.config.*",
+      ".yarnrc*",
+      ".npmrc*",
+      ".prettierrc*",
+    },
+  })
+
+  vim.lsp.config("gopls", {
+    capabilities = capabilities,
+    on_attach = M.on_attach,
+  })
+
+  vim.lsp.config("harper_ls", {
+    capabilities = capabilities,
+    on_attach = M.on_attach,
+    filetypes = { "markdown" },
+    settings = {
+      ["harper-ls"] = {
+        dialect = "British",
+        linters = {
+          ToDoHyphen = false,
+        },
+        markdown = {
+          -- [ignores this part]()
+          -- [[also ignores Obsidian links]]
+          IgnoreLinkTitle = true,
+        },
+        userDictPath = vim.fn.expand("~/.config/nvim/spell/en.utf-8.add"),
+      },
+    },
+  })
+
+  vim.lsp.config("lua_ls", {
+    capabilities = capabilities,
+    on_attach = M.on_attach,
+    settings = {
+      Lua = {
+        completion = {
+          callSnippet = "Replace",
+        },
+        diagnostics = {
+          globals = { "vim" },
+        },
+        workspace = {
+          library = {
+            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+            [vim.fn.stdpath("config") .. "/lua"] = true,
+          },
+        },
+      },
+    },
+  })
+
+  vim.lsp.config("marksman", {
+    capabilities = capabilities,
+    on_attach = M.on_attach,
+  })
+
+  vim.lsp.config("solargraph", {
+    capabilities = capabilities,
+    on_attach = M.on_attach,
+    settings = {
+      solargraph = {
+        diagnostics = false,
+      },
+    },
+  })
+
+  vim.lsp.config("tailwindcss", {
+    capabilities = capabilities,
+    on_attach = M.on_attach,
+  })
+
+  vim.lsp.enable(lsps)
+
+  mason.setup({
+    ui = {
+      icons = {
+        package_installed = "✓",
+        package_pending = "➜",
+        package_uninstalled = "✗",
+      },
+    },
+  })
+  mason_lspconfig.setup({
+    automatic_enable = false,
+    ensure_installed = lsps,
+  })
+  mason_tool_installer.setup({
+    ensure_installed = {
+      "codelldb", -- Debugger for C/C++
+      "codespell",
+      "marksman",
+      "markdownlint-cli2",
+      "prettierd",
+      "rubocop",
+      "stylua",
+    },
+  })
 end
 
 function M.on_attach(client, bufnr)
