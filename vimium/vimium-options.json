@@ -17,6 +17,10 @@
     {
       "passKeys": "",
       "pattern": "https://neetcode.io/problems/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https://structy.net/*"
     }
   ]
 }

@@ -215,6 +215,9 @@ run = 'move-node-to-workspace C'
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace D'
+[[on-window-detected]]
+if.app-id = 'com.pixelmatorteam.pixelmator.x'
+run = 'move-node-to-workspace D'
 
 # Workspace E (Email)
 [[on-window-detected]]

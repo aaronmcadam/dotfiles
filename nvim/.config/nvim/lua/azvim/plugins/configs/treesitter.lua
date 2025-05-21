@@ -20,6 +20,7 @@ function M.setup()
       "hcl",
       "regex",
       "ruby",
+      "rust",
       "terraform",
       "toml",
       "tsx",

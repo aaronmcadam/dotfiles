@@ -10,6 +10,7 @@ Hayley
 Lua
 Neovim
 Ngrok
+Nx
 SSL
 Sharded
 TODO
@@ -46,3 +47,4 @@ roadmap
 stylesheet
 submodule
 submodules
+typeable
