@@ -1,11 +1,25 @@
 local M = {}
 
 function M.setup()
-  -- Set up Mason before anything else
-  local mason = require("mason")
-  local mason_lspconfig = require("mason-lspconfig")
-  local mason_tool_installer = require("mason-tool-installer")
+  local lsps = {
+    "clangd", -- LSP for C/C++
+    "cmake", -- LSP for cmake
+    "eslint",
+    "harper_ls", -- Grammar checker
+    "gopls", -- LSP for Go
+    "lua_ls", -- LSP for Lua
+    "marksman", -- LSP for Markdown
+    "solargraph", -- LSP for Ruby
+    "tailwindcss",
+  }
 
+  M.before_setup()
+  M.setup_diagnostics()
+  M.setup_lsps(lsps)
+  M.setup_mason(lsps)
+end
+
+function M.before_setup()
   -- Neodev setup before LSP config
   require("neodev").setup()
 
@@ -15,8 +29,53 @@ function M.setup()
       blend = 0,
     },
   })
+end
 
-  -- Set up cool signs for diagnostics
+function M.on_attach(client, bufnr)
+  local navic = require("nvim-navic")
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
+
+  local lsp_map = require("azvim.helpers.keys").lsp_map
+
+  -- Opens a popup that displays documentation about the word under your cursor
+  --  See `:help K` for why this keymap
+  lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
+  lsp_map("gK", vim.lsp.buf.signature_help, bufnr, "Signature Help")
+
+  -- Execute a code action, usually your cursor needs to be on top of an error
+  -- or a suggestion from your LSP for this to activate.
+  lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code [A]ction")
+
+  lsp_map("]d", function()
+    vim.diagnostic.jump({ count = 1 })
+  end, bufnr, "Go to next diagnostic")
+  lsp_map("[d", function()
+    vim.diagnostic.jump({ count = -1 })
+  end, bufnr, "Go to previous diagnostic")
+
+  -- Rename the variable under your cursor
+  --  Most Language Servers support renaming across files, etc.
+  lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "[R]ename symbol")
+
+  -- TypeScript specific keymaps
+  -- stylua: ignore
+  if client.name == "typescript-tools" then
+    lsp_map("<leader>ld", function() vim.cmd("TSToolsGoToSourceDefinition") end, bufnr, "Go to source definition")
+    lsp_map("<leader>lf", function() vim.cmd("TSToolsRenameFile") end, bufnr, "Rename file")
+    lsp_map("<leader>li", function() vim.cmd("TSToolsAddMissingImports") end, bufnr, "Add missing imports")
+    lsp_map("<leader>lo", function() vim.cmd("TSToolsOrganizeImports") end, bufnr, "Organize imports")
+    lsp_map("<leader>lu", function() vim.cmd("TSToolsRemoveUnused") end, bufnr, "Remove unused statements")
+  end
+
+  -- Create a command `:Format` local to the LSP buffer
+  vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
+    vim.lsp.buf.format()
+  end, { desc = "Format current buffer with LSP" })
+end
+
+function M.setup_diagnostics()
   local icons = require("azvim.core.helpers").icons.diagnostics
   local severity = vim.diagnostic.severity
   local config = {
@@ -42,37 +101,12 @@ function M.setup()
     },
   }
   vim.diagnostic.config(config)
+end
 
-  local capabilities = require("blink.cmp").get_lsp_capabilities()
-  capabilities.textDocument.completion.completionItem = {
-    documentationFormat = { "markdown", "plaintext" },
-    snippetSupport = true,
-    preselectSupport = true,
-    insertReplaceSupport = true,
-    labelDetailsSupport = true,
-    deprecatedSupport = true,
-    commitCharactersSupport = true,
-    tagSupport = { valueSet = { 1 } },
-    resolveSupport = {
-      properties = {
-        "documentation",
-        "detail",
-        "additionalTextEdits",
-      },
-    },
-  }
+function M.setup_lsps(lsps)
+  vim.lsp.enable(lsps)
 
-  local lsps = {
-    "clangd", -- LSP for C/C++
-    "cmake", -- LSP for cmake
-    "eslint",
-    "harper_ls", -- Grammar checker
-    "gopls", -- LSP for Go
-    "lua_ls", -- LSP for Lua
-    "marksman", -- LSP for Markdown
-    "solargraph", -- LSP for Ruby
-    "tailwindcss",
-  }
+  local capabilities = M.create_capabilities()
 
   vim.lsp.config("clangd", {
     capabilities = capabilities,
@@ -163,8 +197,12 @@ function M.setup()
     capabilities = capabilities,
     on_attach = M.on_attach,
   })
+end
 
-  vim.lsp.enable(lsps)
+function M.setup_mason(lsps)
+  local mason = require("mason")
+  local mason_lspconfig = require("mason-lspconfig")
+  local mason_tool_installer = require("mason-tool-installer")
 
   mason.setup({
     ui = {
@@ -192,48 +230,27 @@ function M.setup()
   })
 end
 
-function M.on_attach(client, bufnr)
-  local navic = require("nvim-navic")
-  if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
-  end
+function M.create_capabilities()
+  local capabilities = require("blink.cmp").get_lsp_capabilities()
+  capabilities.textDocument.completion.completionItem = {
+    documentationFormat = { "markdown", "plaintext" },
+    snippetSupport = true,
+    preselectSupport = true,
+    insertReplaceSupport = true,
+    labelDetailsSupport = true,
+    deprecatedSupport = true,
+    commitCharactersSupport = true,
+    tagSupport = { valueSet = { 1 } },
+    resolveSupport = {
+      properties = {
+        "documentation",
+        "detail",
+        "additionalTextEdits",
+      },
+    },
+  }
 
-  local lsp_map = require("azvim.helpers.keys").lsp_map
-
-  -- Opens a popup that displays documentation about the word under your cursor
-  --  See `:help K` for why this keymap
-  lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
-  lsp_map("gK", vim.lsp.buf.signature_help, bufnr, "Signature Help")
-
-  -- Execute a code action, usually your cursor needs to be on top of an error
-  -- or a suggestion from your LSP for this to activate.
-  lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code [A]ction")
-
-  lsp_map("]d", function()
-    vim.diagnostic.jump({ count = 1 })
-  end, bufnr, "Go to next diagnostic")
-  lsp_map("[d", function()
-    vim.diagnostic.jump({ count = -1 })
-  end, bufnr, "Go to previous diagnostic")
-
-  -- Rename the variable under your cursor
-  --  Most Language Servers support renaming across files, etc.
-  lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "[R]ename symbol")
-
-  -- TypeScript specific keymaps
-  -- stylua: ignore
-  if client.name == "typescript-tools" then
-    lsp_map("<leader>ld", function() vim.cmd("TSToolsGoToSourceDefinition") end, bufnr, "Go to source definition")
-    lsp_map("<leader>lf", function() vim.cmd("TSToolsRenameFile") end, bufnr, "Rename file")
-    lsp_map("<leader>li", function() vim.cmd("TSToolsAddMissingImports") end, bufnr, "Add missing imports")
-    lsp_map("<leader>lo", function() vim.cmd("TSToolsOrganizeImports") end, bufnr, "Organize imports")
-    lsp_map("<leader>lu", function() vim.cmd("TSToolsRemoveUnused") end, bufnr, "Remove unused statements")
-  end
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, "Format", function()
-    vim.lsp.buf.format()
-  end, { desc = "Format current buffer with LSP" })
+  return capabilities
 end
 
 return M
