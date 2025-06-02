@@ -39,6 +39,7 @@ lifecycle
 macOS
 onboarding
 params
+polyfills
 pomodoros
 rebasing
 refactorings
@@ -47,4 +48,5 @@ roadmap
 stylesheet
 submodule
 submodules
+truthy
 typeable
