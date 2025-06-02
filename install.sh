@@ -23,7 +23,7 @@ brew bundle --file brew/Brewfile
 brew cleanup
 
 fancy_echo "Installing neovim..."
-bob use nightly
+bob use stable
 
 fancy_echo "Creating local shell config..."
 cp fish/.config/fish/config.local.example.fish fish/.config/fish/config.local.fish
@@ -62,7 +62,7 @@ asdf install
 # fi
 
 # fancy_echo "Fetching environment info..."
-# neofetch
-#
+fastfetch
+
 # fancy_echo "Starting fish..."
 # fish
