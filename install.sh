@@ -17,7 +17,7 @@ if ! command -v brew >/dev/null; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-fancy_echo "Installing programs..."
+fancy_echo "Installing apps..."
 brew update
 brew bundle --file brew/Brewfile
 brew cleanup
@@ -52,14 +52,15 @@ add_or_update_asdf_plugin "ruby"
 # This will install languages based on .tool-versions
 asdf install
 
-# if ! [[ $SHELL =~ "fish" ]]; then
-  # fancy_echo "Configuring shell..."
-  # echo "$(which fish)" | sudo tee -a /etc/shells
-  # chsh -s $(which fish)
-  # fish_add_path /opt/homebrew/bin
-  # fancy_echo "Installing Fisher..."
-  # curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-# fi
+if ! [[ $SHELL =~ "fish" ]]; then
+  fancy_echo "Configuring shell..."
+  echo "$(which fish)" | sudo tee -a /etc/shells
+  chsh -s $(which fish)
+fi
+
+# You need to run this within Fish, not Bash:
+# fancy_echo "Installing Fisher..."
+# curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
 # fancy_echo "Fetching environment info..."
 fastfetch
