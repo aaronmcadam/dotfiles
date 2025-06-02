@@ -36,10 +36,10 @@ fancy_echo "Configuring programming tools..."
 add_or_update_asdf_plugin() {
   local name="$1"
 
-  if ! asdf plugin-list | grep -Fq "$name"; then
-    asdf plugin-add "$name"
+  if ! asdf plugin list | grep -Fq "$name"; then
+    asdf plugin add "$name"
   else
-    asdf plugin-update "$name"
+    asdf plugin update "$name"
   fi
 }
 
