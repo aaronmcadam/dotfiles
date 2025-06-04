@@ -8,7 +8,7 @@ function M.opts()
     workspaces = {
       {
         name = "Remote Second Brain",
-        path = "~/Documents/Remote Second Brain/",
+        path = "~/Obsidian/Remote Second Brain/",
       },
     },
     completion = {

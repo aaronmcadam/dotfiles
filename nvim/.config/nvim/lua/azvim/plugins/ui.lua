@@ -625,8 +625,10 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      claude = {
-        model = "claude-sonnet-4-20250514",
+      providers = {
+        claude = {
+          model = "claude-sonnet-4-20250514",
+        },
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

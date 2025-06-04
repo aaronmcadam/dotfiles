@@ -10,7 +10,6 @@ brew "btop"
 brew "cloc"
 brew "difftastic"
 brew "dnsmasq"
-brew "docker", link: false
 brew "eza"
 brew "fastfetch"
 brew "fd"

@@ -13,7 +13,7 @@ layout {
     command "nvim"
   }
 
-  tab name="pkm" focus=true cwd="~/Documents/Remote Second Brain/"{
+  tab name="pkm" focus=true cwd="~/Obsidian/Remote Second Brain/"{
     nvim
   }
 

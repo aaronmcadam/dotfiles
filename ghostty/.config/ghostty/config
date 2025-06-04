@@ -1,7 +1,7 @@
 font-family = "Monaspace Neon"
 font-family-italic = "Monaspace Radon"
 font-family-bold-italic = "Monaspace Radon"
-font-size = 18
+font-size = 14
 theme = catppuccin-mocha
 
 macos-option-as-alt = left
