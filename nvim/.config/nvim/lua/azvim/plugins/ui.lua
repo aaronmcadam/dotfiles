@@ -597,7 +597,8 @@ return {
   -- Write Obsidian notes in neovim
   {
     "obsidian-nvim/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
+    -- hard coded version because :ObsidianOpen stopped working
+    version = "v3.11.0",
     lazy = true,
     ft = "markdown",
     dependencies = {
