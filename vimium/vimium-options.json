@@ -20,7 +20,7 @@
     },
     {
       "passKeys": "",
-      "pattern": "https://structy.net/*"
+      "pattern": "https://www.structy.net/*"
     }
   ]
 }
