@@ -14,6 +14,9 @@ set -gx AWS_SDK_LOAD_CONFIG 1
 # Configure lazy git configuration directory.
 set -gx CONFIG_DIR ~/.config/lazygit
 
+# Disable Husky git hooks
+set -gx HUSKY 0
+
 # ASDF configuration code
 if test -z $ASDF_DATA_DIR
     set _asdf_shims "$HOME/.asdf/shims"
