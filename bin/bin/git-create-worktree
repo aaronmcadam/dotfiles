@@ -179,6 +179,12 @@ parse_params() {
 parse_params "$@"
 setup_colors
 
+info "Ensuring full branch fetch config..."
+if ! git config --get-all remote.origin.fetch | grep -q 'refs/heads/*:refs/remotes/origin/*'; then
+  git config --add remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+fi
+git fetch origin --prune
+
 update_remote() {
   local branch="$1"
 
@@ -205,7 +211,6 @@ fi
 msg "${GRAY}Moving into worktree: $worktree${NOFORMAT}"
 cd "$worktree"
 update_remote "$branch"
-run_command "Checking out submodules..." git submodule update --init
-run_command "Installing dependencies..." pnpm install
-run_command "Copying over .env file..." cp ../main/.env.test.local .
+run_command "Installing dependencies..." yarn install
+run_command "Copying over .env file..." cp ../master/.env .
 msg "${GREEN}Success.${NOFORMAT}"
