@@ -620,28 +620,41 @@ return {
   },
 
   -- AI Chat
+  -- {
+  --   "ravitemer/mcphub.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+  --   },
+  --   build = "npm install -g mcp-hub@latest",
+  --   config = function()
+  --     require("mcphub").setup({
+  --       ui = {
+  --         window = {
+  --           width = 0.9, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
+  --           height = 0.9, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
+  --           border = "rounded", -- "none", "single", "double", "rounded", "solid", "shadow"
+  --           relative = "editor",
+  --           winblend = 0,
+  --           zindex = 50,
+  --         },
+  --         wo = { -- window-scoped options (vim.wo)
+  --           winhl = "Normal:NormalFloat,FloatBorder:MCPHubBorder",
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
-    version = false, -- set this if you want to always pull the latest change
+    version = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      "echasnovski/mini.icons",
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
     },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     opts = {
       providers = {
