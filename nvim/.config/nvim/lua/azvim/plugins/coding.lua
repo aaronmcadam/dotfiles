@@ -227,6 +227,7 @@ return {
 
       return {
         formatters_by_ft = {
+          css = prettier,
           html = prettier,
           javascript = prettier,
           javascriptreact = prettier,
