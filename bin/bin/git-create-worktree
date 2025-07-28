@@ -213,4 +213,5 @@ cd "$worktree"
 update_remote "$branch"
 run_command "Installing dependencies..." yarn install
 run_command "Copying over .env file..." cp ../master/.env .
+run_command "Copying over app secrets..." cp ../master/app-secrets.yaml .
 msg "${GREEN}Success.${NOFORMAT}"

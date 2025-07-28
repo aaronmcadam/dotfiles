@@ -539,7 +539,7 @@ return {
     },
     keys = {
       {
-        "<leader>fr",
+        "<leader>r",
         function()
           require("spectre").open()
         end,

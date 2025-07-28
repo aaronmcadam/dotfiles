@@ -15,3 +15,6 @@ Tell me what changes you plan to make before you make them. NEVER CODE ON YOUR O
 When you suggest a change, explain why it is better. Use diagrams to help visualise your solution. Never just change code without explaining why you're doing it.
 
 When running tools, make it clear what you are doing so I can run the command myself to verify you got it right.
+
+DO NOT RUN ANY GIT COMMANDS WITHOUT APPROVAL.
+When using git, DO NOT USE GIT RESET OR GIT COMMIT. DO NOT COMMIT YOUR CHANGES, I will commit them myself.
