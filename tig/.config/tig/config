@@ -1,0 +1,37 @@
+# Cursor (highlighted row)
+color cursor white black bold
+
+# Title bar (status bar)
+color title-focus white black bold  # Focused state
+color title-blur cyan black         # Blurred state
+
+# Diff statistics
+color diff-stat magenta default  # Rosewater
+
+# Date
+color date yellow default        # Yellow
+
+# Specific text patterns
+color "Merge: " cyan default
+color "author " magenta default  # Rosewater
+color "Commit: " red default     # Flamingo
+
+# Graph commit
+color graph-commit blue default  # Blue
+
+# Commit ID
+color id cyan default            # Lavender
+
+# Diff colours
+color diff-header yellow default
+color diff-add green default
+color diff-del red default
+
+# Line numbers
+color line-number magenta default  # Rosewater
+
+# Tracked files in the main view
+color main-tracked green default bold
+
+# Delimiters
+color delimiter cyan default       # Lavender
