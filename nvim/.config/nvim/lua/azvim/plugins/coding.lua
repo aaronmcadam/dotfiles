@@ -54,34 +54,7 @@ return {
     },
   },
 
-  -- copilot
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    build = ":Copilot auth",
-    keys = {
-      { "<leader>gcc", "<cmd>CopilotEnable<cr>", desc = "Enable Copilot" },
-      { "<leader>gcd", "<cmd>CopilotDisable<cr>", desc = "Disable Copilot" },
-    },
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = true },
-        panel = { enabled = false },
-      })
 
-      -- Create commands to manually enable and disable Copilot
-      vim.api.nvim_create_user_command("CopilotEnable", function()
-        vim.cmd("Copilot enable")
-        vim.notify("Copilot Enabled", vim.log.levels.INFO)
-      end, { desc = "Enable Copilot" })
-
-      vim.api.nvim_create_user_command("CopilotDisable", function()
-        vim.cmd("Copilot disable")
-        vim.notify("Copilot Disabled", vim.log.levels.INFO)
-      end, { desc = "Disable Copilot" })
-    end,
-  },
 
   -- completion
   {
