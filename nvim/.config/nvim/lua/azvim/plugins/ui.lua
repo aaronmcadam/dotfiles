@@ -110,16 +110,7 @@ return {
       "Gdiffsplit",
       "Gvdiffsplit",
     },
-    keys = {
-      { "<leader>gg", "<cmd>Git<CR>", desc = "Git" },
-      { "<leader>gv", "<cmd>GBrowse<CR>", desc = "Git View in Browser" },
-      { "<leader>gb", "<cmd>G blame<CR>", desc = "Git Blame" },
-      { "<leader>gd", "<cmd>Gvdiffsplit!<CR>", desc = "Git Diff" },
-      { "<leader>gr", "<cmd>Gread<CR><cmd>update<CR>", desc = "Git Read" },
-      { "<leader>gw", "<cmd>Gwrite<CR>", desc = "Git Write" },
-      { "<leader>gp", "<cmd>Git push<CR>", desc = "Git Push" },
-      { "<leader>gl", "<cmd>Git log<CR>", desc = "Git Log" },
-    },
+    keys = require("azvim.plugins.configs.vim-fugitive").keys,
   },
   {
     "ruifm/gitlinker.nvim",
@@ -132,22 +123,7 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
-    opts = function()
-      local C = {
-        on_attach = function(buffer)
-          local gs = package.loaded.gitsigns
-
-          local function map(mode, l, r, desc)
-            vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-          end
-
-          map("n", "]g", gs.next_hunk, "Next Hunk")
-          map("n", "[g", gs.prev_hunk, "Prev Hunk")
-        end,
-      }
-
-      return C
-    end,
+    opts = require("azvim.plugins.configs.gitsigns").opts,
   },
 
   -- Manage Git Worktrees
@@ -158,20 +134,7 @@ return {
     -- version = "^2",
     branch = "main",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      local Hooks = require("git-worktree.hooks")
-      local config = require("git-worktree.config")
-      local update_on_switch = Hooks.builtins.update_current_buffer_on_switch
-
-      Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
-        vim.notify("Moved from " .. prev_path .. " to " .. path)
-        update_on_switch(path, prev_path)
-      end)
-
-      Hooks.register(Hooks.type.DELETE, function()
-        vim.cmd(config.update_on_change_command)
-      end)
-    end,
+    config = require("azvim.plugins.configs.git-worktree").setup,
   },
 
   -- Manage GitHub issues and PRs
@@ -221,28 +184,8 @@ return {
   {
     "nvim-pack/nvim-spectre",
     cmd = "Spectre",
-    opts = {
-      open_cmd = "noswapfile vnew",
-      replace_engine = {
-        ["sed"] = {
-          cmd = "sed",
-          args = {
-            "-i",
-            "",
-            "-E",
-          },
-        },
-      },
-    },
-    keys = {
-      {
-        "<leader>r",
-        function()
-          require("spectre").open()
-        end,
-        desc = "Replace in files (Spectre)",
-      },
-    },
+    opts = require("azvim.plugins.configs.nvim-spectre").opts,
+    keys = require("azvim.plugins.configs.nvim-spectre").keys,
   },
 
   -- Window resizing
@@ -251,36 +194,8 @@ return {
     dependencies = {
       "anuvyklack/middleclass",
     },
-    config = function()
-      require("windows").setup()
-    end,
-    keys = {
-      {
-        "<leader>zz",
-        "<cmd>WindowsMaximize<CR>",
-        desc = "Maximize Window",
-      },
-      {
-        "<leader>zv",
-        "<cmd>WindowsMaximizeVertically<CR>",
-        desc = "Maximize Window Vertically",
-      },
-      {
-        "<leader>zh",
-        "<cmd>WindowsMaximizeHorizontally<CR>",
-        desc = "Maximize Window Horizontally",
-      },
-      {
-        "<leader>ze",
-        "<cmd>WindowsEqualize<CR>",
-        desc = "Equalize all Windows",
-      },
-      {
-        "<leader>zt",
-        "<cmd>WindowsToggleAutowidth<CR>",
-        desc = "Toggle Windows Auto-width",
-      },
-    },
+    config = require("azvim.plugins.configs.windows").setup,
+    keys = require("azvim.plugins.configs.windows").keys,
   },
 
   -- better quickfix
