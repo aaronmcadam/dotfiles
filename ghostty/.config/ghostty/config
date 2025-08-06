@@ -1,6 +1,6 @@
-font-family = "Monaspace Neon"
-font-family-italic = "Monaspace Radon"
-font-family-bold-italic = "Monaspace Radon"
+font-family = "GeistMono NFM"
+font-family-italic = "Geist Mono Italic"
+font-family-bold-italic = "Geist Mono Italic Bold Italic"
 font-size = 14
 theme = catppuccin-mocha
 

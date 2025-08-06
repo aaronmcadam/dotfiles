@@ -2,6 +2,7 @@ local M = {}
 
 function M.opts()
   return {
+    legacy_commands = false,
     ui = {
       enable = false,
     },
@@ -27,9 +28,11 @@ function M.opts()
       time_format = "%H:%M",
       template = "Daily Note.md",
     },
-    mappings = {},
-    -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
-    open_app_foreground = true,
+    open = {
+      func = function(uri)
+        vim.ui.open(uri, { cmd = { "open", "-a", "/Applications/Obsidian.app" } })
+      end,
+    },
     picker = {
       name = "snacks.pick",
     },
@@ -116,12 +119,12 @@ function M.keys()
     },
     {
       "<leader>nn",
-      "<cmd>ObsidianNewFromTemplate<cr>",
+      "<cmd>Obsidian new_from_template<cr>",
       desc = "Create new note from template",
     },
     {
       "<leader>nb",
-      "<cmd>ObsidianBacklinks<cr>",
+      "<cmd>Obsidian backlinks<cr>",
       desc = "Show backlinks for current note",
     },
     {
@@ -134,69 +137,69 @@ function M.keys()
     },
     {
       "<leader>ne",
-      ":ObsidianExtractNote<cr>",
+      ":Obsidian extract_note<cr>",
       mode = { "x" },
       desc = "Extract note",
     },
     {
       "<leader>nd", -- 'd' for 'day'
-      "<cmd>ObsidianToday<cr>",
+      "<cmd>Obsidian today<cr>",
       desc = "Open today's Daily Note",
     },
     {
       "<leader>nt",
-      "<cmd>ObsidianTomorrow<cr>",
+      "<cmd>Obsidian tomorrow<cr>",
       desc = "Open tomorrow's Daily Note",
     },
     {
       "<leader>ny",
-      "<cmd>ObsidianYesterday<cr>",
+      "<cmd>Obsidian yesterday<cr>",
       desc = "Open yesterday's Daily Note",
     },
     {
       "<leader>nf",
-      "<cmd>ObsidianFollowLink<cr>",
+      "<cmd>Obsidian follow_link<cr>",
       desc = "Follow link",
     },
     {
       "<leader>no",
-      "<cmd>ObsidianOpen<cr>",
+      "<cmd>Obsidian open<cr>",
       desc = "Open note in Obsidian",
     },
     {
       "<leader>nq",
-      "<cmd>ObsidianQuickSwitch<cr>",
+      "<cmd>Obsidian quick_switch<cr>",
       desc = "Switch to another note",
     },
     {
       "<leader>ns",
-      "<cmd>ObsidianSearch<cr>",
+      "<cmd>Obsidian search<cr>",
       desc = "Search notes",
     },
     {
       "<leader>nm",
-      "<cmd>ObsidianTemplate<cr>",
+      "<cmd>Obsidian template<cr>",
       desc = "Insert template",
     },
     {
       "<leader>np",
-      "<cmd>ObsidianPasteImg<cr>",
+      "<cmd>Obsidian paste_img<cr>",
       desc = "Paste image",
     },
     {
       "<leader>nr",
-      "<cmd>ObsidianRename<cr>",
+      "<cmd>Obsidian rename<cr>",
       desc = "Rename note",
     },
     {
       "<leader>nll",
-      "<cmd>ObsidianLink<cr>",
+      "<cmd>Obsidian link<cr>",
       desc = "Link selection",
       mode = "v",
     },
     {
       "<leader>nln",
-      "<cmd>ObsidianLinkNew<cr>",
+      "<cmd>Obsidian link_new<cr>",
       desc = "Create and link new note",
       mode = "v",
     },

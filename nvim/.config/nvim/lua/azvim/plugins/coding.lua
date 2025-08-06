@@ -86,10 +86,10 @@ return {
   -- completion
   {
     "saghen/blink.cmp",
-    version = "*",
+    -- version = "*",
+    version = "1.*",
     dependencies = {
       { "saghen/blink.compat", lazy = true },
-      "Kaiser-Yang/blink-cmp-avante",
     },
     opts = {
       keymap = {
@@ -138,7 +138,6 @@ return {
           "lsp",
           "buffer",
           "path",
-          "avante",
         },
         -- Disable cmdline completions
         providers = {
@@ -167,10 +166,6 @@ return {
               -- so the note link completions are prioritised within Obisidian notes.
               return vim.bo.filetype ~= "markdown"
             end,
-          },
-          avante = {
-            name = "Avante",
-            module = "blink-cmp-avante",
           },
         },
       },

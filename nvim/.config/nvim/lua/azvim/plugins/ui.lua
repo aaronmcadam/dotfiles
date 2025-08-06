@@ -598,7 +598,8 @@ return {
   {
     "obsidian-nvim/obsidian.nvim",
     -- hard coded version because :ObsidianOpen stopped working
-    version = "v3.11.0",
+    -- version = "v3.11.0",
+    version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
     ft = "markdown",
     dependencies = {
@@ -614,55 +615,9 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     opts = {
-      file_types = { "markdown", "Avante" },
+      file_types = { "markdown" },
     },
     dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
-  },
-
-  -- AI Chat
-  -- {
-  --   "ravitemer/mcphub.nvim",
-  --   event = "VeryLazy",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
-  --   },
-  --   build = "npm install -g mcp-hub@latest",
-  --   config = function()
-  --     require("mcphub").setup({
-  --       ui = {
-  --         window = {
-  --           width = 0.9, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
-  --           height = 0.9, -- 0-1 (ratio); "50%" (percentage); 50 (raw number)
-  --           border = "rounded", -- "none", "single", "double", "rounded", "solid", "shadow"
-  --           relative = "editor",
-  --           winblend = 0,
-  --           zindex = 50,
-  --         },
-  --         wo = { -- window-scoped options (vim.wo)
-  --           winhl = "Normal:NormalFloat,FloatBorder:MCPHubBorder",
-  --         },
-  --       },
-  --     })
-  --   end,
-  -- },
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-    build = "make",
-    opts = {
-      providers = {
-        claude = {
-          model = "claude-sonnet-4-20250514",
-        },
-      },
-    },
   },
 
   -- markdown keybindings

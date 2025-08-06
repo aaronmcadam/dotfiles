@@ -58,3 +58,5 @@ abbr -a s "git status -s"
 abbr -a h "gh"
 abbr -a hb "gh browse"
 abbr -a hc "gh repo clone"
+
+abbr -a oc "opencode"

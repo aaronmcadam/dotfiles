@@ -5,8 +5,8 @@ local config = wezterm.config_builder()
 config.color_scheme = "Catppuccin Mocha"
 config.font_size = 18
 
-local regular_font = "Monaspace Neon"
-local italic_font = "Monaspace Radon"
+local regular_font = "GeistMono NFM"
+local italic_font = "Geist Mono Italic"
 config.font = wezterm.font({ family = regular_font, weight = "Regular" })
 config.font_rules = {
 	-- For Bold-but-not-italic text, use this relatively bold font, and override

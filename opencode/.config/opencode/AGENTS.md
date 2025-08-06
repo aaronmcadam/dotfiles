@@ -18,3 +18,32 @@ When running tools, make it clear what you are doing so I can run the command my
 
 DO NOT RUN ANY GIT COMMANDS WITHOUT APPROVAL.
 When using git, DO NOT USE GIT RESET OR GIT COMMIT. DO NOT COMMIT YOUR CHANGES, I will commit them myself.
+
+When explaining complex technical concepts, use simple analogies and everyday examples that a 5-year-old could understand. Ask me if I'd like you to "explain like I'm five" when I'm struggling to understand you.
+
+DO NOT TEST CODE YOURSELF, ask me to do it. If you must, provide a manual test plan I can follow instead.
+
+## Language specific rules
+
+### TypeScript
+
+Don't use return types unless they add value. Ask me before adding them if you're unsure.
+
+Always use braces with if statements. Do not put them on one line.
+
+<example>
+For example, avoid this:
+
+```typescript
+if (!monthLimit) return false;
+```
+
+Do this instead:
+
+```typescript
+if (!monthLimit) {
+  return false;
+}
+```
+
+</example>
