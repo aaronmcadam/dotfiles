@@ -86,11 +86,7 @@ return {
   -- completion
   {
     "saghen/blink.cmp",
-    -- version = "*",
-    version = "1.*",
-    dependencies = {
-      { "saghen/blink.compat", lazy = true },
-    },
+    version = "*",
     opts = {
       keymap = {
         preset = "default",
@@ -131,28 +127,12 @@ return {
       },
       sources = {
         default = {
-          "obsidian",
-          "obsidian_new",
-          "obsidian_tags",
           "snippets",
           "lsp",
           "buffer",
           "path",
         },
-        -- Disable cmdline completions
         providers = {
-          obsidian = {
-            name = "obsidian",
-            module = "blink.compat.source",
-          },
-          obsidian_new = {
-            name = "obsidian_new",
-            module = "blink.compat.source",
-          },
-          obsidian_tags = {
-            name = "obsidian_tags",
-            module = "blink.compat.source",
-          },
           lsp = {
             enabled = function()
               -- We want to use the obsidian completion source for markdown

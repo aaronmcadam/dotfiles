@@ -13,7 +13,9 @@ function M.opts()
       },
     },
     completion = {
+      nvim_cmp = false,
       blink = true,
+      min_chars = 2,
     },
     notes_subdir = "30 Areas/31 Inbox",
     new_notes_location = "notes_subdir",
@@ -40,9 +42,7 @@ function M.opts()
     -- URL it will be ignored but you can customize this behavior here.
     ---@param url string
     follow_url_func = function(url)
-      -- Open the URL in the default web browser.
-      vim.fn.jobstart({ "open", url }) -- Mac OS
-      -- vim.fn.jobstart({"xdg-open", url})  -- linux
+      vim.ui.open(url)
     end,
     note_id_func = function(title)
       return title

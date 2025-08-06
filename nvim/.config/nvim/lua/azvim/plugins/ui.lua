@@ -597,16 +597,15 @@ return {
   -- Write Obsidian notes in neovim
   {
     "obsidian-nvim/obsidian.nvim",
-    -- hard coded version because :ObsidianOpen stopped working
-    -- version = "v3.11.0",
-    version = "*", -- recommended, use latest release instead of latest commit
+    -- hard coded version because completion is broken
+    -- @see https://github.com/obsidian-nvim/obsidian.nvim/issues/337
+    version = "v3.12.0",
+    -- version = "*", -- recommended, use latest release instead of latest commit
+    dependencies = {
+      "saghen/blink.cmp",
+    },
     lazy = true,
     ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
     opts = require("azvim.plugins.configs.obsidian").opts,
     keys = require("azvim.plugins.configs.obsidian").keys,
   },
