@@ -16,28 +16,7 @@ return {
     dependencies = {
       "echasnovski/mini.extra",
     },
-    opts = function()
-      local gen_bundled_spec = require("mini.ai").gen_spec
-      local gen_extra_spec = require("mini.extra").gen_ai_spec
-      return {
-        n_lines = 500,
-        custom_textobjects = {
-          c = gen_bundled_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
-          d = gen_extra_spec.number(), -- digits
-          f = gen_bundled_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
-          g = gen_extra_spec.buffer(), -- buffer. g similar to G/gg motion
-          i = gen_extra_spec.indent(),
-          o = gen_bundled_spec.treesitter({ -- code block. o for "Outer"
-            a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-            i = { "@block.inner", "@conditional.inner", "@loop.inner" },
-          }),
-          r = gen_extra_spec.line(), -- r for "Row"
-          u = gen_bundled_spec.function_call(), -- u for "Usage"
-          U = gen_bundled_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
-          x = gen_extra_spec.diagnostic(), -- diagnostic
-        },
-      }
-    end,
+    opts = require("azvim.plugins.configs.mini-ai").opts,
   },
 
   -- commenting
@@ -54,78 +33,11 @@ return {
     },
   },
 
-
-
   -- completion
   {
     "saghen/blink.cmp",
     version = "*",
-    opts = {
-      keymap = {
-        preset = "default",
-        -- These are the default Neovim completion keybindings:
-        -- <C-n> - Select next item
-        -- <C-p> - Select previous item
-        -- <C-y> - Accept ([y]es) the completion
-        -- <C-Space> - Manually trigger a completion
-        -- <C-e> - Abort the completion (hides the menu)
-
-        -- These are custom keybindings:
-        -- Think of <C-l> as moving to the right of your snippet expansion.
-        --  So if you have a snippet that's like:
-        --  function $name($args)
-        --    $body
-        --  end
-        --
-        -- <C-l> will move you to the right of each of the expansion locations.
-        -- <C-h> is similar, except moving you backwards.
-        ["<C-l>"] = { "snippet_forward", "fallback" },
-        ["<C-h>"] = { "snippet_backward", "fallback" },
-      },
-      completion = {
-        menu = {
-          border = "single",
-          draw = {
-            treesitter = { "lsp" },
-          },
-        },
-        -- Show documentation when selecting a completion item
-        documentation = {
-          auto_show = true,
-          auto_show_delay_ms = 200,
-          window = {
-            border = "single",
-          },
-        },
-      },
-      sources = {
-        default = {
-          "snippets",
-          "lsp",
-          "buffer",
-          "path",
-        },
-        providers = {
-          lsp = {
-            enabled = function()
-              -- We want to use the obsidian completion source for markdown
-              -- to avoid entries for both marksman and obsidian.
-              return vim.bo.filetype ~= "markdown"
-            end,
-          },
-          buffer = {
-            enabled = function()
-              -- We want to avoid words from the buffer completions in markdown
-              -- so the note link completions are prioritised within Obisidian notes.
-              return vim.bo.filetype ~= "markdown"
-            end,
-          },
-        },
-      },
-      cmdline = {
-        enabled = false,
-      },
-    },
+    opts = require("azvim.plugins.configs.blink").opts,
   },
 
   -- LSP
@@ -170,88 +82,22 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    opts = function()
-      local prettier = { "prettierd", "prettier", stop_after_first = true }
-
-      return {
-        formatters_by_ft = {
-          css = prettier,
-          html = prettier,
-          javascript = prettier,
-          javascriptreact = prettier,
-          json = prettier,
-          lua = { "stylua" },
-          -- markdown = { "markdownlint-cli2" },
-          markdown = prettier,
-          typescript = prettier,
-          typescriptreact = prettier,
-          yaml = prettier,
-          -- Use the "_" filetype to run formatters on filetypes that don't
-          -- have other formatters configured.
-          ["_"] = { "trim_whitespace" },
-        },
-        format_on_save = {
-          -- It's safer for now to turn off async formatting
-          -- because it could lead to strange behavior such as
-          -- updating the buffer text in unpredictable ways.
-          async = false,
-          lsp_fallback = true,
-          timeout_ms = 1000,
-        },
-      }
-    end,
+    opts = require("azvim.plugins.configs.conform").opts,
   },
 
   -- linting
   {
     "mfussenegger/nvim-lint",
     event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      local lint = require("lint")
-
-      lint.linters_by_ft = {
-        javascript = { "eslint" },
-        typescript = { "eslint" },
-        javascriptreact = { "eslint" },
-        typescriptreact = { "eslint" },
-        markdown = { "markdownlint-cli2" },
-      }
-
-      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-
-      vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-        group = lint_augroup,
-        callback = function()
-          -- Avoid error messages, such as: "Error running eslint: ENOENT: no such file or directory"
-          -- @see https://github.com/mfussenegger/nvim-lint/issues/454
-          lint.try_lint(nil, { ignore_errors = true })
-        end,
-      })
-    end,
+    config = require("azvim.plugins.configs.lint").setup,
   },
 
   -- package.json info
   {
     "vuki656/package-info.nvim",
     dependencies = { "MunifTanjim/nui.nvim" },
-    config = function()
-      local colors = require("catppuccin.palettes").get_palette("mocha")
-      require("package-info").setup({
-        -- autostart = false,
-        package_manager = "pnpm",
-        colors = {
-          outdated = colors.peach,
-        },
-        hide_up_to_date = true,
-      })
-    end,
-    keys = {
-      { "<leader>lpt", "<cmd>lua require('package-info').toggle()<cr>", desc = "Toggle" },
-      { "<leader>lpd", "<cmd>lua require('package-info').delete()<cr>", desc = "Delete package" },
-      { "<leader>lpu", "<cmd>lua require('package-info').update()<cr>", desc = "Update package" },
-      { "<leader>lpi", "<cmd>lua require('package-info').install()<cr>", desc = "Install package" },
-      { "<leader>lpc", "<cmd>lua require('package-info').change_version()<cr>", desc = "Change package version" },
-    },
+    config = require("azvim.plugins.configs.package-info").setup,
+    keys = require("azvim.plugins.configs.package-info").keys,
   },
 
   -- color design tokens
