@@ -23,6 +23,14 @@ When explaining complex technical concepts, use simple analogies and everyday ex
 
 DO NOT TEST CODE YOURSELF, ask me to do it. If you must, provide a manual test plan I can follow instead.
 
+When designing and planning features, always define acceptance criteria using GIVEN WHEN THEN.
+
+<example>
+**GIVEN** a user visits a protected page
+**WHEN** they are not authenticated as an admin  
+**THEN** they should see a 404 not found page
+</example>
+
 ## Language specific rules
 
 ### TypeScript
