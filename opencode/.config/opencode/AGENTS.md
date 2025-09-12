@@ -31,6 +31,10 @@ When designing and planning features, always define acceptance criteria using GI
 **THEN** they should see a 404 not found page
 </example>
 
+## MCPs
+
+Always use Context7 when I ask about a library's API or TypeScript types. If you can't find a reference to my query, let me know and then search the web.
+
 ## Language specific rules
 
 ### TypeScript

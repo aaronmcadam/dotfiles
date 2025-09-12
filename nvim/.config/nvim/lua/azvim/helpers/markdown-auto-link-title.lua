@@ -14,6 +14,8 @@ local platform_names = {
   ["discord"] = "Discord",
   ["linear"] = "Linear",
   ["confluence"] = "Confluence",
+  ["twitter"] = "X",
+  ["x%.com"] = "X",
 }
 
 local is_debug_enabled = false

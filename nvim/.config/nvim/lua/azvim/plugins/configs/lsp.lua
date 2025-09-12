@@ -119,17 +119,27 @@ function M.setup_lsps(lsps)
     on_attach = M.on_attach,
   })
 
+  -- Custom root_dir to work around nvim-lspconfig eslint bug
+  -- See: https://github.com/neovim/nvim-lspconfig/pull/4022
   vim.lsp.config("eslint", {
     capabilities = capabilities,
     on_attach = M.on_attach,
-    root_markers = {
-      ".git",
-      ".eslintrc*",
-      "eslint.config.*",
-      ".yarnrc*",
-      ".npmrc*",
-      ".prettierrc*",
-    },
+    root_dir = function(fname)
+      return vim.fs.root(fname, {
+        "package-lock.json",
+        "yarn.lock", 
+        "pnpm-lock.yaml",
+        "bun.lockb",
+        "bun.lock",
+        ".git",
+        ".eslintrc",
+        ".eslintrc.js",
+        ".eslintrc.json",
+        "eslint.config.js",
+        "eslint.config.mjs",
+        "package.json",
+      })
+    end,
   })
 
   vim.lsp.config("gopls", {
