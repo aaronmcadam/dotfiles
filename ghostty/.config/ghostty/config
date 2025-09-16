@@ -3,7 +3,7 @@ font-family-italic = "Geist Mono Italic"
 font-family-bold-italic = "Geist Mono Italic Bold Italic"
 font-size = 14
 font-feature = -liga
-theme = catppuccin-mocha
+theme = catppuccin-mocha.conf
 
 macos-option-as-alt = left
 keybind = alt+left=unbind
