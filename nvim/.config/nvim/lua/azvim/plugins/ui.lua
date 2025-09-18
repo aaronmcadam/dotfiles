@@ -1,7 +1,7 @@
 return {
   -- icons
   {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     lazy = true,
     opts = {
       filetype = {
@@ -16,7 +16,7 @@ return {
   -- better file browser
   {
     "stevearc/oil.nvim",
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
     opts = {
       -- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
       default_file_explorer = true,
@@ -38,7 +38,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "SmiteshP/nvim-navic",
-      "echasnovski/mini.icons",
+      "nvim-mini/mini.icons",
       "meuter/lualine-so-fancy.nvim",
     },
     event = "VeryLazy",
@@ -143,7 +143,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "folke/snacks.nvim",
-      "echasnovski/mini.icons",
+      "nvim-mini/mini.icons",
     },
     cmd = "Octo",
     config = require("azvim.plugins.configs.octo").setup,
@@ -228,7 +228,7 @@ return {
     opts = {
       file_types = { "markdown" },
     },
-    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" },
   },
 
   -- for writing prose

@@ -2,18 +2,6 @@
   "$schema": "https://opencode.ai/config.json",
   "theme": "catppuccin",
   "model": "anthropic/claude-sonnet-4-20250514",
-  "agent": {
-    "code-reviewer": {
-      "description": "Reviews code for best practices and potential issues",
-      "mode": "subagent",
-      "model": "anthropic/claude-sonnet-4-20250514",
-      "prompt": "You are a code reviewer. Focus on security, performance, and maintainability.",
-      "tools": {
-        "write": false,
-        "edit": false
-      }
-    }
-  },
   "mcp": {
     "context7": {
       "type": "remote",
@@ -36,6 +24,24 @@
     "git": {
       "type": "local",
       "command": ["uvx", "mcp-server-git"],
+      "enabled": true
+    },
+    "filesystem": {
+      "type": "local",
+      "command": [
+        "docker",
+        "run",
+        "-i",
+        "--rm",
+        "--mount",
+        "type=bind,src=/Users/aaron/Developer,dst=/projects/Developer,ro",
+        "--mount",
+        "type=bind,src=/Users/aaron/Obsidian/Remote Second Brain,dst=/projects/Obsidian,ro",
+        "--mount",
+        "type=bind,src=/Users/aaron/dotfiles,dst=/projects/dotfiles,ro",
+        "mcp/filesystem",
+        "/projects"
+      ],
       "enabled": true
     }
   }

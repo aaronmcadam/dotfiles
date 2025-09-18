@@ -12,9 +12,9 @@ return {
 
   -- text objects
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     dependencies = {
-      "echasnovski/mini.extra",
+      "nvim-mini/mini.extra",
     },
     opts = require("azvim.plugins.configs.mini-ai").opts,
   },
@@ -22,7 +22,7 @@ return {
   -- commenting
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
-    "echasnovski/mini.comment",
+    "nvim-mini/mini.comment",
     event = "VeryLazy",
     opts = {
       options = {
@@ -173,7 +173,7 @@ return {
 
   -- surround
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     opts = require("azvim.plugins.configs.mini-surround").opts,
     keys = require("azvim.plugins.configs.mini-surround").keys,
   },
