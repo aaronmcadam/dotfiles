@@ -5,8 +5,8 @@ function M.setup()
   require("package-info").setup({
     -- autostart = false,
     package_manager = "pnpm",
-    colors = {
-      outdated = colors.peach,
+    highlights = {
+      outdated = { fg = colors.peach },
     },
     hide_up_to_date = true,
   })
@@ -23,3 +23,4 @@ function M.keys()
 end
 
 return M
+
