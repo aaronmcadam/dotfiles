@@ -1,7 +1,7 @@
 ---
 description: Reviews code for quality and best practices
 mode: subagent
-model: opencode/claude-sonnet-4
+model: opencode/grok-code
 temperature: 0.1
 tools:
   write: false

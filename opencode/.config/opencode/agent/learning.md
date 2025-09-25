@@ -1,7 +1,7 @@
 ---
 description: Provides learning guidance without giving direct answers
 mode: primary
-model: opencode/claude-sonnet-4
+model: opencode/grok-code
 temperature: 0.2
 tools:
   write: false
