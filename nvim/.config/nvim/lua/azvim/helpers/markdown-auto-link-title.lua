@@ -33,7 +33,13 @@ end
 
 -- Decode HTML entities in title
 local function decode_html_entities(str)
-  return str:gsub("&amp;", "&"):gsub("&lt;", "<"):gsub("&gt;", ">"):gsub("&quot;", '"'):gsub("&#39;", "'")
+  return str
+    :gsub("&amp;", "&")
+    :gsub("&lt;", "<")
+    :gsub("&gt;", ">")
+    :gsub("&quot;", '"')
+    :gsub("&#39;", "'")
+    :gsub("&#x27;", "'")
 end
 
 -- Check if URL indicates a specific platform (fallback for generic error pages)
@@ -204,4 +210,3 @@ function M.paste_custom_title()
 end
 
 return M
-
