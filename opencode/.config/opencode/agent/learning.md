@@ -1,7 +1,7 @@
 ---
 description: Provides learning guidance without giving direct answers
 mode: primary
-model: opencode/grok-code
+model: anthropic/claude-sonnet-4-5-20250929
 temperature: 0.2
 tools:
   write: false
