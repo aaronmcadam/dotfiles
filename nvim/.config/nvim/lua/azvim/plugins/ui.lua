@@ -33,27 +33,36 @@ return {
     },
   },
 
-  -- Better statusline and winbar
   {
-    "nvim-lualine/lualine.nvim",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-mini/mini.icons",
-      "meuter/lualine-so-fancy.nvim",
+    -- Calls `require('slimline').setup({})`
+    "sschleemilch/slimline.nvim",
+    opts = {
+      bold = true,
+      style = "fg",
+      components = {
+        right = {
+          "diagnostics",
+          "progress",
+        },
+      },
+      configs = {
+        path = {
+          hl = {
+            primary = "Label",
+          },
+        },
+        git = {
+          hl = {
+            primary = "Function",
+          },
+        },
+        filetype_lsp = {
+          hl = {
+            primary = "String",
+          },
+        },
+      },
     },
-    event = "VeryLazy",
-    opts = require("azvim.plugins.configs.lualine").opts,
-  },
-  {
-    "SmiteshP/nvim-navic",
-    opts = function()
-      return {
-        separator = " ",
-        highlight = true,
-        depth_limit = 5,
-        icons = require("azvim.core.helpers").icons.kinds,
-      }
-    end,
   },
 
   -- harpoon
