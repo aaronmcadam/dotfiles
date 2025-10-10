@@ -1,6 +1,12 @@
-fish_add_path "/opt/homebrew/bin"
-fish_add_path "$HOME/bin"
-fish_add_path "$HOME/.local/share/bob/nvim-bin"
+# ASDF first
+set -gx ASDF_DIR $HOME/.asdf
+test -f $ASDF_DIR/asdf.fish; and source $ASDF_DIR/asdf.fish
+
+# Use fish_add_path for idempotent, de-duplicated PATH
+# Prepend shims/bin, then append Homebrew and others once
+fish_add_path --prepend $ASDF_DIR/shims $ASDF_DIR/bin
+fish_add_path /opt/homebrew/bin /opt/homebrew/sbin
+fish_add_path $HOME/bin $HOME/.local/share/bob/nvim-bin
 
 set -gx SHELL "/opt/homebrew/bin/fish"
 
@@ -16,20 +22,6 @@ set -gx CONFIG_DIR ~/.config/lazygit
 
 # Disable Husky git hooks
 set -gx HUSKY 0
-
-# ASDF configuration code
-if test -z $ASDF_DATA_DIR
-    set _asdf_shims "$HOME/.asdf/shims"
-else
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
-end
-
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-set --erase _asdf_shims
 
 # https://github.com/ajeetdsouza/zoxide
 zoxide init fish | source
