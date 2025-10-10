@@ -182,9 +182,9 @@ C = 'secondary'
 D = 'secondary'
 
 # Workspace B (Browser)
-# Arc
+# Helium
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'net.imput.helium'
 run = 'move-node-to-workspace B'
 # Chrome
 [[on-window-detected]]
