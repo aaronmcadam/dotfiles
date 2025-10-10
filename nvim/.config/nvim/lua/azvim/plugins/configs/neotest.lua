@@ -14,7 +14,11 @@ function M.setup()
   require("neotest").setup({
     adapters = {
       require("neotest-go"),
-      require("neotest-vitest"),
+      require("neotest-vitest")({
+        cwd = function(testFilePath)
+          return vim.fs.root(testFilePath, "package.json")
+        end,
+      }),
       require("neotest-rspec"),
     },
   })
