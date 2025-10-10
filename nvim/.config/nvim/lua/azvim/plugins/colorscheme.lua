@@ -24,6 +24,7 @@ return {
           style = "nvchad",
         },
         which_key = true,
+        render_markdown = true,
       },
       custom_highlights = function(colors)
         return {

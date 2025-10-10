@@ -86,18 +86,16 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
--- Enable prose tools for markdown files
+-- Enable settings for writing prose in markdown files
 vim.api.nvim_create_autocmd("FileType", {
-  desc = "Prose tools for markdown files",
+  desc = "Enable Markdown prose writing settings",
   group = augroup("prose"),
   pattern = {
     "markdown",
   },
   callback = function()
-    -- Set Pencil's conceallevel to 2 to avoid Obsidian.nvim warning
-    vim.api.nvim_set_var("pencil#conceallevel", 2)
-    -- enable Pencil
-    vim.cmd("PencilSoft")
+    -- enable soft wrapping
+    vim.opt_local.wrap = true
     -- set spell check
     vim.opt_local.spell = true
     -- insert 2 spaces for a tab (this is my default but its getting to 4 in markdown files for some reason)

@@ -75,59 +75,60 @@ end
 
 function M.keys()
   return {
-    {
-      "<leader>ff",
-      function()
-        -- I want to include all hidden files in my search except those within a `.git` folder and tech specific stuff like `node_modules`, etc.
-        -- related issue: https://github.com/folke/snacks.nvim/discussions/509
-        -- require("snacks").picker.files() -- finds files but doesn't search hidden files, e.g. .env.* or my dotfiles (just like telescope)
-        -- require("snacks").picker.git_files() -- finds files tracked by git
-        -- ideally, we'd do a similar implementation to Telescope
-        -- and check if we're in a git repo and use git_files if so,
-        -- but that's not flexible enough either because that would exclude files like `.env.local` that aren't committed to the repo.
-        -- here's the telescope config where I override the args passed to "rg":
-        -- find_files = {
-        --   theme = "ivy",
-        --   find_command = {
-        --     "rg",
-        --     "--files",
-        --     "--hidden",
-        --     "--iglob=!{.git,node_modules}/*",
-        --     "--no-ignore-vcs",
-        --     "--glob=!**/.git/*",
-        --     "--glob=!**/node_modules/*",
-        --     "--glob=!**/.next/*",
-        --     "--glob=!**/out/*",
-        --   },
-        -- },
-        -- We have a similar problem with grep, which won't search hidden files (my dotfiles are technically hidden because of
-        -- the .config directories):
-        -- live_grep = {
-        --   theme = "ivy",
-        --   additional_args = function()
-        --     -- Dotfiles are getting hidden because they're technically hidden files.
-        --     -- If we set ripgrep to include hidden files, we see too many files that we don't care about.
-        --     -- But ripgrep doesn't seem to support searching hidden files that are tracked by git.
-        --     -- We can filter out git repos though.
-        --     return { "--hidden", "-g", "!.git" }
-        --   end,
-        -- },
-        require("snacks").picker.smart({
-          multi = {
-            "buffers",
-            "recent",
-            {
-              source = "files",
-              hidden = true,
-            },
-          },
-          filter = {
-            cwd = true,
-          },
-        })
-      end,
-      desc = "[F]ind [F]iles",
-    },
+    -- Trying https://github.com/dmtrKovalenko/fff.nvim for file picker
+    -- {
+    --   "<leader>ff",
+    --   function()
+    --     -- I want to include all hidden files in my search except those within a `.git` folder and tech specific stuff like `node_modules`, etc.
+    --     -- related issue: https://github.com/folke/snacks.nvim/discussions/509
+    --     -- require("snacks").picker.files() -- finds files but doesn't search hidden files, e.g. .env.* or my dotfiles (just like telescope)
+    --     -- require("snacks").picker.git_files() -- finds files tracked by git
+    --     -- ideally, we'd do a similar implementation to Telescope
+    --     -- and check if we're in a git repo and use git_files if so,
+    --     -- but that's not flexible enough either because that would exclude files like `.env.local` that aren't committed to the repo.
+    --     -- here's the telescope config where I override the args passed to "rg":
+    --     -- find_files = {
+    --     --   theme = "ivy",
+    --     --   find_command = {
+    --     --     "rg",
+    --     --     "--files",
+    --     --     "--hidden",
+    --     --     "--iglob=!{.git,node_modules}/*",
+    --     --     "--no-ignore-vcs",
+    --     --     "--glob=!**/.git/*",
+    --     --     "--glob=!**/node_modules/*",
+    --     --     "--glob=!**/.next/*",
+    --     --     "--glob=!**/out/*",
+    --     --   },
+    --     -- },
+    --     -- We have a similar problem with grep, which won't search hidden files (my dotfiles are technically hidden because of
+    --     -- the .config directories):
+    --     -- live_grep = {
+    --     --   theme = "ivy",
+    --     --   additional_args = function()
+    --     --     -- Dotfiles are getting hidden because they're technically hidden files.
+    --     --     -- If we set ripgrep to include hidden files, we see too many files that we don't care about.
+    --     --     -- But ripgrep doesn't seem to support searching hidden files that are tracked by git.
+    --     --     -- We can filter out git repos though.
+    --     --     return { "--hidden", "-g", "!.git" }
+    --     --   end,
+    --     -- },
+    --     require("snacks").picker.smart({
+    --       multi = {
+    --         "buffers",
+    --         "recent",
+    --         {
+    --           source = "files",
+    --           hidden = true,
+    --         },
+    --       },
+    --       filter = {
+    --         cwd = true,
+    --       },
+    --     })
+    --   end,
+    --   desc = "[F]ind [F]iles",
+    -- },
     {
       "<leader>fb",
       function()
@@ -246,4 +247,3 @@ function M.keys()
 end
 
 return M
-
