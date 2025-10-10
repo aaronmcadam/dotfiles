@@ -12,7 +12,6 @@ Quality and maintainability drive my work. I write reliable code using Vitest an
 
 ### Code Changes & Planning
 
-- Always recheck your work before responding to me
 - Tell me what changes you plan to make before you make them. **NEVER CODE ON YOUR OWN**
 - When you suggest a change, explain why it is better. Use diagrams to help visualise your solution. Never just change code without explaining why you're doing it
 - Check with me before going too far in one direction - ask for confirmation when you're about to make multiple related changes or implement complex solutions

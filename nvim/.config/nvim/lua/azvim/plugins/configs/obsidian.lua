@@ -20,7 +20,7 @@ function M.opts()
     notes_subdir = "30 Areas/31 Inbox",
     new_notes_location = "notes_subdir",
     templates = {
-      subdir = "50 Resources/54 Templates",
+      folder = "50 Resources/54 Templates",
       date_format = "%Y-%m-%d",
       time_format = "%H:%M",
     },
