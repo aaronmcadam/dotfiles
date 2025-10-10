@@ -31,9 +31,9 @@ function M.opts()
       sections = {
         {
           section = "terminal",
-          cmd = "lolcat --seed=42 ~/.config/nvim/static/azvim.cat",
+          cmd = "lolcat --seed=24 ~/.config/nvim/static/azvim.cat",
           indent = 8,
-          height = 9,
+          height = 10,
           padding = { 2, 2 },
         },
         { section = "keys", gap = 1, padding = 2 },
@@ -246,3 +246,4 @@ function M.keys()
 end
 
 return M
+

@@ -211,8 +211,8 @@ return {
     "obsidian-nvim/obsidian.nvim",
     -- hard coded version because completion is broken
     -- @see https://github.com/obsidian-nvim/obsidian.nvim/issues/337
-    version = "v3.12.0",
-    -- version = "*", -- recommended, use latest release instead of latest commit
+    -- version = "v3.12.0",
+    version = "*", -- recommended, use latest release instead of latest commit
     dependencies = {
       "saghen/blink.cmp",
     },

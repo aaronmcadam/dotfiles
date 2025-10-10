@@ -47,34 +47,36 @@ function M.opts()
     note_id_func = function(title)
       return title
     end,
-    note_frontmatter_func = function(note)
-      if note.title then
-        note:add_alias(string.lower(note.title))
-      end
-
-      -- Only add the "permanent-notes" tag for new or existing notes without tags.
-      -- This avoids adding a tag where it's not wanted.
-      if note.tags and #note.tags == 0 then
-        note:add_tag("permanent-notes")
-      end
-
-      local date_format = "%Y-%m-%d"
-      local out = {
-        aliases = note.aliases,
-        tags = note.tags,
-        created = os.date(date_format),
-      }
-
-      -- `note.metadata` contains any manually added fields in the frontmatter.
-      -- So here we just make sure those fields are kept in the frontmatter.
-      if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
-        for k, v in pairs(note.metadata) do
-          out[k] = v
+    frontmatter = {
+      func = function(note)
+        if note.title then
+          note:add_alias(string.lower(note.title))
         end
-      end
 
-      return out
-    end,
+        -- Only add the "permanent-notes" tag for new or existing notes without tags.
+        -- This avoids adding a tag where it's not wanted.
+        if note.tags and #note.tags == 0 then
+          note:add_tag("permanent-notes")
+        end
+
+        local date_format = "%Y-%m-%d"
+        local out = {
+          aliases = note.aliases,
+          tags = note.tags,
+          created = os.date(date_format),
+        }
+
+        -- `note.metadata` contains any manually added fields in the frontmatter.
+        -- So here we just make sure those fields are kept in the frontmatter.
+        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+          for k, v in pairs(note.metadata) do
+            out[k] = v
+          end
+        end
+
+        return out
+      end,
+    },
     -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
     ---@return string
     image_name_func = function()
