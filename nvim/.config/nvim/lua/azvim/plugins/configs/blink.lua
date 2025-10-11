@@ -20,7 +20,14 @@ function M.opts()
       --
       -- <C-l> will move you to the right of each of the expansion locations.
       -- <C-h> is similar, except moving you backwards.
-      ["<C-l>"] = { "snippet_forward", "fallback" },
+      -- ["<C-l>"] = { "snippet_forward", "fallback" },
+      ["<C-l>"] = {
+        "snippet_forward",
+        function()
+          return require("sidekick").nes_jump_or_apply()
+        end,
+        "fallback",
+      },
       ["<C-h>"] = { "snippet_backward", "fallback" },
     },
     completion = {
@@ -70,3 +77,4 @@ function M.opts()
 end
 
 return M
+

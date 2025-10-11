@@ -4,6 +4,7 @@ function M.setup()
   local lsps = {
     "clangd", -- LSP for C/C++
     "cmake", -- LSP for cmake
+    "copilot",
     "eslint",
     "harper_ls", -- Grammar checker
     "gopls", -- LSP for Go
@@ -127,7 +128,7 @@ function M.setup_lsps(lsps)
     root_dir = function(fname)
       return vim.fs.root(fname, {
         "package-lock.json",
-        "yarn.lock", 
+        "yarn.lock",
         "pnpm-lock.yaml",
         "bun.lockb",
         "bun.lock",
