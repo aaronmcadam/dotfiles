@@ -118,6 +118,9 @@ alt-shift-ctrl-cmd-right = 'resize smart +50'
 # X for crossing or balancing, representing symmetry in the layout
 alt-shift-ctrl-cmd-x = 'balance-sizes'
 
+# Z for zoom/focus - sets focused window to 75% width (1920px on 2560px monitor)
+alt-shift-ctrl-cmd-z = 'resize width 1920'
+
 # Meh key (alt + shift + ctrl)
 # Use meh for focusing windows and workspaces and other readonly actions
 
