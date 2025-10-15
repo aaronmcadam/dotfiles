@@ -252,4 +252,10 @@ return {
       },
     },
   },
+
+  -- cursorword/illuminate
+  {
+    "nvim-mini/mini.cursorword",
+    opts = {},
+  },
 }
