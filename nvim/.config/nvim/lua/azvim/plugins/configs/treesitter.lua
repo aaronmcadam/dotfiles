@@ -9,6 +9,7 @@ function M.setup()
       "fish",
       "go",
       "gitignore",
+      "graphql",
       "html",
       "java",
       "javascript",
