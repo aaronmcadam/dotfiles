@@ -49,7 +49,7 @@ Quality and maintainability drive my work. I write reliable code using Vitest an
 
 **Context7**: Always use Context7 when I ask about a library's API or TypeScript types. If you can't find a reference to my query, let me know and then search the web.
 
-**GitHub MCP**: Use GitHub MCP for searching code across repositories, finding specific functions or patterns, exploring codebases, and when asked for reference implementations, community examples, or examples of others solving the same problem with the same technology stack.
+**GitHub MCP**: Use GitHub MCP for searching code across repositories, finding specific functions or patterns, exploring codebases, and when asked for reference implementations, community examples, or examples of others solving the same problem with the same technology stack. Use the GitHub MCP to inspect code when I provide a GitHub URL. Do not use curl to pull the code because it rarely works well.
 
 ## Tool Usage Priority
 
