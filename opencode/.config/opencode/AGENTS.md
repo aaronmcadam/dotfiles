@@ -2,40 +2,57 @@
 
 ## About Me
 
-Hello! I design and build intuitive, high-quality front-end experiences that solve real business problems. My approach blends thoughtful design, robust engineering, and user feedback to deliver meaningful customer value.
+**What I value:**
+- Quality and maintainability over clever solutions
+- Shipping early and often to validate with real users
+- Thoughtful design that solves real business problems
+- Robust engineering with tests (Vitest, Playwright)
 
-I specialize in front-end technologies like TypeScript, React, and Tailwind, with a strong eye for design that enables close collaboration with designers. I prototype in Figma and rapidly iterate in code to refine ideas.
+**Technologies I work with:**
+- TypeScript, React, Tailwind
+- SOLID principles and Domain-Driven Design
+- Figma for prototyping
 
-Quality and maintainability drive my work. I write reliable code using Vitest and Playwright, applying SOLID principles and Domain-Driven Design to create adaptable systems. I believe in shipping early and often to validate solutions with real users.
+**How I work:**
+- Design → prototype in Figma → iterate in code
+- Close collaboration with designers
+- User feedback drives decisions
+
+## ⚠️ Critical Rules - Never Break These
+
+🚫 **NO git commands without approval** (especially commit/reset)
+🚫 **NO running tests yourself** - always ask first  
+🚫 **NO starting/killing servers or processes**
+🚫 **NO coding without explaining the plan first**
+🔍 **ALWAYS use GitHub MCP for code examples** - never curl
+📚 **ALWAYS use Context7 for library docs/types**
 
 ## Rules you must follow
 
-### Code Changes & Planning
-
-- Tell me what changes you plan to make before you make them. **NEVER CODE ON YOUR OWN**
-- When you suggest a change, explain why it is better. Use diagrams to help visualise your solution. Never just change code without explaining why you're doing it
-- Check with me before going too far in one direction - ask for confirmation when you're about to make multiple related changes or implement complex solutions
-- Use first principles thinking to explain the problem you're trying to solve, how you're going to try to solve it, and what result you're expecting. Don't just try random things hoping they will work
-
-### Command Line Operations
-
-- When running commands on the command line, explain what the command does and why you are running it, to make sure I understand what you're doing and can run these commands myself
-- For example, when using grep with flags or sed or awk to manipulate text, explain how you're doing it
-
-### Git Operations
+### 🚫 Git Operations
 
 - **DO NOT RUN ANY GIT COMMANDS WITHOUT APPROVAL**
 - When using git, **DO NOT USE GIT RESET OR GIT COMMIT**
 - **DO NOT COMMIT YOUR CHANGES, I will commit them myself**
 
-### Testing & Development Servers
+### 🚫 Testing & Development Servers
 
-- **DO NOT TEST CODE YOURSELF** - Do not try to test code by running servers and viewing log output unless I allow you to
-- **Never start development servers, database servers, or any long-running processes** to avoid port collisions and runaway processes that are difficult to kill
-- Always ask me to run tests. If you need to verify something works, provide a manual test plan I can follow instead
+- **DO NOT RUN TESTS WITHOUT APPROVAL** - Always ask me to run tests. Never run test commands yourself
+- **DO NOT START ANY SERVERS** - Never start development servers, database servers, or any long-running processes to avoid port collisions and runaway processes
+- **DO NOT KILL PROCESSES** - Never try to kill processes or manage running services
+- ✅ **Instead**: Provide a manual test plan I can follow, or ask me to run specific commands
 
-### Communication
+### 🚫 Code Changes & Planning
 
+- **NEVER CODE ON YOUR OWN** - Tell me what changes you plan to make before you make them
+- When you suggest a change, explain why it is better. Use diagrams to help visualise your solution
+- Check with me before going too far in one direction - ask for confirmation when you're about to make multiple related changes or implement complex solutions
+- Use first principles thinking to explain the problem you're trying to solve, how you're going to try to solve it, and what result you're expecting. Don't just try random things hoping they will work
+- At the end of each plan, give me a list of unresolved questions to answer, if any. Make the questions extremely concise. Sacrifice grammar for the sake of concision.
+
+### ✅ Communication
+
+- When running commands on the command line, explain what the command does and why you are running it
 - When explaining complex technical concepts, use simple analogies and everyday examples that a 5-year-old could understand. Ask me if I'd like you to "explain like I'm five" when I'm struggling to understand you
 - When designing and planning features, always define acceptance criteria using GIVEN WHEN THEN
 
@@ -45,23 +62,25 @@ Quality and maintainability drive my work. I write reliable code using Vitest an
 **THEN** they should see a 404 not found page
 </example>
 
-## MCPs
+## MCPs - Your Primary Research Tools
 
-**Context7**: Always use Context7 when I ask about a library's API or TypeScript types. If you can't find a reference to my query, let me know and then search the web.
+**GitHub MCP** - Use this for ALL code research:
+- Searching code across repositories
+- Finding specific functions, patterns, or implementations  
+- Exploring codebases and understanding how libraries work
+- **When user asks**: "find examples of...", "how do others...", "show me implementations..."
+- **When user provides**: GitHub URLs (inspect the code directly—never use curl)
+- **Use case**: Reference implementations, community examples, solving problems with specific tech stacks
 
-**GitHub MCP**: Use GitHub MCP for searching code across repositories, finding specific functions or patterns, exploring codebases, and when asked for reference implementations, community examples, or examples of others solving the same problem with the same technology stack. Use the GitHub MCP to inspect code when I provide a GitHub URL. Do not use curl to pull the code because it rarely works well.
+**Context7** - Use this for ALL library documentation:
+- Library APIs and TypeScript types
+- Official documentation lookup
+- **When user asks**: "how does X work in library Y", "what are the types for..."
+- **Fallback**: If you can't find a reference, acknowledge it and search the web
 
-## Tool Usage Priority
+## File Operations
 
-**CRITICAL**: For file operations in the current working directory, ALWAYS use native tools (`read`, `write`, `edit`, `list`, `glob`, `grep`) instead of filesystem MCP tools (`filesystem_read_file`, `filesystem_write_file`, etc.).
-
-**Use filesystem MCP tools ONLY when:**
-
-- Explicitly asked to access files outside the current working directory
-- Referencing projects in `/projects/Developer/` or `/projects/Obsidian/` paths
-- User specifically mentions needing to "look at other projects" or "check external files"
-
-**Native tools first rule**: If you can accomplish the task with `read`/`write`/`edit`, use those. The filesystem MCP is read-only and should only be used for cross-project references.
+Use native tools (`read`, `write`, `edit`, `list`, `glob`, `grep`) for all file operations in the current working directory.
 
 ## Language specific rules
 
