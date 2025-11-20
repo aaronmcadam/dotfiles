@@ -3,17 +3,20 @@
 ## About Me
 
 **What I value:**
+
 - Quality and maintainability over clever solutions
 - Shipping early and often to validate with real users
 - Thoughtful design that solves real business problems
 - Robust engineering with tests (Vitest, Playwright)
 
 **Technologies I work with:**
+
 - TypeScript, React, Tailwind
 - SOLID principles and Domain-Driven Design
 - Figma for prototyping
 
 **How I work:**
+
 - Design → prototype in Figma → iterate in code
 - Close collaboration with designers
 - User feedback drives decisions
@@ -65,18 +68,29 @@
 ## MCPs - Your Primary Research Tools
 
 **GitHub MCP** - Use this for ALL code research:
+
 - Searching code across repositories
-- Finding specific functions, patterns, or implementations  
+- Finding specific functions, patterns, or implementations
 - Exploring codebases and understanding how libraries work
 - **When user asks**: "find examples of...", "how do others...", "show me implementations..."
 - **When user provides**: GitHub URLs (inspect the code directly—never use curl)
 - **Use case**: Reference implementations, community examples, solving problems with specific tech stacks
 
 **Context7** - Use this for ALL library documentation:
+
 - Library APIs and TypeScript types
 - Official documentation lookup
 - **When user asks**: "how does X work in library Y", "what are the types for..."
 - **Fallback**: If you can't find a reference, acknowledge it and search the web
+
+**Chrome DevTools MCP** - Use snapshots over screenshots to save tokens:
+
+- **ALWAYS use `take_snapshot` first** when debugging UI issues
+- Only use `take_screenshot` for visual styling problems
+- **When user mentions**: "button isn't working", "form is broken", "component isn't rendering", "something's wrong with this page"
+- **You MUST**: (1) Use Chrome DevTools MCP, (2) Call `take_snapshot` immediately, (3) Analyze DOM structure, (4) Only screenshot if it's clearly a visual styling issue
+- **Use `take_snapshot` for** (~500 tokens): Form validation, missing elements, wrong text, element hierarchy, interactive behavior, DOM structure issues
+- **Use `take_screenshot` only for** (~5000 tokens): Visual styling bugs (colors/spacing/alignment), CSS layout issues, explicit screenshot requests, when snapshot reveals you need visual confirmation
 
 ## File Operations
 
