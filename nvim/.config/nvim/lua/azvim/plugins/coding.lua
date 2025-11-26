@@ -130,6 +130,7 @@ return {
       "nvim-neotest/neotest-go",
       "marilari88/neotest-vitest",
       "olimorris/neotest-rspec",
+      "volodya-lombrozo/neotest-ruby-minitest",
     },
     config = require("azvim.plugins.configs.neotest").setup,
     keys = require("azvim.plugins.configs.neotest").keys,

@@ -20,6 +20,7 @@ function M.setup()
         end,
       }),
       require("neotest-rspec"),
+      require("neotest-ruby-minitest"),
     },
   })
 end

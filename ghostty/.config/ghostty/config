@@ -18,3 +18,4 @@ copy-on-select = clipboard
 
 # invert cursor colours so Neovim's block cursor reveals the character beneath
 cursor-invert-fg-bg = true
+keybind = shift+enter=text:\x1b\r
