@@ -47,7 +47,7 @@ function M.keys()
     {
       "<leader>ts",
       "<cmd>w<CR><cmd>lua require('neotest').summary.toggle()<CR>",
-      desc = "Toggle Test Output Panel",
+      desc = "Toggle Test Summary",
     },
     {
       "<leader>td",

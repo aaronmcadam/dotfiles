@@ -2,6 +2,9 @@ local M = {}
 
 function M.opts()
   return {
+    appearance = {
+      kind_icons = require("azvim.core.helpers").icons.kinds,
+    },
     keymap = {
       preset = "default",
       -- These are the default Neovim completion keybindings:

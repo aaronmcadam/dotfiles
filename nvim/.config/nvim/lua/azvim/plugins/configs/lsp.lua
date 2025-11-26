@@ -21,8 +21,8 @@ function M.setup()
 end
 
 function M.before_setup()
-  -- Neodev setup before LSP config
-  require("neodev").setup()
+  -- Lazydev setup before LSP config (provides vim.* completions)
+  require("lazydev").setup()
 
   -- Turn on LSP status information
   require("fidget").setup({
@@ -35,11 +35,6 @@ function M.before_setup()
 end
 
 function M.on_attach(client, bufnr)
-  local navic = require("nvim-navic")
-  if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
-  end
-
   local lsp_map = require("azvim.helpers.keys").lsp_map
 
   -- Opens a popup that displays documentation about the word under your cursor

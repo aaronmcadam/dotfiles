@@ -6,14 +6,11 @@ return {
     opts = {
       transparent_background = true,
       integrations = {
-        blink_cmp = false,
+        blink_cmp = true,
         fidget = true,
         harpoon = true,
         lsp_trouble = true,
         mason = true,
-        navic = {
-          enabled = true,
-        },
         noice = true,
         neotest = true,
         octo = true,
