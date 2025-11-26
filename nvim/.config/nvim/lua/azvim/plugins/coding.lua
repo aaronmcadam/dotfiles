@@ -49,7 +49,7 @@ return {
       "neovim/nvim-lspconfig",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "saghen/blink.cmp",
-      { "j-hui/fidget.nvim", tag = "legacy" },
+      "j-hui/fidget.nvim",
       "folke/neodev.nvim",
       "SmiteshP/nvim-navic",
     },
