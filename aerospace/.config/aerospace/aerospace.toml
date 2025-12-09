@@ -209,6 +209,10 @@ run = 'move-node-to-workspace B'
 [[on-window-detected]]
 if.app-id = 'io.raindrop.macapp'
 run = 'move-node-to-workspace B'
+# Polypane
+[[on-window-detected]]
+if.app-id = 'com.firstversionist.polypane'
+run = 'move-node-to-workspace B'
 
 # Workspace C (Communications)
 [[on-window-detected]]
