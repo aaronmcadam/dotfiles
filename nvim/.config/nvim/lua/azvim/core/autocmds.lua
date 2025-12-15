@@ -2,6 +2,16 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("azvim_" .. name, { clear = true })
 end
 
+-- Enable treesitter highlighting and indentation
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Enable treesitter highlighting and indentation",
+  group = augroup("treesitter"),
+  callback = function()
+    pcall(vim.treesitter.start)
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
+
 -- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave", "BufEnter", "CursorHold", "CursorHoldI" }, {
   desc = "Check if we need to reload the file when it changed",
