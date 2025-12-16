@@ -76,6 +76,25 @@ end
 function M.keys()
   return {
     {
+      "<leader>ff",
+      function()
+        require("snacks").picker.smart({
+          multi = {
+            "buffers",
+            "recent",
+            {
+              source = "files",
+              hidden = true,
+            },
+          },
+          filter = {
+            cwd = true,
+          },
+        })
+      end,
+      desc = "[F]ind [F]iles",
+    },
+    {
       "<leader>fb",
       function()
         require("snacks").picker.buffers()
