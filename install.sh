@@ -12,58 +12,109 @@ fancy_echo() {
 # Now add it to GitHub:
 # @see https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
 
-if ! command -v brew >/dev/null; then
-  fancy_echo "Installing Homebrew ..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
+install_brew() {
+  if ! command -v brew >/dev/null; then
+    fancy_echo "Installing Homebrew ..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  fi
 
-fancy_echo "Installing apps..."
-brew update
-brew bundle --file brew/Brewfile
-brew cleanup
+  fancy_echo "Installing apps..."
+  brew update
+  brew bundle --file brew/Brewfile
+  brew cleanup
 
-fancy_echo "Installing neovim..."
-bob use stable
+  fancy_echo "Installing neovim..."
+  bob use stable
+}
 
-fancy_echo "Creating local shell config..."
-cp fish/.config/fish/config.local.example.fish fish/.config/fish/config.local.fish
+install_fish() {
+  fancy_echo "Creating local shell config..."
+  cp fish/.config/fish/config.local.example.fish fish/.config/fish/config.local.fish
 
-fancy_echo "Linking dotfiles..."
-stow */
+  if ! [[ $SHELL =~ "fish" ]]; then
+    fancy_echo "Configuring shell..."
+    echo "$(which fish)" | sudo tee -a /etc/shells
+    chsh -s $(which fish)
+  fi
 
-fancy_echo "Configuring programming tools..."
+  fancy_echo "Installing Fisher..."
+  fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
 
-add_or_update_asdf_plugin() {
-  local name="$1"
-
-  if ! asdf plugin list | grep -Fq "$name"; then
-    asdf plugin add "$name"
+  if fish -c 'type -q fisher'; then
+    fancy_echo "Fisher installed successfully"
+    fancy_echo "Installing fish plugins from fish_plugins..."
+    fish -c 'fisher update'
   else
-    asdf plugin update "$name"
+    fancy_echo "Fisher installation failed"
+    return 1
   fi
 }
 
-add_or_update_asdf_plugin "nodejs"
-add_or_update_asdf_plugin "golang"
-add_or_update_asdf_plugin "lua"
-add_or_update_asdf_plugin "python"
-add_or_update_asdf_plugin "ruby"
+install_stow() {
+  fancy_echo "Linking dotfiles..."
+  stow */
+}
 
-# This will install languages based on .tool-versions
-asdf install
+install_claude() {
+  fancy_echo "Linking Claude config..."
+  mkdir -p ~/.claude
+  ln -sf ~/dotfiles/claude/CLAUDE.md ~/CLAUDE.md
+  ln -sf ~/dotfiles/claude/.claude/commands ~/.claude/commands
+  ln -sf ~/dotfiles/claude/.claude/skills ~/.claude/skills
+}
 
-if ! [[ $SHELL =~ "fish" ]]; then
-  fancy_echo "Configuring shell..."
-  echo "$(which fish)" | sudo tee -a /etc/shells
-  chsh -s $(which fish)
-fi
+install_asdf() {
+  fancy_echo "Configuring programming tools..."
 
-# You need to run this within Fish, not Bash:
-# fancy_echo "Installing Fisher..."
-# curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+  add_or_update_asdf_plugin() {
+    local name="$1"
 
-# fancy_echo "Fetching environment info..."
-fastfetch
+    if ! asdf plugin list | grep -Fq "$name"; then
+      asdf plugin add "$name"
+    else
+      asdf plugin update "$name"
+    fi
+  }
 
-# fancy_echo "Starting fish..."
-# fish
+  add_or_update_asdf_plugin "nodejs"
+  add_or_update_asdf_plugin "golang"
+  add_or_update_asdf_plugin "lua"
+  add_or_update_asdf_plugin "python"
+  add_or_update_asdf_plugin "ruby"
+
+  # This will install languages based on .tool-versions
+  asdf install
+}
+
+install_all() {
+  install_brew
+  install_fish
+  install_stow
+  install_claude
+  install_asdf
+  fastfetch
+}
+
+show_help() {
+  echo "Usage: ./install.sh [command]"
+  echo ""
+  echo "Commands:"
+  echo "  all     Run full installation"
+  echo "  brew    Install Homebrew and apps"
+  echo "  fish    Configure Fish shell"
+  echo "  stow    Link dotfiles with stow"
+  echo "  claude  Link Claude config"
+  echo "  asdf    Install asdf plugins and languages"
+  echo ""
+  echo "If no command is given, shows this help."
+}
+
+case "${1:-}" in
+  all)    install_all ;;
+  brew)   install_brew ;;
+  fish)   install_fish ;;
+  stow)   install_stow ;;
+  claude) install_claude ;;
+  asdf)   install_asdf ;;
+  *)      show_help ;;
+esac

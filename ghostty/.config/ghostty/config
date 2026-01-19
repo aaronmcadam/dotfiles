@@ -1,7 +1,7 @@
 font-family = "GeistMono NFM"
 font-family-italic = "Geist Mono Italic"
 font-family-bold-italic = "Geist Mono Italic Bold Italic"
-font-size = 14
+font-size = 16
 font-feature = -liga
 theme = catppuccin-mocha.conf
 
