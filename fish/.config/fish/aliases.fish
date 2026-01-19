@@ -42,10 +42,11 @@ abbr -a ptw "pnpm test --watch"
 alias gdb "git branch | fzf --header 'Delete Branch' --reverse -m --pointer='' | xargs -n 1 git branch -D"
 alias gcr "git branch --sort=-committerdate | fzf --header 'Checkout Recent Branch' --preview 'git diff --color=always {1}' --reverse -m --pointer='' | xargs -n 1 git checkout"
 alias gv "nvim '+:horizontal topleft Git'"
-alias grbim "git fetch origin main && git rebase --interactive origin/main"
 
-abbr -a gwc "git create-worktree"
-abbr -a gwcb "git create-worktree -b"
+# Rebase interactively on trunk (reads from .worktreerc)
+alias grbim "git fetch (git trunk --remote) (git trunk) && git rebase --interactive (git trunk --ref)"
+
+# Create a new worktree - use gwc function in functions/gwc.fish
 
 # Remove the current git worktree and navigate to the repo root
 # and list worktrees to show the worktree has been removed.

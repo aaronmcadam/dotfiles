@@ -39,3 +39,10 @@ source ~/.config/fish/aliases.fish
 if test -e ~/.config/fish/config.local.fish
   source ~/.config/fish/config.local.fish
 end
+
+# pnpm
+set -gx PNPM_HOME "/Users/aaron/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

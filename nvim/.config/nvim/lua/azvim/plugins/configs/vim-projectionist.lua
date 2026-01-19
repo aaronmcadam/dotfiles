@@ -4,6 +4,43 @@ function M.setup()
   -- Borrowed ideas from:
   -- https://github.com/akinsho/dotfiles/blob/d81e2f0cd00d71170107ed30db34fc644173a411/.config/nvim/lua/as/plugins/projects.lua#L2
   vim.g.projectionist_heuristics = {
+    -- Storybook ↔ ui components
+    ["apps/storybook/&packages/ui/"] = {
+      ["packages/ui/src/components/*.tsx"] = {
+        alternate = "apps/storybook/src/stories/{basename}.stories.tsx",
+        type = "component",
+      },
+      ["apps/storybook/src/stories/*.stories.tsx"] = {
+        alternate = "packages/ui/src/components/{basename}.tsx",
+        type = "story",
+      },
+    },
+    -- Dedicated tests directory (not colocated)
+    ["package.json&src/tests/"] = {
+      ["src/*/*.tsx"] = {
+        alternate = "src/tests/{basename}.test.tsx",
+        type = "component",
+      },
+      ["src/*/*.ts"] = {
+        alternate = "src/tests/{basename}.test.ts",
+        type = "source",
+      },
+      ["src/tests/*.test.tsx"] = {
+        alternate = {
+          "src/components/{basename}.tsx",
+          "src/hooks/{basename}.tsx",
+        },
+        type = "test",
+      },
+      ["src/tests/*.test.ts"] = {
+        alternate = {
+          "src/hooks/{basename}.ts",
+          "src/components/{basename}.ts",
+        },
+        type = "test",
+      },
+    },
+    -- Colocated tests (default)
     ["*"] = {
       ["*.ts"] = {
         alternate = "{}.test.ts",
@@ -53,3 +90,4 @@ function M.keys()
 end
 
 return M
+

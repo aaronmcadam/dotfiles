@@ -193,6 +193,10 @@ run = 'move-node-to-workspace B'
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace B'
+# Chrome for Testing
+[[on-window-detected]]
+if.app-id = 'com.google.chrome.for.testing'
+run = 'move-node-to-workspace B'
 # Chromium
 [[on-window-detected]]
 if.app-id = 'org.chromium.Chromium'

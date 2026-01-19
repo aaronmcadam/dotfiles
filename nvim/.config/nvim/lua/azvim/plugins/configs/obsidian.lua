@@ -38,12 +38,6 @@ function M.opts()
     picker = {
       name = "snacks.pick",
     },
-    -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
-    -- URL it will be ignored but you can customize this behavior here.
-    ---@param url string
-    follow_url_func = function(url)
-      vim.ui.open(url)
-    end,
     note_id_func = function(title)
       return title
     end,
@@ -84,25 +78,7 @@ function M.opts()
       return string.format("%s-image", os.time())
     end,
     attachments = {
-      -- The default folder to place images in via `:ObsidianPasteImg`.
-      -- If this is a relative path it will be interpreted as relative to the vault root.
-      -- You can always override this per image by passing a full path to the command instead of just a filename.
-      img_folder = "50 Resources/51 Attachments",
-      img_text_func = function(client, path)
-        ---@type string
-        local link_path
-        local vault_relative_path = client:vault_relative_path(path)
-        if vault_relative_path ~= nil then
-          -- Use relative path if the image is saved in the vault dir.
-          link_path = tostring(vault_relative_path)
-        else
-          -- Otherwise use the absolute path.
-          link_path = tostring(path)
-        end
-        local display_name = vim.fs.basename(link_path)
-        return string.format("![[%s]]", display_name)
-      end,
-      confirm_img_paste = false,
+      folder = "50 Resources/51 Attachments",
     },
   }
 end

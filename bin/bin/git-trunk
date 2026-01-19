@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+# Outputs the trunk branch name for the current repo.
+# Reads from .worktreerc if present, otherwise defaults to "main".
+#
+# Config file (.worktreerc):
+#   trunk=2.x
+#   remote=origin    # optional, defaults to origin
+#
+# Usage:
+#   git trunk              # outputs: main (or configured trunk)
+#   git trunk --ref        # outputs: origin/main (full ref)
+#   git trunk --remote     # outputs: origin (just the remote)
+#
+# Examples:
+#   git fetch $(git trunk --remote) $(git trunk)
+#   git rebase --interactive $(git trunk --ref)
+
+set -euo pipefail
+
+git_common="$(git rev-parse --git-common-dir 2>/dev/null)"
+if [[ "$git_common" == ".git" ]]; then
+  project_root="."
+else
+  project_root="${git_common%/.git}"
+fi
+config_file="$project_root/.worktreerc"
+
+if [[ -f "$config_file" ]]; then
+  # shellcheck source=/dev/null
+  source "$config_file"
+fi
+
+trunk="${trunk:-main}"
+remote="${remote:-origin}"
+
+case "${1:-}" in
+  --ref)
+    echo "$remote/$trunk"
+    ;;
+  --remote)
+    echo "$remote"
+    ;;
+  *)
+    echo "$trunk"
+    ;;
+esac
