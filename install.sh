@@ -55,14 +55,6 @@ install_stow() {
   stow */
 }
 
-install_claude() {
-  fancy_echo "Linking Claude config..."
-  mkdir -p ~/.claude
-  ln -sf ~/dotfiles/claude/CLAUDE.md ~/CLAUDE.md
-  ln -sf ~/dotfiles/claude/.claude/commands ~/.claude/commands
-  ln -sf ~/dotfiles/claude/.claude/skills ~/.claude/skills
-}
-
 install_asdf() {
   fancy_echo "Configuring programming tools..."
 
@@ -90,7 +82,6 @@ install_all() {
   install_brew
   install_fish
   install_stow
-  install_claude
   install_asdf
   fastfetch
 }
@@ -103,7 +94,6 @@ show_help() {
   echo "  brew    Install Homebrew and apps"
   echo "  fish    Configure Fish shell"
   echo "  stow    Link dotfiles with stow"
-  echo "  claude  Link Claude config"
   echo "  asdf    Install asdf plugins and languages"
   echo ""
   echo "If no command is given, shows this help."
@@ -114,7 +104,6 @@ case "${1:-}" in
   brew)   install_brew ;;
   fish)   install_fish ;;
   stow)   install_stow ;;
-  claude) install_claude ;;
   asdf)   install_asdf ;;
   *)      show_help ;;
 esac

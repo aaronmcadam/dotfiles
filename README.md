@@ -12,23 +12,23 @@ Run specific parts of the setup:
 ./install.sh brew     # install Homebrew and apps
 ./install.sh fish     # configure Fish shell + Fisher plugins
 ./install.sh stow     # link dotfiles with stow
-./install.sh claude   # link Claude config
 ./install.sh asdf     # install asdf plugins and languages
 ```
 
 ### Notes
 
-- **Stow**: The `claude/` directory is ignored by stow (via `.stowrc`) and handled separately
 - **Fish plugins**: Tracked in `fish/.config/fish/fish_plugins` - add plugins with `fisher install <plugin>` and they'll be saved automatically
-- **Claude config**: Only `commands/` and `skills/` are symlinked to `~/.claude`, keeping runtime files out of the repo
+- **Stow conflicts**: If stow fails because a target file already exists (e.g., atuin config), use `stow --adopt */` to pull the existing file into dotfiles and create the symlink
 
 ### Partial Directory Tracking
 
-Some tools have directories containing both config we want to track and files we don't (plugin files, caches, state). When stow symlinks the entire directory, those unwanted files end up in the repo.
+Some tools have directories containing both config we want to track and auto-generated files we don't (plugin files, caches, state). By default, stow symlinks entire directories, which would cause those generated files to end up in the repo.
 
-**Solution**: Use `.stow-local-ignore` to exclude those directories from stow, then manually symlink only the files you want to track.
+**Solution**: Use `--no-folding` in `.stowrc`. This makes stow create real directories and only symlink individual files. Generated files stay local and never end up in dotfiles.
 
-**Example - Fish**: The `functions/` directory contains both custom functions and Fisher plugin files. We add `functions` to `fish/.stow-local-ignore`, let Fisher manage plugins directly in `~/.config/fish/functions/`, and manually symlink our custom functions.
+**Example - Fish**: The `functions/` directory contains both custom functions (`mcd.fish`, `gwc.fish`) and Fisher plugin files. With `--no-folding`, stow symlinks only our custom functions while Fisher's plugins remain as regular files.
+
+**Example - Claude**: The `~/.claude/` directory contains custom commands/skills alongside generated files (history, cache). With `--no-folding`, stow symlinks only the files in dotfiles while Claude's runtime files stay local.
 
 ## AzVim
 
