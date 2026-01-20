@@ -46,6 +46,32 @@ install_stow() {
   stow */
 }
 
+install_dnsmasq() {
+  fancy_echo "Setting up .test domains for local development..."
+
+  if ! brew list dnsmasq &>/dev/null; then
+    brew install dnsmasq
+  fi
+
+  # Configure dnsmasq to resolve .test to localhost
+  if ! grep -q "address=/.test/127.0.0.1" "$(brew --prefix)/etc/dnsmasq.conf" 2>/dev/null; then
+    echo "address=/.test/127.0.0.1" >> "$(brew --prefix)/etc/dnsmasq.conf"
+  fi
+
+  # Start dnsmasq service
+  sudo brew services start dnsmasq
+
+  # Configure macOS to use dnsmasq for .test domains
+  sudo mkdir -p /etc/resolver
+  echo "nameserver 127.0.0.1" | sudo tee /etc/resolver/test
+
+  if ping -c 1 demo.test &>/dev/null; then
+    fancy_echo "✓ .test domains configured successfully"
+  else
+    fancy_echo "✗ Failed to resolve demo.test - check dnsmasq config"
+  fi
+}
+
 install_asdf() {
   fancy_echo "Configuring programming tools..."
 
@@ -81,20 +107,22 @@ show_help() {
   echo "Usage: ./install.sh [command]"
   echo ""
   echo "Commands:"
-  echo "  all     Run full installation"
-  echo "  brew    Install Homebrew and apps"
-  echo "  fish    Configure Fish shell"
-  echo "  stow    Link dotfiles with stow"
-  echo "  asdf    Install asdf plugins and languages"
+  echo "  all      Run full installation"
+  echo "  brew     Install Homebrew and apps"
+  echo "  fish     Configure Fish shell"
+  echo "  stow     Link dotfiles with stow"
+  echo "  asdf     Install asdf plugins and languages"
+  echo "  dnsmasq  Setup .test domains for local dev"
   echo ""
   echo "If no command is given, shows this help."
 }
 
 case "${1:-}" in
-  all)    install_all ;;
-  brew)   install_brew ;;
-  fish)   install_fish ;;
-  stow)   install_stow ;;
-  asdf)   install_asdf ;;
-  *)      show_help ;;
+  all)     install_all ;;
+  brew)    install_brew ;;
+  fish)    install_fish ;;
+  stow)    install_stow ;;
+  asdf)    install_asdf ;;
+  dnsmasq) install_dnsmasq ;;
+  *)       show_help ;;
 esac
