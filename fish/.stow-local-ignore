@@ -1,0 +1,14 @@
+# Common defaults
+\.git
+\.gitignore
+\.gitmodules
+\.DS_Store
+.+~
+\#.*\#
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Fish-specific: let Fisher manage these
+^/\.config/fish/functions
+^/\.config/fish/conf\.d

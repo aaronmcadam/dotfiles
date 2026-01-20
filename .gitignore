@@ -1,5 +1,4 @@
 fish_variables
-install-omf
 brew/Brewfile.lock.json
 lazygit/.config/lazygit/state.yml
 nvim/.config/nvim/plugin
@@ -8,5 +7,3 @@ ssh
 ssh/!config
 .DS_Store
 fish/.config/fish/config.local.fish
-fish/.config/fish/functions/fisher.fish
-fish/.config/fish/completions/
