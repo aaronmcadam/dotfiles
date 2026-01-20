@@ -37,17 +37,8 @@ install_fish() {
     chsh -s $(which fish)
   fi
 
-  fancy_echo "Installing Fisher..."
-  fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
-
-  if fish -c 'type -q fisher'; then
-    fancy_echo "Fisher installed successfully"
-    fancy_echo "Installing fish plugins from fish_plugins..."
-    fish -c 'fisher update'
-  else
-    fancy_echo "Fisher installation failed"
-    return 1
-  fi
+  fancy_echo "Installing Fisher and plugins from fish_plugins..."
+  fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update'
 }
 
 install_stow() {
@@ -80,8 +71,8 @@ install_asdf() {
 
 install_all() {
   install_brew
-  install_fish
   install_stow
+  install_fish
   install_asdf
   fastfetch
 }
