@@ -12,6 +12,7 @@
 - Explain your plan before writing code
 - Check with me before making multiple related changes
 - When explaining complex concepts, offer to "explain like I'm five"
+- **TDD**: Write/update failing test first, then implement to make it pass. Never change implementation before seeing the test fail.
 
 ## Plan Mode
 

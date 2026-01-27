@@ -35,6 +35,7 @@ You can create a .worktreerc file in your project root to set defaults:
     remote=origin          # remote name (default: origin)
     prefix=CS-             # branch prefix (default: \$(git config github.user)/)
     install_cmd=pnpm install   # override install command (auto-detected if not set)
+    post_setup="mkdir -p .claude && cp /path/to/local.json .claude/"  # run after setup
 
 The base branch defaults to \$remote/\$trunk (e.g., origin/2.x).
 
@@ -273,6 +274,11 @@ if [[ -n "$install_cmd" ]]; then
   fi
 else
   info "No package.json found, skipping dependency install"
+fi
+
+# Run post_setup hook if configured
+if [[ -n "${post_setup:-}" ]]; then
+  run_command "Running post-setup..." bash -c "$post_setup"
 fi
 
 msg "${GREEN}Success.${NOFORMAT}"
