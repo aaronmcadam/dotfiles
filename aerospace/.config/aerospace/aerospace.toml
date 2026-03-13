@@ -98,9 +98,10 @@ alt-shift-ctrl-cmd-1 = 'move-node-to-workspace 1'
 alt-shift-ctrl-cmd-2 = 'move-node-to-workspace 2'
 alt-shift-ctrl-cmd-b = 'move-node-to-workspace B' # Browser
 alt-shift-ctrl-cmd-c = 'move-node-to-workspace C' # Communications
-alt-shift-ctrl-cmd-d = 'move-node-to-workspace D' # Design
+alt-shift-ctrl-cmd-d = 'move-node-to-workspace D' # Dev Browser
 alt-shift-ctrl-cmd-e = 'move-node-to-workspace E' # Email
 alt-shift-ctrl-cmd-f = 'move-node-to-workspace F' # Finder
+alt-shift-ctrl-cmd-g = 'move-node-to-workspace G' # Graphics/Design
 alt-shift-ctrl-cmd-m = 'move-node-to-workspace M' # Music
 alt-shift-ctrl-cmd-n = 'move-node-to-workspace N' # Notes
 alt-shift-ctrl-cmd-p = 'move-node-to-workspace P' # Passwords
@@ -135,9 +136,10 @@ alt-shift-ctrl-1 = 'workspace 1'
 alt-shift-ctrl-2 = 'workspace 2'
 alt-shift-ctrl-b = 'workspace B' # Browser
 alt-shift-ctrl-c = 'workspace C' # Communications
-alt-shift-ctrl-d = 'workspace D' # Design
+alt-shift-ctrl-d = 'workspace D' # Dev Browser
 alt-shift-ctrl-e = 'workspace E' # Email
 alt-shift-ctrl-f = 'workspace F' # Finder
+alt-shift-ctrl-g = 'workspace G' # Graphics/Design
 alt-shift-ctrl-m = 'workspace M' # Music
 alt-shift-ctrl-n = 'workspace N' # Notes
 alt-shift-ctrl-p = 'workspace P' # Passwords
@@ -183,6 +185,7 @@ alt-shift-l = ['join-with right', 'mode main']
 B = 'secondary'
 C = 'secondary'
 D = 'secondary'
+G = 'secondary'
 
 # Workspace B (Browser)
 # Helium
@@ -213,10 +216,6 @@ run = 'move-node-to-workspace B'
 [[on-window-detected]]
 if.app-id = 'io.raindrop.macapp'
 run = 'move-node-to-workspace B'
-# Polypane
-[[on-window-detected]]
-if.app-id = 'com.firstversionist.polypane'
-run = 'move-node-to-workspace B'
 
 # Workspace C (Communications)
 [[on-window-detected]]
@@ -229,12 +228,9 @@ run = 'move-node-to-workspace C'
 if.app-id = 'Mattermost.Desktop'
 run = 'move-node-to-workspace C'
 
-# Workspace D (Design)
+# Workspace D (Dev Browser)
 [[on-window-detected]]
-if.app-id = 'com.figma.Desktop'
-run = 'move-node-to-workspace D'
-[[on-window-detected]]
-if.app-id = 'com.pixelmatorteam.pixelmator.x'
+if.app-id = 'com.firstversionist.polypane'
 run = 'move-node-to-workspace D'
 
 # Workspace E (Email)
@@ -250,6 +246,14 @@ run = 'move-node-to-workspace E'
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
 run = 'move-node-to-workspace F'
+
+# Workspace G (Graphics/Design)
+[[on-window-detected]]
+if.app-id = 'com.figma.Desktop'
+run = 'move-node-to-workspace G'
+[[on-window-detected]]
+if.app-id = 'com.pixelmatorteam.pixelmator.x'
+run = 'move-node-to-workspace G'
 
 # Workspace M (Music)
 [[on-window-detected]]
@@ -281,3 +285,8 @@ run = 'move-node-to-workspace T'
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace T'
+
+# Floating (opt out of tiling)
+[[on-window-detected]]
+if.app-id = 'com.IdeaPunch.ColorSlurp'
+run = 'layout floating'

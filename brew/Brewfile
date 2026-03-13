@@ -58,7 +58,6 @@ brew "rustup"
 brew "shellcheck"
 brew "starship"
 brew "stow"
-brew "terraform"
 brew "tig"
 brew "utf8proc", args: ["HEAD"]
 brew "tmux"

@@ -9,7 +9,7 @@ function M.setup()
     "harper_ls", -- Grammar checker
     "gopls", -- LSP for Go
     "lua_ls", -- LSP for Lua
-    "marksman", -- LSP for Markdown
+    "markdown_oxide", -- LSP for Markdown
     "solargraph", -- LSP for Ruby
     "tailwindcss",
   }
@@ -186,8 +186,16 @@ function M.setup_lsps(lsps)
     },
   })
 
-  vim.lsp.config("marksman", {
-    capabilities = capabilities,
+  vim.lsp.config("markdown_oxide", {
+    -- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
+    -- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
+    capabilities = vim.tbl_deep_extend("force", capabilities, {
+      workspace = {
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+        },
+      },
+    }),
     on_attach = M.on_attach,
   })
 
@@ -229,7 +237,7 @@ function M.setup_mason(lsps)
     ensure_installed = {
       "codelldb", -- Debugger for C/C++
       "codespell",
-      "marksman",
+      "markdown-oxide",
       "markdownlint-cli2",
       "prettierd",
       "rubocop",

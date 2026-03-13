@@ -30,8 +30,9 @@ return {
         }
       end,
     },
-    init = function()
-      vim.cmd.colorscheme("catppuccin")
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+      vim.cmd.colorscheme("catppuccin-nvim")
     end,
   },
 }

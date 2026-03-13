@@ -112,3 +112,8 @@ local markdown_auto_link = require("azvim.helpers.markdown-auto-link-title")
 
 map("n", "<leader>mp", markdown_auto_link.paste_auto_title, "Paste markdown link")
 map("n", "<leader>mP", markdown_auto_link.paste_custom_title, "Paste markdown link with custom title")
+
+-- Insert current date in ISO format
+map("n", "<leader>md", function()
+  vim.api.nvim_put({ os.date("%Y-%m-%d") }, "", true, true)
+end, "Insert current date")

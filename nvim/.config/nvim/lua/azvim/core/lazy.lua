@@ -19,7 +19,7 @@ require("lazy").setup({
   spec = {
     { import = "azvim.plugins" },
   },
-  install = { colorscheme = { "catppuccin" } },
+  install = { colorscheme = { "catppuccin-nvim" } },
   checker = { enabled = true }, -- automatically check for plugin updates
   performance = {
     rtp = {
