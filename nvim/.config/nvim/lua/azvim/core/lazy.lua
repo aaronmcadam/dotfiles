@@ -21,6 +21,7 @@ require("lazy").setup({
   },
   install = { colorscheme = { "catppuccin-nvim" } },
   checker = { enabled = true }, -- automatically check for plugin updates
+  concurrency = 1,
   performance = {
     rtp = {
       -- disable some rtp plugins
