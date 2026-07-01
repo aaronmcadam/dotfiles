@@ -56,22 +56,6 @@ function M.opts()
         "buffer",
         "path",
       },
-      providers = {
-        lsp = {
-          enabled = function()
-            -- We want to use the obsidian completion source for markdown
-            -- to avoid entries for both marksman and obsidian.
-            return vim.bo.filetype ~= "markdown"
-          end,
-        },
-        buffer = {
-          enabled = function()
-            -- We want to avoid words from the buffer completions in markdown
-            -- so the note link completions are prioritised within Obisidian notes.
-            return vim.bo.filetype ~= "markdown"
-          end,
-        },
-      },
     },
     cmdline = {
       enabled = false,
@@ -80,4 +64,3 @@ function M.opts()
 end
 
 return M
-

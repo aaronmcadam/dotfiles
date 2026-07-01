@@ -13,8 +13,6 @@ function M.opts()
       },
     },
     completion = {
-      nvim_cmp = false,
-      blink = true,
       min_chars = 2,
     },
     notes_subdir = "30 Areas/31 Inbox",
