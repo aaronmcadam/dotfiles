@@ -34,7 +34,7 @@ function M.opts()
       end,
     },
     picker = {
-      name = "snacks.pick",
+      name = "snacks.picker",
     },
     note_id_func = function(title)
       return title

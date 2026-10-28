@@ -252,6 +252,9 @@ run = 'move-node-to-workspace F'
 if.app-id = 'com.figma.Desktop'
 run = 'move-node-to-workspace G'
 [[on-window-detected]]
+if.app-id = 'com.authormore.penpotdesktop'
+run = 'move-node-to-workspace G'
+[[on-window-detected]]
 if.app-id = 'com.pixelmatorteam.pixelmator.x'
 run = 'move-node-to-workspace G'
 

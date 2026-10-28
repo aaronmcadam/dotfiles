@@ -61,7 +61,7 @@ EOF
 
 cleanup() {
   trap - SIGINT SIGTERM ERR EXIT
-  tput cnorm # enable cursor
+  tput cnorm >&2 # enable cursor
   # script cleanup here
 }
 
@@ -103,7 +103,7 @@ function spinner() {
   local charwidth=3
 
   local i=0
-  tput civis # cursor invisible
+  tput civis >&2 # cursor invisible
   while kill -0 "$pid" 2>/dev/null; do
     local i=$(((i + charwidth) % ${#spin}))
     printf >&2 "%s" "${spin:$i:$charwidth}"
@@ -111,7 +111,7 @@ function spinner() {
     printf >&2 "\b"
     sleep .1
   done
-  tput cnorm
+  tput cnorm >&2
   wait "$pid" # capture exit code
   return $?
 }
@@ -253,7 +253,9 @@ update_remote() {
 
 # check if branch already exists
 if [[ -n "$(git branch --list "$branch")" ]]; then
-  run_command "Generating new worktree from existing branch: $branch" git worktree add "$worktree" "$branch"
+  run_command "Generating new worktree from existing local branch: $branch" git worktree add "$worktree" "$branch"
+elif [[ -n "$(git ls-remote --heads "$remote" "$branch")" ]]; then
+  run_command "Generating new worktree from existing remote branch: $remote/$branch" git worktree add -b "$branch" "$worktree" "$remote/$branch"
 else
   run_command "Generating new worktree: $worktree" git worktree add -b "$branch" "$worktree" "$base"
 fi
@@ -282,3 +284,7 @@ if [[ -n "${post_setup:-}" ]]; then
 fi
 
 msg "${GREEN}Success.${NOFORMAT}"
+
+# Print the absolute worktree path to stdout (all other output goes to stderr)
+# so callers like the `gwc` shell function can cd into it.
+echo "$PWD"

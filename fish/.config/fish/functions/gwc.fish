@@ -3,6 +3,6 @@ function gwc --description "Create a new git worktree"
         echo "Usage: gwc <branch-name>"
         return 1
     end
-    git create-worktree -b $argv[1]
-    and cd $argv[1]
+    set -l worktree_dir (git create-worktree -b $argv[1])
+    and cd $worktree_dir
 end
